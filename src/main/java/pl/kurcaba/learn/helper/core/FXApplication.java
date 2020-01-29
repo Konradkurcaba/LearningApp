@@ -1,11 +1,12 @@
 package pl.kurcaba.learn.helper.core;
 
 import javafx.application.Application;
-import javafx.scene.image.WritableImage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.screen.ScreenCapturer;
 
-import java.util.Optional;
+import java.net.URL;
 
 public class FXApplication extends Application
 {
@@ -13,11 +14,13 @@ public class FXApplication extends Application
     public void start(Stage aPrimaryStage) throws Exception
     {
 
-        ScreenCapturer capturer = new ScreenCapturer();
+        URL mainFxml = FXApplication.class.getClassLoader()
+                .getResource("main.fxml");
 
-        Optional<WritableImage> image = capturer.openScreenshotWindow();
-        System.out.print("hehe");
-
+        FXMLLoader loader = new FXMLLoader(mainFxml);
+        Parent root = loader.load();
+        aPrimaryStage.setScene(new Scene(root));
+        aPrimaryStage.show();
 
     }
 }
