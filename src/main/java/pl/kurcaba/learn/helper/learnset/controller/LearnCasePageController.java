@@ -1,10 +1,11 @@
-package pl.kurcaba.learn.helper.learnset;
+package pl.kurcaba.learn.helper.learnset.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 
 public class LearnCasePageController
 {
@@ -22,8 +23,7 @@ public class LearnCasePageController
     private ImageView imageView;
 
     private LearnCaseView learnCase;
-    private boolean hasNext;
-    private boolean hasPrev;
+
 
     public void setLearnCase(LearnCaseView learnCase)
     {
@@ -33,8 +33,8 @@ public class LearnCasePageController
 
     private void prepareForDisplay()
     {
-        nextButton.setVisible(hasNext);
-        prevButton.setVisible(hasPrev);
+        nextButton.setVisible(learnCase.hasNext());
+        prevButton.setVisible(learnCase.hasPrev());
 
         name.setText(learnCase.getName());
         definition.setText(learnCase.getDefinition());
