@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.learnset.controller.LearnCasePageController;
+import pl.kurcaba.learn.helper.learnset.model.LearnCase;
+import pl.kurcaba.learn.helper.learnset.model.LearnSetLogic;
+import pl.kurcaba.learn.helper.learnset.model.LearnSetModel;
 
 import java.net.URL;
 
@@ -17,8 +21,22 @@ public class FXApplication extends Application
         URL mainFxml = FXApplication.class.getClassLoader()
                 .getResource("main.fxml");
 
+
+        LearnCase learnCase = new LearnCase("desk","biurko",null);
+        LearnCase learnCase1 = new LearnCase("god","bóg",null);
+        LearnCase learnCase2 = new LearnCase("weed","trawa",null);
+        LearnSetModel learnSetModel = new LearnSetModel();
+        learnSetModel.getLearnSetCases().add(learnCase);
+        learnSetModel.getLearnSetCases().add(learnCase1);
+        learnSetModel.getLearnSetCases().add(learnCase2);
+        LearnSetLogic learnSetLogic = new LearnSetLogic(learnSetModel);
+        LearnCasePageController controller = new LearnCasePageController(learnSetLogic);
+
         FXMLLoader loader = new FXMLLoader(mainFxml);
+        loader.setController(controller);
         Parent root = loader.load();
+        controller.reloadView();
+        controller.configureEvents();
         aPrimaryStage.setScene(new Scene(root));
         aPrimaryStage.show();
 

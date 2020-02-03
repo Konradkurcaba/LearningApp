@@ -5,7 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import pl.kurcaba.learn.helper.learnset.model.LearnSetLogic;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
+
+import java.util.Optional;
 
 public class LearnCasePageController
 {
@@ -24,20 +27,52 @@ public class LearnCasePageController
 
     private LearnCaseView learnCase;
 
+    private LearnSetLogic learnSetLogic;
 
-    public void setLearnCase(LearnCaseView learnCase)
+    public LearnCasePageController(LearnSetLogic learnSetLogic)
     {
-        this.learnCase = learnCase;
-        prepareForDisplay();
+        this.learnSetLogic = learnSetLogic;
+        Optional<LearnCaseView> learnCaseViewOpt = learnSetLogic.setAndGetFirst();
+        if(learnCaseViewOpt.isPresent())
+        {
+            learnCase = learnCaseViewOpt.get();
+        }
+        else
+        {
+            //to do
+        }
     }
 
-    private void prepareForDisplay()
+    public void reloadView()
     {
         nextButton.setVisible(learnCase.hasNext());
         prevButton.setVisible(learnCase.hasPrev());
 
         name.setText(learnCase.getName());
         definition.setText(learnCase.getDefinition());
-        imageView.setImage(learnCase.getImage());
+        if(learnCase.getImage().isPresent() )
+        {
+            imageView.setImage(learnCase.getImage().get());
+        }
+    }
+    public void configureEvents()
+    {
+        nextButton.setOnAction(event ->{
+            Optional<LearnCaseView> caseOpt = learnSetLogic.getNextCaseView();
+            if(caseOpt.isPresent())
+            {
+                learnCase = caseOpt.get();
+                reloadView();
+            }
+        });
+
+        prevButton.setOnAction(event ->{
+            Optional<LearnCaseView> caseOpt = learnSetLogic.getPrevCaseView();
+            if(caseOpt.isPresent())
+            {
+                learnCase = caseOpt.get();
+                reloadView();
+            }
+        });
     }
 }

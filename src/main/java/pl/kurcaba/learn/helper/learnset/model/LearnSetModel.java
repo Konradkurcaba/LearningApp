@@ -5,9 +5,9 @@ import java.util.List;
 
 public class LearnSetModel
 {
-    private final List<LearnCaseModel> learnSetParts = new ArrayList<>();
+    private final List<LearnCase> learnSetParts = new ArrayList<>();
 
-    public List<LearnCaseModel> getLearnSetCases()
+    public List<LearnCase> getLearnSetCases()
     {
         return learnSetParts;
     }

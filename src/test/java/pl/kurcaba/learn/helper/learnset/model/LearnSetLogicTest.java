@@ -8,7 +8,7 @@ import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import java.util.ArrayList;
 import java.util.List;
 
-class LearnSetLogicTest implements Observable
+class LearnSetLogicTest
 {
 
     private LearnSetLogic learnSetLogic;
@@ -23,12 +23,12 @@ class LearnSetLogicTest implements Observable
         learnSetLogic = new LearnSetLogic(learnSetModel);
     }
 
-    private List<LearnCaseModel> prepareListOfCases()
+    private List<LearnCase> prepareListOfCases()
     {
-        List<LearnCaseModel> listOfCases = new ArrayList<>();
-        LearnCaseModel case1 = new LearnCaseModel("desk","biurko", null);
-        LearnCaseModel case2 = new LearnCaseModel("drawer","szuflada", null);
-        LearnCaseModel case3 = new LearnCaseModel("commode","komoda", null);
+        List<LearnCase> listOfCases = new ArrayList<>();
+        LearnCase case1 = new LearnCase("desk","biurko", null);
+        LearnCase case2 = new LearnCase("drawer","szuflada", null);
+        LearnCase case3 = new LearnCase("commode","komoda", null);
 
         listOfCases.add(case1);
         listOfCases.add(case2);
@@ -37,7 +37,7 @@ class LearnSetLogicTest implements Observable
         return listOfCases;
     }
 
-    private void compareCaseModelToCaseView(LearnCaseModel aModel,LearnCaseView aView )
+    private void compareCaseModelToCaseView(LearnCase aModel, LearnCaseView aView )
     {
         Assertions.assertEquals(aModel.getName(),aView.getName());
         Assertions.assertEquals(aModel.getDefinition(),aView.getDefinition());
@@ -47,7 +47,7 @@ class LearnSetLogicTest implements Observable
     @Test
     void shouldReturnEmptyWhenOutOfIndex()
     {
-        List<LearnCaseModel> listToCompare = prepareListOfCases();
+        List<LearnCase> listToCompare = prepareListOfCases();
 
         for(int i = 0;i<3;i++)
         {
@@ -60,7 +60,7 @@ class LearnSetLogicTest implements Observable
     @Test
     void shouldReturnEmptyWhenCounterSmallerThan1()
     {
-        List<LearnCaseModel> listToCompare = prepareListOfCases();
+        List<LearnCase> listToCompare = prepareListOfCases();
 
         //to iterate forward
         for(int i = 0;i<3;i++)
@@ -86,7 +86,7 @@ class LearnSetLogicTest implements Observable
     @Test
     void shouldDeleteCorrectCaseModel()
     {
-        List<LearnCaseModel> listToCompare = prepareListOfCases();
+        List<LearnCase> listToCompare = prepareListOfCases();
         learnSetLogic.setAndGetFirst();
         for(int i = 1;i<3;i++)
         {
@@ -100,7 +100,7 @@ class LearnSetLogicTest implements Observable
     @Test
     void shouldDeleteCorrectCaseModelFromEnd()
     {
-        List<LearnCaseModel> listToCompare = prepareListOfCases();
+        List<LearnCase> listToCompare = prepareListOfCases();
         //set index to the least element
         learnSetLogic.setAndGetFirst();
         learnSetLogic.getNextCaseView();

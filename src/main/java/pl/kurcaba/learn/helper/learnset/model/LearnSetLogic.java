@@ -1,5 +1,6 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
+import pl.kurcaba.learn.helper.learnset.controller.LearnCasePageController;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 
 import java.util.Optional;
@@ -8,6 +9,12 @@ public class LearnSetLogic
 {
     private final LearnSetModel learnSet;
     private int currentCaseIndex = -1;
+    private LearnCasePageController controller;
+
+    public void setController(LearnCasePageController controller)
+    {
+        this.controller = controller;
+    }
 
     public LearnSetLogic(LearnSetModel learnSet)
     {
@@ -18,7 +25,7 @@ public class LearnSetLogic
     {
         if (currentCaseIndex < learnSet.getLearnSetCases().size() -1)
         {
-            LearnCaseModel currentCase = learnSet.getLearnSetCases().get(++currentCaseIndex);
+            LearnCase currentCase = learnSet.getLearnSetCases().get(++currentCaseIndex);
             return Optional.of(buildCaseViewFromModel(currentCase));
         }
         return Optional.empty();
@@ -28,7 +35,7 @@ public class LearnSetLogic
     {
         if (!(currentCaseIndex < 1))
         {
-            LearnCaseModel currentCase = learnSet.getLearnSetCases().get(--currentCaseIndex);
+            LearnCase currentCase = learnSet.getLearnSetCases().get(--currentCaseIndex);
             return Optional.of(buildCaseViewFromModel(currentCase));
         }
         return Optional.empty();
@@ -36,10 +43,10 @@ public class LearnSetLogic
 
     public void updateModel(LearnCaseView learnCaseView)
     {
-        LearnCaseModel currentCase = learnSet.getLearnSetCases().get(currentCaseIndex);
+        LearnCase currentCase = learnSet.getLearnSetCases().get(currentCaseIndex);
         currentCase.setDefinition(learnCaseView.getDefinition());
         currentCase.setName(learnCaseView.getName());
-        currentCase.setImage(learnCaseView.getImage());
+        currentCase.setImage(learnCaseView.getImage().get());
     }
 
     public void deleteCurrentCase()
@@ -74,7 +81,7 @@ public class LearnSetLogic
         }
     }
 
-    private LearnCaseView buildCaseViewFromModel(LearnCaseModel currentCase)
+    private LearnCaseView buildCaseViewFromModel(LearnCase currentCase)
     {
         return LearnCaseView.Builder.builder()
                 .setDefinition(currentCase.getDefinition())

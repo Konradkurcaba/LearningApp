@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.learnset.view;
 import javafx.scene.image.Image;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class LearnCaseView
 {
@@ -36,9 +37,9 @@ public class LearnCaseView
         this.definition = definition;
     }
 
-    public Image getImage()
+    public Optional<Image> getImage()
     {
-        return image;
+        return Optional.ofNullable(image);
     }
 
     public void setImage(Image image)

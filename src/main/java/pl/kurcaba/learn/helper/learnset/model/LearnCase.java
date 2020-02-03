@@ -4,14 +4,14 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-public class LearnCaseModel
+public class LearnCase
 {
     private String name;
     private String definition;
 
     private Image image;
 
-    public LearnCaseModel(String name, String definition, Image image)
+    public LearnCase(String name, String definition, Image image)
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
@@ -53,7 +53,7 @@ public class LearnCaseModel
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LearnCaseModel that = (LearnCaseModel) o;
+        LearnCase that = (LearnCase) o;
         return Objects.equals(name, that.name)
                 && Objects.equals(definition, that.definition)
                 && Objects.equals(image, that.image);
