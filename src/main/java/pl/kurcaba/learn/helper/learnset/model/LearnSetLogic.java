@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
-import pl.kurcaba.learn.helper.learnset.controller.LearnCasePageController;
+import pl.kurcaba.learn.helper.learnset.controller.LearnViewController;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 
 import java.util.Optional;
@@ -9,9 +9,9 @@ public class LearnSetLogic
 {
     private final LearnSetModel learnSet;
     private int currentCaseIndex = -1;
-    private LearnCasePageController controller;
+    private LearnViewController controller;
 
-    public void setController(LearnCasePageController controller)
+    public void setController(LearnViewController controller)
     {
         this.controller = controller;
     }
@@ -41,7 +41,7 @@ public class LearnSetLogic
         return Optional.empty();
     }
 
-    public void updateModel(LearnCaseView learnCaseView)
+    public void saveToModel(LearnCaseView learnCaseView)
     {
         LearnCase currentCase = learnSet.getLearnSetCases().get(currentCaseIndex);
         currentCase.setDefinition(learnCaseView.getDefinition());
@@ -79,6 +79,15 @@ public class LearnSetLogic
         {
             return Optional.empty();
         }
+    }
+
+    public int getNumberOfCases()
+    {
+        return learnSet.getLearnSetCases().size();
+    }
+    public int getCurrentCaseNumber()
+    {
+        return currentCaseIndex + 1;
     }
 
     private LearnCaseView buildCaseViewFromModel(LearnCase currentCase)

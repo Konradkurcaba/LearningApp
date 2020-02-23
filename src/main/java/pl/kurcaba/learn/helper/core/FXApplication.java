@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.learnset.controller.LearnCasePageController;
+import pl.kurcaba.learn.helper.learnset.controller.LearnViewController;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetLogic;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetModel;
@@ -30,7 +30,7 @@ public class FXApplication extends Application
         learnSetModel.getLearnSetCases().add(learnCase1);
         learnSetModel.getLearnSetCases().add(learnCase2);
         LearnSetLogic learnSetLogic = new LearnSetLogic(learnSetModel);
-        LearnCasePageController controller = new LearnCasePageController(learnSetLogic);
+        LearnViewController controller = new LearnViewController(learnSetLogic);
 
         FXMLLoader loader = new FXMLLoader(mainFxml);
         loader.setController(controller);
