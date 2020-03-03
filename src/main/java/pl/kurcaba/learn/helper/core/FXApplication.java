@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.learnset.controller.LearnViewController;
+import pl.kurcaba.learn.helper.learnset.controller.MainWindowController;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetLogic;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetModel;
@@ -19,7 +20,7 @@ public class FXApplication extends Application
     {
 
         URL mainFxml = FXApplication.class.getClassLoader()
-                .getResource("main.fxml");
+                .getResource("main_panel.fxml");
 
 
         LearnCase learnCase = new LearnCase("desk","biurko",null);
@@ -31,9 +32,10 @@ public class FXApplication extends Application
         learnSetModel.getLearnSetCases().add(learnCase2);
         LearnSetLogic learnSetLogic = new LearnSetLogic(learnSetModel);
         LearnViewController controller = new LearnViewController(learnSetLogic);
+        MainWindowController controller1 = new MainWindowController();
 
         FXMLLoader loader = new FXMLLoader(mainFxml);
-        loader.setController(controller);
+        loader.setController(controller1);
         Parent root = loader.load();
         controller.reloadView();
         controller.configureEvents();

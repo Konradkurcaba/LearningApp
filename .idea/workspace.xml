@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/MainWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetPersistenceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/PersistenceManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCaseJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnModelJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCasePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCasePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogicTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580414890299</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Working on GUI&#10;*Preparing controller - events configuration">
+      <created>1580761140774</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580761140774</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,27 +168,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Working on GUI&#10;*Start creation of main window&#10;*Start implementing MVC" />
     <MESSAGE value="Working on GUI&#10;*Creating LearnSetLogic which manages LearnSetModel&#10;*Adding few tests for LearnSetLogic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on GUI&#10;*Creating LearnSetLogic which manages LearnSetModel&#10;*Adding few tests for LearnSetLogic" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCasePageController.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCasePageController.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCasePageController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Working on GUI&#10;*Preparing controller - events configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on GUI&#10;*Preparing controller - events configuration" />
   </component>
 </project>
