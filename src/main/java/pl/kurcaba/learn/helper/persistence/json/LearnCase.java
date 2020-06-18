@@ -1,9 +1,11 @@
 package pl.kurcaba.learn.helper.persistence.json;
 
-public class LearnCaseJson
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class LearnCase
 {
     private String name;
     private String definition;
     private String pathToPhoto;
-
 }

@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.learnset.controller;
+package pl.kurcaba.learn.helper.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,11 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
-import pl.kurcaba.learn.helper.learnset.model.LearnSetLogic;
+import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import pl.kurcaba.learn.helper.util.TextFieldColorUtil;
-
-import java.util.Optional;
 
 public class LearnViewController
 {
@@ -35,76 +33,26 @@ public class LearnViewController
 
     private LearnCaseView learnCase;
 
-    private LearnSetLogic learnSetLogic;
+    private LearnSetManager learnSetManager;
 
-    public LearnViewController(LearnSetLogic learnSetLogic)
+    public LearnViewController(LearnSetManager learnSetManager)
     {
-        this.learnSetLogic = learnSetLogic;
-        Optional<LearnCaseView> learnCaseViewOpt = learnSetLogic.setAndGetFirst();
-        if(learnCaseViewOpt.isPresent())
-        {
-            learnCase = learnCaseViewOpt.get();
-        }
-        else
-        {
-            //to do
-        }
+
     }
 
     public void reloadView()
     {
-        clearView();
 
-        nextButton.setVisible(learnCase.hasNext());
-        prevButton.setVisible(learnCase.hasPrev());
-
-        if(showName.isSelected())
-        {
-            name.setText(learnCase.getName());
-            name.setEditable(false);
-        } else
-        {
-            name.setEditable(true);
-        }
-        if(showDefinition.isSelected())
-        {
-            definition.setText(learnCase.getDefinition());
-            definition.setEditable(false);
-        }
-        else
-        {
-            definition.setEditable(true);
-        }
-
-        if(learnCase.getImage().isPresent() )
-        {
-            imageView.setImage(learnCase.getImage().get());
-        }
-
-        int totalCount = learnSetLogic.getNumberOfCases();
-        int currentNumber = learnSetLogic.getCurrentCaseNumber();
-
-        counter.setText(currentNumber + "/" + totalCount);
 
     }
     public void configureEvents()
     {
         nextButton.setOnAction(event ->{
-            Optional<LearnCaseView> caseOpt = learnSetLogic.getNextCaseView();
-            if(caseOpt.isPresent())
-            {
-                learnCase = caseOpt.get();
-                reloadView();
-            }
+
         });
 
         prevButton.setOnAction(event ->{
-            Optional<LearnCaseView> caseOpt = learnSetLogic.getPrevCaseView();
-            if(caseOpt.isPresent())
-            {
-                learnCase = caseOpt.get();
-                reloadView();
-            }
+
         });
 
         showDefinition.setOnAction(event -> reloadView());

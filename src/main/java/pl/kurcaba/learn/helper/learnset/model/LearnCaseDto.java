@@ -4,18 +4,17 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-public class LearnCase
+public class LearnCaseDto
 {
     private String name;
     private String definition;
 
     private Image image;
 
-    public LearnCase(String name, String definition, Image image)
+    public LearnCaseDto(String name, String definition)
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
-        this.image = image;
     }
 
     public String getName()
@@ -53,7 +52,7 @@ public class LearnCase
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LearnCase that = (LearnCase) o;
+        LearnCaseDto that = (LearnCaseDto) o;
         return Objects.equals(name, that.name)
                 && Objects.equals(definition, that.definition)
                 && Objects.equals(image, that.image);

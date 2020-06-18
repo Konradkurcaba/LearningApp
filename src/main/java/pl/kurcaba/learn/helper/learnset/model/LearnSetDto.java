@@ -3,15 +3,13 @@ package pl.kurcaba.learn.helper.learnset.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LearnSetModel
+public class LearnSetDto
 {
-    private final List<LearnCase> learnSetParts = new ArrayList<>();
-
-    public List<LearnCase> getLearnSetCases()
+    private final List<LearnCaseDto> learnSetParts = new ArrayList<>();
+    public List<LearnCaseDto> getLearnSetCases()
     {
         return learnSetParts;
     }
-
 }
 
 

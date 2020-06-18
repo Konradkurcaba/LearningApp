@@ -1,4 +1,7 @@
-package pl.kurcaba.learn.helper.persistence;
+package pl.kurcaba.learn.helper.persistence.json;
+
+import pl.kurcaba.learn.helper.learnset.model.LearnSetDto;
+import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,16 +11,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class PersistenceManager
+class LearnSetJsonDao implements LearnSetDaoIf
 {
     private final Path pathToMainDirectory;
 
-    public PersistenceManager(Path pathToMainDirectory)
+    public LearnSetJsonDao(Path pathToMainDirectory)
     {
         this.pathToMainDirectory = pathToMainDirectory;
     }
 
-    public List<String> getAllSetsNames() throws IOException
+    public List<String> getAllNames() throws IOException
     {
         return Files.walk(pathToMainDirectory)
                 .sorted(Comparator.reverseOrder())
@@ -26,18 +29,25 @@ public class PersistenceManager
                 .collect(Collectors.toList());
     }
 
-    public LearnSetPersistenceController getPersistenceController(String aSetName) throws IOException
+    public LearnSetDto getSetByName(String aSetName) throws IOException
     {
         Optional<Path> setDirectory = Files.walk(pathToMainDirectory)
                 .sorted(Comparator.reverseOrder())
-                .filter(path ->{ return path.getFileName().toString().equals(aSetName);})
+                .filter(path -> path.getFileName().toString().equals(aSetName))
                 .findAny();
 
         if(setDirectory.isPresent())
         {
-            return new LearnSetPersistenceController(setDirectory.get());
+//            return new LearnSetDao(setDirectory.get());
         }
-        else throw new IOException("It is not possible to load indicated file");
+        else throw new IOException("It is not possible to load the indicated file");
+        return null;
     }
 
+
+    @Override
+    public void save(LearnSetDto aSetToSave)
+    {
+
+    }
 }

@@ -4,10 +4,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @XmlRootElement
-public class LearnModelJson
+public class LearnSet
 {
-
     private String setName;
-    private List<LearnCaseJson> learnCases;
-
+    private List<LearnCase> learnCases;
 }

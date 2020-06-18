@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/MainWindowController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetPersistenceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/PersistenceManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCaseJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnModelJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/core/LearnDataManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCaseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetPersistenceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/PersistenceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSetJsonDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCaseJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnModelJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogicTest.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,42 +75,42 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="FXApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.core.FXApplication" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.gui.FXApplication" />
       <module name="learnhelper" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.core.Main" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.gui.Main" />
       <module name="learnhelper" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LearnSetLogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LearnSetManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="learnhelper" />
       <option name="PACKAGE_NAME" value="pl.kurcaba.learn.helper.learnset.model" />
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetLogicTest" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LearnSetLogicTest.shouldDeleteCorrectCaseModelFromEnd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LearnSetManagerTest.shouldDeleteCorrectCaseModelFromEnd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="learnhelper" />
       <option name="PACKAGE_NAME" value="pl.kurcaba.learn.helper.learnset.model" />
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetLogicTest" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetManagerTest" />
       <option name="METHOD_NAME" value="shouldDeleteCorrectCaseModelFromEnd" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LearnSetLogicTest.shouldGenerateCorrectCaseView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LearnSetManagerTest.shouldGenerateCorrectCaseView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="learnhelper" />
       <option name="PACKAGE_NAME" value="pl.kurcaba.learn.helper.learnset.model" />
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetLogicTest" />
+      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.learnset.model.LearnSetManagerTest" />
       <option name="METHOD_NAME" value="shouldGenerateCorrectCaseView" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -111,9 +121,9 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.FXApplication" />
-        <item itemvalue="JUnit.LearnSetLogicTest" />
-        <item itemvalue="JUnit.LearnSetLogicTest.shouldGenerateCorrectCaseView" />
-        <item itemvalue="JUnit.LearnSetLogicTest.shouldDeleteCorrectCaseModelFromEnd" />
+        <item itemvalue="JUnit.LearnSetManagerTest" />
+        <item itemvalue="JUnit.LearnSetManagerTest.shouldGenerateCorrectCaseView" />
+        <item itemvalue="JUnit.LearnSetManagerTest.shouldDeleteCorrectCaseModelFromEnd" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580761140774</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working on JSON saved files">
+      <created>1583243431989</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583243431989</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +186,7 @@
     <MESSAGE value="Working on GUI&#10;*Start creation of main window&#10;*Start implementing MVC" />
     <MESSAGE value="Working on GUI&#10;*Creating LearnSetLogic which manages LearnSetModel&#10;*Adding few tests for LearnSetLogic" />
     <MESSAGE value="Working on GUI&#10;*Preparing controller - events configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on GUI&#10;*Preparing controller - events configuration" />
+    <MESSAGE value="Working on JSON saved files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on JSON saved files" />
   </component>
 </project>
