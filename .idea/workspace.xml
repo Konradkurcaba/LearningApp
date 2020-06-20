@@ -2,26 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/core/LearnDataManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/LearningApp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/FileObjectWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCaseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetPersistenceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/PersistenceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSetJsonDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCaseJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnModelJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pl/kurcaba/learn/helper/learnset/model/LearnSetLogicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/core/LearnDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSetJsonDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,12 +40,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1WLw9LQd3OrJ99g6iXK5hrHR5AE" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/Program Files/SceneBuilder/SceneBuilder.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -60,18 +65,6 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="FXApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -188,5 +181,35 @@
     <MESSAGE value="Working on GUI&#10;*Preparing controller - events configuration" />
     <MESSAGE value="Working on JSON saved files" />
     <option name="LAST_COMMIT_MESSAGE" value="Working on JSON saved files" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1592648312326">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648312326" />
+    <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592648123618">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648123618" />
+    <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1592646889360">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="775" y="454" key="ReplaceDuplicatesPrompt/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592646889360" />
+    <state x="420" y="248" key="SettingsEditor" timestamp="1592644761856">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="420" y="248" key="SettingsEditor/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592644761856" />
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1592645614247">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592645614247" />
+    <state x="690" y="275" width="540" height="496" key="extract.method.dialog" timestamp="1592646888172">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592646888172" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592648087799">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648087799" />
   </component>
 </project>

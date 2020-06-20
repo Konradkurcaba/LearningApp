@@ -1,23 +1,23 @@
 package pl.kurcaba.learn.helper.learnset.controller;
 
 import javafx.scene.image.Image;
-import pl.kurcaba.learn.helper.learnset.model.LearnCaseDto;
+import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
 
 public class LearnCaseController
 {
 
-    private final LearnCaseDto learnCaseDto;
+    private final LearnCase learnCase;
 
     private LearnCaseView learnCaseView;
     private final LearnCaseViewDirector viewDirector;
 
-    public LearnCaseController(LearnCaseDto aLearnCaseDto, LearnCaseViewDirector aDirector)
+    public LearnCaseController(LearnCase aLearnCase, LearnCaseViewDirector aDirector)
     {
-        learnCaseDto = aLearnCaseDto;
+        learnCase = aLearnCase;
         viewDirector = aDirector;
-        learnCaseView = viewDirector.buildFromDto(learnCaseDto);
+        learnCaseView = viewDirector.buildFromDto(learnCase);
     }
 
     public LearnCaseView getLearnCaseView()
@@ -27,20 +27,20 @@ public class LearnCaseController
 
     public void setName(String aNewName)
     {
-        learnCaseDto.setName(aNewName);
+        learnCase.setName(aNewName);
     }
     public void setDefinition(String aNewDefinition)
     {
-        learnCaseDto.setDefinition(aNewDefinition);
+        learnCase.setDefinition(aNewDefinition);
     }
     public void setImage(Image aNewImage)
     {
-        learnCaseDto.setImage(aNewImage);
+        learnCase.setImage(aNewImage);
     }
 
     public LearnCaseView refreshView()
     {
-        return viewDirector.buildFromDto(learnCaseDto);
+        return viewDirector.buildFromDto(learnCase);
     }
 
 

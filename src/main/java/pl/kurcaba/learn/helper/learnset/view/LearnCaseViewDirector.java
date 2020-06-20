@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.learnset.view;
 
-import pl.kurcaba.learn.helper.learnset.model.LearnCaseDto;
+import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 
 public class LearnCaseViewDirector
 {
@@ -11,7 +11,7 @@ public class LearnCaseViewDirector
         this.builder = builder;
     }
 
-    public LearnCaseView buildFromDto(LearnCaseDto aDto)
+    public LearnCaseView buildFromDto(LearnCase aDto)
     {
         return builder
                 .setDefinition(aDto.getDefinition())

@@ -2,16 +2,17 @@ package pl.kurcaba.learn.helper.learnset.model;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class LearnCaseDto
+public class LearnCase implements Serializable
 {
     private String name;
     private String definition;
 
     private Image image;
 
-    public LearnCaseDto(String name, String definition)
+    public LearnCase(String name, String definition)
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
@@ -52,7 +53,7 @@ public class LearnCaseDto
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LearnCaseDto that = (LearnCaseDto) o;
+        LearnCase that = (LearnCase) o;
         return Objects.equals(name, that.name)
                 && Objects.equals(definition, that.definition)
                 && Objects.equals(image, that.image);
