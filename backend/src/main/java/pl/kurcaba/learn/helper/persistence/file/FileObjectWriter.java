@@ -4,15 +4,11 @@ import java.io.*;
 
 public class FileObjectWriter {
 
-    private final File aFileToWrite;
+    public FileObjectWriter()
+    {}
 
-    public FileObjectWriter(File aFile)
-    {
-        aFileToWrite = aFile;
-    }
-
-    public void writeObjectToFile(Serializable objectToWrite) throws IOException {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(aFileToWrite)))
+    public void writeObjectToFile(Serializable objectToWrite, File aFile) throws IOException {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(aFile)))
         {
             objectOutputStream.writeObject(objectToWrite);
         }

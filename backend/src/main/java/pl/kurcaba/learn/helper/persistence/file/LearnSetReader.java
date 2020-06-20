@@ -9,16 +9,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static pl.kurcaba.learn.helper.persistence.file.LearnSetFileDao.FILE_EXTENSION;
+
 public class LearnSetReader
 {
 
-    public LearnSetReader(Path aPathToMainDirectory)
-    {
-    }
+    public LearnSetReader()
+    { }
 
     public List<String> getAllNames(Path aPathToMainDirectory) throws IOException
     {
         return Files.walk(aPathToMainDirectory)
+                .filter(path -> path.toString().endsWith("." + FILE_EXTENSION))
                 .sorted(Comparator.reverseOrder())
                 .map(Path::getFileName)
                 .map(Path::toString)

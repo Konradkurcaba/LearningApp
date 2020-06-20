@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-class LearnSetFileDao implements LearnSetDaoIf
+public class LearnSetFileDao implements LearnSetDaoIf
 {
     public static String FILE_EXTENSION = "lap";
 
@@ -43,8 +43,8 @@ class LearnSetFileDao implements LearnSetDaoIf
         {
             saveAs(aSetToSave);
         }
-        FileObjectWriter objectWriter = new FileObjectWriter(aFileToSave);
-        objectWriter.writeObjectToFile(aFileToSave);
+        FileObjectWriter objectWriter = new FileObjectWriter();
+        objectWriter.writeObjectToFile(aSetToSave,aFileToSave);
     }
 
     @Override
@@ -54,7 +54,7 @@ class LearnSetFileDao implements LearnSetDaoIf
         {
             throw new IOException("The set cannot be saved, a set with similar filename already exists");
         }
-        fileWriter.writeObjectToFile(aFileToSave);
+        fileWriter.writeObjectToFile(aSetToSave,aFileToSave);
     }
 
 

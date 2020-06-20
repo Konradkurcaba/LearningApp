@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="460.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="460.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -61,7 +61,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <TableView fx:id="learnSetTable" layoutX="224.0" prefHeight="378.0" prefWidth="619.0" />
+            <TableView fx:id="mainTable" layoutX="224.0" prefHeight="378.0" prefWidth="619.0" />
             <ListView fx:id="mainList" prefHeight="378.0" prefWidth="225.0" />
             <Button fx:id="save" layoutX="773.0" layoutY="396.0" mnemonicParsing="false" text="Zapisz" />
             <TextField fx:id="name" layoutX="289.0" layoutY="396.0" prefHeight="25.0" prefWidth="150.0" />
