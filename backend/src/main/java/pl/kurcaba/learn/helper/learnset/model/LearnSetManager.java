@@ -1,8 +1,8 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
-import pl.kurcaba.learn.helper.learnset.controller.LearnCaseController;
-import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
+import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
+import pl.kurcaba.learn.helper.learnset.controller.LearnCaseController;
 
 import java.util.List;
 import java.util.stream.Collectors;

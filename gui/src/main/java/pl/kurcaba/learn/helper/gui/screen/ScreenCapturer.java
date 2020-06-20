@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.screen;
+package pl.kurcaba.learn.helper.gui.screen;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;

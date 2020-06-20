@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.util;
+package pl.kurcaba.learn.helper.gui;
 
 import javafx.scene.control.TextField;
 

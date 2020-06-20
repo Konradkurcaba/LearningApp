@@ -1,9 +1,10 @@
 package pl.kurcaba.learn.helper.learnset.controller;
 
-import javafx.scene.image.Image;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
+
+import java.io.File;
 
 public class LearnCaseController
 {
@@ -33,7 +34,7 @@ public class LearnCaseController
     {
         learnCase.setDefinition(aNewDefinition);
     }
-    public void setImage(Image aNewImage)
+    public void setImage(File aNewImage)
     {
         learnCase.setImage(aNewImage);
     }

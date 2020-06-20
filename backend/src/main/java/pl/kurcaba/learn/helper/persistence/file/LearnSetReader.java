@@ -12,16 +12,13 @@ import java.util.stream.Collectors;
 public class LearnSetReader
 {
 
-    private final Path pathToMainDirectory;
-
     public LearnSetReader(Path aPathToMainDirectory)
     {
-        this.pathToMainDirectory = aPathToMainDirectory;
     }
 
-    public List<String> getAllNames() throws IOException
+    public List<String> getAllNames(Path aPathToMainDirectory) throws IOException
     {
-        return Files.walk(pathToMainDirectory)
+        return Files.walk(aPathToMainDirectory)
                 .sorted(Comparator.reverseOrder())
                 .map(Path::getFileName)
                 .map(Path::toString)

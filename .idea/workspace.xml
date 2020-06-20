@@ -2,23 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/LearningApp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/FileObjectWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/gui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/core/LearnDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/json/LearnSetJsonDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/FileObjectWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/FileObjectWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/screen/ScreenCapturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/screen/SnippingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/SnippingField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/kurcaba/learn/helper/util/TextFieldColorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/TextFieldColorUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +61,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
@@ -68,15 +76,15 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="FXApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.gui.FXApplication" />
-      <module name="learnhelper" />
+      <option name="MAIN_CLASS_NAME" value="helper.gui.FXApplication" />
+      <module name="gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.kurcaba.learn.helper.gui.Main" />
-      <module name="learnhelper" />
+      <option name="MAIN_CLASS_NAME" value="helper.gui.Main" />
+      <module name="gui" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,10 +191,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Working on JSON saved files" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1592657408664">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657408664" />
     <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1592648312326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648312326" />
+    <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592657424381">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657424381" />
     <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592648123618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -207,6 +223,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592646888172" />
+    <state x="342" y="215" key="new project wizard" timestamp="1592657367945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="215" key="new project wizard/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657367945" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592648087799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

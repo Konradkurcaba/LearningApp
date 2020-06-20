@@ -26,7 +26,7 @@ class LearnSetFileDao implements LearnSetDaoIf
     @Override
     public List<String> getAllNames() throws IOException
     {
-        return fileReader.getAllNames();
+        return fileReader.getAllNames(mainDirectoryPath);
     }
 
     @Override

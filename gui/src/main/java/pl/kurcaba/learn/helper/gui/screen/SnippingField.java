@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.screen;
+package pl.kurcaba.learn.helper.gui.screen;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
