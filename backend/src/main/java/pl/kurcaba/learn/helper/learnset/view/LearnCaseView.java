@@ -1,6 +1,5 @@
 package pl.kurcaba.learn.helper.learnset.view;
 
-import java.io.File;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -14,7 +13,7 @@ public class LearnCaseView
 
     private String name;
     private String definition;
-    private File image;
+    private byte[] image;
 
     public String getName()
     {
@@ -36,22 +35,26 @@ public class LearnCaseView
         this.definition = definition;
     }
 
-    public Optional<File> getImage()
+    public Optional<byte[]> getImage()
     {
         return Optional.ofNullable(image);
     }
 
-    private void setImage(File image)
+    private void setImage(byte[] image)
     {
         this.image = image;
+    }
+
+    public boolean isImageLoaded()
+    {
+        return image != null;
     }
 
     public static class Builder
     {
         private String name;
         private String definition;
-        private File image;
-
+        private byte[] image;
 
         private Builder()
         {
@@ -69,7 +72,7 @@ public class LearnCaseView
             return this;
         }
 
-        public Builder setImage(File image)
+        public Builder setImage(byte[] image)
         {
             this.image = image;
             return this;

@@ -1,5 +1,6 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
+import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.IOException;
@@ -15,17 +16,17 @@ public class LearnDataManager
         this.learnSetDao = learnSetDao;
     }
 
-    public List<String> getAllSetsNames() throws IOException
+    public List<LearnSetName> getAllSetsNames() throws IOException
     {
         return learnSetDao.getAllNames();
     }
 
-    public LearnSetManager getManager(String aLearnSetName) throws IOException, ClassNotFoundException {
+    public LearnSetManager getManager(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException {
         LearnSet learnSet = learnSetDao.getSetByName(aLearnSetName);
         return new LearnSetManager(learnSet,true);
     }
 
-    public LearnSetManager createNewLearnSet(String aNewName) {
+    public LearnSetManager createNewLearnSet(LearnSetName aNewName) {
         LearnSet newSet = new LearnSet(aNewName, new ArrayList<>());
         return new LearnSetManager(newSet,false);
     }

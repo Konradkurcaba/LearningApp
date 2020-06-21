@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
 import pl.kurcaba.learn.helper.learnset.model.LearnSet;
+import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.File;
@@ -24,13 +25,13 @@ public class LearnSetFileDao implements LearnSetDaoIf
     }
 
     @Override
-    public List<String> getAllNames() throws IOException
+    public List<LearnSetName> getAllNames() throws IOException
     {
         return fileReader.getAllNames(mainDirectoryPath);
     }
 
     @Override
-    public LearnSet getSetByName(String aSetName) throws IOException, ClassNotFoundException
+    public LearnSet getSetByName(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
         return fileReader.readLearnSet(getFile(aSetName));
     }
@@ -58,9 +59,9 @@ public class LearnSetFileDao implements LearnSetDaoIf
     }
 
 
-    private File getFile(String aLearnSetName)
+    private File getFile(LearnSetName aLearnSetName)
     {
-        String fileName = aLearnSetName + "." + FILE_EXTENSION;
+        String fileName = aLearnSetName.toString() + "." + FILE_EXTENSION;
         Path pathToOriginFile = Path.of(mainDirectoryPath.toString(), fileName);
         return pathToOriginFile.toFile();
     }

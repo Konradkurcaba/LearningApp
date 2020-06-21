@@ -1,14 +1,16 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
+import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class LearnSet implements Serializable
 {
-    private final String learnSetName;
+    private final LearnSetName learnSetName;
     private final List<LearnCase> learnSetParts;
 
-    public LearnSet(String learnSetName, List<LearnCase> learnSetParts) {
+    public LearnSet(LearnSetName learnSetName, List<LearnCase> learnSetParts) {
         this.learnSetName = learnSetName;
         this.learnSetParts = learnSetParts;
     }
@@ -18,7 +20,7 @@ public class LearnSet implements Serializable
         return learnSetParts;
     }
 
-    public String getLearnSetName() {
+    public LearnSetName getLearnSetName() {
         return learnSetName;
     }
 }

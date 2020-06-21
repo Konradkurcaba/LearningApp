@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
 import pl.kurcaba.learn.helper.learnset.model.LearnSet;
+import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -17,13 +18,15 @@ public class LearnSetReader
     public LearnSetReader()
     { }
 
-    public List<String> getAllNames(Path aPathToMainDirectory) throws IOException
+    public List<LearnSetName> getAllNames(Path aPathToMainDirectory) throws IOException
     {
         return Files.walk(aPathToMainDirectory)
                 .filter(path -> path.toString().endsWith("." + FILE_EXTENSION))
                 .sorted(Comparator.reverseOrder())
                 .map(Path::getFileName)
                 .map(Path::toString)
+                .map(name -> name.replace("." + FILE_EXTENSION, ""))
+                .map(LearnSetName::new)
                 .collect(Collectors.toList());
     }
 

@@ -4,8 +4,6 @@ import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
 
-import java.io.File;
-
 public class LearnCaseController
 {
 
@@ -34,7 +32,7 @@ public class LearnCaseController
     {
         learnCase.setDefinition(aNewDefinition);
     }
-    public void setImage(File aNewImage)
+    public void setImage(byte[] aNewImage)
     {
         learnCase.setImage(aNewImage);
     }

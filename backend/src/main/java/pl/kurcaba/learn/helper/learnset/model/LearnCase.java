@@ -1,6 +1,5 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,7 +8,7 @@ public class LearnCase implements Serializable
     private String name;
     private String definition;
 
-    private File image;
+    private byte[] image;
 
     public LearnCase(String name, String definition)
     {
@@ -37,12 +36,12 @@ public class LearnCase implements Serializable
         this.definition = definition;
     }
 
-    public File getImage()
+    public byte[] getImage()
     {
         return image;
     }
 
-    public void setImage(File image)
+    public void setImage(byte[] image)
     {
         this.image = image;
     }

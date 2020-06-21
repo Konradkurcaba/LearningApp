@@ -30,6 +30,7 @@ public class FXApplication extends Application
         Parent root = loader.load();
 
         aPrimaryStage.setScene(new Scene(root));
+        aPrimaryStage.setTitle("Aplikacja do nauki");
         aPrimaryStage.show();
 
     }
