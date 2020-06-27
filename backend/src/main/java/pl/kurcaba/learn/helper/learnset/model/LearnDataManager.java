@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.learnset.model;
 
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
+import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.IOException;
@@ -23,22 +24,20 @@ public class LearnDataManager
 
     public LearnSetManager getManager(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException {
         LearnSet learnSet = learnSetDao.getSetByName(aLearnSetName);
-        return new LearnSetManager(learnSet,true);
+        return new LearnSetManager(learnSet);
     }
 
-    public LearnSetManager createNewLearnSet(LearnSetName aNewName) {
+    public LearnSetManager createNewLearnSet(LearnSetName aNewName) throws IOException, NonUniqueException {
+        if(learnSetDao.getAllNames().contains(aNewName))
+        {
+            throw new NonUniqueException("Learn set name must be unique");
+        }
         LearnSet newSet = new LearnSet(aNewName, new ArrayList<>());
-        return new LearnSetManager(newSet,false);
+        learnSetDao.saveAs(newSet);
+        return new LearnSetManager(newSet);
     }
 
     public void save(LearnSetManager aManagerToSave) throws IOException {
-        if(aManagerToSave.isSetSaved())
-        {
-            learnSetDao.saveAs(aManagerToSave.getLearnSet());
-        }
-        else
-        {
-            learnSetDao.saveChanges(aManagerToSave.getLearnSet());
-        }
+        learnSetDao.saveChanges(aManagerToSave.getLearnSet());
     }
 }

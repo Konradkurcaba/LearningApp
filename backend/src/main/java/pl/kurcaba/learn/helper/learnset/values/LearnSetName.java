@@ -1,6 +1,9 @@
 package pl.kurcaba.learn.helper.learnset.values;
 
-public class LearnSetName {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class LearnSetName implements Serializable {
 
     private final String name;
 
@@ -15,6 +18,19 @@ public class LearnSetName {
             throw new IllegalArgumentException("Learn Set name contains wrong signs");
         }
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LearnSetName that = (LearnSetName) o;
+        return Objects.equals(name.toUpperCase(), that.name.toUpperCase());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name.toUpperCase());
     }
 
     @Override

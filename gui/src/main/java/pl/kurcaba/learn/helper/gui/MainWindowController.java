@@ -1,5 +1,6 @@
 package pl.kurcaba.learn.helper.gui;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,6 +9,7 @@ import pl.kurcaba.learn.helper.learnset.controller.LearnCaseController;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
+import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 
 import java.io.IOException;
@@ -35,7 +37,11 @@ public class MainWindowController
     private Button image;
 
     @FXML
-    private Button save;
+    private Button addCase;
+
+    @FXML
+    private Button saveSet;
+
 
     @FXML
     private ListView<LearnSetName> mainList;
@@ -56,8 +62,31 @@ public class MainWindowController
     {
         newSet.setOnMouseClicked( event ->{
             String newSetName = displayInputDialog("Nowy zestaw", "Nazwa nowego zestawu:");
-            dataManager.createNewLearnSet(new LearnSetName(newSetName));
+            try {
+                setManager = dataManager.createNewLearnSet(new LearnSetName(newSetName));
+                refreshMainListData();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NonUniqueException e) {
+                e.printStackTrace();
+            }
         });
+        addCase.setOnMouseClicked(event ->  {
+            String newCaseName = name.getText();
+            String newDefinition = definition.getText();
+            LearnCaseController controller = setManager.createNewCase(newCaseName,newDefinition);
+            caseControllers.add(controller);
+            refreshTableData();
+        });
+
+        saveSet.setOnMouseClicked(event -> {
+            try {
+                dataManager.save(setManager);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     private void initTable()
@@ -73,6 +102,7 @@ public class MainWindowController
                 }
             }
         });
+        nameColumn.setCellValueFactory( param -> new SimpleStringProperty(param.getValue().getName()));
 
         TableColumn<LearnCaseView, String> definitionColumn = new TableColumn<>("Definicja");
         definitionColumn.setCellFactory(column -> new TableCell<>() {
@@ -85,6 +115,7 @@ public class MainWindowController
                 }
             }
         });
+        definitionColumn.setCellValueFactory( param -> new SimpleStringProperty(param.getValue().getDefinition()));
 
         TableColumn<LearnCaseView, Boolean> imageColumn = new TableColumn<>("Obraz");
         imageColumn.setCellFactory(tc -> new CheckBoxTableCell<>());

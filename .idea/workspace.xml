@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/values/LearnSetName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/values/NonUniqueException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/controller/LearnCaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/LearnSetDaoIf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/values/LearnSetName.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/values/LearnSetName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/main_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/main_panel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,18 +180,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Working on JSON saved files" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Project_Structure" timestamp="1592658485232">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1593264800020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592658485232" />
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264800020" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592660455884">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592660455884" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1592730878708">
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1593263327586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592730878708" />
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593263327586" />
     <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592657424381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -206,46 +200,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648123618" />
-    <state width="492" height="466" key="DebuggerActiveHint" timestamp="1592732308658">
+    <state width="492" height="466" key="DebuggerActiveHint" timestamp="1593264451153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="492" height="466" key="DebuggerActiveHint/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592732308658" />
+    <state width="492" height="466" key="DebuggerActiveHint/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264451153" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1592658544233">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592658544233" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1592734360583">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1593265268666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592734360583" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1592734360583">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265268666" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1593265268666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592734360583" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1592734360583">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265268666" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1593265268666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592734360583" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1592734360583">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265268666" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1593265268666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592734360583" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1592732395508">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265268666" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1593264724764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592732395508" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1592732395508">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264724764" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1593264724764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592732395508" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1592732395508">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264724764" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1593264724764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592732395508" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1592732395508">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264724764" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1593264724764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592732395508" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593264724764" />
     <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1592646889360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -254,10 +248,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="420" y="248" key="SettingsEditor/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592644761856" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1592645614247">
+    <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1593265097198">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592645614247" />
+    <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265097198" />
     <state x="690" y="275" width="540" height="496" key="extract.method.dialog" timestamp="1592660329400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -266,9 +260,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="215" key="new project wizard/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657367945" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592648087799">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593265280596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592648087799" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593265280596" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

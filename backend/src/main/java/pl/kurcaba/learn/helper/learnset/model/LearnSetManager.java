@@ -10,12 +10,10 @@ import java.util.stream.Collectors;
 public class LearnSetManager
 {
     private final LearnSet learnSet;
-    private boolean isSetSaved;
 
-    public LearnSetManager(LearnSet learnSet, boolean isSaved)
+    public LearnSetManager(LearnSet learnSet)
     {
         this.learnSet = learnSet;
-        isSetSaved = isSaved;
     }
 
     public List<LearnCaseController> getAllControllers()
@@ -27,18 +25,14 @@ public class LearnSetManager
 
     public LearnCaseController createNewCase(String aName, String aDefinition)
     {
-        return null;
+        LearnCase newCase = new LearnCase(aName, aDefinition);
+        learnSet.getLearnSetCases().add(newCase);
+        return new LearnCaseController(newCase, new LearnCaseViewDirector(LearnCaseView.builder()));
     }
+    
 
     LearnSet getLearnSet() {
         return learnSet;
     }
 
-    public boolean isSetSaved() {
-        return isSetSaved;
-    }
-
-    public void setSetSaved(boolean setSaved) {
-        isSetSaved = setSaved;
-    }
 }
