@@ -5,7 +5,7 @@ import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class LearnDataManager
@@ -32,7 +32,7 @@ public class LearnDataManager
         {
             throw new NonUniqueException("Learn set name must be unique");
         }
-        LearnSet newSet = new LearnSet(aNewName, new ArrayList<>());
+        LearnSet newSet = new LearnSet(aNewName, new LinkedHashSet<>());
         learnSetDao.saveAs(newSet);
         return new LearnSetManager(newSet);
     }

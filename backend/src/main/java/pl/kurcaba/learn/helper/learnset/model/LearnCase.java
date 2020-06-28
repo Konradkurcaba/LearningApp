@@ -2,9 +2,11 @@ package pl.kurcaba.learn.helper.learnset.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
 
 public class LearnCase implements Serializable
 {
+    private UUID id = UUID.randomUUID();
     private String name;
     private String definition;
 
@@ -14,6 +16,10 @@ public class LearnCase implements Serializable
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getName()
@@ -47,19 +53,15 @@ public class LearnCase implements Serializable
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LearnCase that = (LearnCase) o;
-        return Objects.equals(name, that.name)
-                && Objects.equals(definition, that.definition)
-                && Objects.equals(image, that.image);
+        LearnCase learnCase = (LearnCase) o;
+        return id.equals(learnCase.id);
     }
 
     @Override
-    public int hashCode()
-    {
-        return Objects.hash(name, definition, image);
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

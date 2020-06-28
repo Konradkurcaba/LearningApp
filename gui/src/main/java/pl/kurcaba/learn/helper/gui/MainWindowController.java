@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import pl.kurcaba.learn.helper.learnset.controller.LearnCaseController;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
@@ -13,6 +12,7 @@ import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 
 import java.io.IOException;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +22,7 @@ public class MainWindowController
 
     private LearnDataManager dataManager;
     private LearnSetManager setManager;
-    private List<LearnCaseController> caseControllers;
+    private LinkedHashSet<LearnCaseView> caseViews;
 
     @FXML
     private Button newSet;
@@ -74,9 +74,11 @@ public class MainWindowController
         addCase.setOnMouseClicked(event ->  {
             String newCaseName = name.getText();
             String newDefinition = definition.getText();
-            LearnCaseController controller = setManager.createNewCase(newCaseName,newDefinition);
-            caseControllers.add(controller);
+            LearnCaseView view = setManager.createNewCase(newCaseName,newDefinition);
+            caseViews.add(view);
             refreshTableData();
+            name.clear();
+            definition.clear();
         });
 
         saveSet.setOnMouseClicked(event -> {
@@ -121,14 +123,29 @@ public class MainWindowController
         imageColumn.setCellFactory(tc -> new CheckBoxTableCell<>());
 
         mainTable.getColumns().addAll(nameColumn,definitionColumn,imageColumn);
+
+        ContextMenu tableMenu = new ContextMenu();
+        MenuItem deleteItem = new MenuItem("Usuń");
+        deleteItem.setOnAction( event -> {
+            LearnCaseView view = mainTable.getSelectionModel().getSelectedItem();
+            boolean status = setManager.deleteCase(view);
+            if(status)
+            {
+                mainTable.getItems().remove(view);
+                caseViews.remove(view);
+            }
+        });
+        tableMenu.getItems().add(deleteItem);
+        mainTable.contextMenuProperty().setValue(tableMenu);
+        Label emptyTable = new Label("Brak zawartości");
+        mainTable.setPlaceholder(emptyTable);
     }
 
 
     private void refreshTableData() {
         mainTable.getItems().clear();
-        mainTable.getItems().addAll(caseControllers
+        mainTable.getItems().addAll(caseViews
                 .stream()
-                .map(LearnCaseController::getLearnCaseView)
                 .collect(Collectors.toList())
         );
     }
@@ -148,7 +165,7 @@ public class MainWindowController
             LearnSetName focusedName = mainList.getSelectionModel().getSelectedItem();
             try {
                 setManager = dataManager.getManager(focusedName);
-                caseControllers = setManager.getAllControllers();
+                caseViews = setManager.getAllControllers();
                 refreshTableData();
             } catch (IOException e) {
                 e.printStackTrace();

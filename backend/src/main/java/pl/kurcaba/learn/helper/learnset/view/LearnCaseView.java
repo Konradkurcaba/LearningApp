@@ -2,18 +2,23 @@ package pl.kurcaba.learn.helper.learnset.view;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 public class LearnCaseView
 {
-    public static Builder builder()
+    public static Builder builder(UUID aId)
     {
-        return new Builder();
+        return new Builder(aId);
     }
-    private LearnCaseView() { }
+    private LearnCaseView(UUID aId) {
+        id = aId;
+    }
 
+    private UUID id;
     private String name;
     private String definition;
     private byte[] image;
+
 
     public String getName()
     {
@@ -50,15 +55,23 @@ public class LearnCaseView
         return image != null;
     }
 
+
+    public UUID getId() {
+        return id;
+    }
+
     public static class Builder
     {
+        private UUID id;
         private String name;
         private String definition;
         private byte[] image;
 
-        private Builder()
+        private Builder(UUID aId)
         {
+            id = aId;
         }
+
 
         public Builder setName(String name)
         {
@@ -80,7 +93,7 @@ public class LearnCaseView
 
         public LearnCaseView build()
         {
-            LearnCaseView learnCaseView = new LearnCaseView();
+            LearnCaseView learnCaseView = new LearnCaseView(id);
             learnCaseView.setName(Objects.requireNonNullElse(this.name, ""));
             learnCaseView.setDefinition(Objects.requireNonNullElse(this.definition, ""));
             learnCaseView.setImage(this.image);

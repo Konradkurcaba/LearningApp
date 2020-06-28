@@ -2,9 +2,8 @@ package pl.kurcaba.learn.helper.learnset.model;
 
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.view.LearnCaseViewDirector;
-import pl.kurcaba.learn.helper.learnset.controller.LearnCaseController;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
 public class LearnSetManager
@@ -16,23 +15,26 @@ public class LearnSetManager
         this.learnSet = learnSet;
     }
 
-    public List<LearnCaseController> getAllControllers()
+    public LinkedHashSet<LearnCaseView> getAllControllers()
     {
         return learnSet.getLearnSetCases().stream()
-                .map(learnCase -> new LearnCaseController(learnCase, new LearnCaseViewDirector(LearnCaseView.builder())))
-                .collect(Collectors.toList());
+                .map(controller -> new LearnCaseViewDirector().buildFromDto(controller))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    public LearnCaseController createNewCase(String aName, String aDefinition)
+    public LearnCaseView createNewCase(String aName, String aDefinition)
     {
         LearnCase newCase = new LearnCase(aName, aDefinition);
         learnSet.getLearnSetCases().add(newCase);
-        return new LearnCaseController(newCase, new LearnCaseViewDirector(LearnCaseView.builder()));
+        return new LearnCaseViewDirector().buildFromDto(newCase);
     }
-    
+
 
     LearnSet getLearnSet() {
         return learnSet;
     }
 
+    public boolean deleteCase(LearnCaseView view) {
+        return learnSet.getLearnSetCases().removeIf( learnCase -> view.getId().equals(learnCase.getId()));
+    }
 }

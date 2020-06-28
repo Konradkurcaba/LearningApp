@@ -4,15 +4,12 @@ import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 
 public class LearnCaseViewDirector
 {
-    private final LearnCaseView.Builder builder;
-
-    public LearnCaseViewDirector(LearnCaseView.Builder builder)
-    {
-        this.builder = builder;
-    }
+    public LearnCaseViewDirector()
+    {}
 
     public LearnCaseView buildFromDto(LearnCase aDto)
     {
+        LearnCaseView.Builder builder = LearnCaseView.builder(aDto.getId());
         return builder
                 .setDefinition(aDto.getDefinition())
                 .setName(aDto.getName())
