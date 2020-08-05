@@ -45,7 +45,7 @@ public class LearnCaseView
         return Optional.ofNullable(image);
     }
 
-    private void setImage(byte[] image)
+    public void setImage(byte[] image)
     {
         this.image = image;
     }

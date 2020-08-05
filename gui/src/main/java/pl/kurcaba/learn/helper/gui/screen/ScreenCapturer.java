@@ -76,8 +76,7 @@ public class ScreenCapturer
     {
         scene.addEventHandler(MouseEvent.MOUSE_RELEASED, aEvent -> {
 
-            Optional<Node> aOptRectangle = rootGroup.getChildren()
-                    .stream()
+            Optional<Node> aOptRectangle = rootGroup.getChildren().stream()
                     .filter(node -> node instanceof SnippingField)
                     .findFirst();
 
@@ -86,8 +85,10 @@ public class ScreenCapturer
                 rootGroup.getChildren().clear();
 
                 SnippingField drawnRectangle = (SnippingField) aOptRectangle.get();
-                WritableImage screenShot = new WritableImage((int) drawnRectangle.getWidth(), (int) drawnRectangle.getHeight());
-                Rectangle2D region = new Rectangle2D(drawnRectangle.getX(), drawnRectangle.getY(), drawnRectangle.getWidth(), drawnRectangle.getHeight());
+                WritableImage screenShot = new WritableImage((int) drawnRectangle.getWidth()
+                        , (int) drawnRectangle.getHeight());
+                Rectangle2D region = new Rectangle2D(drawnRectangle.getX()
+                        , drawnRectangle.getY(), drawnRectangle.getWidth(), drawnRectangle.getHeight());
                 new Robot().getScreenCapture(screenShot, region);
                 this.screenShot = screenShot;
                 redBackgroundStage.close();
@@ -100,7 +101,10 @@ public class ScreenCapturer
     {
         scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, aEvent -> {
 
-            Optional<Node> aOptRectangle = rootGroup.getChildren().stream().filter(node -> node instanceof SnippingField).findFirst();
+            Optional<Node> aOptRectangle = rootGroup.getChildren().stream()
+                    .filter(node -> node instanceof SnippingField)
+                    .findFirst();
+
             if (aOptRectangle.isPresent())
             {
                 SnippingField drawnRectangle = (SnippingField) aOptRectangle.get();
