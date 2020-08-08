@@ -1,4 +1,6 @@
-package pl.kurcaba.learn.helper.learnset.view;
+package pl.kurcaba.learn.helper.gui.view;
+
+import javafx.scene.image.WritableImage;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +19,7 @@ public class LearnCaseView
     private UUID id;
     private String name;
     private String definition;
-    private byte[] image;
+    private WritableImage image;
 
 
     public String getName()
@@ -40,12 +42,12 @@ public class LearnCaseView
         this.definition = definition;
     }
 
-    public Optional<byte[]> getImage()
+    public Optional<WritableImage> getImage()
     {
         return Optional.ofNullable(image);
     }
 
-    public void setImage(byte[] image)
+    public void setImage(WritableImage image)
     {
         this.image = image;
     }
@@ -65,7 +67,7 @@ public class LearnCaseView
         private UUID id;
         private String name;
         private String definition;
-        private byte[] image;
+        private WritableImage image;
 
         private Builder(UUID aId)
         {
@@ -85,7 +87,7 @@ public class LearnCaseView
             return this;
         }
 
-        public Builder setImage(byte[] image)
+        public Builder setImage(WritableImage image)
         {
             this.image = image;
             return this;

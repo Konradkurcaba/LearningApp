@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
-import pl.kurcaba.learn.helper.learnset.view.LearnCaseView;
+import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 public class LearnViewController
 {

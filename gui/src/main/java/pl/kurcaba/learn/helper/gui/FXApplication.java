@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.controller.MainWindowController;
 import pl.kurcaba.learn.helper.gui.core.GuiDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 
@@ -19,15 +21,16 @@ public class FXApplication extends Application
         URL mainFxml = FXApplication.class.getClassLoader()
                 .getResource("main_panel.fxml");
 
-        GuiDataManager guiDataManager = new GuiDataManager();
-        LearnDataManager dataManager = guiDataManager.initializeDataManager();
 
         MainWindowController mainViewController = new MainWindowController();
-        mainViewController.setDataManager(dataManager);
 
         FXMLLoader loader = new FXMLLoader(mainFxml);
         loader.setController(mainViewController);
         Parent root = loader.load();
+
+        GuiDataManager manager = new GuiDataManager();
+        LearnDataManager dataManager = manager.initializeDataManager();
+        mainViewController.initController(new GuiModelBroker(dataManager));
 
         aPrimaryStage.setScene(new Scene(root));
         aPrimaryStage.setTitle("Aplikacja do nauki");
