@@ -1,14 +1,15 @@
 package pl.kurcaba.learn.helper.gui.controlls;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import pl.kurcaba.learn.helper.gui.main.controller.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.main.controller.DeleteCaseCommand;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 public class LearnSetTable extends TableView<LearnCaseView> {
 
-    public void initTable(AbstractCommand deleteCommand)
+    public void initTable(DeleteCaseCommand deleteCommand)
     {
         initColumns();
         initContextMenu(deleteCommand);
@@ -17,10 +18,10 @@ public class LearnSetTable extends TableView<LearnCaseView> {
         setPlaceholder(emptyTable);
     }
 
-    private void initContextMenu(AbstractCommand command) {
+    private void initContextMenu(DeleteCaseCommand deleteCommand) {
         ContextMenu tableMenu = new ContextMenu();
         MenuItemCommand deleteItem = new MenuItemCommand("Usuń");
-        deleteItem.setCommand(command);
+        deleteItem.setCommand(deleteCommand);
         tableMenu.getItems().add(deleteItem);
         contextMenuProperty().setValue(tableMenu);
     }
@@ -62,7 +63,10 @@ public class LearnSetTable extends TableView<LearnCaseView> {
 
         TableColumn<LearnCaseView, Boolean> imageColumn = new TableColumn<>("Obraz");
         imageColumn.setCellFactory(tc -> new CheckBoxTableCell<>());
+        imageColumn.setCellValueFactory(tc -> new SimpleBooleanProperty(tc.getValue().getImage().isPresent()));
 
         getColumns().addAll(nameColumn, definitionColumn, imageColumn);
     }
+
+
 }

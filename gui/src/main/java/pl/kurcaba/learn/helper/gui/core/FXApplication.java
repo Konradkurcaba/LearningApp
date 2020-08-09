@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui;
+package pl.kurcaba.learn.helper.gui.core;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.main.controller.MainWindowController;
-import pl.kurcaba.learn.helper.gui.core.GuiDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 
 import java.net.URL;

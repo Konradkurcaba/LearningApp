@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui;
+package pl.kurcaba.learn.helper.gui.core;
 
 public class Main
 {

@@ -8,7 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.kurcaba.learn.helper.gui.FXApplication;
+import pl.kurcaba.learn.helper.gui.core.FXApplication;
 
 import java.io.IOException;
 import java.net.URL;

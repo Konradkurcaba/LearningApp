@@ -1,9 +1,9 @@
 package pl.kurcaba.learn.helper.gui.backend;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.WritableImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
@@ -11,9 +11,6 @@ import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +19,7 @@ public class GuiModelBroker {
 
     private static final Logger logger = LogManager.getLogger(GuiModelBroker.class);
 
-    private LearnDataManager dataManager;
+    private final LearnDataManager dataManager;
     private LearnSetManager currentSetManager;
 
     public GuiModelBroker(LearnDataManager aDataManager) {
@@ -38,14 +35,11 @@ public class GuiModelBroker {
         {
             LearnCase learnCase = currentSetManager.createNewCase(newCaseName, newDefinition);
             if(aImage != null) {
-                ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(aImage, null);
                 try {
-                    ImageIO.write(bufferedImage, "png", byteStream);
+                    learnCase.setImage(ImageConverter.convertToByte(aImage));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error(e);
                 }
-                learnCase.setImage(byteStream.toByteArray());
             }
         }else
         {
@@ -78,6 +72,20 @@ public class GuiModelBroker {
         return currentSetManager.getAllLearnCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
+                .setImage(convertImage(learnCase.getImage()))
                 .build()).collect(Collectors.toList());
+    }
+
+    private WritableImage convertImage(byte[] aImage) {
+        try {
+            if (aImage != null) {
+                return ImageConverter.convertToImage(aImage);
+            } else {
+                return null;
+            }
+        } catch (IOException aEx) {
+            logger.error(aEx);
+            return null;
+        }
     }
 }
