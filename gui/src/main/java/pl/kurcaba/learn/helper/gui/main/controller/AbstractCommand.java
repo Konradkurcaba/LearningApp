@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.controller;
+package pl.kurcaba.learn.helper.gui.main.controller;
 
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 

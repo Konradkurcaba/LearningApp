@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/backend/GuiModelBroker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AbstractCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AddCaseCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/CreateSetCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/DeleteCaseCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/LearnSetListFocusedCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/SaveSetCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/CommandButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetListView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/MenuItemCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/view/LearnViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/AddCaseCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/MakeScreenshotCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmImageDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmationStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenshotPreviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/view/LearnCaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/view/LearnCaseViewDirector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/FXApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/LearnViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/backend/GuiModelBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/backend/GuiModelBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AbstractCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/AbstractCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AddCaseCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/CreateSetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/CreateSetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/DeleteCaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/DeleteCaseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/LearnSetListFocusedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/LearnSetListFocusedCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/SaveSetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/SaveSetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/CommandButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/CommandButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/MenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/MenuItemCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/main_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/main_panel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +39,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1WLw9LQd3OrJ99g6iXK5hrHR5AE" />
   <component name="ProjectViewState">
@@ -142,6 +153,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -189,13 +201,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Working on GUI&#10;*Start creation of main window&#10;*Start implementing MVC" />
@@ -213,10 +224,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592660455884" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1596881830607">
+    <state x="701" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596964179035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596881830607" />
+    <state x="701" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596964179035" />
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1596966742921">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596966742921" />
     <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1596887523863">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -233,58 +248,58 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596880067267" />
-    <state x="923" y="294" key="#xdebugger.evaluate" timestamp="1593336910615">
+    <state x="923" y="294" key="#xdebugger.evaluate" timestamp="1596968132385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="923" y="294" key="#xdebugger.evaluate/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593336910615" />
-    <state width="492" height="466" key="DebuggerActiveHint" timestamp="1593340134147">
+    <state x="923" y="294" key="#xdebugger.evaluate/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968132385" />
+    <state width="492" height="466" key="DebuggerActiveHint" timestamp="1596963727087">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="492" height="466" key="DebuggerActiveHint/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593340134147" />
+    <state width="492" height="466" key="DebuggerActiveHint/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596963727087" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1592658544233">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592658544233" />
-    <state width="1877" height="84" key="GridCell.Tab.0.bottom" timestamp="1596888358582">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1596968664364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="225" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596653029541" />
-    <state width="1877" height="84" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596888358582" />
-    <state width="1877" height="84" key="GridCell.Tab.0.center" timestamp="1596888358582">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664364" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1596968664364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="225" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596653029541" />
-    <state width="1877" height="84" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596888358582" />
-    <state width="1877" height="84" key="GridCell.Tab.0.left" timestamp="1596888358582">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664364" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1596968664364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="225" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596653029541" />
-    <state width="1877" height="84" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596888358582" />
-    <state width="1877" height="84" key="GridCell.Tab.0.right" timestamp="1596888358582">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664364" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1596968664364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="225" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596653029541" />
-    <state width="1877" height="84" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596888358582" />
-    <state width="1877" height="245" key="GridCell.Tab.1.bottom" timestamp="1596652859553">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664364" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1596968664202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596652859553" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593340180318" />
-    <state width="1877" height="245" key="GridCell.Tab.1.center" timestamp="1596652859553">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664202" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1596968664202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596652859553" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593340180318" />
-    <state width="1877" height="245" key="GridCell.Tab.1.left" timestamp="1596652859553">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664202" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1596968664202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596652859553" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593340180318" />
-    <state width="1877" height="245" key="GridCell.Tab.1.right" timestamp="1596652859553">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664202" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1596968664202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596652859553" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1593340180318" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968664202" />
     <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1592646889360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -307,18 +322,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596881124728" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1596652937927">
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1596962519443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="253" width="585" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596652937927" />
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596962519443" />
     <state x="342" y="215" key="new project wizard" timestamp="1592657367945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="215" key="new project wizard/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657367945" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596888171366">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596968087291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596653023022" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596888171366" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596968087291" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/DeleteCaseCommand.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/learnset/model/LearnSetManager.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/pl/kurcaba/learn/helper/persistence/file/LearnSetFileDao.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

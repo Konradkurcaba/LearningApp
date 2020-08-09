@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.controller;
+package pl.kurcaba.learn.helper.gui.main.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

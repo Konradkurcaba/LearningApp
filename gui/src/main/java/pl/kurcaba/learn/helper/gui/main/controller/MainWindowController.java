@@ -1,14 +1,16 @@
-package pl.kurcaba.learn.helper.gui.controller;
+package pl.kurcaba.learn.helper.gui.main.controller;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.WritableImage;
+import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
+import pl.kurcaba.learn.helper.gui.screen.ScreenCapturer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
@@ -21,6 +23,7 @@ public class MainWindowController {
 
 
     private GuiModelBroker guiModelBroker;
+    private Stage mainStage;
 
     @FXML
     private CommandButton newSet;
@@ -32,7 +35,8 @@ public class MainWindowController {
     private TextField definition;
 
     @FXML
-    private Button addImage;
+    private CommandButton addImage;
+    private WritableImage lastScreenShot;
 
     @FXML
     private CommandButton addCase;
@@ -41,17 +45,18 @@ public class MainWindowController {
     private CommandButton saveSet;
 
     @FXML
-    private LearnSetListView mainList;
+    private LearnSetListView learnSetListView;
 
     @FXML
-    private LearnSetTable mainTable;
+    private LearnSetTable learnSetTable;
 
-    public void initController(GuiModelBroker aGuiModelBroker) throws IOException {
+    public void initController(GuiModelBroker aGuiModelBroker, Stage aMainStage) throws IOException {
 
         guiModelBroker = aGuiModelBroker;
+        mainStage = aMainStage;
 
-        mainTable.initTable(new DeleteCaseCommand(guiModelBroker, this));
-        mainList.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
+        learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this));
+        learnSetListView.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
         refreshMainListData();
         initButtons();
     }
@@ -61,17 +66,13 @@ public class MainWindowController {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
         addCase.setCommand(new AddCaseCommand(guiModelBroker, this));
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
-
-        addImage.setOnMouseClicked(event -> {
-//            ScreenCapturer capturer = new ScreenCapturer();
-//            Optional<WritableImage> image = capturer.openScreenshotWindow();
-//            image.ifPresent(writableImage -> lastScreenshot = writableImage);
-        });
+        addImage.setCommand(new MakeScreenshotCommand(guiModelBroker, this));
     }
 
-    void refreshTableData() {
-        mainTable.getItems().clear();
-        mainTable.getItems().addAll(guiModelBroker.getCaseViews().stream().collect(Collectors.toList()));
+    void refreshSetData() {
+        learnSetTable.getItems().clear();
+        learnSetTable.getItems().addAll(guiModelBroker.getCaseViews().stream().collect(Collectors.toList()));
+        lastScreenShot = null;
     }
 
     String displayInputDialog(String aDialogName, String aTitle) {
@@ -82,9 +83,15 @@ public class MainWindowController {
         return result.orElse("");
     }
 
+    Optional<WritableImage> displayCutDialog()
+    {
+        ScreenCapturer capturer = new ScreenCapturer();
+        return capturer.openScreenshotWindow();
+    }
+
     void refreshMainListData() throws IOException {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
-        mainList.setItems(FXCollections.observableArrayList(learnSetsNames));
+        learnSetListView.setItems(FXCollections.observableArrayList(learnSetsNames));
     }
 
     String getNameFieldText() {
@@ -97,16 +104,28 @@ public class MainWindowController {
 
     void removeViewFromTable(LearnCaseView aView)
     {
-        mainTable.getItems().remove(aView);
+        learnSetTable.getItems().remove(aView);
     }
 
     Optional<LearnCaseView> getSelectedCaseView() {
-        return Optional.ofNullable(mainTable.getSelectionModel().getSelectedItem());
+        return Optional.ofNullable(learnSetTable.getSelectionModel().getSelectedItem());
     }
 
-    LearnSetName getFocusedLearnSet()
+    Optional<LearnSetName> getFocusedLearnSet()
     {
-        return mainList.getSelectionModel().getSelectedItem();
+        return Optional.ofNullable(learnSetListView.getSelectionModel().getSelectedItem());
     }
 
+    void setLastScreenShot(WritableImage newScreenShot) {
+        lastScreenShot = newScreenShot;
+    }
+
+    Optional<WritableImage> getLastScreenShot() {
+        return Optional.ofNullable(lastScreenShot);
+    }
+
+    void setMainWindowIconified(Boolean aValue)
+    {
+        mainStage.setIconified(aValue);
+    }
 }

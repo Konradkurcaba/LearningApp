@@ -82,6 +82,7 @@ public class ScreenCapturer
 
             if (aOptRectangle.isPresent())
             {
+                redBackgroundStage.close();
                 rootGroup.getChildren().clear();
 
                 SnippingField drawnRectangle = (SnippingField) aOptRectangle.get();
@@ -90,8 +91,12 @@ public class ScreenCapturer
                 Rectangle2D region = new Rectangle2D(drawnRectangle.getX()
                         , drawnRectangle.getY(), drawnRectangle.getWidth(), drawnRectangle.getHeight());
                 new Robot().getScreenCapture(screenShot, region);
-                this.screenShot = screenShot;
-                redBackgroundStage.close();
+
+                ConfirmationStatus status = ConfirmImageDialog.showDialog(screenShot);
+                if(status.equals(ConfirmationStatus.CONFIRMED))
+                {
+                    this.screenShot = screenShot;
+                }
             }
 
         });

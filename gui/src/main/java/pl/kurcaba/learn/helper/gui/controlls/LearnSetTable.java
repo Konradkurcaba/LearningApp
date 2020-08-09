@@ -3,11 +3,10 @@ package pl.kurcaba.learn.helper.gui.controlls;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import pl.kurcaba.learn.helper.gui.controller.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.main.controller.AbstractCommand;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 public class LearnSetTable extends TableView<LearnCaseView> {
-
 
     public void initTable(AbstractCommand deleteCommand)
     {

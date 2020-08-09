@@ -1,13 +1,19 @@
 package pl.kurcaba.learn.helper.gui.backend;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.WritableImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
+import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,15 +33,30 @@ public class GuiModelBroker {
         currentSetManager = dataManager.createNewLearnSet(learnSetName);
     }
 
-    public void createNewCase(String newCaseName, String newDefinition) {
+    public void createNewCase(String newCaseName, String newDefinition, WritableImage aImage) {
         if(currentSetManager != null)
         {
-            currentSetManager.createNewCase(newCaseName, newDefinition);
+            LearnCase learnCase = currentSetManager.createNewCase(newCaseName, newDefinition);
+            if(aImage != null) {
+                ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(aImage, null);
+                try {
+                    ImageIO.write(bufferedImage, "png", byteStream);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                learnCase.setImage(byteStream.toByteArray());
+            }
         }else
         {
             logger.warn("Cannot create new case because set manager is not set");
         }
     }
+
+    public void createNewCase(String newCaseName, String newDefinition) {
+        createNewCase(newCaseName, newDefinition, null);
+    }
+
 
     public boolean deleteCase(LearnCaseView view) {
         return currentSetManager.deleteCase(view.getId());

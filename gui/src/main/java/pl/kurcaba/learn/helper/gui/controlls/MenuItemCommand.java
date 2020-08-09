@@ -1,7 +1,7 @@
 package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.scene.control.MenuItem;
-import pl.kurcaba.learn.helper.gui.controller.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.main.controller.AbstractCommand;
 
 public class MenuItemCommand extends MenuItem {
 
