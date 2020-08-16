@@ -1,6 +1,8 @@
 package pl.kurcaba.learn.helper.gui.main.controller;
 
+import javafx.scene.image.WritableImage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.Optional;
@@ -16,7 +18,8 @@ public class ShowImageCommand extends AbstractCommand
         Optional<LearnCaseView> viewCase = windowController.getSelectedCaseView();
         if(viewCase.isPresent())
         {
-
+            Optional<WritableImage> aImageToShow = viewCase.get().getImage();
+            aImageToShow.ifPresent(ConfirmImageDialog::showDialog);
         }
     }
 }

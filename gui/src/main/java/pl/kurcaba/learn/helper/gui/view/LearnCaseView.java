@@ -16,7 +16,7 @@ public class LearnCaseView
         id = aId;
     }
 
-    private UUID id;
+    private final UUID id;
     private String name;
     private String definition;
     private WritableImage image;

@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.main.controller.MainWindowController;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
@@ -30,7 +32,13 @@ public class FXApplication extends Application
         LearnDataManager dataManager = manager.initializeDataManager();
         mainViewController.initController(new GuiModelBroker(dataManager), aPrimaryStage);
 
-        aPrimaryStage.setScene(new Scene(root));
+        Scene mainScene = new Scene(root);
+        mainScene.getStylesheets().add("style.css");
+        mainScene.setFill(Color.TRANSPARENT);
+
+        aPrimaryStage.setScene(mainScene);
+        aPrimaryStage.initStyle(StageStyle.TRANSPARENT);
+        aPrimaryStage.initStyle(StageStyle.UNDECORATED);
         aPrimaryStage.setTitle("Aplikacja do nauki");
         aPrimaryStage.show();
 

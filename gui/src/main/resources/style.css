@@ -1,0 +1,77 @@
+.root {
+    /* A bright blue for highlighting/accenting objects.  For example: selected
+     * text; selected items in menus, lists, trees, and tables; progress bars;
+     * default buttons.
+     */
+    -fx-accent: #f58d42;
+
+    /* A bright blue for the focus indicator of objects. Typically used as the
+     * first color in -fx-background-color for the "focused" pseudo-class. Also
+     * typically used with insets of -1.4 to provide a glowing effect.
+     *
+     */
+    -main-theme-color: #424242;
+    -light-main-theme-color: #696969;
+    -text-color: #e6e6e6;
+    -fx-focus-color: #f58d42;
+    -fx-background-color: -main-theme-color;
+}
+
+.pane{
+    -fx-background-radius: 0 0 18 18;
+}
+
+.label{
+    -fx-text-fill: -text-color;
+}
+
+.button{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: -light-main-theme-color;
+    -fx-text-fill: #e6e6e6;
+
+}
+
+.text-field{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: #bababa;
+}
+
+.column-header {
+    -fx-background-color: -light-main-theme-color;
+}
+
+.table-list, .table-view{
+   -fx-background-color: -main-theme-color;
+   -fx-border-color: -light-main-theme-color;
+}
+
+.table-cell, .list-cell{
+    -fx-text-fill: -text-color;
+}
+
+.table-row-cell, .list-cell{
+    -fx-background-color: -main-theme-color;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0px 0px 0px 7px;
+}
+
+.table-row-cell:focused, .list-cell:focused{
+    -fx-background-color: -light-main-theme-color;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0px 0px 0px 7px;
+}
+
+
+.column,
+.column-header{
+    -fx-border-color: #616161;
+}
+
+.menu-bar {
+  -fx-background-color: -main-theme-color;
+}

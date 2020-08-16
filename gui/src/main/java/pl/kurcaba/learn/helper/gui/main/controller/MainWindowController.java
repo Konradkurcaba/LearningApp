@@ -2,22 +2,21 @@ package pl.kurcaba.learn.helper.gui.main.controller;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseWindowDialog;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
-import pl.kurcaba.learn.helper.gui.screen.ScreenCapturer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class MainWindowController {
 
@@ -29,17 +28,7 @@ public class MainWindowController {
     private CommandButton newSet;
 
     @FXML
-    private TextField name;
-
-    @FXML
-    private TextField definition;
-
-    @FXML
-    private CommandButton addImage;
-    private WritableImage lastScreenShot;
-
-    @FXML
-    private CommandButton addCase;
+    private CommandButton addNewCase;
 
     @FXML
     private CommandButton saveSet;
@@ -55,24 +44,22 @@ public class MainWindowController {
         guiModelBroker = aGuiModelBroker;
         mainStage = aMainStage;
 
-        learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this));
+        learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
+                , new ShowImageCommand(guiModelBroker, this));
         learnSetListView.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
         refreshMainListData();
         initButtons();
     }
 
-
     private void initButtons() {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
-        addCase.setCommand(new AddCaseCommand(guiModelBroker, this));
+        addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
-        addImage.setCommand(new MakeScreenshotCommand(guiModelBroker, this));
     }
 
     void refreshSetData() {
         learnSetTable.getItems().clear();
-        learnSetTable.getItems().addAll(guiModelBroker.getCaseViews().stream().collect(Collectors.toList()));
-        lastScreenShot = null;
+        learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
     }
 
     String displayInputDialog(String aDialogName, String aTitle) {
@@ -83,27 +70,12 @@ public class MainWindowController {
         return result.orElse("");
     }
 
-    Optional<WritableImage> displayCutDialog()
-    {
-        ScreenCapturer capturer = new ScreenCapturer();
-        return capturer.openScreenshotWindow();
-    }
-
     void refreshMainListData() throws IOException {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
         learnSetListView.setItems(FXCollections.observableArrayList(learnSetsNames));
     }
 
-    String getNameFieldText() {
-        return name.getText();
-    }
-
-    String getDefinitionFieldText() {
-        return definition.getText();
-    }
-
-    void removeViewFromTable(LearnCaseView aView)
-    {
+    void removeViewFromTable(LearnCaseView aView) {
         learnSetTable.getItems().remove(aView);
     }
 
@@ -111,21 +83,16 @@ public class MainWindowController {
         return Optional.ofNullable(learnSetTable.getSelectionModel().getSelectedItem());
     }
 
-    Optional<LearnSetName> getFocusedLearnSet()
-    {
+    Optional<LearnSetName> getFocusedLearnSet() {
         return Optional.ofNullable(learnSetListView.getSelectionModel().getSelectedItem());
     }
 
-    void setLastScreenShot(WritableImage newScreenShot) {
-        lastScreenShot = newScreenShot;
-    }
-
-    Optional<WritableImage> getLastScreenShot() {
-        return Optional.ofNullable(lastScreenShot);
-    }
-
-    void setMainWindowIconified(Boolean aValue)
-    {
+    void setMainWindowIconified(Boolean aValue) {
         mainStage.setIconified(aValue);
     }
+
+    public NewCaseDto showNewCaseWindow() throws IOException {
+        return NewCaseWindowDialog.showNewCaseWindow();
+    }
+
 }

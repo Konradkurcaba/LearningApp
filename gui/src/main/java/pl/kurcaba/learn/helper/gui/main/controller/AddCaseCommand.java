@@ -1,12 +1,18 @@
 package pl.kurcaba.learn.helper.gui.main.controller;
 
 import javafx.scene.image.WritableImage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class AddCaseCommand extends AbstractCommand {
 
+    private static final Logger logger = LogManager.getLogger(AddCaseCommand.class);
 
     public AddCaseCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
         super(aGuiModelBroker, aWindowController);
@@ -14,13 +20,22 @@ public class AddCaseCommand extends AbstractCommand {
 
     @Override
     public void executeCommand() {
-        String newCaseName = windowController.getNameFieldText();
-        String newDefinition = windowController.getDefinitionFieldText();
-        Optional<WritableImage> newScreenShot = windowController.getLastScreenShot();
 
-        newScreenShot.ifPresentOrElse(writableImage -> guiModelBroker.createNewCase(newCaseName, newDefinition, writableImage)
-                , () -> guiModelBroker.createNewCase(newCaseName, newDefinition));
+        try {
+            NewCaseDto newCaseDto = windowController.showNewCaseWindow();
+            if (newCaseDto.getConfirmationStatus().equals(ConfirmationStatus.CONFIRMED)) {
+                String newCaseName = newCaseDto.getNewCaseName();
+                String newDefinition = newCaseDto.getNewCaseDefinition();
+                Optional<WritableImage> newScreenShot = newCaseDto.getNewCaseImage();
 
-        windowController.refreshSetData();
+                newScreenShot.ifPresentOrElse(writableImage -> guiModelBroker.createNewCase(newCaseName, newDefinition, writableImage)
+                        , () -> guiModelBroker.createNewCase(newCaseName, newDefinition));
+
+                windowController.refreshSetData();
+            }
+        } catch (IOException e) {
+            logger.error(e);
+        }
+
     }
 }
