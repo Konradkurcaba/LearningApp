@@ -33,12 +33,11 @@ public class FXApplication extends Application
         mainViewController.initController(new GuiModelBroker(dataManager), aPrimaryStage);
 
         Scene mainScene = new Scene(root);
-        mainScene.getStylesheets().add("style.css");
         mainScene.setFill(Color.TRANSPARENT);
+        mainScene.getStylesheets().add("style.css");
 
         aPrimaryStage.setScene(mainScene);
         aPrimaryStage.initStyle(StageStyle.TRANSPARENT);
-        aPrimaryStage.initStyle(StageStyle.UNDECORATED);
         aPrimaryStage.setTitle("Aplikacja do nauki");
         aPrimaryStage.show();
 

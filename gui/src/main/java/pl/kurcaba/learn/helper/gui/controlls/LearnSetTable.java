@@ -12,7 +12,6 @@ import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 public class LearnSetTable extends TableView<LearnCaseView> {
 
 
-
     public void initTable(DeleteCaseCommand aDeleteCmd, ShowImageCommand aShowImageCmd)
     {
         initColumns();
@@ -59,6 +58,7 @@ public class LearnSetTable extends TableView<LearnCaseView> {
             }
         });
         nameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        nameColumn.setPrefWidth(200);
 
         TableColumn<LearnCaseView, String> definitionColumn = new TableColumn<>("Definicja");
         definitionColumn.setCellFactory(column -> new TableCell<>()
@@ -76,10 +76,12 @@ public class LearnSetTable extends TableView<LearnCaseView> {
             }
         });
         definitionColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDefinition()));
+        definitionColumn.setPrefWidth(200);
 
         TableColumn<LearnCaseView, Boolean> imageColumn = new TableColumn<>("Obraz");
         imageColumn.setCellFactory(tc -> new CheckBoxTableCell<>());
         imageColumn.setCellValueFactory(tc -> new SimpleBooleanProperty(tc.getValue().getImage().isPresent()));
+        imageColumn.setPrefWidth(200);
 
         getColumns().addAll(nameColumn, definitionColumn, imageColumn);
     }

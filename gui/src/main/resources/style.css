@@ -1,36 +1,32 @@
 .root {
-    /* A bright blue for highlighting/accenting objects.  For example: selected
-     * text; selected items in menus, lists, trees, and tables; progress bars;
-     * default buttons.
-     */
-    -fx-accent: #f58d42;
-
-    /* A bright blue for the focus indicator of objects. Typically used as the
-     * first color in -fx-background-color for the "focused" pseudo-class. Also
-     * typically used with insets of -1.4 to provide a glowing effect.
-     *
-     */
+    -fx-app-focus-color: #cc6112;
+    -fx-accent: -fx-app-focus-color;
     -main-theme-color: #424242;
     -light-main-theme-color: #696969;
     -text-color: #e6e6e6;
-    -fx-focus-color: #f58d42;
+    -fx-focus-color: -fx-app-focus-color;
     -fx-background-color: -main-theme-color;
-}
-
-.pane{
-    -fx-background-radius: 0 0 18 18;
+    -fx-font-size: 14px
 }
 
 .label{
     -fx-text-fill: -text-color;
 }
 
+.check-box {
+    -fx-text-fill: -text-color;
+}
+
+
 .button{
     -fx-background-radius: 20;
     -fx-border-radius: 20;
     -fx-background-color: -light-main-theme-color;
     -fx-text-fill: #e6e6e6;
+}
 
+.button:hover{
+    -fx-background-color: -fx-app-focus-color;
 }
 
 .text-field{
@@ -39,11 +35,19 @@
     -fx-background-color: #bababa;
 }
 
-.column-header {
-    -fx-background-color: -light-main-theme-color;
+.text-field:focused{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -fx-app-focus-color;
+    -fx-border-width: 2px;
 }
 
-.table-list, .table-view{
+.column-header {
+    -fx-background-color: -light-main-theme-color;
+    -fx-font-weight: normal;
+}
+
+.list-view, .table-view{
    -fx-background-color: -main-theme-color;
    -fx-border-color: -light-main-theme-color;
 }
@@ -60,17 +64,29 @@
 }
 
 .table-row-cell:focused, .list-cell:focused{
-    -fx-background-color: -light-main-theme-color;
+    -fx-background-color: -fx-app-focus-color;
     -fx-table-cell-border-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 0px 0px 0px 7px;
 }
 
+#mainPanel{
+    -fx-background-radius: 6 6 4 2;
+    -fx-border-radius: 6 6 4 2;
+    -fx-border-color: black;
+    -fx-border-width: 0.5px;
+}
 
 .column,
 .column-header{
     -fx-border-color: #616161;
 }
+
+.table-view .filler{
+ -fx-background-color: -main-theme-color;
+ -fx-border-color:  -light-main-theme-color;
+}
+
 
 .menu-bar {
   -fx-background-color: -main-theme-color;

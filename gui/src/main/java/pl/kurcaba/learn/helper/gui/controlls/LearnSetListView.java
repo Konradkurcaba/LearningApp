@@ -6,6 +6,9 @@ import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 public class LearnSetListView extends ListView<LearnSetName> {
 
+    public LearnSetListView()
+    { }
+
     public void setCommand(AbstractCommand aCommand)
     {
         getSelectionModel().selectedItemProperty().addListener(observable -> {

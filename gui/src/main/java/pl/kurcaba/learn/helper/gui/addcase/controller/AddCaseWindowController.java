@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.screen.ScreenCapturer;
@@ -32,6 +33,9 @@ public class AddCaseWindowController {
     @FXML
     private CheckBox choseCheckBox;
 
+    @FXML
+    private Region topRegion;
+
     private ConfirmationStatus userAction = ConfirmationStatus.REJECTED;
 
     private Stage mainStage;
@@ -40,6 +44,17 @@ public class AddCaseWindowController {
     public void initialize() {
         initCheckBox();
         initButtons();
+        initTopRegion();
+    }
+
+    private void initTopRegion()
+    {
+        topRegion.setOnMousePressed(pressEvent -> {
+            topRegion.setOnMouseDragged(dragEvent -> {
+                mainStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                mainStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+            });
+        });
     }
 
     private void initButtons() {

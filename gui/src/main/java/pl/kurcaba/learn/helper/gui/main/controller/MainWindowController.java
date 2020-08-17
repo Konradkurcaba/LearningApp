@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.gui.main.controller;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseWindowDialog;
@@ -39,6 +40,9 @@ public class MainWindowController {
     @FXML
     private LearnSetTable learnSetTable;
 
+    @FXML
+    private Region topRegion;
+
     public void initController(GuiModelBroker aGuiModelBroker, Stage aMainStage) throws IOException {
 
         guiModelBroker = aGuiModelBroker;
@@ -49,6 +53,7 @@ public class MainWindowController {
         learnSetListView.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
         refreshMainListData();
         initButtons();
+        initRegion();
     }
 
     private void initButtons() {
@@ -60,6 +65,16 @@ public class MainWindowController {
     void refreshSetData() {
         learnSetTable.getItems().clear();
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
+    }
+
+    void initRegion()
+    {
+        topRegion.setOnMousePressed(pressEvent -> {
+            topRegion.setOnMouseDragged(dragEvent -> {
+                mainStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                mainStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+            });
+        });
     }
 
     String displayInputDialog(String aDialogName, String aTitle) {

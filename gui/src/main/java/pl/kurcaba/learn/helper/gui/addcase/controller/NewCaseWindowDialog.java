@@ -4,8 +4,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.core.FXApplication;
@@ -30,11 +32,12 @@ public class NewCaseWindowDialog {
         loader.setController(windowController);
 
         Parent root = loader.load();
-        Stage newStage = new Stage();
-        windowController.setMainStage(newStage);
-        newStage.setTitle("Dodawanie nowego pojęcia");
-        newStage.initModality(Modality.APPLICATION_MODAL);
+        Stage newStage = prepareStage();
+        windowController.setMainStage(prepareStage());
+
         Scene newScene = new Scene(root);
+        newScene.setFill(Color.TRANSPARENT);
+        newScene.getStylesheets().add("style.css");
         newStage.setScene(newScene);
         newStage.showAndWait();
 
@@ -44,6 +47,16 @@ public class NewCaseWindowDialog {
         ConfirmationStatus status = windowController.getUserAction();
 
         return new NewCaseDto(name, definition, image, status);
+    }
+
+    private static Stage prepareStage()
+    {
+        Stage newStage = new Stage();
+        newStage.initStyle(StageStyle.TRANSPARENT);
+
+        newStage.setTitle("Dodawanie nowego pojęcia");
+        newStage.initModality(Modality.APPLICATION_MODAL);
+        return newStage;
     }
 
 
