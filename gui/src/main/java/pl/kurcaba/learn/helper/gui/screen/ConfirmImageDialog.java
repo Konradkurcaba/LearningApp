@@ -16,15 +16,17 @@ import java.net.URL;
 public class ConfirmImageDialog {
 
     private static final Logger logger = LogManager.getLogger(ConfirmationStatus.class);
+    public static final String CONFIRM_IMAGE_FXML = "screen_preview_panel.fxml";
 
     public static ConfirmationStatus showDialog(Image aImageToShow) {
         URL screenPreviewPanel = FXApplication.class.getClassLoader()
-                .getResource("screenPreviewPanel.fxml");
+                .getResource(CONFIRM_IMAGE_FXML);
 
         ScreenshotPreviewController screenshotController = new ScreenshotPreviewController(aImageToShow);
 
         FXMLLoader loader = new FXMLLoader(screenPreviewPanel);
         loader.setController(screenshotController);
+
         try {
             Parent root = loader.load();
             Stage newWindow = new Stage();

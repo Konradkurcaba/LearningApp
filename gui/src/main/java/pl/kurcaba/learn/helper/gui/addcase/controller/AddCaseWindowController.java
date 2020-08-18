@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.screen.ScreenCapturer;
 
@@ -22,7 +23,7 @@ public class AddCaseWindowController {
 
     @FXML
     private Button makeScreenButton;
-    private Optional<WritableImage> screen;
+    private WritableImage screen;
 
     @FXML
     private Button okButton;
@@ -74,9 +75,19 @@ public class AddCaseWindowController {
 
     private void makeScreen() {
         mainStage.setIconified(true);
+
         ScreenCapturer capturer = new ScreenCapturer();
-        screen = capturer.openScreenshotWindow();
-        screen.ifPresent(screen -> choseCheckBox.setSelected(true));
+        Optional<WritableImage> newScreen = capturer.openScreenshotWindow();
+
+        newScreen.ifPresent(screen -> {
+            ConfirmationStatus status = ConfirmImageDialog.showDialog(screen);
+            if(status.equals(ConfirmationStatus.CONFIRMED))
+            {
+                this.screen = screen;
+                choseCheckBox.setSelected(true);
+            }
+        });
+
         mainStage.setIconified(false);
     }
 
@@ -97,7 +108,7 @@ public class AddCaseWindowController {
     }
 
     public Optional<WritableImage> getNewCasePicture() {
-        return screen;
+        return Optional.ofNullable(screen);
     }
 
     private void killThisWindow() {

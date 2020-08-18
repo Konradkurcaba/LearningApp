@@ -33,7 +33,7 @@ public class NewCaseWindowDialog {
 
         Parent root = loader.load();
         Stage newStage = prepareStage();
-        windowController.setMainStage(prepareStage());
+        windowController.setMainStage(newStage);
 
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);

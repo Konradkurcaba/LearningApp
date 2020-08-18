@@ -91,12 +91,7 @@ public class ScreenCapturer
                 Rectangle2D region = new Rectangle2D(drawnRectangle.getX()
                         , drawnRectangle.getY(), drawnRectangle.getWidth(), drawnRectangle.getHeight());
                 new Robot().getScreenCapture(screenShot, region);
-
-                ConfirmationStatus status = ConfirmImageDialog.showDialog(screenShot);
-                if(status.equals(ConfirmationStatus.CONFIRMED))
-                {
-                    this.screenShot = screenShot;
-                }
+                this.screenShot = screenShot;
             }
 
         });
