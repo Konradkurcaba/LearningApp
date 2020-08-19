@@ -1,7 +1,7 @@
 package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.scene.control.MenuItem;
-import pl.kurcaba.learn.helper.gui.main.controller.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.controller.main.MainWindowCommand;
 
 public class MenuItemCommand extends MenuItem {
 
@@ -9,7 +9,7 @@ public class MenuItemCommand extends MenuItem {
         super(s);
     }
 
-    public void setCommand(AbstractCommand aCommand)
+    public void setCommand(MainWindowCommand aCommand)
     {
         setOnAction( aEvent -> {
             aCommand.executeCommand();

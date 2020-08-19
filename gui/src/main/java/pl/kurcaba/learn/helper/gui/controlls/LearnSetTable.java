@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.input.ContextMenuEvent;
-import pl.kurcaba.learn.helper.gui.main.controller.DeleteCaseCommand;
-import pl.kurcaba.learn.helper.gui.main.controller.ShowImageCommand;
+import pl.kurcaba.learn.helper.gui.controller.main.DeleteCaseCommand;
+import pl.kurcaba.learn.helper.gui.controller.main.ShowImageCommand;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 public class LearnSetTable extends TableView<LearnCaseView> {

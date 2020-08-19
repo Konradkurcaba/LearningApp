@@ -25,6 +25,17 @@
     -fx-text-fill: #e6e6e6;
 }
 
+#exitButton{
+  -fx-background-radius: 0;
+  -fx-border-radius: 0;
+  -fx-background-color: transparent;
+}
+
+#exitButton:hover{
+    -fx-background-color: #de0000;
+    -fx-background-radius: 0 6 0 0;
+}
+
 .button:hover{
     -fx-background-color: -fx-app-focus-color;
 }

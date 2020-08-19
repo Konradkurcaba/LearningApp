@@ -2,7 +2,7 @@ package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import pl.kurcaba.learn.helper.gui.main.controller.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
 
 public class CommandButton extends Button {
 
@@ -17,7 +17,7 @@ public class CommandButton extends Button {
         super(s, node);
     }
 
-    public void setCommand(AbstractCommand aCommand) {
+    public void setCommand(CommandIf aCommand) {
         this.setOnMouseClicked(clickEvent -> {
             aCommand.executeCommand();
         });

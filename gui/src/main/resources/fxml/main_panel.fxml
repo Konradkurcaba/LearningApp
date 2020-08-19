@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -12,7 +13,12 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Region fx:id="topRegion" minHeight="30.0" HBox.hgrow="ALWAYS" />
+            <Region fx:id="topRegion" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+            <CommandButton fx:id="exitButton" minHeight="20.0" mnemonicParsing="false" prefWidth="50.0">
+               <graphic>
+                  <ImageView fx:id="exitImageView" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </CommandButton>
          </children></HBox>
    </top>
    <center>

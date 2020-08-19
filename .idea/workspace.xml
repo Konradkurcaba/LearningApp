@@ -2,13 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AbstractWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/CloseWindowCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/CommandIf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/images/white-cross.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/AddCaseWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/AddCaseWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/NewCaseWindowDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/NewCaseWindowDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/AddCaseWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/AddCaseWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/NewCaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/addcase/controller/NewCaseWindowDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseWindowDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/CommandButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/CommandButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/LearnSetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/MenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controlls/MenuItemCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/core/FXApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/core/FXApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/AbstractCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/MainWindowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/AddCaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/AddCaseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/CreateSetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/CreateSetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/DeleteCaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/DeleteCaseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/LearnSetListFocusedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/LearnSetListFocusedCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/MakeScreenshotCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/MakeScreenshotCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/SaveSetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/SaveSetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/ShowImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/ShowImageCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmImageDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmImageDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/screenPreviewPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/screen_preview_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenCapturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/screenshot/ScreenCaptureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ScreenshotPreviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/screenshot/ScreenshotPreviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/add_new_case_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/add_new_case_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/main_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/main_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/screenPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/screenPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/screen_preview_panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/screen_preview_panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/style/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +48,7 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -67,6 +92,10 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Konrad\IdeaProjects\allegro\learnhelper\gui\src\main\resources\style" />
+      <recent name="C:\Users\Konrad\IdeaProjects\allegro\learnhelper\gui\src\main\resources\images" />
+      <recent name="C:\Users\Konrad\IdeaProjects\allegro\learnhelper\gui\src\main\resources\fxml" />
+      <recent name="C:\Users\Konrad\IdeaProjects\allegro\learnhelper\gui\src\main\resources" />
       <recent name="C:\Users\Konrad\IdeaProjects\LearnApp\LearningApp\gui\src\main\resources" />
     </key>
   </component>
@@ -212,10 +241,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="701" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596964179035" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1597608525638">
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1597866364478">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597608525638" />
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597866364478" />
     <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588148729" />
     <state x="547" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1596887523863">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -225,9 +254,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="756" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596876086250" />
-    <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596887735118">
+    <state x="362" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597865578615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="362" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597865578615" />
     <state x="569" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596887735118" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596880067267">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -247,72 +277,73 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="767" y="314" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584150154" />
-    <state width="1877" height="245" key="GridCell.Tab.0.bottom" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.0.bottom" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1493" height="139" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
     <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588527421" />
-    <state width="1877" height="245" key="GridCell.Tab.0.center" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.0.center" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1493" height="139" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
     <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588527421" />
-    <state width="1877" height="245" key="GridCell.Tab.0.left" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.0.left" timestamp="1597867142521">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142521" />
     <state width="1493" height="139" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
     <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588527421" />
-    <state width="1877" height="245" key="GridCell.Tab.0.right" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.0.right" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1493" height="139" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
     <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588527421" />
-    <state width="1877" height="245" key="GridCell.Tab.1.bottom" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.1.bottom" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1877" height="248" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584226343" />
-    <state width="1877" height="245" key="GridCell.Tab.1.center" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.1.center" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1877" height="248" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584226343" />
-    <state width="1877" height="245" key="GridCell.Tab.1.left" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.1.left" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1877" height="248" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584226343" />
-    <state width="1877" height="245" key="GridCell.Tab.1.right" timestamp="1597780256005">
+    <state width="1877" height="245" key="GridCell.Tab.1.right" timestamp="1597867142522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="245" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597780256005" />
+    <state width="1877" height="245" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597867142522" />
     <state width="1877" height="248" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584226343" />
-    <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1592646889360">
+    <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1597865303031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="775" y="454" key="ReplaceDuplicatesPrompt/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597865303031" />
     <state x="775" y="454" key="ReplaceDuplicatesPrompt/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592646889360" />
     <state x="387" y="58" key="SettingsEditor" timestamp="1597778956639">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="387" y="58" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597778956639" />
     <state x="420" y="189" key="SettingsEditor/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584150909" />
-    <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1597779008080">
+    <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1597866384595">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="261" width="570" height="524" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597779008080" />
+    <state x="681" y="261" width="570" height="524" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597866384595" />
     <state x="681" y="261" width="570" height="524" key="StructurePopup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1596978792561" />
     <state x="533" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597582218244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597582218244" />
-    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog" timestamp="1597777650728">
+    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog" timestamp="1597866133959">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1037" y="297" key="extract.method.dialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597777650728" />
+    <state x="1037" y="297" key="extract.method.dialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597866133959" />
     <state x="1037" y="297" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588277851" />
     <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1597585500419">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -323,10 +354,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="215" key="new project wizard/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657367945" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1597777476858">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1597866337782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597777476858" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597866337782" />
     <state x="-1422" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574124794" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597582388992" />
   </component>
@@ -334,7 +365,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/main/controller/DeleteCaseCommand.java</url>
+          <url>file://$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/DeleteCaseCommand.java</url>
           <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

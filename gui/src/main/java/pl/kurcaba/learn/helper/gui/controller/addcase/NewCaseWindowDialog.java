@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.addcase.controller;
+package pl.kurcaba.learn.helper.gui.controller.addcase;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +24,7 @@ public class NewCaseWindowDialog {
     public static NewCaseDto showNewCaseWindow() throws IOException {
 
         URL screenPreviewPanel = FXApplication.class.getClassLoader()
-                .getResource("add_new_case_panel.fxml");
+                .getResource("fxml/add_new_case_panel.fxml");
 
         AddCaseWindowController windowController = new AddCaseWindowController();
 
@@ -37,7 +37,7 @@ public class NewCaseWindowDialog {
 
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);
-        newScene.getStylesheets().add("style.css");
+        newScene.getStylesheets().add("style/style.css");
         newStage.setScene(newScene);
         newStage.showAndWait();
 

@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.addcase.controller;
+package pl.kurcaba.learn.helper.gui.controller.addcase;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,13 +7,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
-import pl.kurcaba.learn.helper.gui.screen.ScreenCapturer;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
 
 import java.util.Optional;
 
-public class AddCaseWindowController {
+public class AddCaseWindowController extends AbstractWindowController
+{
 
     @FXML
     private TextField nameTf;
@@ -39,23 +41,11 @@ public class AddCaseWindowController {
 
     private ConfirmationStatus userAction = ConfirmationStatus.REJECTED;
 
-    private Stage mainStage;
-
     @FXML
     public void initialize() {
+        super.initialize();
         initCheckBox();
         initButtons();
-        initTopRegion();
-    }
-
-    private void initTopRegion()
-    {
-        topRegion.setOnMousePressed(pressEvent -> {
-            topRegion.setOnMouseDragged(dragEvent -> {
-                mainStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-                mainStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-            });
-        });
     }
 
     private void initButtons() {
@@ -74,9 +64,9 @@ public class AddCaseWindowController {
     }
 
     private void makeScreen() {
-        mainStage.setIconified(true);
+        getStage().setIconified(true);
 
-        ScreenCapturer capturer = new ScreenCapturer();
+        ScreenCaptureController capturer = new ScreenCaptureController();
         Optional<WritableImage> newScreen = capturer.openScreenshotWindow();
 
         newScreen.ifPresent(screen -> {
@@ -88,11 +78,11 @@ public class AddCaseWindowController {
             }
         });
 
-        mainStage.setIconified(false);
+        getStage().setIconified(false);
     }
 
-    public void setMainStage(Stage mainStage) {
-        this.mainStage = mainStage;
+    public void setMainStage(Stage aStage) {
+        setStage(aStage);
     }
 
     public ConfirmationStatus getUserAction() {

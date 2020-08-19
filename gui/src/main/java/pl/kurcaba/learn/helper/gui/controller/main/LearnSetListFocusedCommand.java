@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.main.controller;
+package pl.kurcaba.learn.helper.gui.controller.main;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 
-public class LearnSetListFocusedCommand extends AbstractCommand {
+public class LearnSetListFocusedCommand extends MainWindowCommand
+{
 
     private static final Logger logger = LogManager.getLogger(LearnSetListFocusedCommand.class);
 

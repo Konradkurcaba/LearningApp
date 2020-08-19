@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.screen;
+package pl.kurcaba.learn.helper.gui.controller.screenshot;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
@@ -13,10 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pl.kurcaba.learn.helper.gui.screen.SnippingField;
 
 import java.util.Optional;
 
-public class ScreenCapturer
+public class ScreenCaptureController
 {
 
     private static final int RED = 1;

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -14,9 +15,14 @@
    <children>
       <VBox prefHeight="294.0" prefWidth="545.0">
          <children>
-            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT">
+            <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT">
                <children>
                   <Region fx:id="topRegion" prefHeight="50.0" HBox.hgrow="ALWAYS" />
+                  <CommandButton fx:id="exitButton" minHeight="20.0" mnemonicParsing="false" prefWidth="50.0">
+                     <graphic>
+                        <ImageView fx:id="exitImageView" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </CommandButton>
                </children>
             </HBox>
             <VBox alignment="CENTER_LEFT">

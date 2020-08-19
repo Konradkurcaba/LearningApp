@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.main.controller.MainWindowController;
+import pl.kurcaba.learn.helper.gui.controller.main.MainWindowController;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 
 import java.net.URL;
@@ -20,7 +20,7 @@ public class FXApplication extends Application
     {
 
         URL mainFxml = FXApplication.class.getClassLoader()
-                .getResource("main_panel.fxml");
+                .getResource("fxml/main_panel.fxml");
 
         MainWindowController mainViewController = new MainWindowController();
 
@@ -34,7 +34,7 @@ public class FXApplication extends Application
 
         Scene mainScene = new Scene(root);
         mainScene.setFill(Color.TRANSPARENT);
-        mainScene.getStylesheets().add("style.css");
+        mainScene.getStylesheets().add("style/style.css");
 
         aPrimaryStage.setScene(mainScene);
         aPrimaryStage.initStyle(StageStyle.TRANSPARENT);

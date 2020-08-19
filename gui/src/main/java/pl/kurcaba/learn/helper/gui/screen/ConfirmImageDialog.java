@@ -8,6 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenshotPreviewController;
 import pl.kurcaba.learn.helper.gui.core.FXApplication;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.net.URL;
 public class ConfirmImageDialog {
 
     private static final Logger logger = LogManager.getLogger(ConfirmationStatus.class);
-    public static final String CONFIRM_IMAGE_FXML = "screen_preview_panel.fxml";
+    public static final String CONFIRM_IMAGE_FXML = "fxml/screen_preview_panel.fxml";
 
     public static ConfirmationStatus showDialog(Image aImageToShow) {
         URL screenPreviewPanel = FXApplication.class.getClassLoader()

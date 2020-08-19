@@ -1,19 +1,15 @@
-package pl.kurcaba.learn.helper.gui.main.controller;
+package pl.kurcaba.learn.helper.gui.controller.main;
 
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 
-public abstract class AbstractCommand {
-
+public abstract class MainWindowCommand implements CommandIf{
 
     protected MainWindowController windowController;
     protected GuiModelBroker guiModelBroker;
 
-    public AbstractCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
-
+    public MainWindowCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
         this.guiModelBroker = aGuiModelBroker;
         this.windowController = aWindowController;
     }
-
-    public abstract void executeCommand();
 
 }

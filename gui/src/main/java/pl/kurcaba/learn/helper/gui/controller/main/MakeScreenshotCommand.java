@@ -1,8 +1,9 @@
-package pl.kurcaba.learn.helper.gui.main.controller;
+package pl.kurcaba.learn.helper.gui.controller.main;
 
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 
-public class MakeScreenshotCommand extends AbstractCommand{
+public class MakeScreenshotCommand extends MainWindowCommand
+{
 
     public MakeScreenshotCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
         super(aGuiModelBroker, aWindowController);

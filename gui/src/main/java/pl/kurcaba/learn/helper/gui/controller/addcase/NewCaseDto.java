@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.addcase.controller;
+package pl.kurcaba.learn.helper.gui.controller.addcase;
 
 import javafx.scene.image.WritableImage;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;

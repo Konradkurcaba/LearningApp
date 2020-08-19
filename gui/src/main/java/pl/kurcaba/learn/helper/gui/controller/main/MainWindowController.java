@@ -1,13 +1,13 @@
-package pl.kurcaba.learn.helper.gui.main.controller;
+package pl.kurcaba.learn.helper.gui.controller.main;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.addcase.controller.NewCaseWindowDialog;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
+import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindowDialog;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
@@ -19,11 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MainWindowController {
-
+public class MainWindowController extends AbstractWindowController
+{
 
     private GuiModelBroker guiModelBroker;
-    private Stage mainStage;
 
     @FXML
     private CommandButton newSet;
@@ -40,41 +39,28 @@ public class MainWindowController {
     @FXML
     private LearnSetTable learnSetTable;
 
-    @FXML
-    private Region topRegion;
-
     public void initController(GuiModelBroker aGuiModelBroker, Stage aMainStage) throws IOException {
 
         guiModelBroker = aGuiModelBroker;
-        mainStage = aMainStage;
+        setStage(aMainStage);
 
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
                 , new ShowImageCommand(guiModelBroker, this));
         learnSetListView.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
         refreshMainListData();
         initButtons();
-        initRegion();
     }
 
     private void initButtons() {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
         addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
+
     }
 
     void refreshSetData() {
         learnSetTable.getItems().clear();
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
-    }
-
-    void initRegion()
-    {
-        topRegion.setOnMousePressed(pressEvent -> {
-            topRegion.setOnMouseDragged(dragEvent -> {
-                mainStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-                mainStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-            });
-        });
     }
 
     String displayInputDialog(String aDialogName, String aTitle) {
@@ -103,7 +89,7 @@ public class MainWindowController {
     }
 
     void setMainWindowIconified(Boolean aValue) {
-        mainStage.setIconified(aValue);
+        getStage().setIconified(aValue);
     }
 
     public NewCaseDto showNewCaseWindow() throws IOException {

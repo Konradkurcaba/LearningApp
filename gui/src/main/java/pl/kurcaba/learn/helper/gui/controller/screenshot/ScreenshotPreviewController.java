@@ -1,10 +1,11 @@
-package pl.kurcaba.learn.helper.gui.screen;
+package pl.kurcaba.learn.helper.gui.controller.screenshot;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
 
 public class ScreenshotPreviewController {
 

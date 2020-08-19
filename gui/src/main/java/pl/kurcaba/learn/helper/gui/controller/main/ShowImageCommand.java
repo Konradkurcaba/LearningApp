@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.main.controller;
+package pl.kurcaba.learn.helper.gui.controller.main;
 
 import javafx.scene.image.WritableImage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
@@ -7,7 +7,7 @@ import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.Optional;
 
-public class ShowImageCommand extends AbstractCommand
+public class ShowImageCommand extends MainWindowCommand
 {
     public ShowImageCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
         super(aGuiModelBroker, aWindowController);
