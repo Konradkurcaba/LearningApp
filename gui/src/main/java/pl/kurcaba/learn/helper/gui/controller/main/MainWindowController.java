@@ -44,18 +44,19 @@ public class MainWindowController extends AbstractWindowController
         guiModelBroker = aGuiModelBroker;
         setStage(aMainStage);
 
+        initButtons();
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
                 , new ShowImageCommand(guiModelBroker, this));
-        learnSetListView.setCommand(new LearnSetListFocusedCommand(guiModelBroker, this));
+        learnSetListView.setCommand(new LearnSetFocusedCmd(guiModelBroker, this));
         refreshMainListData();
-        initButtons();
     }
 
     private void initButtons() {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
         addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
+        addNewCase.setDisable(true);
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
-
+        saveSet.setDisable(true);
     }
 
     void refreshSetData() {
@@ -63,17 +64,21 @@ public class MainWindowController extends AbstractWindowController
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
     }
 
-    String displayInputDialog(String aDialogName, String aTitle) {
+    Optional<String> displayInputDialog(String aDialogName, String aTitle) {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle(aTitle);
         dialog.setContentText(aDialogName);
-        Optional<String> result = dialog.showAndWait();
-        return result.orElse("");
+        return dialog.showAndWait();
     }
 
     void refreshMainListData() throws IOException {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
+        boolean isListEmpty = learnSetListView.getItems().isEmpty();
         learnSetListView.setItems(FXCollections.observableArrayList(learnSetsNames));
+        if(isListEmpty)
+        {
+            learnSetListView.getSelectionModel().selectFirst();
+        }
     }
 
     void removeViewFromTable(LearnCaseView aView) {
@@ -92,8 +97,20 @@ public class MainWindowController extends AbstractWindowController
         getStage().setIconified(aValue);
     }
 
-    public NewCaseDto showNewCaseWindow() throws IOException {
+    NewCaseDto showNewCaseWindow() throws IOException {
         return NewCaseWindowDialog.showNewCaseWindow();
     }
+
+    void enableAddCaseButton(boolean aEnable)
+    {
+        addNewCase.setDisable(!aEnable);
+    }
+
+    void enableSaveSetButton(boolean aEnable)
+    {
+        saveSet.setDisable(!aEnable);
+    }
+
+
 
 }

@@ -81,6 +81,10 @@
     -fx-padding: 0px 0px 0px 7px;
 }
 
+.menu-item{
+    -fx-background-color: -main-theme-color;
+}
+
 #mainPanel{
     -fx-background-radius: 6 6 4 2;
     -fx-border-radius: 6 6 4 2;

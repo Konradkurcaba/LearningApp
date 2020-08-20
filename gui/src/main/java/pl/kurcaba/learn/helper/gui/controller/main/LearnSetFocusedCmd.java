@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.Optional;
 
 
-public class LearnSetListFocusedCommand extends MainWindowCommand
+public class LearnSetFocusedCmd extends MainWindowCommand
 {
 
-    private static final Logger logger = LogManager.getLogger(LearnSetListFocusedCommand.class);
+    private static final Logger logger = LogManager.getLogger(LearnSetFocusedCmd.class);
 
-    public LearnSetListFocusedCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
+    public LearnSetFocusedCmd(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
         super(aGuiModelBroker, aWindowController);
     }
 
@@ -24,10 +24,16 @@ public class LearnSetListFocusedCommand extends MainWindowCommand
         if(focusedName.isPresent()) {
             try {
                 guiModelBroker.changeCurrentSet(focusedName.get());
+                windowController.enableAddCaseButton(true);
+                windowController.enableSaveSetButton(true);
                 windowController.refreshSetData();
             } catch (IOException | ClassNotFoundException aEx) {
                 logger.error(aEx);
             }
+        }else
+        {
+            windowController.enableAddCaseButton(false);
+            windowController.enableSaveSetButton(false);
         }
     }
 }

@@ -17,7 +17,7 @@ public class LearnSetTable extends TableView<LearnCaseView> {
         initColumns();
         initContextMenu(aDeleteCmd, aShowImageCmd);
 
-        Label emptyTable = new Label("Brak zawartości");
+        Label emptyTable = new Label("Brak danych do wyświetlenia");
         setPlaceholder(emptyTable);
     }
 

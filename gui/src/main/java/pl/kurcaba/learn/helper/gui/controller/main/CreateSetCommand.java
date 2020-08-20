@@ -8,6 +8,7 @@ import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class CreateSetCommand extends MainWindowCommand
 {
@@ -20,14 +21,18 @@ public class CreateSetCommand extends MainWindowCommand
 
     @Override
     public void executeCommand() {
-        String newSetName = windowController.displayInputDialog("Nowy zestaw"
+        Optional<String> newSetName = windowController.displayInputDialog("Nowy zestaw"
                 , "Nazwa nowego zestawu:");
-
-        try {
-            guiModelBroker.createNewLearnSet(new LearnSetName(newSetName));
-            windowController.refreshMainListData();
-        } catch (IOException | NonUniqueException aEx) {
-            logger.error(aEx);
+        if(newSetName.isPresent())
+        {
+            try
+            {
+                guiModelBroker.createNewLearnSet(new LearnSetName(newSetName.get()));
+                windowController.refreshMainListData();
+            } catch (IOException | NonUniqueException aEx)
+            {
+                logger.error(aEx);
+            }
         }
     }
 }

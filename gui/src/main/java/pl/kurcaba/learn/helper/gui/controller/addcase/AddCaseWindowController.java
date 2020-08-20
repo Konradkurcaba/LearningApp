@@ -5,12 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
-import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
 
 import java.util.Optional;
 
@@ -35,9 +34,6 @@ public class AddCaseWindowController extends AbstractWindowController
 
     @FXML
     private CheckBox choseCheckBox;
-
-    @FXML
-    private Region topRegion;
 
     private ConfirmationStatus userAction = ConfirmationStatus.REJECTED;
 
