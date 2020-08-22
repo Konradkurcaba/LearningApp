@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindow;
+import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmDialogUtil;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmDialogDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
@@ -76,7 +76,9 @@ public class MainWindowController extends AbstractWindowController
 
     ConfirmationStatus displayConfirmDialog(String aTextToDisplay)
     {
-        return ConfirmDialogUtil.showConfirmDialog(aTextToDisplay);
+//        return ConfirmDialogUtil.showConfirmDialog(aTextToDisplay);
+        ConfirmDialogDisplayer confirmDialogUtil2 = new ConfirmDialogDisplayer();
+        return confirmDialogUtil2.showConfirmWindow(aTextToDisplay);
     }
 
     void refreshMainListData() throws IOException {
@@ -105,8 +107,9 @@ public class MainWindowController extends AbstractWindowController
         getStage().setIconified(aValue);
     }
 
-    NewCaseDto showNewCaseWindow() throws IOException {
-        return NewCaseWindow.showNewCaseWindow();
+    NewCaseDto showNewCaseWindow() {
+        NewCaseWindowDisplayer windowDisplayer = new NewCaseWindowDisplayer();
+        return windowDisplayer.showNewCaseWindow();
     }
 
 }

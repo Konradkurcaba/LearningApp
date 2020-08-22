@@ -2,12 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -42,7 +42,10 @@
       <HBox BorderPane.alignment="CENTER">
          <children>
             <Region fx:id="topRegion" prefHeight="50.0" HBox.hgrow="ALWAYS" />
-            <CommandButton fx:id="exitButton" />
+            <CommandButton fx:id="exitButton" minHeight="20.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fx:id="exitImageView" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic></CommandButton>
          </children>
       </HBox>
    </top>
