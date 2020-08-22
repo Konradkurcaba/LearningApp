@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 
 import java.io.IOException;
 import java.util.Optional;

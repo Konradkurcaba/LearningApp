@@ -2,7 +2,7 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 
 import javafx.scene.image.WritableImage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.Optional;

@@ -8,8 +8,8 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
-import pl.kurcaba.learn.helper.gui.screen.ConfirmImageDialog;
-import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ConfirmImageDialog;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.screen;
+package pl.kurcaba.learn.helper.gui.dialogs;
 
 public enum ConfirmationStatus {
     CONFIRMED, REJECTED

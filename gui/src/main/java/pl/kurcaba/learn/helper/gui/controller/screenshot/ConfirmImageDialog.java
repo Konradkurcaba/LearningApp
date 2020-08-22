@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.screen;
+package pl.kurcaba.learn.helper.gui.controller.screenshot;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,8 +8,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenshotPreviewController;
 import pl.kurcaba.learn.helper.gui.core.FXApplication;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 
 import java.io.IOException;
 import java.net.URL;

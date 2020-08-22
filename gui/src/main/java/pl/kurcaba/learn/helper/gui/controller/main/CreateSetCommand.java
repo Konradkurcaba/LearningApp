@@ -21,7 +21,7 @@ public class CreateSetCommand extends MainWindowCommand
 
     @Override
     public void executeCommand() {
-        Optional<String> newSetName = windowController.displayInputDialog("Nowy zestaw"
+        Optional<String> newSetName = windowController.displayTextInputDialog("Nowy zestaw"
                 , "Nazwa nowego zestawu:");
         if(newSetName.isPresent())
         {

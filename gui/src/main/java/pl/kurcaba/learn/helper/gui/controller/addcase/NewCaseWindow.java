@@ -11,15 +11,15 @@ import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.core.FXApplication;
-import pl.kurcaba.learn.helper.gui.screen.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 
-public class NewCaseWindowDialog {
+public class NewCaseWindow {
 
-    private static final Logger logger = LogManager.getLogger(NewCaseWindowDialog.class);
+    private static final Logger logger = LogManager.getLogger(NewCaseWindow.class);
 
     public static NewCaseDto showNewCaseWindow() throws IOException {
 

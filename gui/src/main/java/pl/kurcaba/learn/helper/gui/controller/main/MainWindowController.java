@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindowDialog;
+import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindow;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
@@ -65,12 +65,17 @@ public class MainWindowController extends AbstractWindowController
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
     }
 
-    Optional<String> displayInputDialog(String aDialogName, String aTitle) {
+    Optional<String> displayTextInputDialog(String aDialogName, String aTitle) {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle(aTitle);
         dialog.setContentText(aDialogName);
         return dialog.showAndWait();
     }
+
+//    ConfirmationStatus displayConfirmDialog(String aDialogName, String aText)
+//    {
+//
+//    }
 
     void refreshMainListData() throws IOException {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
@@ -99,7 +104,7 @@ public class MainWindowController extends AbstractWindowController
     }
 
     NewCaseDto showNewCaseWindow() throws IOException {
-        return NewCaseWindowDialog.showNewCaseWindow();
+        return NewCaseWindow.showNewCaseWindow();
     }
 
 }
