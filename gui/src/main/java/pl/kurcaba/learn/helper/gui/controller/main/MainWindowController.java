@@ -11,6 +11,8 @@ import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindow;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmDialogUtil;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
@@ -72,10 +74,10 @@ public class MainWindowController extends AbstractWindowController
         return dialog.showAndWait();
     }
 
-//    ConfirmationStatus displayConfirmDialog(String aDialogName, String aText)
-//    {
-//
-//    }
+    ConfirmationStatus displayConfirmDialog(String aTextToDisplay)
+    {
+        return ConfirmDialogUtil.showConfirmDialog(aTextToDisplay);
+    }
 
     void refreshMainListData() throws IOException {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();

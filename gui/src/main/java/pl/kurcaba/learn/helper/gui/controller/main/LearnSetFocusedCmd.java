@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.IOException;
@@ -21,8 +22,17 @@ public class LearnSetFocusedCmd extends MainWindowCommand
     @Override
     public void executeCommand() {
         Optional<LearnSetName> focusedName = windowController.getFocusedLearnSet();
-        if(focusedName.isPresent()) {
+        if (focusedName.isPresent()) {
             try {
+                boolean hasUnsavedChanges = guiModelBroker.getUnsavedChangesProperty().get();
+                if (hasUnsavedChanges) {
+                    ConfirmationStatus status = windowController
+                            .displayConfirmDialog("Posiadasz niezapisane zmiany," +
+                                    " czy chcesz kontynuwać ? Twoje zmiany nie zostaną zapisane");
+                    if (status.equals(ConfirmationStatus.REJECTED)) {
+                        return;
+                    }
+                }
                 guiModelBroker.changeCurrentSet(focusedName.get());
                 windowController.refreshSetData();
             } catch (IOException | ClassNotFoundException aEx) {

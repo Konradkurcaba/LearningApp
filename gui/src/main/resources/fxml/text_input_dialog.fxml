@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
@@ -24,7 +23,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <TextField alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="textField" alignment="CENTER" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </HBox.margin>

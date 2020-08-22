@@ -64,7 +64,7 @@ public abstract class AbstractWindowController
         return new Image(imageStream);
     }
 
-    protected void setStage(Stage aStage)
+    public void setStage(Stage aStage)
     {
         stage = aStage;
         exitButton.setCommand(new CloseWindowCommand(aStage));

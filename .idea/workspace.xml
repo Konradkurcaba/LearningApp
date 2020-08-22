@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdb57453-4e09-4478-b969-79b4f16b2026" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/dialogs/ConfirmDialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/dialogs/ConfirmDialogUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/AddCaseWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/AddCaseWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseWindowDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/addcase/NewCaseWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/AddCaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/AddCaseCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/CreateSetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/CreateSetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AbstractWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/AbstractWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/LearnSetFocusedCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/LearnSetFocusedCmd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/ShowImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/main/ShowImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/screenshot/ScreenshotPreviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/screenshot/ScreenshotPreviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmImageDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/controller/screenshot/ConfirmImageDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/screen/ConfirmationStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/kurcaba/learn/helper/gui/dialogs/ConfirmationStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/fxml/text_input_dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/fxml/text_input_dialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,50 +256,50 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="767" y="314" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597584150154" />
-    <state width="1877" height="302" key="GridCell.Tab.0.bottom" timestamp="1598088696569">
+    <state width="1877" height="118" key="GridCell.Tab.0.bottom" timestamp="1598098310572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="223" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950688987" />
     <state width="1493" height="139" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
-    <state width="1877" height="302" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.0.center" timestamp="1598088696569">
+    <state width="1877" height="118" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310572" />
+    <state width="1877" height="118" key="GridCell.Tab.0.center" timestamp="1598098310572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="223" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950688987" />
     <state width="1493" height="139" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
-    <state width="1877" height="302" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.0.left" timestamp="1598088696569">
+    <state width="1877" height="118" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310572" />
+    <state width="1877" height="118" key="GridCell.Tab.0.left" timestamp="1598098310572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="223" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950688987" />
     <state width="1493" height="139" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
-    <state width="1877" height="302" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.0.right" timestamp="1598088696569">
+    <state width="1877" height="118" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310572" />
+    <state width="1877" height="118" key="GridCell.Tab.0.right" timestamp="1598098310572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="223" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950688987" />
     <state width="1493" height="139" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574303201" />
-    <state width="1877" height="302" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.1.bottom" timestamp="1598088696569">
+    <state width="1877" height="118" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310572" />
+    <state width="1877" height="302" key="GridCell.Tab.1.bottom" timestamp="1598098310569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950353116" />
-    <state width="1877" height="302" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.1.center" timestamp="1598088696569">
+    <state width="1877" height="302" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310569" />
+    <state width="1877" height="302" key="GridCell.Tab.1.center" timestamp="1598098310569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950353116" />
-    <state width="1877" height="302" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.1.left" timestamp="1598088696569">
+    <state width="1877" height="302" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310569" />
+    <state width="1877" height="302" key="GridCell.Tab.1.left" timestamp="1598098310569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950353115" />
-    <state width="1877" height="302" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
-    <state width="1877" height="302" key="GridCell.Tab.1.right" timestamp="1598088696569">
+    <state width="1877" height="302" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310569" />
+    <state width="1877" height="302" key="GridCell.Tab.1.right" timestamp="1598098310569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="245" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950353116" />
-    <state width="1877" height="302" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598088696569" />
+    <state width="1877" height="302" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598098310569" />
     <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1597865303031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -323,11 +319,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597582218244" />
-    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog" timestamp="1597866133959">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598096575370">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598096575370" />
+    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog" timestamp="1598096367568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1037" y="297" key="extract.method.dialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597866133959" />
-    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1597588277851" />
+    <state x="1037" y="297" width="540" height="496" key="extract.method.dialog/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598096367568" />
     <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1598088714448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -337,12 +337,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="215" key="new project wizard/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1592657367945" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598089202936">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598096903497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597950799607" />
     <state x="-1422" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@-1920.0.1536.824" timestamp="1597574124794" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598089202936" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1536.824@0.0.1920.1040" timestamp="1598096903497" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
