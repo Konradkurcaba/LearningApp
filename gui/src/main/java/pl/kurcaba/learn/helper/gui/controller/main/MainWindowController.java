@@ -56,7 +56,8 @@ public class MainWindowController extends AbstractWindowController
         addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
         addNewCase.setDisable(true);
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
-        saveSet.setDisable(true);
+        saveSet.disableProperty().bind(guiModelBroker.getUnsavedChangesProperty().not());
+        addNewCase.disableProperty().bind(guiModelBroker.getIsLearnSetChosenProperty().not());
     }
 
     void refreshSetData() {
@@ -100,17 +101,5 @@ public class MainWindowController extends AbstractWindowController
     NewCaseDto showNewCaseWindow() throws IOException {
         return NewCaseWindowDialog.showNewCaseWindow();
     }
-
-    void enableAddCaseButton(boolean aEnable)
-    {
-        addNewCase.setDisable(!aEnable);
-    }
-
-    void enableSaveSetButton(boolean aEnable)
-    {
-        saveSet.setDisable(!aEnable);
-    }
-
-
 
 }

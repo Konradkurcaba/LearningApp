@@ -22,22 +22,21 @@ public class LearnDataManager
         return learnSetDao.getAllNames();
     }
 
-    public LearnSetManager getManager(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException {
-        LearnSet learnSet = learnSetDao.getSetByName(aLearnSetName);
-        return new LearnSetManager(learnSet);
+    public LearnSet getLearnSet(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException {
+        return learnSetDao.getSetByName(aLearnSetName);
     }
 
-    public LearnSetManager createNewLearnSet(LearnSetName aNewName) throws IOException, NonUniqueException {
+    public LearnSet createNewLearnSet(LearnSetName aNewName) throws IOException, NonUniqueException {
         if(learnSetDao.getAllNames().contains(aNewName))
         {
             throw new NonUniqueException("Learn set name must be unique");
         }
         LearnSet newSet = new LearnSet(aNewName, new LinkedHashSet<>());
         learnSetDao.saveAs(newSet);
-        return new LearnSetManager(newSet);
+        return newSet;
     }
 
-    public void save(LearnSetManager aManagerToSave) throws IOException {
-        learnSetDao.saveChanges(aManagerToSave.getLearnSet());
+    public void save(LearnSet aSetToSave) throws IOException {
+        learnSetDao.saveChanges(aSetToSave);
     }
 }

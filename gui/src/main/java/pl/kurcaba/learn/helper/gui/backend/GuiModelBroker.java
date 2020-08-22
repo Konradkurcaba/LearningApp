@@ -1,5 +1,7 @@
 package pl.kurcaba.learn.helper.gui.backend;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.WritableImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,7 +9,7 @@ import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
-import pl.kurcaba.learn.helper.learnset.model.LearnSetManager;
+import pl.kurcaba.learn.helper.learnset.model.LearnSet;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
@@ -20,20 +22,23 @@ public class GuiModelBroker {
     private static final Logger logger = LogManager.getLogger(GuiModelBroker.class);
 
     private final LearnDataManager dataManager;
-    private LearnSetManager currentSetManager;
+    private LearnSet currentLearnSet;
+    private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
+    private final BooleanProperty isLearnSetChosen  = new SimpleBooleanProperty(false);
 
     public GuiModelBroker(LearnDataManager aDataManager) {
         dataManager = aDataManager;
     }
 
     public void createNewLearnSet(LearnSetName learnSetName) throws IOException, NonUniqueException {
-        currentSetManager = dataManager.createNewLearnSet(learnSetName);
+        currentLearnSet = dataManager.createNewLearnSet(learnSetName);
+        updateProperties();
     }
 
     public void createNewCase(String newCaseName, String newDefinition, WritableImage aImage) {
-        if(currentSetManager != null)
+        if(currentLearnSet != null)
         {
-            LearnCase learnCase = currentSetManager.createNewCase(newCaseName, newDefinition);
+            LearnCase learnCase = currentLearnSet.createNewCase(newCaseName, newDefinition);
             if(aImage != null) {
                 try {
                     learnCase.setImage(ImageConverter.convertToByte(aImage));
@@ -45,23 +50,30 @@ public class GuiModelBroker {
         {
             logger.warn("Cannot create new case because set manager is not set");
         }
+        updateProperties();
     }
 
     public void createNewCase(String newCaseName, String newDefinition) {
         createNewCase(newCaseName, newDefinition, null);
+        updateProperties();
     }
 
 
-    public boolean deleteCase(LearnCaseView view) {
-        return currentSetManager.deleteCase(view.getId());
+    public boolean deleteCase(LearnCaseView view)
+    {
+        boolean removeStatus = currentLearnSet.removeCase(view.getId());
+        updateProperties();
+        return removeStatus;
     }
 
     public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException {
-        currentSetManager = dataManager.getManager(aSetName);
+        currentLearnSet = dataManager.getLearnSet(aSetName);
+        updateProperties();
     }
 
     public void saveChanges() throws IOException {
-        dataManager.save(currentSetManager);
+        dataManager.save(currentLearnSet);
+        updateProperties();
     }
 
     public List<LearnSetName> getAllSetsNames() throws IOException {
@@ -69,11 +81,37 @@ public class GuiModelBroker {
     }
 
     public List<LearnCaseView> getCaseViews() {
-        return currentSetManager.getAllLearnCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
+        return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
                 .setImage(convertImage(learnCase.getImage()))
                 .build()).collect(Collectors.toList());
+    }
+
+    public BooleanProperty getUnsavedChangesProperty()
+    {
+        return hasUnsavedChanges;
+    }
+
+    public BooleanProperty getIsLearnSetChosenProperty()
+    {
+        return isLearnSetChosen;
+    }
+
+    private void updateUnsavedChangesProperty()
+    {
+        hasUnsavedChanges.setValue(currentLearnSet.hasUnsavedChanges());
+    }
+
+    private void updateIsLearnSetChosenProperty()
+    {
+        isLearnSetChosen.setValue(currentLearnSet != null);
+    }
+
+    private void updateProperties()
+    {
+        updateUnsavedChangesProperty();
+        updateIsLearnSetChosenProperty();
     }
 
     private WritableImage convertImage(byte[] aImage) {

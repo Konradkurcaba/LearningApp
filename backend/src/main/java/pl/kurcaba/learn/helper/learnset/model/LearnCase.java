@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class LearnCase implements Serializable
 {
-    private UUID id = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
     private String name;
     private String definition;
 

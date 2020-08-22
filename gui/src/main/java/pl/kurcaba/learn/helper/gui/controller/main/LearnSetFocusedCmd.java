@@ -24,16 +24,10 @@ public class LearnSetFocusedCmd extends MainWindowCommand
         if(focusedName.isPresent()) {
             try {
                 guiModelBroker.changeCurrentSet(focusedName.get());
-                windowController.enableAddCaseButton(true);
-                windowController.enableSaveSetButton(true);
                 windowController.refreshSetData();
             } catch (IOException | ClassNotFoundException aEx) {
                 logger.error(aEx);
             }
-        }else
-        {
-            windowController.enableAddCaseButton(false);
-            windowController.enableSaveSetButton(false);
         }
     }
 }
