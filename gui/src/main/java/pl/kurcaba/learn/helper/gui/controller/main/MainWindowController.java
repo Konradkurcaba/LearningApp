@@ -2,17 +2,17 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
-import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmDialogDisplayer;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseWindowDisplayer;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmDialogDisplayer;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.input.InputDialogDisplayer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
@@ -37,6 +37,7 @@ public class MainWindowController extends AbstractWindowController
 
     @FXML
     private LearnSetListView learnSetListView;
+    private LearnSetName currentLearnSetName;
 
     @FXML
     private LearnSetTable learnSetTable;
@@ -62,23 +63,21 @@ public class MainWindowController extends AbstractWindowController
         addNewCase.disableProperty().bind(guiModelBroker.getIsLearnSetChosenProperty().not());
     }
 
-    void refreshSetData() {
+    void refreshSetData()
+    {
         learnSetTable.getItems().clear();
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
     }
 
-    Optional<String> displayTextInputDialog(String aDialogName, String aTitle) {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle(aTitle);
-        dialog.setContentText(aDialogName);
-        return dialog.showAndWait();
+    Optional<String> displayTextInputDialog(String aTextToDisplay) {
+        InputDialogDisplayer inputDialogDisplayer = new InputDialogDisplayer();
+        return inputDialogDisplayer.showInputDialog(aTextToDisplay);
     }
 
     ConfirmationStatus displayConfirmDialog(String aTextToDisplay)
     {
-//        return ConfirmDialogUtil.showConfirmDialog(aTextToDisplay);
-        ConfirmDialogDisplayer confirmDialogUtil2 = new ConfirmDialogDisplayer();
-        return confirmDialogUtil2.showConfirmWindow(aTextToDisplay);
+        ConfirmDialogDisplayer confirmDialogUtil = new ConfirmDialogDisplayer();
+        return confirmDialogUtil.showConfirmWindow(aTextToDisplay);
     }
 
     void refreshMainListData() throws IOException {
@@ -101,6 +100,20 @@ public class MainWindowController extends AbstractWindowController
 
     Optional<LearnSetName> getFocusedLearnSet() {
         return Optional.ofNullable(learnSetListView.getSelectionModel().getSelectedItem());
+    }
+
+    Optional<LearnSetName> getDisplayedLearnSet()
+    {
+        return Optional.ofNullable(currentLearnSetName);
+    }
+
+    public void setDisplayedLearnSet(LearnSetName aLearnSetName) {
+        this.currentLearnSetName = aLearnSetName;
+    }
+
+    void changeFocus(LearnSetName aLearnSetName)
+    {
+        learnSetListView.getSelectionModel().select(aLearnSetName);
     }
 
     void setMainWindowIconified(Boolean aValue) {

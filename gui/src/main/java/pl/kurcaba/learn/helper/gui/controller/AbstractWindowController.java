@@ -5,12 +5,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 
 import java.io.InputStream;
 
 public abstract class AbstractWindowController
 {
+    private static final Logger logger = LogManager.getLogger(AbstractWindowController.class);
+
     public static final String GRAY_CROSS_PATH = "images/gray-cross.png";
     public static final String WHITE_CROSS_PATH = "images/white-cross.png";
 
@@ -26,8 +30,14 @@ public abstract class AbstractWindowController
     @FXML
     public void initialize()
     {
-        initExitButton();
-        initTopRegion();
+        try
+        {
+            initExitButton();
+            initTopRegion();
+        }catch (NullPointerException aEx)
+        {
+            logger.error(aEx);
+        }
     }
 
     private Stage stage;

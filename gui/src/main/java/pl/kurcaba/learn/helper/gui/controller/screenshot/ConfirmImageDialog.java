@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.core.FXApplication;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.io.IOException;
 import java.net.URL;

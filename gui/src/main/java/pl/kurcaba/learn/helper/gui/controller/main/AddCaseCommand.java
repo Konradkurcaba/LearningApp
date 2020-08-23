@@ -4,8 +4,8 @@ import javafx.scene.image.WritableImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.controller.addcase.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.util.Optional;
 

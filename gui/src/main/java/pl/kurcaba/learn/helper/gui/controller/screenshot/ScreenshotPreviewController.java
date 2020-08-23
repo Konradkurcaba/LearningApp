@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 public class ScreenshotPreviewController {
 

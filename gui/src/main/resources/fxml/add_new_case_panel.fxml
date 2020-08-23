@@ -27,7 +27,7 @@
             </HBox>
             <VBox alignment="CENTER_LEFT">
                <children>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0">
                      <children>
                         <Label prefWidth="70.0" text="Nazwa:">
                            <HBox.margin>
@@ -41,10 +41,10 @@
                         </TextField>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                        <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0">
                      <children>
                         <Label prefWidth="70.0" text="Definicja:">
                            <HBox.margin>

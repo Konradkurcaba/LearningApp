@@ -1,9 +1,9 @@
-package pl.kurcaba.learn.helper.gui.controller.addcase;
+package pl.kurcaba.learn.helper.gui.dialogs.addcase;
 
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.gui.dialogs.AbstractWindowDisplayer;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.nio.file.Path;
 import java.util.Optional;
@@ -11,10 +11,8 @@ import java.util.Optional;
 public class NewCaseWindowDisplayer extends AbstractWindowDisplayer<AddCaseWindowController> {
 
     private static final Path NEW_CASE_FXML = Path.of("fxml/add_new_case_panel.fxml");
-    public static final String WINDOW_TITLE = "Dodawanie nowego pojęcia";
 
     public NewCaseWindowDisplayer() {
-        super(WINDOW_TITLE);
     }
 
     @Override

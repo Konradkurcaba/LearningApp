@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.dialogs;
+package pl.kurcaba.learn.helper.gui.dialogs.confirm;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,7 +34,7 @@ public class ConfirmDialogController extends AbstractWindowController
         });
     }
 
-    public void setLabelText(String aText)
+    public void setDisplayedText(String aText)
     {
         textLabel.setText(aText);
     }

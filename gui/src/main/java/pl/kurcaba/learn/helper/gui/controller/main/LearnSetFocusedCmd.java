@@ -3,15 +3,14 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.IOException;
 import java.util.Optional;
 
 
-public class LearnSetFocusedCmd extends MainWindowCommand
-{
+public class LearnSetFocusedCmd extends MainWindowCommand {
 
     private static final Logger logger = LogManager.getLogger(LearnSetFocusedCmd.class);
 
@@ -24,20 +23,46 @@ public class LearnSetFocusedCmd extends MainWindowCommand
         Optional<LearnSetName> focusedName = windowController.getFocusedLearnSet();
         if (focusedName.isPresent()) {
             try {
-                boolean hasUnsavedChanges = guiModelBroker.getUnsavedChangesProperty().get();
-                if (hasUnsavedChanges) {
-                    ConfirmationStatus status = windowController
-                            .displayConfirmDialog("Posiadasz niezapisane zmiany," +
-                                    " czy chcesz kontynuwać ? Twoje zmiany nie zostaną zapisane");
-                    if (status.equals(ConfirmationStatus.REJECTED)) {
-                        return;
+                boolean isNewNameFocused = isNewLearnSetFocused(focusedName);
+                if (isNewNameFocused) {
+                    if(canChangeLearnSet())
+                    {
+                        changeCurrentLearnSet(focusedName.get());
+                    }
+                    else
+                    {
+                        revertFocus();
                     }
                 }
-                guiModelBroker.changeCurrentSet(focusedName.get());
-                windowController.refreshSetData();
+
             } catch (IOException | ClassNotFoundException aEx) {
                 logger.error(aEx);
             }
         }
     }
+
+    private boolean isNewLearnSetFocused(Optional<LearnSetName> focusedName) {
+        boolean isNewNameFocused;
+        if (windowController.getDisplayedLearnSet().isPresent()) {
+            isNewNameFocused = !focusedName.get().equals(windowController.getDisplayedLearnSet()
+                    .get());
+        } else {
+            isNewNameFocused = true;
+        }
+        return isNewNameFocused;
+    }
+
+    private void changeCurrentLearnSet(LearnSetName focusedName) throws IOException, ClassNotFoundException {
+        guiModelBroker.changeCurrentSet(focusedName);
+        windowController.setDisplayedLearnSet(focusedName);
+        windowController.refreshSetData();
+    }
+
+    private ConfirmationStatus displayWarningWindow() {
+        ConfirmationStatus status = windowController
+                .displayConfirmDialog("Posiadasz niezapisane zmiany," +
+                        " czy chcesz kontynuwać ? Twoje zmiany nie zostaną zapisane.");
+        return status;
+    }
 }
+

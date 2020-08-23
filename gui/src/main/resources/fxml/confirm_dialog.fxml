@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="textLabel" text="Label" />
+                  <Label fx:id="textLabel" text="Label" textAlignment="CENTER" wrapText="true" />
                </children>
                <VBox.margin>
-                  <Insets bottom="30.0" top="20.0" />
+                  <Insets bottom="30.0" left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0">
+            <HBox alignment="CENTER">
                <children>
                   <CommandButton fx:id="okButton" prefHeight="38.0" prefWidth="53.0" text="Ok">
                      <HBox.margin>
@@ -41,7 +41,7 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Region fx:id="topRegion" prefHeight="50.0" HBox.hgrow="ALWAYS" />
+            <Region fx:id="topRegion" prefHeight="30.0" HBox.hgrow="ALWAYS" />
             <CommandButton fx:id="exitButton" minHeight="20.0" prefWidth="50.0">
                <graphic>
                   <ImageView fx:id="exitImageView" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />

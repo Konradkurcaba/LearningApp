@@ -1,7 +1,7 @@
-package pl.kurcaba.learn.helper.gui.controller.addcase;
+package pl.kurcaba.learn.helper.gui.dialogs.addcase;
 
 import javafx.scene.image.WritableImage;
-import pl.kurcaba.learn.helper.gui.dialogs.ConfirmationStatus;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.util.Optional;
 

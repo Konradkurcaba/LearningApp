@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.dialogs;
+package pl.kurcaba.learn.helper.gui.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,11 +19,7 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
     private static final Logger logger = LogManager.getLogger(AbstractWindowDisplayer.class);
 
     private T controller;
-    private String windowTitle;
 
-    public AbstractWindowDisplayer(String windowTitle) {
-        this.windowTitle = windowTitle;
-    }
 
     protected Stage prepareStage(Path aFxmlFile)
     {
@@ -67,7 +62,6 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.initStyle(StageStyle.TRANSPARENT);
-        newStage.setTitle(windowTitle);
         return newStage;
     }
 
