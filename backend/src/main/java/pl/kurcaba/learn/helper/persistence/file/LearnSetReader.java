@@ -30,11 +30,11 @@ public class LearnSetReader
                 .collect(Collectors.toList());
     }
 
-    public LearnSet readLearnSet(File aFileToRead) throws IOException, ClassNotFoundException {
+    public LearnSetDto readLearnSet(File aFileToRead) throws IOException, ClassNotFoundException {
 
         try(ObjectInputStream objectStream = new ObjectInputStream(new FileInputStream(aFileToRead)))
         {
-            return(LearnSet) objectStream.readObject();
+            return(LearnSetDto) objectStream.readObject();
         }
     }
 }

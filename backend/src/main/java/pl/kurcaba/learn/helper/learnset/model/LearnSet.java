@@ -2,13 +2,13 @@ package pl.kurcaba.learn.helper.learnset.model;
 
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.UUID;
 
-public class LearnSet implements Serializable
+public class LearnSet
 {
+
     private final LearnSetName learnSetName;
     private final LinkedHashSet<LearnCase> learnCases;
     private boolean hasUnsavedChanges = false;
@@ -50,6 +50,14 @@ public class LearnSet implements Serializable
     {
         return hasUnsavedChanges;
     }
+
+    public void setSaved()
+    {
+        hasUnsavedChanges = false;
+    }
+
+
+
 
 }
 

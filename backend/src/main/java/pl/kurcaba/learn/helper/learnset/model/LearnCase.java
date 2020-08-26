@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class LearnCase implements Serializable
 {
-    private final UUID id = UUID.randomUUID();
+    private final UUID id;
     private String name;
     private String definition;
 
@@ -16,6 +16,20 @@ public class LearnCase implements Serializable
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
+        id = UUID.randomUUID();
+    }
+
+    /**
+     * This constructor should only be used when restoring from datasource.
+     * @param name
+     * @param definition
+     * @param id
+     */
+    public LearnCase(String name, String definition, UUID id)
+    {
+        this.name = Objects.requireNonNullElse(name,"");
+        this.definition = Objects.requireNonNullElse(definition,"");
+        this.id = Objects.requireNonNull(id);
     }
 
     public UUID getId() {

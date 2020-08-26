@@ -33,29 +33,31 @@ public class LearnSetFileDao implements LearnSetDaoIf
     @Override
     public LearnSet getSetByName(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
-        return fileReader.readLearnSet(getFile(aSetName));
+        LearnSetDto learnSetDto = fileReader.readLearnSet(getFile(aSetName));
+        return learnSetDto.toLearnSet();
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException
-    {
+    public void saveChanges(LearnSet aSetToSave) throws IOException {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if(!aFileToSave.exists())
-        {
+        if (!aFileToSave.exists()) {
             saveAs(aSetToSave);
         }
         FileObjectWriter objectWriter = new FileObjectWriter();
-        objectWriter.writeObjectToFile(aSetToSave,aFileToSave);
+        LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
+        objectWriter.writeObjectToFile(dtoToSave, aFileToSave);
+        aSetToSave.setSaved();
     }
 
     @Override
     public void saveAs(LearnSet aSetToSave) throws IOException {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if(aFileToSave.exists())
-        {
+        if (aFileToSave.exists()) {
             throw new IOException("The set cannot be saved, a set with similar filename already exists");
         }
-        fileWriter.writeObjectToFile(aSetToSave,aFileToSave);
+        LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
+        fileWriter.writeObjectToFile(dtoToSave, aFileToSave);
+        aSetToSave.setSaved();
     }
 
 
