@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,14 +28,61 @@
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin></ImageView>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Nazwa:">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="nameTf">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Definicja:">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="definitionTf">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <CommandButton fx:id="checkButton" prefHeight="38.0" prefWidth="73.0" text="Sprawdź" />
             <HBox alignment="BOTTOM_CENTER" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
                <children>
-                  <CommandButton fx:id="okButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" text="OK">
+                  <CommandButton fx:id="prevButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" text="Poprzedni">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </CommandButton>
-                  <CommandButton fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Anuluj">
+                  <CommandButton fx:id="nextButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Następny">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
