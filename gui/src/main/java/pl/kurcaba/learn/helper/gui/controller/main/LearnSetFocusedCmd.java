@@ -41,6 +41,11 @@ public class LearnSetFocusedCmd extends MainWindowCommand {
         }
     }
 
+    @Override
+    public boolean canBeExecuted() {
+        return true;
+    }
+
     private boolean isNewLearnSetFocused(Optional<LearnSetName> focusedName) {
         boolean isNewNameFocused;
         if (windowController.getDisplayedLearnSet().isPresent()) {

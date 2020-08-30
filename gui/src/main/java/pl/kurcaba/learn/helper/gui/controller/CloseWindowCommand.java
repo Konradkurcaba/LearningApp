@@ -17,4 +17,9 @@ public class CloseWindowCommand implements CommandIf
     {
         stage.close();
     }
+
+    @Override
+    public boolean canBeExecuted() {
+        return true;
+    }
 }

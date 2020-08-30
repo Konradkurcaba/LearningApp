@@ -33,10 +33,8 @@ public class LearnSetTable extends TableView<LearnCaseView> {
 
         contextMenuProperty().setValue(tableMenu);
 
-        addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, event -> {
-            LearnCaseView caseView = getSelectionModel().getSelectedItem();
-            showImageItem.setDisable(caseView.getImage().isEmpty());
-        });
+        addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, event ->
+                showImageItem.setDisable(!aShowImageCmd.canBeExecuted()));
 
     }
 

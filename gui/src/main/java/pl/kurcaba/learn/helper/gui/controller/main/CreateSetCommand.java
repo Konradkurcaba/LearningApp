@@ -35,4 +35,9 @@ public class CreateSetCommand extends MainWindowCommand
             }
         }
     }
+
+    @Override
+    public boolean canBeExecuted() {
+        return true;
+    }
 }

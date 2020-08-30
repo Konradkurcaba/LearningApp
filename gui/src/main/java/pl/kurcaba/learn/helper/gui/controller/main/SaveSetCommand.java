@@ -23,4 +23,9 @@ public class SaveSetCommand extends MainWindowCommand
             logger.error(aEx);
         }
     }
+
+    @Override
+    public boolean canBeExecuted() {
+        return guiModelBroker.getUnsavedChangesProperty().get();
+    }
 }

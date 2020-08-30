@@ -9,6 +9,8 @@ public class CommandButton extends Button {
     public CommandButton() {
     }
 
+    private CommandIf command;
+
     public CommandButton(String s) {
         super(s);
     }
@@ -18,8 +20,14 @@ public class CommandButton extends Button {
     }
 
     public void setCommand(CommandIf aCommand) {
+        command = aCommand;
         this.setOnMouseClicked(clickEvent -> {
-            aCommand.executeCommand();
+            command.executeCommand();
         });
+    }
+
+    public void updateState()
+    {
+        disableProperty().setValue(!command.canBeExecuted());
     }
 }

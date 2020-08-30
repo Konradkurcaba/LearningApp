@@ -29,4 +29,9 @@ public class DeleteCaseCommand extends MainWindowCommand
             logger.error("Cannot delete set, any set isn't selected");
         }
     }
+
+    @Override
+    public boolean canBeExecuted() {
+        return windowController.getSelectedCaseView().isPresent();
+    }
 }

@@ -66,7 +66,8 @@ public class AddCaseWindowController extends AbstractWindowController
         Optional<WritableImage> newScreen = capturer.openScreenshotWindow();
 
         newScreen.ifPresent(screen -> {
-            ConfirmationStatus status = ConfirmImageDialog.showDialog(screen);
+            ConfirmImageDialog imageDialog = new ConfirmImageDialog();
+            ConfirmationStatus status = imageDialog.showDialog(screen);
             if(status.equals(ConfirmationStatus.CONFIRMED))
             {
                 this.screen = screen;
