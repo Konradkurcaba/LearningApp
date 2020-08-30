@@ -65,7 +65,7 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
         return newStage;
     }
 
-    public T getController() {
+     protected T getController() {
         return controller;
     }
 }

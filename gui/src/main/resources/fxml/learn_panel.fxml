@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="mainPanel" alignment="TOP_CENTER">
          <children>

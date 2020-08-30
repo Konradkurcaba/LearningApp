@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane fx:id="mainPanel" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER">
@@ -28,16 +29,16 @@
                </VBox.margin></ImageView>
             <HBox alignment="BOTTOM_CENTER" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
                <children>
-                  <CommandButton fx:id="okButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" text="OK">
+                  <Button fx:id="okButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" text="OK">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
-                  </CommandButton>
-                  <CommandButton fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Anuluj">
+                  </Button>
+                  <Button fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Anuluj">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
-                  </CommandButton>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets />

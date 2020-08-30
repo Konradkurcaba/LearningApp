@@ -93,7 +93,7 @@ public class GuiModelBroker {
         return hasUnsavedChanges;
     }
 
-    public BooleanProperty getIsLearnSetChosenProperty()
+    public BooleanProperty isLearnSetChosenProperty()
     {
         return isLearnSetChosen;
     }

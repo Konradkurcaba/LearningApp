@@ -13,6 +13,7 @@ import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmDialogDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.dialogs.input.InputDialogDisplayer;
+import pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
@@ -36,6 +37,9 @@ public class MainWindowController extends AbstractWindowController
     private CommandButton saveSet;
 
     @FXML
+    private CommandButton startButton;
+
+    @FXML
     private LearnSetListView learnSetListView;
     private LearnSetName currentLearnSetName;
 
@@ -57,16 +61,19 @@ public class MainWindowController extends AbstractWindowController
     private void initButtons() {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
         addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
-        addNewCase.setDisable(true);
+        addNewCase.updateState();
         saveSet.setCommand(new SaveSetCommand(guiModelBroker, this));
         saveSet.disableProperty().bind(guiModelBroker.getUnsavedChangesProperty().not());
-        addNewCase.disableProperty().bind(guiModelBroker.getIsLearnSetChosenProperty().not());
+        addNewCase.disableProperty().bind(guiModelBroker.isLearnSetChosenProperty().not());
+        startButton.setCommand(new StartLearnCommand(guiModelBroker, this));
+        startButton.updateState();
     }
 
     void refreshSetData()
     {
         learnSetTable.getItems().clear();
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
+        startButton.updateState();
     }
 
     Optional<String> displayTextInputDialog(String aTextToDisplay) {
@@ -123,6 +130,14 @@ public class MainWindowController extends AbstractWindowController
     NewCaseDto showNewCaseWindow() {
         NewCaseWindowDisplayer windowDisplayer = new NewCaseWindowDisplayer();
         return windowDisplayer.showNewCaseWindow();
+    }
+
+    void showLearnPanel(boolean aDisplayName,boolean aDisplayDefinition
+            , boolean aDisplayImage, List<LearnCaseView> aCases)
+    {
+        LearnPanelDisplayer panelDisplayer = new LearnPanelDisplayer(aDisplayName, aDisplayDefinition
+                , aDisplayImage, aCases);
+        panelDisplayer.displayWindow();
     }
 
 }

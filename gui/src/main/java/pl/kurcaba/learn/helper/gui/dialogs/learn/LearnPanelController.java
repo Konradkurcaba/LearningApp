@@ -6,6 +6,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
@@ -16,6 +17,10 @@ import java.util.Optional;
 
 public class LearnPanelController extends AbstractWindowController
 {
+
+    private static final int SIDE_PADDING = 5;
+    private static final int BORDER_SIZE = 1;
+
     @FXML
     private CommandButton checkButton;
 
@@ -53,22 +58,30 @@ public class LearnPanelController extends AbstractWindowController
     @Override
     public void initialize() {
         super.initialize();
-        initImageView();
         initButtons();
+        displayFirstCase();
+    }
+
+    private void displayFirstCase() {
+        displayCase(learnCases.get(0));
+        currentCaseIndex = 0;
     }
 
     private void initButtons()
     {
         nextButton.setCommand(new NextCaseCmd(this));
         prevButton.setCommand(new PrevCaseCmd(this));
+        prevButton.updateState();
+        nextButton.updateState();
     }
 
     private void initImageView() {
         if(isImageDisplayed)
         {
-            Bounds imageViewBounds = lookForMaxImageSize();
+            Bounds imageViewBounds = searchMaxImageSize();
             imageView.setFitWidth(imageViewBounds.getWidth());
             imageView.setFitHeight(imageViewBounds.getHeight());
+            getStage().setWidth(imageViewBounds.getWidth() + 2 * SIDE_PADDING + BORDER_SIZE);
         }
     }
 
@@ -78,7 +91,7 @@ public class LearnPanelController extends AbstractWindowController
         prevButton.updateState();
     }
 
-    private Bounds lookForMaxImageSize() {
+    private Bounds searchMaxImageSize() {
         double maxHeight = 0d;
         double maxWidth = 0d;
 
@@ -107,26 +120,36 @@ public class LearnPanelController extends AbstractWindowController
 
     public void setCurrentCaseIndex(int currentCaseIndex) {
         this.currentCaseIndex = currentCaseIndex;
+        updateState();
     }
 
     void displayCase(LearnCaseView aCaseView)
     {
+        nameTf.clear();
         if(isNameDisplayed)
         {
             nameTf.setText(aCaseView.getName());
             nameTf.setEditable(false);
         }
+        definitionTf.clear();
         if(isDefinitionDisplayed)
         {
             definitionTf.setText(aCaseView.getDefinition());
             definitionTf.setEditable(false);
         }
 
+        imageView.setImage(null);
         if(isImageDisplayed)
         {
             aCaseView.getImage().ifPresent(image -> {
                 imageView.setImage(image);
            });
         }
+    }
+
+    @Override
+    public void setStage(Stage aStage) {
+        super.setStage(aStage);
+        initImageView();
     }
 }

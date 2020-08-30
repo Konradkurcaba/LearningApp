@@ -1,11 +1,11 @@
 package pl.kurcaba.learn.helper.gui.controller.screenshot;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
-import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 public class ScreenshotPreviewController extends AbstractWindowController {
@@ -14,9 +14,9 @@ public class ScreenshotPreviewController extends AbstractWindowController {
     private ImageView imageView;
     private Image image;
     @FXML
-    private CommandButton okButton;
+    private Button okButton;
     @FXML
-    private CommandButton cancelButton;
+    private Button cancelButton;
 
     private ConfirmationStatus status = ConfirmationStatus.REJECTED;
 
@@ -27,11 +27,11 @@ public class ScreenshotPreviewController extends AbstractWindowController {
     @FXML
     public void initialize() {
         super.initialize();
-        okButton.setCommand(() -> {
+        okButton.setOnMouseClicked((event) -> {
             status = ConfirmationStatus.CONFIRMED;
             killThisWindow();
         });
-        cancelButton.setCommand(() -> {
+        cancelButton.setOnMouseClicked((event) -> {
             status = ConfirmationStatus.REJECTED;
             killThisWindow();
         });

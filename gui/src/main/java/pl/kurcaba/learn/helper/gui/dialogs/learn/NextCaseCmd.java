@@ -20,7 +20,7 @@ public class NextCaseCmd extends AbstractLearnCmd {
 
     @Override
     public boolean canBeExecuted() {
-        return controller.getCurrentCaseIndex() < controller.learnCases.size();
+        return controller.getCurrentCaseIndex() + 1 < controller.learnCases.size();
     }
 
 

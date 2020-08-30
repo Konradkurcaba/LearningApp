@@ -34,6 +34,6 @@ public class AddCaseCommand extends MainWindowCommand {
 
     @Override
     public boolean canBeExecuted() {
-        return guiModelBroker.getIsLearnSetChosenProperty().get();
+        return guiModelBroker.isLearnSetChosenProperty().get();
     }
 }
