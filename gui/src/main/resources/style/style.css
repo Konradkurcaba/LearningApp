@@ -90,8 +90,8 @@
 }
 
 #mainPanel{
-    -fx-background-radius: 6 6 4 2;
-    -fx-border-radius: 6 6 4 2;
+    -fx-background-radius: 6 6 6 6;
+    -fx-border-radius: 6 6 6 6;
     -fx-border-color: black;
     -fx-border-width: 0.5px;
 }
@@ -109,4 +109,9 @@
 
 .menu-bar {
   -fx-background-color: -main-theme-color;
+}
+
+#copyrightLabel
+{
+    -fx-font-size: 10px
 }

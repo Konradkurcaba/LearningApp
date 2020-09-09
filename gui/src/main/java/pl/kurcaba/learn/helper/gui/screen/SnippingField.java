@@ -14,21 +14,41 @@ public class SnippingField extends Rectangle
 
     public SnippingField(double drawStartPointX, double drawStartPointY)
     {
-        super(drawStartPointX,drawStartPointY,0,0);
+        super(drawStartPointX, drawStartPointY, 0, 0);
         this.drawStartPointX = drawStartPointX;
         this.drawStartPointY = drawStartPointY;
-
     }
 
-    public void mouseMoved(double aNewX,double aNewY)
+    public void mouseMoved(double aNewX, double aNewY)
     {
-        setWidth(aNewX - drawStartPointX);
-        setHeight(aNewY - drawStartPointY);
+        updateWidth(aNewX);
+        updateHeight(aNewY);
     }
 
-
-    public BooleanProperty isDrawingEndProperty()
+    private void updateWidth(double aNewX)
     {
-        return isDrawingEnd;
+        double width = aNewX - drawStartPointX;
+        if (width < 0)
+        {
+            setTranslateX(width);
+            setWidth(Math.abs(width));
+        } else
+        {
+            setWidth(width);
+        }
     }
+
+    private void updateHeight(double aNewY)
+    {
+        double height = aNewY - drawStartPointY;
+        if (height < 0)
+        {
+            setTranslateY(height);
+            setHeight(Math.abs(height));
+        } else
+        {
+            setHeight(height);
+        }
+    }
+
 }

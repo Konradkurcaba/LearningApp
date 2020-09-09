@@ -29,17 +29,20 @@
                <children>
                   <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </StackPane>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="40.0">
                <children>
                   <Label text="Nazwa:">
                      <HBox.margin>
-                        <Insets />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="nameTf">
+                  <TextField fx:id="nameTf" maxWidth="300.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="20.0" right="15.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -49,18 +52,15 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-               <padding>
-                  <Insets top="25.0" />
-               </padding>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="40.0">
                <children>
                   <Label text="Definicja:">
                      <HBox.margin>
-                        <Insets />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="definitionTf">
+                  <TextField fx:id="definitionTf" maxWidth="300.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -69,22 +69,19 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <padding>
-                  <Insets top="15.0" />
-               </padding>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" right="15.0" />
                </VBox.margin>
             </HBox>
-            <CommandButton fx:id="checkButton" prefHeight="38.0" prefWidth="73.0" text="Sprawdź" />
+            <CommandButton fx:id="checkButton" prefHeight="38.0" prefWidth="130.0" text="Sprawdź" />
             <HBox alignment="BOTTOM_CENTER" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
                <children>
-                  <CommandButton fx:id="prevButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="70.0" text="Poprzedni">
+                  <CommandButton fx:id="prevButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Poprzedni">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </CommandButton>
-                  <CommandButton fx:id="nextButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Następny">
+                  <CommandButton fx:id="nextButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Następny">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>

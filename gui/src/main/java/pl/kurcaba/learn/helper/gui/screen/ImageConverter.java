@@ -14,11 +14,12 @@ import java.io.IOException;
 public class ImageConverter {
 
     public static final Logger logger = LogManager.getLogger(ImageConverter.class);
+    public static final String IMAGE_FORMAT = "png";
 
     public static byte[] convertToByte(WritableImage aImage) throws IOException {
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(aImage, null);
-        ImageIO.write(bufferedImage, "png", byteStream);
+        ImageIO.write(bufferedImage, IMAGE_FORMAT, byteStream);
 
         return byteStream.toByteArray();
     }

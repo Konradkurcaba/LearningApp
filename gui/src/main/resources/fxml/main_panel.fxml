@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 <?import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView?>
 <?import pl.kurcaba.learn.helper.gui.controlls.LearnSetTable?>
@@ -36,26 +39,49 @@
       </HBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" BorderPane.alignment="CENTER">
+      <HBox cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <CommandButton fx:id="newSet" alignment="CENTER" mnemonicParsing="false" text="Nowy zestaw">
                <HBox.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets left="20.0" right="10.0" top="25.0" />
                </HBox.margin></CommandButton>
             <CommandButton fx:id="saveSet" alignment="CENTER" mnemonicParsing="false" text="Zapisz zestaw">
                <HBox.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets left="20.0" right="20.0" top="25.0" />
                </HBox.margin></CommandButton>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <CommandButton fx:id="startButton" text="Zacznij naukę">
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <CommandButton fx:id="startButton" alignment="CENTER" text="Zacznij naukę" />
+                        <CommandButton fx:id="addNewCase" alignment="CENTER" text="Dodaj nowe pojęcie">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </CommandButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="copyrightLabel" text="Created by Konrad Kurcaba" StackPane.alignment="BOTTOM_RIGHT">
+                           <StackPane.margin>
+                              <Insets right="5.0" top="5.0" />
+                           </StackPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
                <HBox.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets top="25.0" />
                </HBox.margin>
-            </CommandButton>
-            <CommandButton fx:id="addNewCase" alignment="CENTER_RIGHT" text="Dodaj nowe pojęcie">
-               <HBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </HBox.margin></CommandButton>
+            </VBox>
          </children>
       </HBox>
    </bottom>

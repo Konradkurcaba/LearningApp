@@ -89,8 +89,13 @@ public class ScreenCaptureController
                 SnippingField drawnRectangle = (SnippingField) aOptRectangle.get();
                 WritableImage screenShot = new WritableImage((int) drawnRectangle.getWidth()
                         , (int) drawnRectangle.getHeight());
-                Rectangle2D region = new Rectangle2D(drawnRectangle.getX()
-                        , drawnRectangle.getY(), drawnRectangle.getWidth(), drawnRectangle.getHeight());
+
+                double xPosition = drawnRectangle.getX() + drawnRectangle.getTranslateX();
+                double yPosition = drawnRectangle.getY() + drawnRectangle.getTranslateY();
+
+                Rectangle2D region = new Rectangle2D(xPosition, yPosition, drawnRectangle.getWidth()
+                        , drawnRectangle.getHeight());
+
                 new Robot().getScreenCapture(screenShot, region);
                 this.screenShot = screenShot;
             }
