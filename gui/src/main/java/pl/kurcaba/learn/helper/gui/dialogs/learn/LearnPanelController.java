@@ -6,6 +6,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
@@ -32,6 +33,8 @@ public class LearnPanelController extends AbstractWindowController
 
     @FXML
     private ImageView imageView;
+    @FXML
+    private StackPane imageStackPane;
 
     @FXML
     private CommandButton prevButton;
@@ -79,9 +82,10 @@ public class LearnPanelController extends AbstractWindowController
         if(isImageDisplayed)
         {
             Bounds imageViewBounds = searchMaxImageSize();
-            imageView.setFitWidth(imageViewBounds.getWidth());
-            imageView.setFitHeight(imageViewBounds.getHeight());
-            getStage().setWidth(imageViewBounds.getWidth() + 2 * SIDE_PADDING + BORDER_SIZE);
+            imageStackPane.setMinHeight((imageViewBounds.getHeight()));
+            imageStackPane.setMinWidth(imageViewBounds.getWidth());
+            imageView.setFitWidth(0);
+            imageView.setFitHeight(0);
         }
     }
 

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
 
@@ -24,10 +25,11 @@
                   </CommandButton>
                </children>
             </HBox>
-            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </VBox.margin></ImageView>
+            <StackPane fx:id="imageStackPane" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
             <HBox alignment="CENTER">
                <children>
                   <Label text="Nazwa:">
