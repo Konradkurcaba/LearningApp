@@ -57,9 +57,21 @@ public class LearnCaseView
         return image != null;
     }
 
-
     public UUID getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LearnCaseView caseView = (LearnCaseView) o;
+        return id.equals(caseView.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public static class Builder
@@ -73,7 +85,6 @@ public class LearnCaseView
         {
             id = aId;
         }
-
 
         public Builder setName(String name)
         {

@@ -78,6 +78,12 @@ public class MainWindowController extends AbstractWindowController
         startButton.updateState();
     }
 
+    @Override
+    protected CommandIf createExitCommand(Stage aStage)
+    {
+        return new CloseMainWindowCommand(guiModelBroker, this);
+    }
+
     Optional<String> displayTextInputDialog(String aTextToDisplay) {
         InputDialogDisplayer inputDialogDisplayer = new InputDialogDisplayer();
         return inputDialogDisplayer.showInputDialog(aTextToDisplay);
@@ -142,6 +148,8 @@ public class MainWindowController extends AbstractWindowController
         return learnOptionsDisplayer.displayPanel();
     }
 
-
-
+    void closeApplication()
+    {
+        killThisWindow();
+    }
 }

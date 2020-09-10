@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 
 import java.io.InputStream;
@@ -77,7 +78,12 @@ public abstract class AbstractWindowController
     public void setStage(Stage aStage)
     {
         stage = aStage;
-        exitButton.setCommand(new CloseWindowCommand(aStage));
+        exitButton.setCommand(createExitCommand(aStage));
+    }
+
+    protected CommandIf createExitCommand(Stage aStage)
+    {
+        return new CloseWindowCommand(aStage);
     }
 
     protected Stage getStage()
