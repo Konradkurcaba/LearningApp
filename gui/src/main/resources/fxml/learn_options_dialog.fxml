@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import pl.kurcaba.learn.helper.gui.controlls.CommandButton?>
+
+<BorderPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox fx:id="text" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+               <children>
+                  <Label minWidth="100.0" text="Pokaż nazwę" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <CheckBox fx:id="nameBox" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label minWidth="100.0" text="Pokaż definicję">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <CheckBox fx:id="definitionBox" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label minWidth="100.0" text="Pokaż obrazek" />
+                  <CheckBox fx:id="imageBox" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0">
+               <children>
+                  <CommandButton fx:id="okButton" prefHeight="38.0" prefWidth="53.0" text="Ok">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </CommandButton>
+                  <CommandButton fx:id="cancelButton" prefHeight="38.0" prefWidth="75.0" text="Anuluj">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </CommandButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Region fx:id="topRegion" prefHeight="30.0" HBox.hgrow="ALWAYS" />
+            <CommandButton fx:id="exitButton" minHeight="20.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fx:id="exitImageView" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic></CommandButton>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

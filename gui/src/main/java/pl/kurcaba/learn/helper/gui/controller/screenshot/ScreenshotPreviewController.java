@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
@@ -43,11 +42,6 @@ public class ScreenshotPreviewController extends AbstractWindowController {
 
     public ConfirmationStatus getStatus() {
         return status;
-    }
-
-    private void killThisWindow() {
-        Stage stage = (Stage) okButton.getScene().getWindow();
-        stage.close();
     }
 
 }

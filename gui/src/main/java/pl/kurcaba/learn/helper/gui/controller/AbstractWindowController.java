@@ -84,4 +84,9 @@ public abstract class AbstractWindowController
     {
         return stage;
     }
+
+    protected void killThisWindow() {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
+    }
 }

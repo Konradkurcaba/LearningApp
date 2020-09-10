@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 
 public class ConfirmDialogController extends AbstractWindowController
@@ -43,10 +42,6 @@ public class ConfirmDialogController extends AbstractWindowController
         return status;
     }
 
-    private void killThisWindow() {
-        Stage stage = (Stage) okButton.getScene().getWindow();
-        stage.close();
-    }
 
 
 }

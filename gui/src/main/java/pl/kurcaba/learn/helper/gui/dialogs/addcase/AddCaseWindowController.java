@@ -5,10 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
-import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
-import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
 import pl.kurcaba.learn.helper.gui.controller.screenshot.ConfirmImageDialog;
+import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.util.Optional;
@@ -92,11 +91,6 @@ public class AddCaseWindowController extends AbstractWindowController
 
     public Optional<WritableImage> getNewCasePicture() {
         return Optional.ofNullable(screen);
-    }
-
-    private void killThisWindow() {
-        Stage stage = (Stage) okButton.getScene().getWindow();
-        stage.close();
     }
 
 }
