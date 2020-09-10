@@ -1,9 +1,11 @@
 package pl.kurcaba.learn.helper.gui.controller.main;
 
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.List;
+import java.util.Optional;
 
 public class StartLearnCommand extends MainWindowCommand {
 
@@ -16,9 +18,11 @@ public class StartLearnCommand extends MainWindowCommand {
         if (!canBeExecuted()) {
             throw new IllegalStateException("Command cannot be executed, any set is not selected");
         }
-        List<LearnCaseView> learnCases = guiModelBroker.getCaseViews();
-        windowController.showLearnPanel(true, true
-                , true, learnCases);
+        Optional<LearnOptions> learnOptions = windowController.showLearnOptionsPanel();
+        learnOptions.ifPresent(options -> {
+            List<LearnCaseView> learnCases = guiModelBroker.getCaseViews();
+            windowController.showLearnPanel(options, learnCases);
+        });
     }
 
     @Override

@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
+import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.List;
@@ -43,18 +44,14 @@ public class LearnPanelController extends AbstractWindowController
     private CommandButton nextButton;
 
 
-    final boolean isImageDisplayed;
-    final boolean isNameDisplayed;
-    final boolean isDefinitionDisplayed;
+    private final LearnOptions learnOptions;
 
     final List<LearnCaseView> learnCases;
     private int currentCaseIndex;
 
-    public LearnPanelController(boolean isImageDisplayed, boolean isNameDisplayed
-            , boolean isDefinitionDisplayed, List<LearnCaseView> learnCases) {
-        this.isImageDisplayed = isImageDisplayed;
-        this.isNameDisplayed = isNameDisplayed;
-        this.isDefinitionDisplayed = isDefinitionDisplayed;
+    public LearnPanelController(LearnOptions learnOptions, List<LearnCaseView> learnCases)
+    {
+        this.learnOptions = learnOptions;
         this.learnCases = learnCases;
     }
 
@@ -79,7 +76,7 @@ public class LearnPanelController extends AbstractWindowController
     }
 
     private void initImageView() {
-        if(isImageDisplayed)
+        if(learnOptions.isImageShown())
         {
             Bounds imageViewBounds = searchMaxImageSize();
             imageStackPane.setMinHeight((imageViewBounds.getHeight()));
@@ -130,20 +127,20 @@ public class LearnPanelController extends AbstractWindowController
     void displayCase(LearnCaseView aCaseView)
     {
         nameTf.clear();
-        if(isNameDisplayed)
+        if(learnOptions.isNameShown())
         {
             nameTf.setText(aCaseView.getName());
             nameTf.setEditable(false);
         }
         definitionTf.clear();
-        if(isDefinitionDisplayed)
+        if(learnOptions.isDefinitionShown())
         {
             definitionTf.setText(aCaseView.getDefinition());
             definitionTf.setEditable(false);
         }
 
         imageView.setImage(null);
-        if(isImageDisplayed)
+        if(learnOptions.isImageShown())
         {
             aCaseView.getImage().ifPresent(image -> {
                 imageView.setImage(image);

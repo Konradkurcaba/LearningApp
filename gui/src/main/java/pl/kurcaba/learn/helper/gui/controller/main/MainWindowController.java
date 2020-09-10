@@ -14,6 +14,8 @@ import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmDialogDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.dialogs.input.InputDialogDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer;
+import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
+import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptionsDisplayer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
@@ -123,21 +125,23 @@ public class MainWindowController extends AbstractWindowController
         learnSetListView.getSelectionModel().select(aLearnSetName);
     }
 
-    void setMainWindowIconified(Boolean aValue) {
-        getStage().setIconified(aValue);
-    }
-
     NewCaseDto showNewCaseWindow() {
         NewCaseWindowDisplayer windowDisplayer = new NewCaseWindowDisplayer();
         return windowDisplayer.showNewCaseWindow();
     }
 
-    void showLearnPanel(boolean aDisplayName,boolean aDisplayDefinition
-            , boolean aDisplayImage, List<LearnCaseView> aCases)
+    void showLearnPanel(LearnOptions aLearnOptions, List<LearnCaseView> aCases)
     {
-        LearnPanelDisplayer panelDisplayer = new LearnPanelDisplayer(aDisplayName, aDisplayDefinition
-                , aDisplayImage, aCases);
+        LearnPanelDisplayer panelDisplayer = new LearnPanelDisplayer(aLearnOptions, aCases);
         panelDisplayer.displayWindow();
     }
+
+    Optional<LearnOptions> showLearnOptionsPanel()
+    {
+        LearnOptionsDisplayer learnOptionsDisplayer = new LearnOptionsDisplayer();
+        return learnOptionsDisplayer.displayPanel();
+    }
+
+
 
 }

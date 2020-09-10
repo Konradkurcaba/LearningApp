@@ -14,17 +14,17 @@ public class LearnOptions
         this.showImage = showImage;
     }
 
-    public boolean isShowName()
+    public boolean isNameShown()
     {
         return showName;
     }
 
-    public boolean isShowDefinition()
+    public boolean isDefinitionShown()
     {
         return showDefinition;
     }
 
-    public boolean isShowImage()
+    public boolean isImageShown()
     {
         return showImage;
     }
