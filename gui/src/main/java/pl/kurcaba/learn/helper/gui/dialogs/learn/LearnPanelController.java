@@ -64,6 +64,7 @@ public class LearnPanelController extends AbstractWindowController
         displayFirstCase();
     }
 
+
     private void initTextField()
     {
         CommandIf clearCmd = new ClearTfPseudoClasses(this);

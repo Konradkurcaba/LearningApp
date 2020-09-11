@@ -28,6 +28,17 @@ public class LearnOptionsController extends AbstractWindowController
     public void initialize()
     {
         super.initialize();
+        initButtons();
+        initCheckBoxes();
+    }
+
+    private void initCheckBoxes()
+    {
+        imageBox.setSelected(true);
+        nameBox.setSelected(true);
+    }
+
+    private void initButtons() {
         okButton.setOnMouseClicked(mouseEvent -> {
             status = ConfirmationStatus.CONFIRMED;
             killThisWindow();
