@@ -1,5 +1,6 @@
 package pl.kurcaba.learn.helper.gui.dialogs.learn;
 
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
@@ -9,6 +10,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
+import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
@@ -19,9 +21,8 @@ import java.util.Optional;
 
 public class LearnPanelController extends AbstractWindowController
 {
-
-    private static final int SIDE_PADDING = 5;
-    private static final int BORDER_SIZE = 1;
+    public static final PseudoClass CORRECT_CSS_CLASS = PseudoClass.getPseudoClass("correct");
+    public static final PseudoClass INCORRECT_CSS_CLASS = PseudoClass.getPseudoClass("incorrect");
 
     @FXML
     private CommandButton checkButton;
@@ -59,7 +60,15 @@ public class LearnPanelController extends AbstractWindowController
     public void initialize() {
         super.initialize();
         initButtons();
+        initTextField();
         displayFirstCase();
+    }
+
+    private void initTextField()
+    {
+        CommandIf clearCmd = new ClearTfPseudoClasses(this);
+        nameTf.textProperty().addListener(changed -> clearCmd.executeCommand());
+        definitionTf.textProperty().addListener( changed -> clearCmd.executeCommand() );
     }
 
     private void displayFirstCase() {
@@ -73,6 +82,7 @@ public class LearnPanelController extends AbstractWindowController
         prevButton.setCommand(new PrevCaseCmd(this));
         prevButton.updateState();
         nextButton.updateState();
+        checkButton.setCommand(new CheckCommand(this));
     }
 
     private void initImageView() {
@@ -115,11 +125,11 @@ public class LearnPanelController extends AbstractWindowController
         return new BoundingBox(0, 0, maxWidth, maxHeight);
     }
 
-    public int getCurrentCaseIndex() {
+    int getCurrentCaseIndex() {
         return currentCaseIndex;
     }
 
-    public void setCurrentCaseIndex(int currentCaseIndex) {
+    void setCurrentCaseIndex(int currentCaseIndex) {
         this.currentCaseIndex = currentCaseIndex;
         updateState();
     }
@@ -152,5 +162,43 @@ public class LearnPanelController extends AbstractWindowController
     public void setStage(Stage aStage) {
         super.setStage(aStage);
         initImageView();
+    }
+
+    LearnOptions getLearnOptions()
+    {
+        return learnOptions;
+    }
+
+    String getNameTextFieldValue() {
+        return nameTf.getText();
+    }
+
+    String getDefinitionTextFieldValue() {
+        return definitionTf.getText();
+    }
+
+    LearnCaseView getCurrentCaseView()
+    {
+        return learnCases.get(currentCaseIndex);
+    }
+
+    void addPseudoClassToNameTf(PseudoClass aPseudoClass)
+    {
+        nameTf.pseudoClassStateChanged(aPseudoClass, true);
+    }
+
+    void removePseudoClassFromNameTf(PseudoClass aPseudoClass)
+    {
+        nameTf.pseudoClassStateChanged(aPseudoClass, false);
+    }
+
+    void addPseudoClassToDefinitionTf(PseudoClass aPseudoClass)
+    {
+        definitionTf.pseudoClassStateChanged(aPseudoClass, true);
+    }
+
+    void removePseudoClassFromDefinitionTf(PseudoClass aPseudoClass)
+    {
+        definitionTf.pseudoClassStateChanged(aPseudoClass, false);
     }
 }

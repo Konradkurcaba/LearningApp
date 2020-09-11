@@ -9,4 +9,14 @@ public abstract class AbstractLearnCmd implements CommandIf {
     public AbstractLearnCmd(LearnPanelController controller) {
         this.controller = controller;
     }
+
+    protected void removePseudoStyleFromTf()
+    {
+        controller.removePseudoClassFromDefinitionTf(LearnPanelController.CORRECT_CSS_CLASS);
+        controller.removePseudoClassFromDefinitionTf(LearnPanelController.INCORRECT_CSS_CLASS);
+        controller.removePseudoClassFromNameTf(LearnPanelController.CORRECT_CSS_CLASS);
+        controller.removePseudoClassFromNameTf(LearnPanelController.INCORRECT_CSS_CLASS);
+    }
+
+
 }
