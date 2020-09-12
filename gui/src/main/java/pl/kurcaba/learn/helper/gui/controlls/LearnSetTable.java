@@ -1,8 +1,10 @@
 package pl.kurcaba.learn.helper.gui.controlls;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.*;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.input.ContextMenuEvent;
 import pl.kurcaba.learn.helper.gui.controller.main.DeleteCaseCommand;
@@ -35,53 +37,57 @@ public class LearnSetTable extends TableView<LearnCaseView> {
 
         addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, event ->
                 showImageItem.setDisable(!aShowImageCmd.canBeExecuted()));
-
     }
 
 
-    private void initColumns() {
-        TableColumn<LearnCaseView, String> nameColumn = new TableColumn<>("Nazwa");
-        nameColumn.setCellFactory(column -> new TableCell<>()
-        {
-            @Override
-            protected void updateItem(String item, boolean empty)
-            {
-                if (item != null && !empty)
-                {
-                    setText(item);
-                } else
-                {
-                    setText("");
-                }
-            }
-        });
-        nameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        nameColumn.setPrefWidth(200);
+    private void initColumns()
+    {
+        TableColumn<LearnCaseView, String> nameColumn = createNameColumn();
+        TableColumn<LearnCaseView, String> definitionColumn = createDefinitionColumn();
+        TableColumn<LearnCaseView, String> imageColumn = createImageColumn();
 
-        TableColumn<LearnCaseView, String> definitionColumn = new TableColumn<>("Definicja");
-        definitionColumn.setCellFactory(column -> new TableCell<>()
-        {
-            @Override
-            protected void updateItem(String item, boolean empty)
+        TableColumn<LearnCaseView, Boolean> isUsedToLearn = new TableColumn<>("Status");
+        isUsedToLearn.setCellValueFactory(tc -> tc.getValue().isUsedToLearnProperty());
+        isUsedToLearn.setCellFactory(CheckBoxTableCell.forTableColumn(isUsedToLearn));
+        isUsedToLearn.setPrefWidth(200);
+        isUsedToLearn.editableProperty().setValue(true);
+
+        getColumns().addAll(nameColumn, definitionColumn, imageColumn, isUsedToLearn);
+    }
+
+    private TableColumn<LearnCaseView, String> createImageColumn() {
+        TableColumn<LearnCaseView, String> imageColumn = new TableColumn<>("Obraz");
+        imageColumn.setCellFactory(column -> new StringTableCell<>());
+        imageColumn.setCellValueFactory(tc -> {
+            String textInCell;
+            if(tc.getValue().getImage().isPresent())
             {
-                if (item != null && !empty)
-                {
-                    setText(item);
-                } else
-                {
-                    setText("");
-                }
+                textInCell = "Tak";
             }
+            else
+            {
+                textInCell = "Nie";
+            }
+            return new SimpleStringProperty(textInCell);
         });
+        imageColumn.setPrefWidth(200);
+        return imageColumn;
+    }
+
+    private TableColumn<LearnCaseView, String> createDefinitionColumn() {
+        TableColumn<LearnCaseView, String> definitionColumn = new TableColumn<>("Definicja");
+        definitionColumn.setCellFactory(column -> new StringTableCell<>());
         definitionColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDefinition()));
         definitionColumn.setPrefWidth(200);
+        return definitionColumn;
+    }
 
-        TableColumn<LearnCaseView, Boolean> imageColumn = new TableColumn<>("Obraz");
-        imageColumn.setCellFactory(tc -> new CheckBoxTableCell<>());
-        imageColumn.setCellValueFactory(tc -> new SimpleBooleanProperty(tc.getValue().getImage().isPresent()));
-        imageColumn.setPrefWidth(200);
-
-        getColumns().addAll(nameColumn, definitionColumn, imageColumn);
+    private TableColumn<LearnCaseView, String> createNameColumn() {
+        TableColumn<LearnCaseView, String> nameColumn = new TableColumn<>("Nazwa");
+        nameColumn.setCellFactory(column -> new StringTableCell<>());
+        nameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        nameColumn.setPrefWidth(200);
+        return nameColumn;
     }
 
 

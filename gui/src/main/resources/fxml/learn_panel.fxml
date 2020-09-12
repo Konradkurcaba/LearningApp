@@ -47,7 +47,7 @@
                               <TextField fx:id="nameTf" alignment="TOP_LEFT" maxWidth="350.0" />
                            </children>
                         </StackPane>
-                        <Label minHeight="0.0" text="Label">
+                        <Label fx:id="correctName" minHeight="0.0" text="Label">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -72,10 +72,10 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <VBox maxWidth="350.0" minHeight="60.0" HBox.hgrow="ALWAYS">
+                  <VBox maxWidth="350.0" HBox.hgrow="ALWAYS">
                      <children>
                         <TextField fx:id="definitionTf" maxWidth="350.0" minHeight="-Infinity" />
-                        <Label text="Label" />
+                        <Label fx:id="correctDefinition" text="Label" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -86,25 +86,34 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" />
+                  <Insets left="10.0" right="10.0" />
                </VBox.margin>
             </HBox>
-            <CommandButton fx:id="checkButton" prefHeight="38.0" prefWidth="130.0" text="Sprawdź" />
-            <HBox alignment="BOTTOM_CENTER" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <CommandButton fx:id="prevButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Poprzedni">
+                  <CommandButton fx:id="prevButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Poprzedni">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </CommandButton>
-                  <CommandButton fx:id="nextButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Następny">
+                  <CommandButton fx:id="checkButton" prefHeight="35.0" prefWidth="130.0" text="Sprawdź">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </CommandButton>
+                  <CommandButton fx:id="showAnswer" prefHeight="35.0" prefWidth="130.0" text="Pokaż odpowiedź">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </CommandButton>
+                  <CommandButton fx:id="nextButton" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Następny">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </CommandButton>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
          </children>

@@ -12,6 +12,7 @@ public class LearnCaseDto implements Serializable {
     private UUID id;
     private String name;
     private String definition;
+    private boolean isUsedToLearn;
 
     private byte[] image;
 
@@ -20,11 +21,12 @@ public class LearnCaseDto implements Serializable {
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
         this.image = aLearnCase.getImage();
+        this.isUsedToLearn = aLearnCase.isUsedToLearn();
     }
 
     public LearnCase toLearnCase()
     {
-        LearnCase restoredCase = new LearnCase(name, definition, id);
+        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
         restoredCase.setImage(image);
         return restoredCase;
     }

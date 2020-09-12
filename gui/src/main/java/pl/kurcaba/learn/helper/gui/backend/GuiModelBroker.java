@@ -15,6 +15,7 @@ import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GuiModelBroker {
@@ -25,6 +26,7 @@ public class GuiModelBroker {
     private LearnSet currentLearnSet;
     private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
     private final BooleanProperty isLearnSetChosen  = new SimpleBooleanProperty(false);
+
 
     public GuiModelBroker(LearnDataManager aDataManager) {
         dataManager = aDataManager;
@@ -81,11 +83,36 @@ public class GuiModelBroker {
     }
 
     public List<LearnCaseView> getCaseViews() {
+        List<LearnCaseView> caseViews = buildViewsForCurrentSet();
+
+        for(LearnCaseView caseView: caseViews)
+        {
+            caseView.isUsedToLearnProperty().addListener(valueChanged -> isUsedToLearnPropertyChanged(caseView));
+        }
+        return caseViews;
+    }
+
+    private void isUsedToLearnPropertyChanged(LearnCaseView caseView)
+    {
+        boolean newValue = caseView.isUsedToLearnProperty().get();
+        Optional<LearnCase> learnCase = currentLearnSet.getLearnSetCases().stream()
+                .filter(s -> s.getId().equals(caseView.getId()))
+                .findAny();
+        learnCase.ifPresent(foundCase ->
+        {
+            foundCase.setUsedToLearn(newValue);
+            hasUnsavedChanges.setValue(true);
+        });
+    }
+
+    private List<LearnCaseView> buildViewsForCurrentSet() {
         return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
                 .setImage(convertImage(learnCase.getImage()))
-                .build()).collect(Collectors.toList());
+                .setUsedToLearn(learnCase.isUsedToLearn())
+                .build())
+                .collect(Collectors.toList());
     }
 
     public BooleanProperty getUnsavedChangesProperty()

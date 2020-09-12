@@ -56,6 +56,7 @@ public class MainWindowController extends AbstractWindowController
         initButtons();
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
                 , new ShowImageCommand(guiModelBroker, this));
+        learnSetTable.setEditable(true);
         learnSetListView.setCommand(new LearnSetFocusedCmd(guiModelBroker, this));
         refreshMainListData();
     }

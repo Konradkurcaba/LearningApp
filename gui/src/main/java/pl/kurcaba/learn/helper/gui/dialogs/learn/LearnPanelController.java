@@ -4,6 +4,7 @@ import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -29,9 +30,16 @@ public class LearnPanelController extends AbstractWindowController
 
     @FXML
     private TextField nameTf;
+    @FXML
+    private Label correctName;
 
     @FXML
     private TextField definitionTf;
+    @FXML
+    private Label correctDefinition;
+
+    @FXML
+    private CommandButton showAnswer;
 
     @FXML
     private ImageView imageView;
@@ -61,7 +69,14 @@ public class LearnPanelController extends AbstractWindowController
         super.initialize();
         initButtons();
         initTextField();
+        initLabels();
         displayFirstCase();
+    }
+
+    private void initLabels()
+    {
+        correctName.setVisible(false);
+        correctDefinition.setVisible(false);
     }
 
 
@@ -84,20 +99,19 @@ public class LearnPanelController extends AbstractWindowController
         prevButton.updateState();
         nextButton.updateState();
         checkButton.setCommand(new CheckCommand(this));
+        showAnswer.setCommand(new ShowCorrectAnswersCmd(this));
     }
 
-    private void initImageView() {
-        if(learnOptions.isImageShown())
-        {
-            Bounds imageViewBounds = searchMaxImageSize();
-            imageStackPane.setMinHeight((imageViewBounds.getHeight()));
-            imageStackPane.setMinWidth(imageViewBounds.getWidth());
-            imageView.setFitWidth(0);
-            imageView.setFitHeight(0);
-        }
+    private void initImageView()
+    {
+        Bounds imageViewBounds = searchMaxImageSize();
+        imageStackPane.setMinHeight((imageViewBounds.getHeight()));
+        imageStackPane.setMinWidth(imageViewBounds.getWidth());
+        imageView.setFitWidth(0);
+        imageView.setFitHeight(0);
     }
 
-    private void updateState()
+    void updateState()
     {
         nextButton.updateState();
         prevButton.updateState();
@@ -132,7 +146,6 @@ public class LearnPanelController extends AbstractWindowController
 
     void setCurrentCaseIndex(int currentCaseIndex) {
         this.currentCaseIndex = currentCaseIndex;
-        updateState();
     }
 
     void displayCase(LearnCaseView aCaseView)
@@ -157,6 +170,8 @@ public class LearnPanelController extends AbstractWindowController
                 imageView.setImage(image);
            });
         }
+        correctName.setVisible(false);
+        correctDefinition.setVisible(false);
     }
 
     @Override
@@ -201,5 +216,24 @@ public class LearnPanelController extends AbstractWindowController
     void removePseudoClassFromDefinitionTf(PseudoClass aPseudoClass)
     {
         definitionTf.pseudoClassStateChanged(aPseudoClass, false);
+    }
+
+    void showCorrectName()
+    {
+        correctName.setText(getCurrentCaseView().getName());
+        correctName.setVisible(true);
+    }
+
+    void showCorrectDefinition()
+    {
+        correctDefinition.setText(getCurrentCaseView().getDefinition());
+        correctDefinition.setVisible(true);
+    }
+
+    void showImage()
+    {
+        getCurrentCaseView().getImage().ifPresent(image -> {
+            imageView.setImage(image);
+        });
     }
 }

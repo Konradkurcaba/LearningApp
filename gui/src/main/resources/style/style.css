@@ -81,6 +81,24 @@
     -fx-text-fill: -text-color;
 }
 
+.context-menu {
+    -fx-background-color: -main-theme-color;
+}
+
+.menu-item:hover
+{
+    -fx-background-color: -fx-app-focus-color;
+}
+.menu-item:disabled
+{
+    -fx-background-color: -main-theme-color;
+}
+.context-menu {
+    -fx-background-color: -main-theme-color;
+}
+
+
+
 .table-row-cell, .list-cell{
     -fx-background-color: -main-theme-color;
     -fx-table-cell-border-color: transparent;

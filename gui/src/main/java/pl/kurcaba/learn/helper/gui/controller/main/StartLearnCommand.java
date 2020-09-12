@@ -4,8 +4,10 @@ import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class StartLearnCommand extends MainWindowCommand {
 
@@ -20,7 +22,10 @@ public class StartLearnCommand extends MainWindowCommand {
         }
         Optional<LearnOptions> learnOptions = windowController.showLearnOptionsPanel();
         learnOptions.ifPresent(options -> {
-            List<LearnCaseView> learnCases = guiModelBroker.getCaseViews();
+            List<LearnCaseView> learnCases = guiModelBroker.getCaseViews().stream()
+                    .filter(LearnCaseView::isUsedToLearn)
+                    .collect(Collectors.toCollection(ArrayList::new));
+
             windowController.showLearnPanel(options, learnCases);
         });
     }

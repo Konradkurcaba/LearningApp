@@ -9,6 +9,7 @@ public class LearnCase implements Serializable
     private final UUID id;
     private String name;
     private String definition;
+    private boolean isUsedToLearn;
 
     private byte[] image;
 
@@ -16,6 +17,7 @@ public class LearnCase implements Serializable
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
+        isUsedToLearn = true;
         id = UUID.randomUUID();
     }
 
@@ -25,11 +27,12 @@ public class LearnCase implements Serializable
      * @param definition
      * @param id
      */
-    public LearnCase(String name, String definition, UUID id)
+    public LearnCase(String name, String definition, UUID id, boolean isUsedToLearn)
     {
         this.name = Objects.requireNonNullElse(name,"");
         this.definition = Objects.requireNonNullElse(definition,"");
         this.id = Objects.requireNonNull(id);
+        this.isUsedToLearn = isUsedToLearn;
     }
 
     public UUID getId() {
@@ -64,6 +67,16 @@ public class LearnCase implements Serializable
     public void setImage(byte[] image)
     {
         this.image = image;
+    }
+
+    public boolean isUsedToLearn()
+    {
+        return isUsedToLearn;
+    }
+
+    public void setUsedToLearn(boolean usedToLearn)
+    {
+        isUsedToLearn = usedToLearn;
     }
 
     @Override

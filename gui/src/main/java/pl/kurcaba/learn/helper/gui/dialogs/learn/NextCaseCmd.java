@@ -16,6 +16,7 @@ public class NextCaseCmd extends AbstractLearnCmd {
 
         controller.displayCase(controller.learnCases.get(controller.getCurrentCaseIndex() + 1));
         controller.setCurrentCaseIndex(controller.getCurrentCaseIndex() + 1);
+        controller.updateState();
         removePseudoStyleFromTf();
     }
 

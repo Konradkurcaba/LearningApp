@@ -1,5 +1,7 @@
 package pl.kurcaba.learn.helper.gui.view;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.WritableImage;
 
 import java.util.Objects;
@@ -20,6 +22,7 @@ public class LearnCaseView
     private String name;
     private String definition;
     private WritableImage image;
+    private BooleanProperty isUsedToLearn;
 
 
     public String getName()
@@ -61,6 +64,21 @@ public class LearnCaseView
         return id;
     }
 
+    public BooleanProperty isUsedToLearnProperty()
+    {
+        return isUsedToLearn;
+    }
+
+    public boolean isUsedToLearn()
+    {
+        return isUsedToLearn.get();
+    }
+
+    public void setIsUsedToLearn(boolean isUsedToLearn)
+    {
+        this.isUsedToLearn = new SimpleBooleanProperty(isUsedToLearn);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,6 +98,7 @@ public class LearnCaseView
         private String name;
         private String definition;
         private WritableImage image;
+        private boolean isUsedToLearn;
 
         private Builder(UUID aId)
         {
@@ -104,12 +123,19 @@ public class LearnCaseView
             return this;
         }
 
+        public Builder setUsedToLearn(boolean usedToLearn)
+        {
+            isUsedToLearn = usedToLearn;
+            return this;
+        }
+
         public LearnCaseView build()
         {
             LearnCaseView learnCaseView = new LearnCaseView(id);
             learnCaseView.setName(Objects.requireNonNullElse(this.name, ""));
             learnCaseView.setDefinition(Objects.requireNonNullElse(this.definition, ""));
             learnCaseView.setImage(this.image);
+            learnCaseView.setIsUsedToLearn(isUsedToLearn);
             return learnCaseView;
         }
     }
