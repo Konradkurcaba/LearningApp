@@ -60,6 +60,12 @@ public class LearnSetFileDao implements LearnSetDaoIf
         aSetToSave.setSaved();
     }
 
+    @Override
+    public void remove(LearnSetName learnSetName)
+    {
+        fileWriter.removeFile(getFile(learnSetName));
+    }
+
 
     private File getFile(LearnSetName aLearnSetName)
     {

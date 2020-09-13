@@ -13,4 +13,9 @@ public class FileObjectWriter {
             objectOutputStream.writeObject(objectToWrite);
         }
     }
+
+    public void removeFile(File aFile)
+    {
+        aFile.delete();
+    }
 }

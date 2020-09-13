@@ -1,7 +1,10 @@
 package pl.kurcaba.learn.helper.gui.controller.main;
 
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
+import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
+
+import java.util.ResourceBundle;
 
 public abstract class MainWindowCommand implements CommandIf{
 
@@ -28,11 +31,10 @@ public abstract class MainWindowCommand implements CommandIf{
         return true;
     }
 
-    private ConfirmationStatus displayWarningWindow() {
-        ConfirmationStatus status = windowController
-                .displayConfirmDialog("Posiadasz niezapisane zmiany," +
-                        " czy chcesz kontynuwać ? Twoje zmiany nie zostaną zapisane.");
-        return status;
+    private ConfirmationStatus displayWarningWindow()
+    {
+        ResourceBundle textBundle = ResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
+        return windowController.displayConfirmDialog(textBundle.getString("unsavedChangesWarning"));
     }
 
 }

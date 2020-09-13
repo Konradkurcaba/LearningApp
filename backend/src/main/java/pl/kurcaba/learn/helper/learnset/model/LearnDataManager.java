@@ -39,4 +39,9 @@ public class LearnDataManager
     public void save(LearnSet aSetToSave) throws IOException {
         learnSetDao.saveChanges(aSetToSave);
     }
+
+    public void removeLearnSet(LearnSetName learnSet)
+    {
+        learnSetDao.remove(learnSet);
+    }
 }

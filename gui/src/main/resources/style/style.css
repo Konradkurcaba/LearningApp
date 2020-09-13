@@ -103,14 +103,17 @@
     -fx-background-color: -main-theme-color;
     -fx-table-cell-border-color: transparent;
     -fx-border-color: transparent;
-    -fx-padding: 0px 0px 0px 7px;
+
+}
+
+.list-cell{
+     -fx-padding: 0px 0px 0px 7px;
 }
 
 .table-row-cell:focused, .list-cell:focused{
     -fx-background-color: -fx-app-focus-color;
     -fx-table-cell-border-color: transparent;
     -fx-border-color: transparent;
-    -fx-padding: 0px 0px 0px 7px;
 }
 
 .menu-item{

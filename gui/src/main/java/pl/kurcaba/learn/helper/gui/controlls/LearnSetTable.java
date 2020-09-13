@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.geometry.Pos;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -57,7 +58,13 @@ public class LearnSetTable extends TableView<LearnCaseView> {
 
     private TableColumn<LearnCaseView, String> createImageColumn() {
         TableColumn<LearnCaseView, String> imageColumn = new TableColumn<>("Obraz");
-        imageColumn.setCellFactory(column -> new StringTableCell<>());
+
+        imageColumn.setCellFactory(column -> {
+            StringTableCell cell =  new StringTableCell<>();
+            cell.setAlignment(Pos.CENTER);
+            return cell;
+        });
+
         imageColumn.setCellValueFactory(tc -> {
             String textInCell;
             if(tc.getValue().getImage().isPresent())

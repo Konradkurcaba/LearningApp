@@ -37,14 +37,14 @@
                <children>
                   <Label minWidth="70.0" text="Nazwa:">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets top="12.0" />
                      </HBox.margin>
                   </Label>
-                  <VBox maxWidth="350.0" minHeight="60.0" HBox.hgrow="ALWAYS">
+                  <VBox maxWidth="350.0" HBox.hgrow="ALWAYS">
                      <children>
                         <StackPane alignment="TOP_CENTER" prefHeight="40.0">
                            <children>
-                              <TextField fx:id="nameTf" alignment="TOP_LEFT" maxWidth="350.0" />
+                              <TextField fx:id="nameTf" alignment="TOP_LEFT" maxWidth="350.0" StackPane.alignment="CENTER" />
                            </children>
                         </StackPane>
                         <Label fx:id="correctName" minHeight="0.0" text="Label">
@@ -69,12 +69,16 @@
                <children>
                   <Label minWidth="70.0" text="Definicja:">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets top="12.0" />
                      </HBox.margin>
                   </Label>
                   <VBox maxWidth="350.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="definitionTf" maxWidth="350.0" minHeight="-Infinity" />
+                        <StackPane prefHeight="40.0">
+                           <children>
+                              <TextField fx:id="definitionTf" maxWidth="350.0" minHeight="-Infinity" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
                         <Label fx:id="correctDefinition" text="Label" />
                      </children>
                      <HBox.margin>

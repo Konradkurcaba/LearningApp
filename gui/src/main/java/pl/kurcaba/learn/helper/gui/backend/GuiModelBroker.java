@@ -14,6 +14,7 @@ import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -105,7 +106,12 @@ public class GuiModelBroker {
         });
     }
 
-    private List<LearnCaseView> buildViewsForCurrentSet() {
+    private List<LearnCaseView> buildViewsForCurrentSet()
+    {
+        if(currentLearnSet == null)
+        {
+            return new ArrayList<>();
+        }
         return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
@@ -127,7 +133,13 @@ public class GuiModelBroker {
 
     private void updateUnsavedChangesProperty()
     {
-        hasUnsavedChanges.setValue(currentLearnSet.hasUnsavedChanges());
+        if(currentLearnSet != null)
+        {
+            hasUnsavedChanges.setValue(currentLearnSet.hasUnsavedChanges());
+        }else
+        {
+            hasUnsavedChanges.setValue(false);
+        }
     }
 
     private void updateIsLearnSetChosenProperty()
@@ -152,5 +164,16 @@ public class GuiModelBroker {
             logger.error(aEx);
             return null;
         }
+    }
+
+    public void removeLearnSet(LearnSetName learnSet)
+    {
+        boolean isCurrentSetToRemove = learnSet.equals(currentLearnSet.getLearnSetName());
+        if(isLearnSetChosenProperty().get() && isCurrentSetToRemove)
+        {
+            currentLearnSet = null;
+            updateProperties();
+        }
+        dataManager.removeLearnSet(learnSet);
     }
 }

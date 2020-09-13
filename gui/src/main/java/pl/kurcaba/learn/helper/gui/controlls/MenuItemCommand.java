@@ -11,9 +11,7 @@ public class MenuItemCommand extends MenuItem {
 
     public void setCommand(MainWindowCommand aCommand)
     {
-        setOnAction( aEvent -> {
-            aCommand.executeCommand();
-        });
+        setOnAction( aEvent -> aCommand.executeCommand());
     }
 
 }

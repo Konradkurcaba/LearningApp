@@ -12,4 +12,5 @@ public interface LearnSetDaoIf
     LearnSet getSetByName(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException;
     void saveChanges(LearnSet aSetToSave) throws IOException;
     void saveAs(LearnSet aSetToSave) throws IOException;
+    void remove(LearnSetName learnSet);
 }

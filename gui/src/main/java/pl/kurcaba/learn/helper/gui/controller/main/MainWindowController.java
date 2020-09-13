@@ -57,7 +57,8 @@ public class MainWindowController extends AbstractWindowController
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
                 , new ShowImageCommand(guiModelBroker, this));
         learnSetTable.setEditable(true);
-        learnSetListView.setCommand(new LearnSetFocusedCmd(guiModelBroker, this));
+        learnSetListView.setFocusCommand(new LearnSetFocusedCmd(guiModelBroker, this));
+        learnSetListView.setDeleteSetCommand(new RemoveSetCommand(guiModelBroker,this));
         refreshMainListData();
     }
 
@@ -74,8 +75,12 @@ public class MainWindowController extends AbstractWindowController
 
     void refreshSetData()
     {
+        LearnCaseView currentCase = learnSetTable.getSelectionModel().getSelectedItem();
+
         learnSetTable.getItems().clear();
         learnSetTable.getItems().addAll(new ArrayList<>(guiModelBroker.getCaseViews()));
+
+        learnSetTable.getSelectionModel().select(currentCase);
         startButton.updateState();
     }
 
@@ -96,14 +101,12 @@ public class MainWindowController extends AbstractWindowController
         return confirmDialogUtil.showConfirmWindow(aTextToDisplay);
     }
 
-    void refreshMainListData() throws IOException {
+    void refreshMainListData() throws IOException
+    {
         List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
-        boolean isListEmpty = learnSetListView.getItems().isEmpty();
         learnSetListView.setItems(FXCollections.observableArrayList(learnSetsNames));
-        if(isListEmpty)
-        {
-            learnSetListView.getSelectionModel().selectFirst();
-        }
+        learnSetListView.getSelectionModel().clearSelection();
+        refreshSetData();
     }
 
     void removeViewFromTable(LearnCaseView aView) {

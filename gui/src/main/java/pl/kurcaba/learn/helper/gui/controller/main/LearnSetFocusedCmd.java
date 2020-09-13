@@ -3,7 +3,6 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.IOException;
@@ -63,11 +62,5 @@ public class LearnSetFocusedCmd extends MainWindowCommand {
         windowController.refreshSetData();
     }
 
-    private ConfirmationStatus displayWarningWindow() {
-        ConfirmationStatus status = windowController
-                .displayConfirmDialog("Posiadasz niezapisane zmiany," +
-                        " czy chcesz kontynuwać ? Twoje zmiany nie zostaną zapisane.");
-        return status;
-    }
 }
 
