@@ -46,7 +46,7 @@ public class GuiModelBroker {
                 try {
                     learnCase.setImage(ImageConverter.convertToByte(aImage));
                 } catch (IOException e) {
-                    logger.error(e);
+                    logger.error("A problem has occurred:", e);
                 }
             }
         }else
@@ -161,7 +161,7 @@ public class GuiModelBroker {
                 return null;
             }
         } catch (IOException aEx) {
-            logger.error(aEx);
+            logger.error("A problem has occurred:", aEx);
             return null;
         }
     }

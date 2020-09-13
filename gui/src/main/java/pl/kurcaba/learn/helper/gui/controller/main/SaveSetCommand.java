@@ -20,7 +20,7 @@ public class SaveSetCommand extends MainWindowCommand
         try {
             guiModelBroker.saveChanges();
         } catch (IOException aEx) {
-            logger.error(aEx);
+            logger.error("A problem has occurred:", aEx);
         }
     }
 

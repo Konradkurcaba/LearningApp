@@ -12,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
 
 public abstract class AbstractWindowDisplayer<T extends AbstractWindowController>
 {
@@ -21,10 +20,11 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
     private T controller;
 
 
-    protected Stage prepareStage(Path aFxmlFile)
+    protected Stage prepareStage(String aFxmlFileLocation)
     {
+
         URL fxmlPath = AbstractWindowDisplayer.class.getClassLoader()
-                .getResource(aFxmlFile.toString());
+                .getResource(aFxmlFileLocation);
         FXMLLoader loader = new FXMLLoader(fxmlPath);
 
         T controller = createController();
@@ -37,7 +37,7 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
             root = loader.load();
         } catch (IOException e) {
             //this really shouldn't happen
-            logger.error(e);
+            logger.error("A problem has occurred:", e);
         }
 
         Stage stage = createStage();

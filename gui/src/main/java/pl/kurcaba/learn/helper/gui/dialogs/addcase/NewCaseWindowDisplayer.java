@@ -5,12 +5,11 @@ import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
-import java.nio.file.Path;
 import java.util.Optional;
 
 public class NewCaseWindowDisplayer extends AbstractWindowDisplayer<AddCaseWindowController> {
 
-    private static final Path NEW_CASE_FXML = Path.of("fxml/add_new_case_panel.fxml");
+    private static final String NEW_CASE_FXML = "fxml/add_new_case_panel.fxml";
 
     public NewCaseWindowDisplayer() {
     }

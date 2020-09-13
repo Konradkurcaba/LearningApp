@@ -4,12 +4,11 @@ import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
-import java.nio.file.Path;
 import java.util.Optional;
 
 public class InputDialogDisplayer extends AbstractWindowDisplayer<TextInputWindowController> {
 
-    private static final Path INPUT_DIALOG_FXML = Path.of("fxml/text_input_dialog.fxml");
+    private static final String INPUT_DIALOG_FXML = "fxml/text_input_dialog.fxml";
 
     @Override
     protected TextInputWindowController createController() {

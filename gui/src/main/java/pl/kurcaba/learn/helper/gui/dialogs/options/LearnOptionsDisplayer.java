@@ -3,13 +3,11 @@ package pl.kurcaba.learn.helper.gui.dialogs.options;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
 
-import java.nio.file.Path;
-
 import java.util.Optional;
 
 public class LearnOptionsDisplayer extends AbstractWindowDisplayer<LearnOptionsController> {
 
-    private final Path LEARN_OPTIONS_FXML = Path.of("fxml/learn_options_dialog.fxml");
+    private final String LEARN_OPTIONS_FXML = "fxml/learn_options_dialog.fxml";
 
     @Override
     protected LearnOptionsController createController() {

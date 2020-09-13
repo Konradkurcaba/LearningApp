@@ -35,9 +35,10 @@ public abstract class AbstractWindowController
         {
             initExitButton();
             initTopRegion();
-        }catch (NullPointerException aEx)
+        }
+        catch (NullPointerException aEx)
         {
-            logger.error(aEx);
+            logger.error("A problem has occurred:", aEx);
         }
     }
 

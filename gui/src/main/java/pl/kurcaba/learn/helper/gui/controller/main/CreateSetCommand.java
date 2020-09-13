@@ -31,7 +31,7 @@ public class CreateSetCommand extends MainWindowCommand
                 windowController.refreshMainListData();
             } catch (IOException | NonUniqueException aEx)
             {
-                logger.error(aEx);
+                logger.error("A problem has occurred:", aEx);
             }
         }
     }

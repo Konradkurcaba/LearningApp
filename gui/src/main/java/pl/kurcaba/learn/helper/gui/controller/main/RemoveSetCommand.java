@@ -35,7 +35,7 @@ public class RemoveSetCommand extends MainWindowCommand
                 guiModelBroker.removeLearnSet(learnSet);
                 windowController.refreshMainListData();
             } catch (IOException aException) {
-                logger.error(aException);
+                logger.error("A problem has occurred:", aException);
             }
         }
     }

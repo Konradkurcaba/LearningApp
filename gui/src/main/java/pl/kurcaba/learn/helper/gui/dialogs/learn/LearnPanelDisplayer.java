@@ -5,13 +5,11 @@ import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
-import java.nio.file.Path;
-
 import java.util.List;
 
 public class LearnPanelDisplayer extends AbstractWindowDisplayer<LearnPanelController> {
 
-    public static final Path FXML = Path.of("fxml/learn_panel.fxml");
+    public static final String FXML = "fxml/learn_panel.fxml";
 
     private final LearnOptions learnOptions;
     private final List<LearnCaseView> learnCases;

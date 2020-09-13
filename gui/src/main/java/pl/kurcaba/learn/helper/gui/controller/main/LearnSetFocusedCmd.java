@@ -35,7 +35,7 @@ public class LearnSetFocusedCmd extends MainWindowCommand {
                 }
 
             } catch (IOException | ClassNotFoundException aEx) {
-                logger.error(aEx);
+                logger.error("A problem has occurred:", aEx);
             }
         }
     }
