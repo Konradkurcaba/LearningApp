@@ -10,6 +10,7 @@ import javafx.stage.StageStyle;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.main.MainWindowController;
 import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
+import pl.kurcaba.learn.helper.log.LoggerExceptionHandler;
 
 import java.net.URL;
 
@@ -18,6 +19,8 @@ public class FXApplication extends Application
     @Override
     public void start(Stage aPrimaryStage) throws Exception
     {
+
+        Thread.setDefaultUncaughtExceptionHandler(new LoggerExceptionHandler());
 
         URL mainFxml = FXApplication.class.getClassLoader()
                 .getResource("fxml/main_panel.fxml");

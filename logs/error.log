@@ -42,3 +42,13 @@
 	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-11.0.2-win.jar:?]
 	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-11.0.2-win.jar:?]
 	at java.lang.Thread.run(Thread.java:834) [?:?]
+15:07:59.674 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.main.CreateSetCommand - A problem has occurred: pl.kurcaba.learn.helper.learnset.values.NonUniqueException: Learn set name must be unique
+	at pl.kurcaba.learn.helper.learnset.model.LearnDataManager.createNewLearnSet(LearnDataManager.java:32)
+	at pl.kurcaba.learn.helper.gui.backend.GuiModelBroker.createNewLearnSet(GuiModelBroker.java:37)
+	at pl.kurcaba.learn.helper.gui.controller.main.CreateSetCommand.executeCommand(CreateSetCommand.java:30)
+	at pl.kurcaba.learn.helper.gui.controlls.CommandButton.lambda$setCommand$0(CommandButton.java:25)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) 

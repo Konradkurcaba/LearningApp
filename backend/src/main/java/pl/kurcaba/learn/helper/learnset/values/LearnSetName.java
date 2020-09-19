@@ -7,15 +7,16 @@ public class LearnSetName implements Serializable {
 
     private final String name;
 
-    public LearnSetName(String name) {
+    public LearnSetName(String name) throws LearnSetNameFormatException
+    {
         if(name == null || name.isEmpty())
         {
-            throw new IllegalArgumentException("Learn Set Name cannot be null or empty");
+            throw new LearnSetNameFormatException("Learn Set Name cannot be null or empty");
         }
         boolean isNameCorrect = name.matches("[0-9a-zA-Z_!\\-]+");
         if(!isNameCorrect)
         {
-            throw new IllegalArgumentException("Learn Set name contains wrong signs");
+            throw new LearnSetNameFormatException("Learn Set name contains wrong signs");
         }
         this.name = name;
     }

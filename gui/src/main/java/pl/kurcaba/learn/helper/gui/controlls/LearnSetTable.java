@@ -10,7 +10,11 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.input.ContextMenuEvent;
 import pl.kurcaba.learn.helper.gui.controller.main.DeleteCaseCommand;
 import pl.kurcaba.learn.helper.gui.controller.main.ShowImageCommand;
+import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
+
+import java.util.ListResourceBundle;
+import java.util.ResourceBundle;
 
 public class LearnSetTable extends TableView<LearnCaseView> {
 
@@ -20,17 +24,20 @@ public class LearnSetTable extends TableView<LearnCaseView> {
         initColumns();
         initContextMenu(aDeleteCmd, aShowImageCmd);
 
-        Label emptyTable = new Label("Brak danych do wyświetlenia");
+        ResourceBundle textBundle = ListResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
+        Label emptyTable = new Label(textBundle.getString("noDataToDisplay"));
         setPlaceholder(emptyTable);
     }
 
     private void initContextMenu(DeleteCaseCommand aDeleteCmd, ShowImageCommand aShowImageCmd) {
         ContextMenu tableMenu = new ContextMenu();
-        MenuItemCommand deleteItem = new MenuItemCommand("Usuń");
+
+        ResourceBundle textBundle = ResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
+        MenuItemCommand deleteItem = new MenuItemCommand(textBundle.getString("deleteAction"));
         deleteItem.setCommand(aDeleteCmd);
         tableMenu.getItems().add(deleteItem);
 
-        MenuItemCommand showImageItem = new MenuItemCommand("Pokaż obraz");
+        MenuItemCommand showImageItem = new MenuItemCommand(textBundle.getString("showImageAction"));
         showImageItem.setCommand(aShowImageCmd);
         tableMenu.getItems().add(showImageItem);
 

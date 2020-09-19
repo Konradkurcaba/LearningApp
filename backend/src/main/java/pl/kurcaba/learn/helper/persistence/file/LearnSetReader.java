@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
-import pl.kurcaba.learn.helper.learnset.model.LearnSet;
+import pl.kurcaba.learn.helper.learnset.values.LearnSetNameFormatException;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.*;
@@ -26,8 +26,20 @@ public class LearnSetReader
                 .map(Path::getFileName)
                 .map(Path::toString)
                 .map(name -> name.replace("." + FILE_EXTENSION, ""))
-                .map(LearnSetName::new)
+                .map(this::createLearnSetName)
                 .collect(Collectors.toList());
+    }
+
+    private LearnSetName createLearnSetName(String aName)
+    {
+        try
+        {
+            return new LearnSetName(aName);
+        } catch (LearnSetNameFormatException formatException)
+        {
+            //we expect it is not going to happen, because names read from the disc should have a correct format.
+            throw new RuntimeException(formatException);
+        }
     }
 
     public LearnSetDto readLearnSet(File aFileToRead) throws IOException, ClassNotFoundException {

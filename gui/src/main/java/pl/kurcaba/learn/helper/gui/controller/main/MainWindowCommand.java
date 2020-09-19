@@ -4,6 +4,7 @@ import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
+import java.util.ListResourceBundle;
 import java.util.ResourceBundle;
 
 public abstract class MainWindowCommand implements CommandIf{
@@ -33,7 +34,7 @@ public abstract class MainWindowCommand implements CommandIf{
 
     private ConfirmationStatus displayWarningWindow()
     {
-        ResourceBundle textBundle = ResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
+        ResourceBundle textBundle = ListResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
         return windowController.displayConfirmDialog(textBundle.getString("unsavedChangesWarning"));
     }
 
