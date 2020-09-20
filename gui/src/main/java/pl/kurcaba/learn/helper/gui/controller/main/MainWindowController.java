@@ -2,6 +2,7 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
@@ -27,7 +28,14 @@ import java.util.Optional;
 public class MainWindowController extends AbstractWindowController
 {
 
+    public static final String GRAY_LINE_PNG = "images/gray-line.png";
     private GuiModelBroker guiModelBroker;
+
+    @FXML
+    private CommandButton minimizeButton;
+
+    @FXML
+    private ImageView minimizeImageView;
 
     @FXML
     private CommandButton newSet;
@@ -62,7 +70,8 @@ public class MainWindowController extends AbstractWindowController
         refreshMainListData();
     }
 
-    private void initButtons() {
+    private void initButtons()
+    {
         newSet.setCommand(new CreateSetCommand(guiModelBroker, this));
         addNewCase.setCommand(new AddCaseCommand(guiModelBroker, this));
         addNewCase.updateState();
@@ -71,6 +80,8 @@ public class MainWindowController extends AbstractWindowController
         addNewCase.disableProperty().bind(guiModelBroker.isLearnSetChosenProperty().not());
         startButton.setCommand(new StartLearnCommand(guiModelBroker, this));
         startButton.updateState();
+        minimizeButton.setCommand(new MinimizeWindowCommand(guiModelBroker,this));
+        minimizeImageView.setImage(getImage(GRAY_LINE_PNG));
     }
 
     void refreshSetData()
@@ -150,6 +161,11 @@ public class MainWindowController extends AbstractWindowController
     {
         LearnOptionsDisplayer learnOptionsDisplayer = new LearnOptionsDisplayer();
         return learnOptionsDisplayer.displayPanel();
+    }
+
+    void setWindowIconified(boolean isIconified)
+    {
+        getStage().setIconified(isIconified);
     }
 
     void closeApplication()

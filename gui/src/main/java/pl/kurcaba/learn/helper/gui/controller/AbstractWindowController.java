@@ -70,7 +70,7 @@ public abstract class AbstractWindowController
         });
     }
 
-    private Image getImage(String aPath)
+    protected Image getImage(String aPath)
     {
         InputStream imageStream = this.getClass().getClassLoader().getResourceAsStream(aPath);
         return new Image(imageStream);

@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.gui.controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -44,6 +45,7 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
         controller.setStage(stage);
         Scene newScene = createScene(root);
         stage.setScene(newScene);
+        stage.getIcons().add(new Image("images/icon.png"));
 
         return stage;
     }

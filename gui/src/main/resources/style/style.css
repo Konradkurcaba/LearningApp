@@ -29,7 +29,15 @@
     -fx-text-fill: #e6e6e6;
 }
 
-#exitButton{
+#exitButton
+{
+  -fx-background-radius: 0;
+  -fx-border-radius: 0;
+  -fx-background-color: transparent;
+}
+
+#minimizeButton
+{
   -fx-background-radius: 0;
   -fx-border-radius: 0;
   -fx-background-color: transparent;
@@ -40,8 +48,15 @@
     -fx-background-radius: 0 6 0 0;
 }
 
+#minimizeButton:hover
+{
+  -fx-background-color: #525252;
+}
+
+
+
 .button:hover{
-    -fx-background-color: -fx-app-focus-color;
+    -fx-background-color: #a6a6a6;
 }
 
 .text-field{

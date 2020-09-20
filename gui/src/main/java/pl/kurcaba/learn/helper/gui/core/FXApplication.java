@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -39,7 +40,9 @@ public class FXApplication extends Application
         mainScene.setFill(Color.TRANSPARENT);
         mainScene.getStylesheets().add("style/style.css");
 
+
         aPrimaryStage.setScene(mainScene);
+        aPrimaryStage.getIcons().add(new Image("images/icon.png"));
         aPrimaryStage.initStyle(StageStyle.TRANSPARENT);
         aPrimaryStage.setTitle("Aplikacja do nauki");
         aPrimaryStage.show();
