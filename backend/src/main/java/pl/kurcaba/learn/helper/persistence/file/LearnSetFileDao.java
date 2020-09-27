@@ -38,9 +38,11 @@ public class LearnSetFileDao implements LearnSetDaoIf
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException {
+    public void saveChanges(LearnSet aSetToSave) throws IOException
+    {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if (!aFileToSave.exists()) {
+        if (!aFileToSave.exists())
+        {
             saveAs(aSetToSave);
         }
         FileObjectWriter objectWriter = new FileObjectWriter();
@@ -50,9 +52,11 @@ public class LearnSetFileDao implements LearnSetDaoIf
     }
 
     @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException {
+    public void saveAs(LearnSet aSetToSave) throws IOException
+    {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if (aFileToSave.exists()) {
+        if (aFileToSave.exists())
+        {
             throw new IOException("The set cannot be saved, a set with similar filename already exists");
         }
         LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);

@@ -5,6 +5,7 @@ import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LearnSetDto implements Serializable {
@@ -25,5 +26,21 @@ public class LearnSetDto implements Serializable {
         return new LearnSet(learnSetName, learnCases.stream()
                 .map(LearnCaseDto::toLearnCase)
                 .collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LearnSetDto that = (LearnSetDto) o;
+        return Objects.equals(learnSetName, that.learnSetName) &&
+                Objects.equals(learnCases, that.learnCases);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(learnSetName, learnCases);
     }
 }

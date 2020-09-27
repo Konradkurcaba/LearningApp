@@ -96,7 +96,7 @@ public class ScreenCaptureController
                 Rectangle2D region = new Rectangle2D(xPosition, yPosition, drawnRectangle.getWidth()
                         , drawnRectangle.getHeight());
 
-                new Robot().getScreenCapture(screenShot, region);
+                new Robot().getScreenCapture(screenShot, region, false);
                 this.screenShot = screenShot;
             }
 
