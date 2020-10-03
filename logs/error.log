@@ -1,84 +1,20 @@
-15:20:17.368 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:20:53.795 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:21:48.571 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:23:13.679 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:23:27.544 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:24:07.697 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:24:26.181 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:25:14.862 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:28:21.407 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
-15:31:08.806 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:31:16.570 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:31:49.060 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:33:44.399 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:34:04.027 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:34:25.435 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:35:55.017  [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException
- 15:36:44.014 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - java.lang.NullPointerException 
- 15:38:17.264 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - problem 
- java.lang.NullPointerException: null
-	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowController.initialize(AbstractWindowController.java:40) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:76) ~[javafx-base-11.0.2-win.jar:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
-	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:273) ~[javafx-base-11.0.2-win.jar:?]
-	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:83) ~[javafx-fxml-11.0.2-win.jar:?]
-	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2591) ~[javafx-fxml-11.0.2-win.jar:?]
-	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466) ~[javafx-fxml-11.0.2-win.jar:?]
-	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435) ~[javafx-fxml-11.0.2-win.jar:?]
-	at pl.kurcaba.learn.helper.gui.core.FXApplication.start(FXApplication.java:29) ~[classes/:?]
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:846) ~[javafx-graphics-11.0.2-win.jar:?]
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:455) ~[javafx-graphics-11.0.2-win.jar:?]
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:428) ~[javafx-graphics-11.0.2-win.jar:?]
-	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:427) ~[javafx-graphics-11.0.2-win.jar:?]
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-11.0.2-win.jar:?]
-	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-11.0.2-win.jar:?]
-	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-11.0.2-win.jar:?]
-	at java.lang.Thread.run(Thread.java:834) [?:?]
-15:07:59.674 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.main.CreateSetCommand - A problem has occurred: pl.kurcaba.learn.helper.learnset.values.NonUniqueException: Learn set name must be unique
-	at pl.kurcaba.learn.helper.learnset.model.LearnDataManager.createNewLearnSet(LearnDataManager.java:32)
-	at pl.kurcaba.learn.helper.gui.backend.GuiModelBroker.createNewLearnSet(GuiModelBroker.java:37)
-	at pl.kurcaba.learn.helper.gui.controller.main.CreateSetCommand.executeCommand(CreateSetCommand.java:30)
-	at pl.kurcaba.learn.helper.gui.controlls.CommandButton.lambda$setCommand$0(CommandButton.java:25)
-	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
-	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) 
-13:26:32.916 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowController - A problem has occurred: java.lang.NullPointerException
-	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowController.initExitButton(AbstractWindowController.java:50)
-	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowController.initialize(AbstractWindowController.java:36)
+11:11:29.260 [main] ERROR pl.kurcaba.learn.helper.log.LoggerExceptionHandler - An exception has occurred java.lang.reflect.InvocationTargetException
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:76)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1051)
+Caused by: java.lang.RuntimeException: Exception in Application start method
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:900)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
+	at java.base/java.lang.Thread.run(Thread.java:834) 
+11:11:34.951 [main] ERROR pl.kurcaba.learn.helper.log.LoggerExceptionHandler - An exception has occurred java.lang.reflect.InvocationTargetException
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) 
-13:26:32.936 [main] ERROR pl.kurcaba.learn.helper.log.LoggerExceptionHandler - An exception has occurred java.lang.RuntimeException: Exception in Application start method
-	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:900)
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.lang.NullPointerException
-	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowController.setStage(AbstractWindowController.java:82)
-	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.initController(MainWindowController.java:54)
-	at pl.kurcaba.learn.helper.gui.core.FXApplication.start(FXApplication.java:37)
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:846)
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:455) 
-13:38:55.601 [main] ERROR pl.kurcaba.learn.helper.log.LoggerExceptionHandler - An exception has occurred java.lang.RuntimeException: Exception in Application start method
-	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:900)
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.lang.NullPointerException: Input stream must not be null
-	at javafx.scene.image.Image.validateInputStream(Image.java:1117)
-	at javafx.scene.image.Image.<init>(Image.java:701)
-	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowController.getImage(AbstractWindowController.java:76)
-	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.initButtons(MainWindowController.java:84)
-	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.initController(MainWindowController.java:64) 
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1051)
+Caused by: java.lang.RuntimeException: Exception in Application start method
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:900)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
+	at java.base/java.lang.Thread.run(Thread.java:834) 
