@@ -8,10 +8,10 @@ import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 import pl.kurcaba.learn.helper.learnset.model.LearnCase;
-import pl.kurcaba.learn.helper.learnset.model.LearnDataManager;
 import pl.kurcaba.learn.helper.learnset.model.LearnSet;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
+import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,18 +23,19 @@ public class GuiModelBroker {
 
     private static final Logger logger = LogManager.getLogger(GuiModelBroker.class);
 
-    private final LearnDataManager dataManager;
+    private final LearnSetDaoIf LearnSetDao;
     private LearnSet currentLearnSet;
     private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
     private final BooleanProperty isLearnSetChosen  = new SimpleBooleanProperty(false);
 
 
-    public GuiModelBroker(LearnDataManager aDataManager) {
-        dataManager = aDataManager;
+    public GuiModelBroker(LearnSetDaoIf aLearnSetDao)
+    {
+        LearnSetDao = aLearnSetDao;
     }
 
     public void createNewLearnSet(LearnSetName learnSetName) throws IOException, NonUniqueException {
-        currentLearnSet = dataManager.createNewLearnSet(learnSetName);
+        currentLearnSet = LearnSetDao.createNewLearnSet(learnSetName);
         updateProperties();
     }
 
@@ -70,17 +71,17 @@ public class GuiModelBroker {
     }
 
     public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException {
-        currentLearnSet = dataManager.getLearnSet(aSetName);
+        currentLearnSet = LearnSetDao.getSetByName(aSetName);
         updateProperties();
     }
 
     public void saveChanges() throws IOException {
-        dataManager.save(currentLearnSet);
+        LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }
 
     public List<LearnSetName> getAllSetsNames() throws IOException {
-        return dataManager.getAllSetsNames();
+        return LearnSetDao.getAllNames();
     }
 
     public List<LearnCaseView> getCaseViews() {
@@ -174,6 +175,6 @@ public class GuiModelBroker {
             currentLearnSet = null;
             updateProperties();
         }
-        dataManager.removeLearnSet(learnSet);
+        LearnSetDao.remove(learnSet);
     }
 }

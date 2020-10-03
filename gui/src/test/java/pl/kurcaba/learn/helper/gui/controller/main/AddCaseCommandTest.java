@@ -73,7 +73,7 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", Optional.empty(), ConfirmationStatus.CONFIRMED);
+                ,  "exampleDefinition", Optional.empty(), ConfirmationStatus.CONFIRMED);
         Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 

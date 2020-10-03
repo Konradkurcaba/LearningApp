@@ -2,14 +2,14 @@ package pl.kurcaba.learn.helper.persistence.file;
 
 import pl.kurcaba.learn.helper.learnset.model.LearnSet;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
-import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.persistence.AbstractLearnSetDao;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-public class LearnSetFileDao implements LearnSetDaoIf
+public class LearnSetFileDao extends AbstractLearnSetDao
 {
     public static String FILE_EXTENSION = "lap";
 

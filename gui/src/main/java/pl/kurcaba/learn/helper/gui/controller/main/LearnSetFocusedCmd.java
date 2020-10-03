@@ -9,22 +9,28 @@ import java.io.IOException;
 import java.util.Optional;
 
 
-public class LearnSetFocusedCmd extends MainWindowCommand {
+public class LearnSetFocusedCmd extends MainWindowCommand
+{
 
     private static final Logger logger = LogManager.getLogger(LearnSetFocusedCmd.class);
 
-    public LearnSetFocusedCmd(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
+    public LearnSetFocusedCmd(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController)
+    {
         super(aGuiModelBroker, aWindowController);
     }
 
     @Override
-    public void executeCommand() {
+    public void executeCommand()
+    {
         Optional<LearnSetName> focusedName = windowController.getFocusedLearnSet();
-        if (focusedName.isPresent()) {
-            try {
+        if (focusedName.isPresent())
+        {
+            try
+            {
                 boolean isNewNameFocused = isNewLearnSetFocused(focusedName);
-                if (isNewNameFocused) {
-                    if(canChangeLearnSet())
+                if (isNewNameFocused)
+                {
+                    if (canChangeLearnSet())
                     {
                         changeCurrentLearnSet(focusedName.get());
                     }
@@ -34,29 +40,36 @@ public class LearnSetFocusedCmd extends MainWindowCommand {
                     }
                 }
 
-            } catch (IOException | ClassNotFoundException aEx) {
+            } catch (IOException | ClassNotFoundException aEx)
+            {
                 logger.error("A problem has occurred:", aEx);
             }
         }
     }
 
     @Override
-    public boolean canBeExecuted() {
+    public boolean canBeExecuted()
+    {
         return true;
     }
 
-    private boolean isNewLearnSetFocused(Optional<LearnSetName> focusedName) {
+    private boolean isNewLearnSetFocused(Optional<LearnSetName> focusedName)
+    {
         boolean isNewNameFocused;
-        if (windowController.getDisplayedLearnSet().isPresent()) {
+        if (windowController.getDisplayedLearnSet().isPresent())
+        {
             isNewNameFocused = !focusedName.get().equals(windowController.getDisplayedLearnSet()
                     .get());
-        } else {
+        }
+        else
+        {
             isNewNameFocused = true;
         }
         return isNewNameFocused;
     }
 
-    private void changeCurrentLearnSet(LearnSetName focusedName) throws IOException, ClassNotFoundException {
+    private void changeCurrentLearnSet(LearnSetName focusedName) throws IOException, ClassNotFoundException
+    {
         guiModelBroker.changeCurrentSet(focusedName);
         windowController.setDisplayedLearnSet(focusedName);
         windowController.refreshSetData();
