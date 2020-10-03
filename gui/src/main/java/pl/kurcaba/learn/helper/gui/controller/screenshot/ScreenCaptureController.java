@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.gui.controller.screenshot;
 
-import javafx.geometry.Rectangle2D;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -10,11 +10,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.gui.screen.SnippingField;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Optional;
 
 public class ScreenCaptureController
@@ -29,6 +32,7 @@ public class ScreenCaptureController
     private Pane rootGroup;
     private Scene scene;
     private WritableImage screenShot;
+    private Logger LOG = LogManager.getLogger(ScreenCaptureController.class);
 
     public Optional<WritableImage> openScreenshotWindow()
     {
@@ -93,11 +97,20 @@ public class ScreenCaptureController
                 double xPosition = drawnRectangle.getX() + drawnRectangle.getTranslateX();
                 double yPosition = drawnRectangle.getY() + drawnRectangle.getTranslateY();
 
-                Rectangle2D region = new Rectangle2D(xPosition, yPosition, drawnRectangle.getWidth()
-                        , drawnRectangle.getHeight());
+                Rectangle region = new Rectangle((int) xPosition, (int) yPosition
+                        , (int) drawnRectangle.getWidth(), (int) drawnRectangle.getHeight());
 
-                new Robot().getScreenCapture(screenShot, region, false);
-                this.screenShot = screenShot;
+                //Swing is used, because when used Robot from Javafx, screen shot wasn't created
+                //on some computers
+                try
+                {
+                    BufferedImage swingScreenShot = new Robot().createScreenCapture(region);
+                    this.screenShot = SwingFXUtils.toFXImage(swingScreenShot, screenShot);
+                } catch (AWTException e)
+                {
+                    LOG.error("Cannot create screenshot, an unkown exception has occurred", e);
+                }
+
             }
 
         });
