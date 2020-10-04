@@ -43,16 +43,20 @@ public class GuiModelBroker {
         if(currentLearnSet != null)
         {
             LearnCase learnCase = currentLearnSet.createNewCase(newCaseName, newDefinition);
-            if(aImage != null) {
-                try {
+            if(aImage != null)
+            {
+                try
+                {
                     learnCase.setImage(ImageConverter.convertToByte(aImage));
                 } catch (IOException e) {
                     logger.error("A problem has occurred:", e);
                 }
             }
-        }else
+        }
+        else
         {
             logger.warn("Cannot create new case because set manager is not set");
+            throw new IllegalStateException("Set is not chosen by user");
         }
         updateProperties();
     }

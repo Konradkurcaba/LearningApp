@@ -25,5 +25,4 @@ public class NextCaseCmd extends AbstractLearnCmd {
         return controller.getCurrentCaseIndex() + 1 < controller.learnCases.size();
     }
 
-
 }
