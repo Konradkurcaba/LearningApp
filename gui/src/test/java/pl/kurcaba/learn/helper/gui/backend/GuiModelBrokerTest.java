@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.kurcaba.learn.helper.common.model.LearnCase;
+import pl.kurcaba.learn.helper.common.model.LearnSet;
+import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
+import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
+import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
-import pl.kurcaba.learn.helper.learnset.model.LearnCase;
-import pl.kurcaba.learn.helper.learnset.model.LearnSet;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetNameFormatException;
-import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
-import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
+
 
 import java.io.IOException;
 import java.util.LinkedHashSet;

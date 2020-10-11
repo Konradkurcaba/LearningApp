@@ -2,13 +2,14 @@ package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.gui.controller.main.MainWindowCommand;
 import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.util.ResourceBundle;
 
-public class LearnSetListView extends ListView<LearnSetName> {
+public class LearnSetListView extends ListView<LearnSetName>
+{
 
 
     private void initContextMenu(MainWindowCommand aDeleteCmd)

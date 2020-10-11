@@ -3,11 +3,11 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
+import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
+import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetNameFormatException;
-import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
 
 import java.io.IOException;
 import java.util.Optional;

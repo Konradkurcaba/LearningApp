@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
@@ -18,7 +19,6 @@ import pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptionsDisplayer;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import java.io.IOException;
 import java.util.ArrayList;

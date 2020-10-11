@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.gui.core;
 
-import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.persistence.file.FileObjectWriter;
 import pl.kurcaba.learn.helper.persistence.file.LearnSetFileDao;
 import pl.kurcaba.learn.helper.persistence.file.LearnSetReader;

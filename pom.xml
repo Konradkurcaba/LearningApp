@@ -10,7 +10,8 @@
 
     <version>1.0.2</version>
     <modules>
-        <module>backend</module>
+        <module>common</module>
+        <module>local-backend</module>
         <module>gui</module>
     </modules>
 

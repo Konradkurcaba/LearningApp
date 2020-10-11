@@ -5,13 +5,14 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.WritableImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.common.model.LearnCase;
+import pl.kurcaba.learn.helper.common.model.LearnSet;
+import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
+import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
-import pl.kurcaba.learn.helper.learnset.model.LearnCase;
-import pl.kurcaba.learn.helper.learnset.model.LearnSet;
-import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
-import pl.kurcaba.learn.helper.learnset.values.NonUniqueException;
-import pl.kurcaba.learn.helper.persistence.LearnSetDaoIf;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +35,8 @@ public class GuiModelBroker {
         LearnSetDao = aLearnSetDao;
     }
 
-    public void createNewLearnSet(LearnSetName learnSetName) throws IOException, NonUniqueException {
+    public void createNewLearnSet(LearnSetName learnSetName) throws IOException, NonUniqueException
+    {
         currentLearnSet = LearnSetDao.createNewLearnSet(learnSetName);
         updateProperties();
     }
