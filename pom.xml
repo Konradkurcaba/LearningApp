@@ -9,6 +9,11 @@
     <packaging>pom</packaging>
     <version>1.0.3-SNAPSHOT</version>
 
+    <properties>
+        <version.server.bom>20.0.1.Final</version.server.bom>
+        <backend.module.jar.name>backend</backend.module.jar.name>
+        <remote.module.ear.name>remote-ear-${version}</remote.module.ear.name>
+    </properties>
     <modules>
         <module>common</module>
         <module>local-backend</module>

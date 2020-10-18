@@ -1,16 +1,26 @@
 package pl.kurcaba.learn.helper.gui.core;
 
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.values.LearnSetName;
+import pl.kurcaba.learn.helper.ejb.EjbRegistry;
+import pl.kurcaba.learn.helper.persistence.file.FileObjectWriter;
 import pl.kurcaba.learn.helper.persistence.file.LearnSetFileDao;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Optional;
 
 public class GuiDataManager
 {
     public static final String DATA_DIRECTORY_NAME = "data";
 
-    public LearnSetDaoIf initializeDataManager()
+    public LearnSetDaoIf initializeLocalDataManager()
     {
         Path currentPath = Paths.get("").toAbsolutePath();
         Path pathToDataDirectory = Path.of(currentPath.toString(), DATA_DIRECTORY_NAME);
@@ -21,5 +31,12 @@ public class GuiDataManager
         }
 
         return new LearnSetFileDao(pathToDataDirectory);
+    }
+
+    public void initializeRemoteDataManager() throws NamingException, IOException
+    {
+        EjbRegistry.registerEjb(LearnSetDaoIf.class, "RemoteDao");
+        Optional<LearnSetDaoIf> dao = EjbRegistry.getRegisteredEjb(LearnSetDaoIf.class);
+        System.out.println(dao.get().getAllNames());
     }
 }
