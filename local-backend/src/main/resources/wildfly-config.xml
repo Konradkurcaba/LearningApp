@@ -1,0 +1,21 @@
+<configuration>
+    <authentication-client xmlns="urn:elytron:1.0">
+        <authentication-rules>
+            <rule use-configuration="default"/>
+        </authentication-rules>
+        <authentication-configurations>
+            <configuration name="default">
+                <sasl-mechanism-selector selector="DIGEST-MD5"/>
+                <set-user-name name="client"/>
+                <credentials>
+                    <clear-password password="client"/>
+                </credentials>
+            </configuration>
+        </authentication-configurations>
+    </authentication-client>
+    <endpoint xmlns="urn:jboss-remoting:5.0">
+        <connections>
+            <connection destination="http://localhost:8080/wildfly-services"></connection>
+        </connections>
+    </endpoint>
+</configuration>

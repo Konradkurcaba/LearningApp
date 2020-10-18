@@ -8,13 +8,20 @@
     <artifactId>learn.helper</artifactId>
     <packaging>pom</packaging>
 
+    <properties>
+        <version.server.bom>20.0.1.Final</version.server.bom>
+        <backend.module.jar.name>backend</backend.module.jar.name>
+        <remote.module.ear.name>remote-ear-${version}</remote.module.ear.name>
+    </properties>
+
     <version>1.0.2</version>
     <modules>
         <module>common</module>
         <module>local-backend</module>
+        <module>remote-backend</module>
         <module>gui</module>
+        <module>remote-ear</module>
     </modules>
-
 
     <build>
         <plugins>

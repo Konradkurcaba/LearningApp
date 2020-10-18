@@ -33,7 +33,7 @@ public class FXApplication extends Application
         Parent root = loader.load();
 
         GuiDataManager manager = new GuiDataManager();
-        LearnSetDaoIf daoIf = manager.initializeDataManager();
+        LearnSetDaoIf daoIf = manager.initializeLocalDataManager();
         mainViewController.initController(new GuiModelBroker(daoIf), aPrimaryStage);
 
         Scene mainScene = new Scene(root);
