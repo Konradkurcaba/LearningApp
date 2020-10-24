@@ -6,6 +6,7 @@ import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class LearnSetDto implements Serializable {
@@ -25,7 +26,7 @@ public class LearnSetDto implements Serializable {
     {
         return new LearnSet(learnSetName, learnCases.stream()
                 .map(LearnCaseDto::toLearnCase)
-                .collect(Collectors.toCollection(LinkedHashSet::new)));
+                .collect(Collectors.toCollection(TreeSet::new)));
     }
 
     @Override

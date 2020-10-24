@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
-public class LearnCaseDto implements Serializable {
+public class LearnCaseDto implements Serializable
+{
 
     private static final long serialVersionUID = 1L;
 
@@ -19,8 +20,9 @@ public class LearnCaseDto implements Serializable {
 
     private byte[] image;
 
-    public LearnCaseDto(LearnCase aLearnCase) {
-        this.id = aLearnCase.getId();
+    public LearnCaseDto(LearnCase aLearnCase)
+    {
+        this.id = UUID.fromString(aLearnCase.getUuid());
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
         this.image = aLearnCase.getImage();
@@ -29,13 +31,14 @@ public class LearnCaseDto implements Serializable {
 
     public LearnCase toLearnCase()
     {
-        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
-        restoredCase.setImage(image);
-        return restoredCase;
+//        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
+//        restoredCase.setImage(image);
+        return null;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LearnCaseDto that = (LearnCaseDto) o;
@@ -47,7 +50,8 @@ public class LearnCaseDto implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int result = Objects.hash(id, name, definition, isUsedToLearn);
         result = 31 * result + Arrays.hashCode(image);
         return result;

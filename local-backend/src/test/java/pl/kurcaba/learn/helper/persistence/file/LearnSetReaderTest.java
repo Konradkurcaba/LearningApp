@@ -16,10 +16,8 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.UUID;
+import java.time.Instant;
+import java.util.*;
 
 class LearnSetReaderTest {
 
@@ -34,7 +32,7 @@ class LearnSetReaderTest {
     private LearnCase createExampleLearnCase()
     {
         LearnCase learnCase = new LearnCase("name", "definition"
-                , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true);
+                , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true, Instant.now());
         byte[] dummyImage = new byte[2];
         learnCase.setImage(dummyImage);
         return learnCase;
@@ -63,7 +61,7 @@ class LearnSetReaderTest {
         //set up test
         Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
 
-        LearnSet learnSet = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        LearnSet learnSet = new LearnSet(new LearnSetName("exampleName"), new TreeSet<>());
         learnSet.addLearnCase(createExampleLearnCase());
 
         LearnSetDto dtoToWrite = new LearnSetDto(learnSet);
