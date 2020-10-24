@@ -16,11 +16,10 @@ import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
-
 import java.io.IOException;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.TreeSet;
 
 class GuiModelBrokerTest
 {
@@ -40,7 +39,7 @@ class GuiModelBrokerTest
     {
         //create example data
         testLearnSetName = new LearnSetName("exampleLearnSet");
-        testSet = new LearnSet(testLearnSetName, new LinkedHashSet<>());
+        testSet = new LearnSet(testLearnSetName, new TreeSet<>());
 
         //create DAO mock
         mockedDao = Mockito.mock(LearnSetDaoIf.class);
@@ -52,7 +51,7 @@ class GuiModelBrokerTest
         //initialization of the second set, used when tests needs more than one set.
         secondSetName = new LearnSetName("secondSet");
         exampleCase = new LearnCase("secondCase", "secondDefinition");
-        secondLearnSet = new LearnSet(secondSetName, new LinkedHashSet<>());
+        secondLearnSet = new LearnSet(secondSetName, new TreeSet<>());
     }
 
 

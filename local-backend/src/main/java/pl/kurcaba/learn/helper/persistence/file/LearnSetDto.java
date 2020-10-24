@@ -9,6 +9,7 @@ import pl.kurcaba.learn.helper.learnset.values.LearnSetNameFormatException;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**

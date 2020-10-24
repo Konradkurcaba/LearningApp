@@ -23,8 +23,9 @@ public class LearnCaseDto implements Serializable {
 
     private byte[] image;
 
-    public LearnCaseDto(LearnCase aLearnCase) {
-        this.id = aLearnCase.getId();
+    public LearnCaseDto(LearnCase aLearnCase)
+    {
+        this.id = UUID.fromString(aLearnCase.getUuid());
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
         if(aLearnCase.getImages().size() > 0)
@@ -42,7 +43,8 @@ public class LearnCaseDto implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LearnCaseDto that = (LearnCaseDto) o;
@@ -54,7 +56,8 @@ public class LearnCaseDto implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int result = Objects.hash(id, name, definition, isUsedToLearn);
         result = 31 * result + Arrays.hashCode(image);
         return result;

@@ -129,8 +129,11 @@ public class GuiModelBroker
     private void isUsedToLearnPropertyChanged(LearnCaseView caseView)
     {
         boolean newValue = caseView.isUsedToLearnProperty().get();
-        Optional<LearnCase> learnCase = currentLearnSet.getLearnSetCases().stream().filter(s -> s.getId().equals(caseView.getId())).findAny();
-        learnCase.ifPresent(foundCase -> {
+        Optional<LearnCase> learnCase = currentLearnSet.getLearnSetCases().stream()
+                .filter(s -> s.getUuid().equals(caseView.getId().toString()))
+                .findAny();
+        learnCase.ifPresent(foundCase ->
+        {
             foundCase.setUsedToLearn(newValue);
             hasUnsavedChanges.setValue(true);
         });
@@ -142,7 +145,13 @@ public class GuiModelBroker
         {
             return new ArrayList<>();
         }
-        return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId()).setName(learnCase.getName()).setDefinition(learnCase.getDefinition()).setImage(convertImage(learnCase.getImage())).setUsedToLearn(learnCase.isUsedToLearn()).build()).collect(Collectors.toList());
+        return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(UUID.fromString(learnCase.getUuid()))
+                .setName(learnCase.getName())
+                .setDefinition(learnCase.getDefinition())
+                .setImage(convertImage(learnCase.getImage()))
+                .setUsedToLearn(learnCase.isUsedToLearn())
+                .build())
+                .collect(Collectors.toList());
     }
 
     public BooleanProperty getUnsavedChangesProperty()
@@ -160,7 +169,8 @@ public class GuiModelBroker
         if (currentLearnSet != null)
         {
             hasUnsavedChanges.setValue(currentLearnSet.hasUnsavedChanges());
-        } else
+        }
+        else
         {
             hasUnsavedChanges.setValue(false);
         }
@@ -184,7 +194,8 @@ public class GuiModelBroker
             if (aImage != null)
             {
                 return ImageConverter.convertToImage(aImage);
-            } else
+            }
+            else
             {
                 return null;
             }
