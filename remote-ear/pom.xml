@@ -24,7 +24,7 @@
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>remote-backend</artifactId>
-                            <bundleFileName>${backend.module.ear.name}.jar</bundleFileName>
+                            <bundleFileName>${backend.module.jar.name}.jar</bundleFileName>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <jarModule>
@@ -35,7 +35,7 @@
                         </jarModule>
                     </modules>
                     <outputDirectory>${project.build.directory}/deployment</outputDirectory>
-                    <finalName>${remote.module.ear.name}.ear</finalName>
+                    <finalName>${remote.module.ear.name}</finalName>
                 </configuration>
             </plugin>
         </plugins>
