@@ -13,6 +13,7 @@
         <version.server.bom>20.0.1.Final</version.server.bom>
         <backend.module.jar.name>backend</backend.module.jar.name>
         <remote.module.ear.name>remote-ear-${version}</remote.module.ear.name>
+        <common.jar.name>common</common.jar.name>
     </properties>
     <modules>
         <module>common</module>

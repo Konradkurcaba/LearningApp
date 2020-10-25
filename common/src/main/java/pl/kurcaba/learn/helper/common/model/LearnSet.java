@@ -4,6 +4,8 @@ package pl.kurcaba.learn.helper.common.model;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
@@ -14,6 +16,8 @@ public class LearnSet extends BaseEntity
 {
     private final LearnSetName learnSetName;
 
+    @OneToMany(mappedBy = "parentLearnSet")
+    @OrderBy("createDate ASC")
     private final SortedSet<LearnCase> learnCases;
     private boolean hasUnsavedChanges = false;
 

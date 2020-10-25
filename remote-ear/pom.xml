@@ -23,14 +23,14 @@
                     <modules>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>remote-backend</artifactId>
-                            <bundleFileName>${backend.module.jar.name}.jar</bundleFileName>
+                            <artifactId>common</artifactId>
+                            <bundleFileName>${common.jar.name}.jar</bundleFileName>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>common</artifactId>
-                            <bundleFileName>common.jar</bundleFileName>
+                            <artifactId>remote-backend</artifactId>
+                            <bundleFileName>${backend.module.jar.name}.jar</bundleFileName>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                     </modules>
