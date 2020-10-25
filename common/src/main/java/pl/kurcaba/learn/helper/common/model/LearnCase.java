@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.common.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
@@ -12,6 +13,8 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     private String definition;
     private boolean isUsedToLearn;
     private final Instant createDate;
+    @JoinColumn
+    LearnSet parentLearnSet;
 
 
     private byte[] image;
