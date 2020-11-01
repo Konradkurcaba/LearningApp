@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.core;
+package pl.kurcaba.learn.helper.gui.backend;
 
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
@@ -33,10 +33,16 @@ public class GuiDataManager
         return new LearnSetFileDao(pathToDataDirectory);
     }
 
-    public void initializeRemoteDataManager() throws NamingException, IOException
+    public LearnSetDaoIf initializeRemoteDataManager() throws NamingException, IOException
     {
         EjbRegistry.registerEjb(LearnSetDaoIf.class, "RemoteDao");
         Optional<LearnSetDaoIf> dao = EjbRegistry.getRegisteredEjb(LearnSetDaoIf.class);
-        System.out.println(dao.get().getAllNames());
+        if(dao.isPresent())
+        {
+            return dao.get();
+        }else
+        {
+            throw new IllegalStateException("Remote dao is not registered");
+        }
     }
 }

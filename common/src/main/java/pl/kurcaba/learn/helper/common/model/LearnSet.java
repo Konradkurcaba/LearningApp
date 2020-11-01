@@ -3,9 +3,7 @@ package pl.kurcaba.learn.helper.common.model;
 
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
+import javax.persistence.*;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
@@ -14,17 +12,22 @@ import java.util.*;
 @Entity
 public class LearnSet extends BaseEntity
 {
-    private final LearnSetName learnSetName;
+    @Embedded
+    private LearnSetName learnSetName;
 
-    @OneToMany(mappedBy = "parentLearnSet")
+    @OneToMany(mappedBy = "parentLearnSet", fetch = FetchType.EAGER)
     @OrderBy("createDate ASC")
-    private final SortedSet<LearnCase> learnCases;
+    private SortedSet<LearnCase> learnCases;
     private boolean hasUnsavedChanges = false;
 
     public LearnSet(LearnSetName learnSetName, SortedSet<LearnCase> learnSetParts)
     {
         this.learnSetName = learnSetName;
         this.learnCases = learnSetParts;
+    }
+
+    public LearnSet()
+    {
     }
 
     public List<LearnCase> getLearnSetCases()
