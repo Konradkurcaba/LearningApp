@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.gui.backend.GuiDataManager;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.controller.main.MainWindowController;
 import pl.kurcaba.learn.helper.log.LoggerExceptionHandler;
@@ -33,7 +34,7 @@ public class FXApplication extends Application
         Parent root = loader.load();
 
         GuiDataManager manager = new GuiDataManager();
-        LearnSetDaoIf daoIf = manager.initializeLocalDataManager();
+        LearnSetDaoIf daoIf = manager.initializeRemoteDataManager();
         mainViewController.initController(new GuiModelBroker(daoIf), aPrimaryStage);
 
         Scene mainScene = new Scene(root);
