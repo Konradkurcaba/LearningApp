@@ -1,6 +1,5 @@
 package pl.kurcaba.learn.helper.common.model;
 
-
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 
 import javax.persistence.*;
@@ -15,7 +14,8 @@ public class LearnSet extends BaseEntity
     @Embedded
     private LearnSetName learnSetName;
 
-    @OneToMany(mappedBy = "parentLearnSet", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "parentLearnSet")
     @OrderBy("createDate ASC")
     private SortedSet<LearnCase> learnCases;
     private boolean hasUnsavedChanges = false;

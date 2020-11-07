@@ -34,17 +34,19 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException
+    public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
         fileWriter.writeLearnSetToFile(aSetToSave);
         aSetToSave.setSaved();
+        return aSetToSave;
     }
 
     @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException, NonUniqueException
+    public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
         fileWriter.writeNewSetToFile(aSetToSave);
         aSetToSave.setSaved();
+        return aSetToSave;
     }
 
     @Override

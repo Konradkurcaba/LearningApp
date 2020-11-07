@@ -1,6 +1,7 @@
 package pl.kurcaba.learn.helper.common.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.time.Instant;
@@ -15,7 +16,7 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     private String name;
     private String definition;
     private boolean isUsedToLearn;
-    private Instant createDate;
+    private Instant createDate = Instant.now();
 
     @OneToOne
     LearnSet parentLearnSet;
@@ -27,7 +28,6 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
         this.name = Objects.requireNonNullElse(name, "");
         this.definition = Objects.requireNonNullElse(definition, "");
         isUsedToLearn = true;
-        createDate = Instant.now();
     }
 
     public LearnCase()
@@ -109,6 +109,13 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     @Override
     public int compareTo(LearnCase learnCase)
     {
-        return this.createDate.compareTo(learnCase.createDate);
+        if(learnCase != null)
+        {
+            return this.createDate.compareTo(learnCase.createDate);
+        }
+        else
+        {
+            return 1;
+        }
     }
 }
