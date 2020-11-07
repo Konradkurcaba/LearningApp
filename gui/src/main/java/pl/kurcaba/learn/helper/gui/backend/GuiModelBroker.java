@@ -106,7 +106,7 @@ public class GuiModelBroker
 
     public void saveChanges() throws IOException
     {
-        currentLearnSet = LearnSetDao.saveChanges(currentLearnSet);
+        LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }
 
