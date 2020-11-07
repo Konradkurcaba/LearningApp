@@ -7,6 +7,8 @@ import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -39,18 +41,26 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
         entityManager.merge(aSetToSave);
+        aSetToSave.setSaved();
+        return aSetToSave;
     }
 
+
     @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
         entityManager.persist(aSetToSave);
+        aSetToSave.setSaved();
+        return aSetToSave;
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void remove(LearnSetName learnSet)
     {
         entityManager.remove(learnSet);

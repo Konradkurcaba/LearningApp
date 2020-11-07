@@ -38,7 +38,7 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException
+    public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
         if (!aFileToSave.exists())
@@ -49,10 +49,11 @@ public class LearnSetFileDao extends AbstractLearnSetDao
         LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
         objectWriter.writeObjectToFile(dtoToSave, aFileToSave);
         aSetToSave.setSaved();
+        return aSetToSave;
     }
 
     @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException
+    public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
         File aFileToSave = getFile(aSetToSave.getLearnSetName());
         if (aFileToSave.exists())
@@ -62,6 +63,7 @@ public class LearnSetFileDao extends AbstractLearnSetDao
         LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
         fileWriter.writeObjectToFile(dtoToSave, aFileToSave);
         aSetToSave.setSaved();
+        return aSetToSave;
     }
 
     @Override
