@@ -44,8 +44,8 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
-        entityManager.merge(aSetToSave);
         aSetToSave.setSaved();
+        entityManager.merge(aSetToSave);
         return aSetToSave;
     }
 
@@ -54,8 +54,8 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
-        entityManager.persist(aSetToSave);
         aSetToSave.setSaved();
+        entityManager.persist(aSetToSave);
         return aSetToSave;
     }
 
