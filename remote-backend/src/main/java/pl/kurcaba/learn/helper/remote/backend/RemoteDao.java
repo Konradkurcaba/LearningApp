@@ -6,6 +6,7 @@ import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -23,20 +24,21 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @PersistenceContext(unitName = "learnPersistenceUnit")
     private EntityManager entityManager;
 
+    @EJB
+    private LearnSetValidator validator;
+
     @Override
     public List<LearnSetName> getAllNames()
     {
-        TypedQuery<LearnSetName> allNamesQuery
-                = entityManager.createQuery(DaoConstants.ALL_NAMES_QUERY, LearnSetName.class);
+        TypedQuery<LearnSetName> allNamesQuery = entityManager.createQuery(DaoConstants.ALL_NAMES_QUERY, LearnSetName.class);
         return allNamesQuery.getResultList();
     }
 
     @Override
     public LearnSet getSetByName(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException
     {
-        TypedQuery<LearnSet> learnSetByName
-                = entityManager.createQuery(DaoConstants.LEARN_SET_BY_NAME, LearnSet.class);
-        learnSetByName.setParameter(1,aLearnSetName);
+        TypedQuery<LearnSet> learnSetByName = entityManager.createQuery(DaoConstants.LEARN_SET_BY_NAME, LearnSet.class);
+        learnSetByName.setParameter(1, aLearnSetName);
         return learnSetByName.getSingleResult();
     }
 
@@ -54,16 +56,22 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
-        aSetToSave.setSaved();
-        entityManager.persist(aSetToSave);
-        return aSetToSave;
+        if (validator.checkIfSetIsCorrect(aSetToSave))
+        {
+            aSetToSave.setSaved();
+            entityManager.persist(aSetToSave);
+            return aSetToSave;
+        } else
+            throw new IllegalArgumentException("A given learn set has not been validated correctly");
     }
 
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void remove(LearnSetName learnSet)
     {
-        entityManager.remove(learnSet);
+        Query query = entityManager.createQuery("DELETE FROM LearnSet l WHERE l.learnSetName = ?1");
+        query.setParameter(1, learnSet);
+        query.executeUpdate();
     }
 
 }
