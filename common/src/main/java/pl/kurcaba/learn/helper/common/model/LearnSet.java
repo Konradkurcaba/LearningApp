@@ -7,10 +7,16 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
 
+@NamedQueries(
+        {
+            @NamedQuery(name = ModelConstants.GET_LEARN_SET_BY_NAME, query = "SELECT l FROM LearnSet l WHERE l.learnSetName = ?1"),
+            @NamedQuery(name = ModelConstants.GET_ALL_SET_NAMES, query = "SELECT s.learnSetName FROM LearnSet s")
+        })
 @Entity
 public class LearnSet extends BaseEntity
 {
     @Embedded
+    @Column(unique = true)
     private LearnSetName learnSetName;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -89,7 +89,7 @@ public class GuiModelBroker
 
     public void saveChanges() throws IOException
     {
-        LearnSetDao.saveChanges(currentLearnSet);
+        currentLearnSet = LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }
 

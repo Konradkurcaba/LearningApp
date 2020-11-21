@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.remote.backend;
 import pl.kurcaba.learn.helper.common.model.AbstractLearnSetDao;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.model.ModelConstants;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 
@@ -30,14 +31,14 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @Override
     public List<LearnSetName> getAllNames()
     {
-        TypedQuery<LearnSetName> allNamesQuery = entityManager.createQuery(DaoConstants.ALL_NAMES_QUERY, LearnSetName.class);
+        TypedQuery<LearnSetName> allNamesQuery = entityManager.createNamedQuery(ModelConstants.GET_ALL_SET_NAMES, LearnSetName.class);
         return allNamesQuery.getResultList();
     }
 
     @Override
     public LearnSet getSetByName(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException
     {
-        TypedQuery<LearnSet> learnSetByName = entityManager.createQuery(DaoConstants.LEARN_SET_BY_NAME, LearnSet.class);
+        TypedQuery<LearnSet> learnSetByName = entityManager.createNamedQuery(ModelConstants.GET_LEARN_SET_BY_NAME, LearnSet.class);
         learnSetByName.setParameter(1, aLearnSetName);
         return learnSetByName.getSingleResult();
     }
@@ -47,8 +48,8 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
         aSetToSave.setSaved();
-        entityManager.merge(aSetToSave);
-        return aSetToSave;
+        LearnSet merged = entityManager.merge(aSetToSave);
+        return merged;
     }
 
 
