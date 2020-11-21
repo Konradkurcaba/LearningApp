@@ -6,7 +6,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
-import pl.kurcaba.learn.helper.gui.concurrency.GetAllLearnSetNamesService;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.controlls.LearnSetListView;
@@ -117,11 +116,11 @@ public class MainWindowController extends AbstractWindowController
 
     void refreshMainListData()
     {
-        GetAllLearnSetNamesService getNamesService = new GetAllLearnSetNamesService(guiModelBroker);
-        getNamesService.setOnSucceeded(value -> doRefresh(getNamesService.getValue()));
-        getNamesService.start();
+        GetAllNamesAsyncCommand getAllNames = new GetAllNamesAsyncCommand(guiModelBroker, this);
+        getAllNames.start();
     }
-    private void doRefresh(List<LearnSetName> names)
+
+    void changeLearnSetNames(List<LearnSetName> names)
     {
         learnSetListView.setItems(FXCollections.observableArrayList(names));
         learnSetListView.getSelectionModel().clearSelection();
