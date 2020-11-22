@@ -5,7 +5,8 @@ import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.model.ModelConstants;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
-import pl.kurcaba.learn.helper.common.values.NonUniqueException;
+import pl.kurcaba.learn.helper.remote.backend.messaging.MessageQueueSender;
+import pl.kurcaba.learn.helper.remote.backend.messaging.MessageTopicSender;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,6 +29,12 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     @EJB
     private LearnSetValidator validator;
 
+    @EJB
+    private MessageQueueSender sender;
+
+    @EJB
+    private MessageTopicSender messageSender;
+
     @Override
     public List<LearnSetName> getAllNames()
     {
@@ -40,6 +47,7 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     {
         TypedQuery<LearnSet> learnSetByName = entityManager.createNamedQuery(ModelConstants.GET_LEARN_SET_BY_NAME, LearnSet.class);
         learnSetByName.setParameter(1, aLearnSetName);
+        sender.sendMessage(null);
         return learnSetByName.getSingleResult();
     }
 
@@ -49,7 +57,9 @@ public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
     {
         aSetToSave.setSaved();
         LearnSet merged = entityManager.merge(aSetToSave);
+        messageSender.sendMessage(aSetToSave);
         return merged;
+
     }
 
 
