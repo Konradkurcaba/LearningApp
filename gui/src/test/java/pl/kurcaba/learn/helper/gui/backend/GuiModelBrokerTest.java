@@ -90,8 +90,7 @@ class GuiModelBrokerTest
     {
 
         //a real test
-        Assertions.assertThrows(IllegalStateException.class,
-                () -> modelBroker.createNewCase("caseName", "caseDefinition"));
+        Assertions.assertThrows(IllegalStateException.class, () -> modelBroker.createNewCase("caseName", "caseDefinition"));
     }
 
     @Test
@@ -110,8 +109,7 @@ class GuiModelBrokerTest
         //Assertion
         WritableImage resultImage = caseView.getImage().get();
 
-        Assertions.assertEquals(testImage.getPixelReader().getColor(0, 0)
-                , resultImage.getPixelReader().getColor(0, 0));
+        Assertions.assertEquals(testImage.getPixelReader().getColor(0, 0), resultImage.getPixelReader().getColor(0, 0));
         Assertions.assertEquals(testImage.getHeight(), resultImage.getHeight());
         Assertions.assertEquals(testImage.getWidth(), resultImage.getWidth());
     }
@@ -189,8 +187,7 @@ class GuiModelBrokerTest
     }
 
     @Test
-    public void LearnCasesAreChangedWhenSetIsChanged() throws IOException, NonUniqueException
-            , LearnSetNameFormatException, ClassNotFoundException
+    public void LearnCasesAreChangedWhenSetIsChanged() throws IOException, NonUniqueException, LearnSetNameFormatException, ClassNotFoundException
     {
         //set up a test
         secondLearnSet.addLearnCase(exampleCase);
@@ -208,8 +205,7 @@ class GuiModelBrokerTest
     }
 
     @Test
-    public void hasUnsavedPropertyIsUpdatedAfterChangingCurrentLearnSet() throws IOException, NonUniqueException
-            , ClassNotFoundException
+    public void hasUnsavedPropertyIsUpdatedAfterChangingCurrentLearnSet() throws IOException, NonUniqueException, ClassNotFoundException
     {
         //set up a test
         secondLearnSet.addLearnCase(exampleCase);
@@ -245,6 +241,45 @@ class GuiModelBrokerTest
 
         //assertion
         Assertions.assertTrue(testSet.getLearnSetCases().get(0).isUsedToLearn());
+    }
+
+    @Test
+    public void editedCaseShouldBeAltered() throws IOException, NonUniqueException
+    {
+        //set up a test
+        testSet.addLearnCase(new LearnCase("testCase", "definition"));
+        modelBroker.createNewLearnSet(testLearnSetName);
+        LearnCaseView learnCaseView = modelBroker.getCaseViews().get(0);
+
+        //a real test
+        modelBroker.editCase(learnCaseView.getId(), "editedName"
+                , "editedDefinition", null);
+
+        //assertions
+        LearnCaseView editedView = modelBroker.getCaseViews().get(0);
+
+        Assertions.assertEquals("editedName", editedView.getName());
+        Assertions.assertEquals("editedDefinition", editedView.getDefinition());
+        Assertions.assertTrue(editedView.getImage().isEmpty());
+    }
+
+    @Test
+    public void editedCaseShouldBeInCorrectPlace() throws IOException, NonUniqueException
+    {
+        //set up a test
+        testSet.addLearnCase(new LearnCase("testCase0", "definition0"));
+        testSet.addLearnCase(new LearnCase("testCase1", "definition1"));
+        testSet.addLearnCase(new LearnCase("testCase2", "definition2"));
+        modelBroker.createNewLearnSet(testLearnSetName);
+        LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);
+
+        //a real test
+        modelBroker.editCase(learnCaseView.getId(), "editedName"
+                , "editedDefinition", null);
+
+        //assertions
+        LearnCaseView editedView = modelBroker.getCaseViews().get(1);
+        Assertions.assertEquals("editedName", editedView.getName());
     }
 
 
