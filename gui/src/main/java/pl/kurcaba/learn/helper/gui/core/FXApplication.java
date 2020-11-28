@@ -20,8 +20,6 @@ public class FXApplication extends Application
     public void start(Stage aPrimaryStage) throws Exception
     {
 
-
-
         URL mainFxml = FXApplication.class.getClassLoader()
                 .getResource("fxml/main_panel.fxml");
 

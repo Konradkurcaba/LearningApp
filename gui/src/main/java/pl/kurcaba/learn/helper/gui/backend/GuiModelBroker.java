@@ -10,6 +10,7 @@ import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
@@ -66,20 +67,21 @@ public class GuiModelBroker
         updateProperties();
     }
 
-    public void editCase(UUID aCaseId, String aNewCaseName, String aNewCaseDefinition, WritableImage aNewImage)
+    public void editCase(UUID aCaseId, NewCaseDto editedDto)
     {
         byte[] convertedImage = null;
-        if(aNewImage != null)
+        if(editedDto.getNewCaseImage().isPresent())
         {
             try
             {
-                convertedImage = ImageConverter.convertToByte(aNewImage);
+                convertedImage = ImageConverter.convertToByte(editedDto.getNewCaseImage().get());
             } catch (IOException e)
             {
                 logger.error("A problem has occurred:", e);
             }
         }
-        currentLearnSet.editCase(aCaseId, aNewCaseName, aNewCaseDefinition, convertedImage);
+        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition(), convertedImage);
+        updateProperties();
     }
 
     public void createNewCase(String newCaseName, String newDefinition)

@@ -54,6 +54,7 @@ public class LearnSet
        foundCase.setName(aName);
        foundCase.setDefinition(aDefinition);
        foundCase.setImage(aImage);
+       hasUnsavedChanges = true;
     }
 
     public LearnSetName getLearnSetName()

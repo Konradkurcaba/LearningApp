@@ -12,6 +12,8 @@ import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 
@@ -250,10 +252,10 @@ class GuiModelBrokerTest
         testSet.addLearnCase(new LearnCase("testCase", "definition"));
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(0);
-
+        NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
+                , Optional.empty(), ConfirmationStatus.CONFIRMED);
         //a real test
-        modelBroker.editCase(learnCaseView.getId(), "editedName"
-                , "editedDefinition", null);
+        modelBroker.editCase(learnCaseView.getId(), newCaseDto);
 
         //assertions
         LearnCaseView editedView = modelBroker.getCaseViews().get(0);
@@ -272,10 +274,11 @@ class GuiModelBrokerTest
         testSet.addLearnCase(new LearnCase("testCase2", "definition2"));
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);
+        NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
+                , Optional.empty(), ConfirmationStatus.CONFIRMED);
 
         //a real test
-        modelBroker.editCase(learnCaseView.getId(), "editedName"
-                , "editedDefinition", null);
+        modelBroker.editCase(learnCaseView.getId(), newCaseDto);
 
         //assertions
         LearnCaseView editedView = modelBroker.getCaseViews().get(1);

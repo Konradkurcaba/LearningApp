@@ -16,14 +16,14 @@ public class AddCaseWindowController extends AbstractWindowController
 {
 
     @FXML
-    private TextField nameTf;
+    protected TextField nameTf;
 
     @FXML
-    private TextField definitionTf;
+    protected TextField definitionTf;
 
     @FXML
     private Button makeScreenButton;
-    private WritableImage screen;
+    protected WritableImage screen;
 
     @FXML
     private Button okButton;
@@ -32,7 +32,7 @@ public class AddCaseWindowController extends AbstractWindowController
     private Button cancelButton;
 
     @FXML
-    private CheckBox choseCheckBox;
+    protected CheckBox choseCheckBox;
 
     private ConfirmationStatus userAction = ConfirmationStatus.REJECTED;
 

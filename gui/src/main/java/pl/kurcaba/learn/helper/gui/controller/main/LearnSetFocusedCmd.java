@@ -2,16 +2,15 @@ package pl.kurcaba.learn.helper.gui.controller.main;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 
 import java.io.IOException;
 import java.util.Optional;
 
-
 public class LearnSetFocusedCmd extends MainWindowCommand
 {
-
     private static final Logger logger = LogManager.getLogger(LearnSetFocusedCmd.class);
 
     public LearnSetFocusedCmd(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController)
