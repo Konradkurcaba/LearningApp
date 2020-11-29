@@ -8,6 +8,10 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * This class is used only for compliance with old saved files. Java serialization shouldn't be used to persistent data.
+ */
+@Deprecated
 public class LearnCaseDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
