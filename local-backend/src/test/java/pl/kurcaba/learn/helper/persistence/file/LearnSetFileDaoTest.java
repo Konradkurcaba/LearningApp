@@ -4,7 +4,6 @@ package pl.kurcaba.learn.helper.persistence.file;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.mockito.Mockito;
 import pl.kurcaba.learn.helper.common.model.LearnCase;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
@@ -34,20 +33,23 @@ class LearnSetFileDaoTest
         return new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
     }
 
+
     @Test
-    public void saveAsShouldCreateNewLearnSetFileWithV2Extension(@TempDir Path tempDir) throws LearnSetNameFormatException
+    public void savedFileShouldBeReadCorrectly(@TempDir Path tempDir) throws LearnSetNameFormatException
             , IOException
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(tempDir);
-        FileObjectWriter writer = new FileObjectWriter(tempDir);
+        LearnSetWriter writer = new LearnSetWriter(tempDir);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        LearnSet learnSetToWrite = createExampleLearnSet();
 
         //a real test
         fileDao.saveAs(createExampleLearnSet());
+        LearnSet readLearnSet = reader.readLearnSet(learnSetToWrite.getLearnSetName());
 
         //assertion
-        Assertions.assertTrue(Path.of(tempDir.toString(), "exampleName.xdp").toFile().exists());
+        Assertions.assertEquals(learnSetToWrite, readLearnSet);
     }
 
     @Test
@@ -56,7 +58,7 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(tempDir);
-        FileObjectWriter writer = new FileObjectWriter(tempDir);
+        LearnSetWriter writer = new LearnSetWriter(tempDir);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
 
         //a real test
@@ -73,7 +75,7 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(tempDir);
-        FileObjectWriter writer = new FileObjectWriter(tempDir);
+        LearnSetWriter writer = new LearnSetWriter(tempDir);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
         LearnSet exampleLearnSet = createExampleLearnSet();
         fileDao.saveAs(exampleLearnSet);
@@ -94,7 +96,7 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(tempDir);
-        FileObjectWriter writer = new FileObjectWriter(tempDir);
+        LearnSetWriter writer = new LearnSetWriter(tempDir);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
         LearnSet exampleLearnSet = createExampleLearnSet();
         fileDao.saveAs(exampleLearnSet);
@@ -110,7 +112,7 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(aTempPath);
-        FileObjectWriter writer = new FileObjectWriter(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
         Paths.get(aTempPath.toString(), "exampleFile.lap").toFile().createNewFile();
 
@@ -126,7 +128,7 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(aTempPath);
-        FileObjectWriter writer = new FileObjectWriter(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
         fileDao.saveAs(createExampleLearnSet());
 

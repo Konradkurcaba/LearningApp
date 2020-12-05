@@ -4,18 +4,15 @@ import pl.kurcaba.learn.helper.common.model.AbstractLearnSetDao;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 public class LearnSetFileDao extends AbstractLearnSetDao
 {
     private final LearnSetReader fileReader;
-    private final FileObjectWriter fileWriter;
+    private final LearnSetWriter fileWriter;
 
-    public LearnSetFileDao(LearnSetReader aReader, FileObjectWriter aWriter)
+    public LearnSetFileDao(LearnSetReader aReader, LearnSetWriter aWriter)
     {
         fileReader = aReader;
         fileWriter = aWriter;
@@ -31,7 +28,6 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     public LearnSet getSetByName(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
         return fileReader.readLearnSet(aSetName);
-//        return learnSetDto.toLearnSet();
     }
 
     @Override
@@ -41,8 +37,7 @@ public class LearnSetFileDao extends AbstractLearnSetDao
         {
             saveAs(aSetToSave);
         }
-        LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
-        fileWriter.writeObjectToFile(dtoToSave, aSetToSave.getLearnSetName());
+        fileWriter.writeLearnSetToFile(aSetToSave);
         aSetToSave.setSaved();
     }
 
@@ -53,8 +48,7 @@ public class LearnSetFileDao extends AbstractLearnSetDao
         {
             throw new IOException("The set cannot be saved, a set with similar filename already exists");
         }
-        LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
-        fileWriter.writeObjectToFile(dtoToSave, aSetToSave.getLearnSetName());
+        fileWriter.writeLearnSetToFile(aSetToSave);
         aSetToSave.setSaved();
     }
 
@@ -65,12 +59,6 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     }
 
 
-//    private File getFile(LearnSetName aLearnSetName)
-//    {
-//        String fileName = aLearnSetName.toString() + "." + FILE_EXTENSION;
-//        Path pathToOriginFile = Path.of(mainDirectoryPath.toString(), fileName);
-//        return pathToOriginFile.toFile();
-//    }
 
 
 }

@@ -51,10 +51,10 @@ public class LearnSet
                 .findAny()
                 .orElseThrow(() -> {throw new IllegalArgumentException("werewr");});
 
-       foundCase.setName(aName);
-       foundCase.setDefinition(aDefinition);
-       foundCase.setImage(aImage);
-       hasUnsavedChanges = true;
+        foundCase.setName(aName);
+        foundCase.setDefinition(aDefinition);
+        foundCase.setImage(aImage);
+        hasUnsavedChanges = true;
     }
 
     public LearnSetName getLearnSetName()
@@ -72,14 +72,15 @@ public class LearnSet
         hasUnsavedChanges = false;
     }
 
-
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LearnSet learnSet = (LearnSet) o;
-        return learnSetName.equals(learnSet.learnSetName);
+        return hasUnsavedChanges == learnSet.hasUnsavedChanges &&
+                learnSetName.equals(learnSet.learnSetName) &&
+                Objects.equals(learnCases, learnSet.learnCases);
     }
 
     @Override

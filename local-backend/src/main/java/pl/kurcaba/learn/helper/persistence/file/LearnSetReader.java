@@ -1,13 +1,14 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
 import java.nio.file.Files;
@@ -17,15 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class LearnSetReader
+public class LearnSetReader extends AbstractLearnSetIO
 {
-    public static String LEGACY_FILE_EXTENSION = "lap";
-    public static String V2_FILE_EXTENSION = "xdp";
-    private final Path pathToDataDirectory;
 
     public LearnSetReader(Path aPathDataDirectory)
     {
-        pathToDataDirectory = aPathDataDirectory;
+        super(aPathDataDirectory);
     }
 
     public List<LearnSetName> getAllNames() throws IOException
@@ -73,7 +71,7 @@ public class LearnSetReader
         throw new IOException("Cannot load learn set for given name, file for given name does not exist");
     }
 
-    private LearnSet loadV2File(LearnSetName aNameToLoad)
+    private LearnSet loadV2File(LearnSetName aNameToLoad) throws IOException
     {
         try
         {
@@ -81,9 +79,10 @@ public class LearnSetReader
             Unmarshaller unmarshaller = context.createUnmarshaller();
             LearnSetXmlDto readSet = (LearnSetXmlDto) unmarshaller.unmarshal(getV2File(aNameToLoad));
 
+
         } catch (JAXBException e)
         {
-            e.printStackTrace();
+            throw new IOException("Cannot load learn set for given name, file for given name does not exist");
         }
         return null;
     }
@@ -94,24 +93,6 @@ public class LearnSetReader
         {
             return ((LearnSetDto) objectStream.readObject()).toLearnSet();
         }
-    }
-
-    private File getV2File(LearnSetName aLearnSetName)
-    {
-        String fileName = aLearnSetName.toString() + "." + V2_FILE_EXTENSION;
-        return getFile(fileName);
-    }
-
-    private File getLegacyFile(LearnSetName aLearnSetName)
-    {
-        String fileName = aLearnSetName.toString() + "." + LEGACY_FILE_EXTENSION;
-        return getFile(fileName);
-    }
-
-    private File getFile(String filename)
-    {
-        Path pathToOriginFile = Path.of(pathToDataDirectory.toString(), filename);
-        return pathToOriginFile.toFile();
     }
 
     public boolean exists(LearnSetName learnSetName)

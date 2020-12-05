@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @XmlRootElement(name = "LearnCase")
-public class LearnCaseXmlDto
+class LearnCaseXmlDto
 {
 
     private UUID id;
@@ -17,14 +17,18 @@ public class LearnCaseXmlDto
     @XmlElement(name = "images")
     private List<String> imageFilenames;
 
+    public LearnCaseXmlDto(UUID id, String name, String definition, boolean isUsedToLearn, List<String> imageFilenames)
+    {
+        this.id = id;
+        this.name = name;
+        this.definition = definition;
+        this.isUsedToLearn = isUsedToLearn;
+        this.imageFilenames = imageFilenames;
+    }
+
     public UUID getId()
     {
         return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
     }
 
     public String getName()
@@ -32,19 +36,9 @@ public class LearnCaseXmlDto
         return name;
     }
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
     public String getDefinition()
     {
         return definition;
-    }
-
-    public void setDefinition(String definition)
-    {
-        this.definition = definition;
     }
 
     public boolean isUsedToLearn()
@@ -52,18 +46,9 @@ public class LearnCaseXmlDto
         return isUsedToLearn;
     }
 
-    public void setUsedToLearn(boolean usedToLearn)
-    {
-        isUsedToLearn = usedToLearn;
-    }
-
     public List<String> getImageFilenames()
     {
         return imageFilenames;
     }
 
-    public void setImageFilenames(List<String> imageFilenames)
-    {
-        this.imageFilenames = imageFilenames;
-    }
 }
