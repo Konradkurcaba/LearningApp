@@ -10,20 +10,20 @@ import java.nio.file.Paths;
 
 public class GuiDataManager
 {
-    public static final String MAIN_DIRECTORY_NAME = "data";
+    public static final String DATA_DIRECTORY_NAME = "data";
 
     public LearnSetDaoIf initializeDataManager()
     {
         Path currentPath = Paths.get("").toAbsolutePath();
-        Path pathToMainDirectory = Path.of(currentPath.toString(), MAIN_DIRECTORY_NAME);
+        Path pathToDataDirectory = Path.of(currentPath.toString(), DATA_DIRECTORY_NAME);
 
-        if(!pathToMainDirectory.toFile().exists())
+        if(!pathToDataDirectory.toFile().exists())
         {
-            pathToMainDirectory.toFile().mkdirs();
+            pathToDataDirectory.toFile().mkdirs();
         }
 
-        FileObjectWriter fileWriter = new FileObjectWriter();
-        LearnSetReader fileReader = new LearnSetReader();
-        return new LearnSetFileDao(pathToMainDirectory,fileReader,fileWriter);
+        FileObjectWriter fileWriter = new FileObjectWriter(pathToDataDirectory);
+        LearnSetReader fileReader = new LearnSetReader(pathToDataDirectory);
+        return new LearnSetFileDao(fileReader,fileWriter);
     }
 }

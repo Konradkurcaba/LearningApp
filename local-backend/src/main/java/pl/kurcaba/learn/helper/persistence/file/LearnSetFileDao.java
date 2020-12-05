@@ -5,78 +5,72 @@ import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
 public class LearnSetFileDao extends AbstractLearnSetDao
 {
-    public static String FILE_EXTENSION = "lap";
-
     private final LearnSetReader fileReader;
     private final FileObjectWriter fileWriter;
-    private final Path mainDirectoryPath;
 
-    public LearnSetFileDao(Path aMainDirectoryPath, LearnSetReader aReader, FileObjectWriter aWriter)
+    public LearnSetFileDao(LearnSetReader aReader, FileObjectWriter aWriter)
     {
         fileReader = aReader;
         fileWriter = aWriter;
-        mainDirectoryPath = aMainDirectoryPath;
     }
 
     @Override
     public List<LearnSetName> getAllNames() throws IOException
     {
-        return fileReader.getAllNames(mainDirectoryPath);
+        return fileReader.getAllNames();
     }
 
     @Override
     public LearnSet getSetByName(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
-        LearnSetDto learnSetDto = fileReader.readLearnSet(getFile(aSetName));
-        return learnSetDto.toLearnSet();
+        return fileReader.readLearnSet(aSetName);
+//        return learnSetDto.toLearnSet();
     }
 
     @Override
     public void saveChanges(LearnSet aSetToSave) throws IOException
     {
-        File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if (!aFileToSave.exists())
+        if (!fileReader.exists(aSetToSave.getLearnSetName()))
         {
             saveAs(aSetToSave);
         }
-        FileObjectWriter objectWriter = new FileObjectWriter();
         LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
-        objectWriter.writeObjectToFile(dtoToSave, aFileToSave);
+        fileWriter.writeObjectToFile(dtoToSave, aSetToSave.getLearnSetName());
         aSetToSave.setSaved();
     }
 
     @Override
     public void saveAs(LearnSet aSetToSave) throws IOException
     {
-        File aFileToSave = getFile(aSetToSave.getLearnSetName());
-        if (aFileToSave.exists())
+        if (fileReader.exists(aSetToSave.getLearnSetName()))
         {
             throw new IOException("The set cannot be saved, a set with similar filename already exists");
         }
         LearnSetDto dtoToSave = new LearnSetDto(aSetToSave);
-        fileWriter.writeObjectToFile(dtoToSave, aFileToSave);
+        fileWriter.writeObjectToFile(dtoToSave, aSetToSave.getLearnSetName());
         aSetToSave.setSaved();
     }
 
     @Override
     public void remove(LearnSetName learnSetName)
     {
-        fileWriter.removeFile(getFile(learnSetName));
+        fileWriter.removeLearnSet(learnSetName);
     }
 
 
-    private File getFile(LearnSetName aLearnSetName)
-    {
-        String fileName = aLearnSetName.toString() + "." + FILE_EXTENSION;
-        Path pathToOriginFile = Path.of(mainDirectoryPath.toString(), fileName);
-        return pathToOriginFile.toFile();
-    }
+//    private File getFile(LearnSetName aLearnSetName)
+//    {
+//        String fileName = aLearnSetName.toString() + "." + FILE_EXTENSION;
+//        Path pathToOriginFile = Path.of(mainDirectoryPath.toString(), fileName);
+//        return pathToOriginFile.toFile();
+//    }
 
 
 }

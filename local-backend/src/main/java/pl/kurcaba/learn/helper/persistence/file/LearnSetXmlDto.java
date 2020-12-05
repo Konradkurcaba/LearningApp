@@ -3,11 +3,20 @@ package pl.kurcaba.learn.helper.persistence.file;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 
 import javax.xml.bind.annotation.XmlElement;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class LearnSetXmlDto
 {
+
+    LearnSetXmlDto()
+    {
+    }
+
+    public LearnSetXmlDto(String learnSetName, List<LearnCaseXmlDto> learnCases)
+    {
+        this.learnSetName = learnSetName;
+        this.learnCases = learnCases;
+    }
 
     private String learnSetName;
 

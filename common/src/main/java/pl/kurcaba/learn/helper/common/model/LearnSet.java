@@ -79,13 +79,13 @@ public class LearnSet
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LearnSet learnSet = (LearnSet) o;
-        return hasUnsavedChanges == learnSet.hasUnsavedChanges && learnSetName.equals(learnSet.learnSetName) && learnCases.equals(learnSet.learnCases);
+        return learnSetName.equals(learnSet.learnSetName);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(learnSetName, learnCases, hasUnsavedChanges);
+        return Objects.hash(learnSetName);
     }
 }
 

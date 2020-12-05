@@ -1,9 +1,11 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 import java.util.UUID;
 
-@XmlRootElement(name = "Learn case")
+@XmlRootElement(name = "LearnCase")
 public class LearnCaseXmlDto
 {
 
@@ -12,7 +14,8 @@ public class LearnCaseXmlDto
     private String definition;
     private boolean isUsedToLearn;
 
-    private String imageFilename;
+    @XmlElement(name = "images")
+    private List<String> imageFilenames;
 
     public UUID getId()
     {
@@ -54,13 +57,13 @@ public class LearnCaseXmlDto
         isUsedToLearn = usedToLearn;
     }
 
-    public String getImageFilename()
+    public List<String> getImageFilenames()
     {
-        return imageFilename;
+        return imageFilenames;
     }
 
-    public void setImageFilename(String imageFilename)
+    public void setImageFilenames(List<String> imageFilenames)
     {
-        this.imageFilename = imageFilename;
+        this.imageFilenames = imageFilenames;
     }
 }

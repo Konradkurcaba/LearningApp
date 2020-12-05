@@ -44,12 +44,12 @@ class LearnSetReaderTest {
     public void shouldLearnSetReaderReadNamesCorrectly(@TempDir Path tempDir) throws IOException, LearnSetNameFormatException {
         //set up test
         Files.createFile(Paths.get(tempDir.toString(), "firstName.lap"));
-        Files.createFile(Paths.get(tempDir.toString(), "secondName.lap"));
+        Files.createFile(Paths.get(tempDir.toString(), "secondName.xdp"));
         Files.createFile(Paths.get(tempDir.toString(), "firstFile.brokenExtension"));
 
         //real test
-        LearnSetReader setReader = new LearnSetReader();
-        List<LearnSetName> readNames = setReader.getAllNames(tempDir);
+        LearnSetReader setReader = new LearnSetReader(tempDir);
+        List<LearnSetName> readNames = setReader.getAllNames();
 
         //assertion
         Assertions.assertTrue(createExampleSetNames().containsAll(readNames)
@@ -58,27 +58,107 @@ class LearnSetReaderTest {
 
 
     @Test
-    public void shouldLoadDtoCorrectly(@TempDir Path tempDir) throws IOException, LearnSetNameFormatException, ClassNotFoundException
+    public void readLegacyLearnSetShouldHaveCorrectLearnSetName(@TempDir Path tempDir)
+            throws IOException, LearnSetNameFormatException
     {
         //set up test
         Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
 
-        LearnSet learnSet = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
-        learnSet.addLearnCase(createExampleLearnCase());
+        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        learnSetToWrite.addLearnCase(createExampleLearnCase());
 
-        LearnSetDto dtoToWrite = new LearnSetDto(learnSet);
+        LearnSetDto dtoToWrite = new LearnSetDto(learnSetToWrite);
 
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileToWrite.toString())))
         {
             objectOutputStream.writeObject(dtoToWrite);
         }
-        LearnSetReader reader = new LearnSetReader();
+        LearnSetReader reader = new LearnSetReader(tempDir);
 
         //real test
-        LearnSetDto readDto = reader.readLearnSet(fileToWrite.toFile());
+        LearnSet readSet = reader.readLearnSet(new LearnSetName("exampleFilename"));
 
         //assertions
-        Assertions.assertEquals(dtoToWrite, readDto);
+        Assertions.assertEquals(learnSetToWrite, readSet);
     }
+
+    @Test
+    public void readLegacyLearnSetShouldHaveCorrectCaseList(@TempDir Path tempDir)
+            throws IOException, LearnSetNameFormatException
+    {
+        //set up test
+        Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
+
+        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        learnSetToWrite.addLearnCase(createExampleLearnCase());
+
+        LearnSetDto dtoToWrite = new LearnSetDto(learnSetToWrite);
+
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileToWrite.toString())))
+        {
+            objectOutputStream.writeObject(dtoToWrite);
+        }
+        LearnSetReader reader = new LearnSetReader(tempDir);
+
+        //real test
+        LearnSet readSet = reader.readLearnSet(new LearnSetName("exampleFilename"));
+
+        //assertions
+        Assertions.assertEquals(learnSetToWrite.getLearnSetCases(), readSet.getLearnSetCases());
+    }
+
+    @Test
+    public void learnSetReaderShouldThrowExceptionWhenFileForGivenLearnSetDoesNotExist(@TempDir Path tempDir) throws LearnSetNameFormatException, IOException
+    {
+        //set up
+        LearnSetReader reader = new LearnSetReader(tempDir);
+
+        //assert
+        Assertions.assertThrows(IOException.class,() -> reader.readLearnSet(new LearnSetName("nonExisting")));
+    }
+
+    @Test
+    public void shouldRecognizeLegacyFileInExistChecking(@TempDir Path tempDir) throws IOException, LearnSetNameFormatException
+    {
+        //set up test
+        Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
+        fileToWrite.toFile().createNewFile();
+        LearnSetReader reader = new LearnSetReader(tempDir);
+
+        //real test
+        boolean exists = reader.exists(new LearnSetName("exampleFilename"));
+
+        //assertions
+        Assertions.assertTrue(exists);
+    }
+
+    @Test
+    public void shouldRecognizeV2FileInExistChecking(@TempDir Path tempDir) throws IOException, LearnSetNameFormatException
+    {
+        //set up test
+        Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.xdp");
+        fileToWrite.toFile().createNewFile();
+        LearnSetReader reader = new LearnSetReader(tempDir);
+
+        //real test
+        boolean exists = reader.exists(new LearnSetName("exampleFilename"));
+
+        //assertions
+        Assertions.assertTrue(exists);
+    }
+
+    @Test
+    public void shouldRecognizeAnyFileDoesNotExist(@TempDir Path tempDir) throws IOException, LearnSetNameFormatException
+    {
+        //set up test
+        LearnSetReader reader = new LearnSetReader(tempDir);
+
+        //real test
+        boolean exists = reader.exists(new LearnSetName("exampleFilename"));
+
+        //assertions
+        Assertions.assertFalse(exists);
+    }
+
 
 }
