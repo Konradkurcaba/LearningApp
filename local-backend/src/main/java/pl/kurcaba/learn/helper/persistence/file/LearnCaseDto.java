@@ -27,14 +27,17 @@ public class LearnCaseDto implements Serializable {
         this.id = aLearnCase.getId();
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
-        this.image = aLearnCase.getImage();
+        if(aLearnCase.getImages().size() > 0)
+        {
+            this.image = aLearnCase.getImages().get(0);
+        }
         this.isUsedToLearn = aLearnCase.isUsedToLearn();
     }
 
     public LearnCase toLearnCase()
     {
         LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
-        restoredCase.setImage(image);
+        restoredCase.setImages(Arrays.asList(image));
         return restoredCase;
     }
 

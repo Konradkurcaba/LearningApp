@@ -53,7 +53,9 @@ public class LearnSet
 
         foundCase.setName(aName);
         foundCase.setDefinition(aDefinition);
-        foundCase.setImage(aImage);
+        List<byte[]> tempImageList = new ArrayList<>();
+        tempImageList.add(aImage);
+        foundCase.setImages(tempImageList);
         hasUnsavedChanges = true;
     }
 

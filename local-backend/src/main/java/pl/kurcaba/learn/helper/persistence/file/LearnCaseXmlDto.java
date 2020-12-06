@@ -1,7 +1,10 @@
 package pl.kurcaba.learn.helper.persistence.file;
 
+import pl.kurcaba.learn.helper.common.model.LearnCase;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,12 +20,21 @@ class LearnCaseXmlDto
     @XmlElement(name = "images")
     private List<String> imageFilenames;
 
-    public LearnCaseXmlDto(UUID id, String name, String definition, boolean isUsedToLearn, List<String> imageFilenames)
+    public LearnCaseXmlDto()
     {
-        this.id = id;
-        this.name = name;
-        this.definition = definition;
-        this.isUsedToLearn = isUsedToLearn;
+    }
+
+    public LearnCaseXmlDto(LearnCase aLearnCase)
+    {
+        this.id = aLearnCase.getId();
+        this.name = aLearnCase.getName();
+        this.definition = aLearnCase.getDefinition();
+        this.isUsedToLearn = aLearnCase.isUsedToLearn();
+    }
+
+    @XmlTransient
+    public void setImageFilenames(List<String> imageFilenames)
+    {
         this.imageFilenames = imageFilenames;
     }
 

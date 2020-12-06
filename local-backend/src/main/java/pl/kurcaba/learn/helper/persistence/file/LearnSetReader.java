@@ -14,8 +14,13 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 
 public class LearnSetReader extends AbstractLearnSetIO
@@ -75,10 +80,15 @@ public class LearnSetReader extends AbstractLearnSetIO
     {
         try
         {
+            Map<String, ZipEntry> nameToEntryMap = new HashMap<>();
+            ZipFile zipFile = new ZipFile(getV2File(aNameToLoad));
+
+            ZipEntry xmlEntry = zipFile.getEntry(aNameToLoad.toString());
+            InputStream stream = zipFile.getInputStream(xmlEntry);
+
             JAXBContext context = JAXBContext.newInstance(LearnSetXmlDto.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            LearnSetXmlDto readSet = (LearnSetXmlDto) unmarshaller.unmarshal(getV2File(aNameToLoad));
-
+            LearnSetXmlDto readSet = (LearnSetXmlDto) unmarshaller.unmarshal(stream);
 
         } catch (JAXBException e)
         {

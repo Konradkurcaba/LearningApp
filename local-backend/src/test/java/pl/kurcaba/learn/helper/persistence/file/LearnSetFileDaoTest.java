@@ -108,12 +108,45 @@ class LearnSetFileDaoTest
     }
 
     @Test
-    public void shouldRemoveCorrectFile(@TempDir Path aTempPath) throws LearnSetNameFormatException, IOException
+    public void shouldRemoveLegacyFile(@TempDir Path aTempPath) throws LearnSetNameFormatException, IOException
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(aTempPath);
         LearnSetWriter writer = new LearnSetWriter(aTempPath);
         LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        Paths.get(aTempPath.toString(), "exampleFile.lap").toFile().createNewFile();
+
+        //a real test
+        fileDao.remove(new LearnSetName("exampleFile"));
+
+        //assertion
+        Assertions.assertEquals(0, aTempPath.toFile().list().length);
+    }
+
+    @Test
+    public void shouldRemoveV2File(@TempDir Path aTempPath) throws LearnSetNameFormatException, IOException
+    {
+        //set up a test
+        LearnSetReader reader = new LearnSetReader(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
+        LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        Paths.get(aTempPath.toString(), "exampleFile.xdp").toFile().createNewFile();
+
+        //a real test
+        fileDao.remove(new LearnSetName("exampleFile"));
+
+        //assertion
+        Assertions.assertEquals(0, aTempPath.toFile().list().length);
+    }
+
+    @Test
+    public void shouldRemoveV2FileAndLegacyFile(@TempDir Path aTempPath) throws LearnSetNameFormatException, IOException
+    {
+        //set up a test
+        LearnSetReader reader = new LearnSetReader(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
+        LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        Paths.get(aTempPath.toString(), "exampleFile.xdp").toFile().createNewFile();
         Paths.get(aTempPath.toString(), "exampleFile.lap").toFile().createNewFile();
 
         //a real test
@@ -135,6 +168,38 @@ class LearnSetFileDaoTest
         //a real test
         Assertions.assertThrows(NonUniqueException.class,
                 () -> fileDao.createNewLearnSet(new LearnSetName("exampleName")));
+    }
+
+    @Test
+    public void shouldRemoveLegacyFileWhileSaving(@TempDir Path aTempPath) throws IOException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        LearnSetReader reader = new LearnSetReader(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
+        LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        Paths.get(aTempPath.toString(), "exampleName.lap").toFile().createNewFile();
+
+        //a real test
+        fileDao.createNewLearnSet(new LearnSetName("exampleName"));
+
+        //Assert
+        Assertions.assertFalse(Paths.get(aTempPath.toString(), "exampleName.lap").toFile().exists());
+    }
+
+    @Test
+    public void shouldCreateV2FileWhileSaving(@TempDir Path aTempPath) throws IOException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        LearnSetReader reader = new LearnSetReader(aTempPath);
+        LearnSetWriter writer = new LearnSetWriter(aTempPath);
+        LearnSetFileDao fileDao = new LearnSetFileDao(reader, writer);
+        Paths.get(aTempPath.toString(), "exampleName.lap").toFile().createNewFile();
+
+        //a real test
+        fileDao.createNewLearnSet(new LearnSetName("exampleName"));
+
+        //Assert
+        Assertions.assertTrue(Paths.get(aTempPath.toString(), "exampleName.xdp").toFile().exists());
     }
 
 

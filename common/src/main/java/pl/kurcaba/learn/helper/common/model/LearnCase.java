@@ -1,6 +1,8 @@
 package pl.kurcaba.learn.helper.common.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,7 +13,7 @@ public class LearnCase implements Serializable
     private String definition;
     private boolean isUsedToLearn;
 
-    private byte[] image;
+    private List<byte[]> images = new ArrayList<>();
 
     public LearnCase(String name, String definition)
     {
@@ -59,15 +61,31 @@ public class LearnCase implements Serializable
         this.definition = definition;
     }
 
-    public byte[] getImage()
+    public List<byte[]> getImages()
     {
-        return image;
+        return images;
     }
 
-    public void setImage(byte[] image)
+    public void setImages(List<byte[]> aImages)
     {
-        this.image = image;
+        this.images = aImages;
     }
+
+    public byte[] getImage()
+    {
+        if(images.size() > 0)
+        {
+            return images.get(0);
+        }
+        return null;
+    }
+
+    public void setImage(byte[] aImages)
+    {
+        images.add(0, aImages);
+    }
+
+
 
     public boolean isUsedToLearn()
     {

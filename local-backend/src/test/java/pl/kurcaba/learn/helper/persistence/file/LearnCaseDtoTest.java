@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.kurcaba.learn.helper.common.model.LearnCase;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 
@@ -14,7 +15,7 @@ class LearnCaseDtoTest
         LearnCase learnCase = new LearnCase("name", "definition"
                 , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true);
         byte[] dummyImage = new byte[2];
-        learnCase.setImage(dummyImage);
+        learnCase.setImages(Arrays.asList(dummyImage));
         return learnCase;
     }
 

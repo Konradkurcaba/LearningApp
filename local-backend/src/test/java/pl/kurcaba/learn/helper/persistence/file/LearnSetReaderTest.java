@@ -16,10 +16,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 class LearnSetReaderTest {
 
@@ -36,7 +33,7 @@ class LearnSetReaderTest {
         LearnCase learnCase = new LearnCase("name", "definition"
                 , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true);
         byte[] dummyImage = new byte[2];
-        learnCase.setImage(dummyImage);
+        learnCase.setImages(Arrays.asList(dummyImage));
         return learnCase;
     }
 
