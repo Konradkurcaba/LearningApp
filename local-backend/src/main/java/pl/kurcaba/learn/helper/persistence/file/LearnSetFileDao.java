@@ -37,7 +37,10 @@ public class LearnSetFileDao extends AbstractLearnSetDao
         {
             saveAs(aSetToSave);
         }
-        fileWriter.writeLearnSetToFile(aSetToSave);
+        else
+        {
+            fileWriter.writeLearnSetToFile(aSetToSave);
+        }
         aSetToSave.setSaved();
     }
 

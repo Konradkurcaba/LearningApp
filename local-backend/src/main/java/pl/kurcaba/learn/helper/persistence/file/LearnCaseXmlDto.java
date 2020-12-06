@@ -5,6 +5,7 @@ import pl.kurcaba.learn.helper.common.model.LearnCase;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +13,17 @@ import java.util.UUID;
 class LearnCaseXmlDto
 {
 
+    @XmlElement
     private UUID id;
+    @XmlElement
     private String name;
+    @XmlElement
     private String definition;
+    @XmlElement
     private boolean isUsedToLearn;
 
     @XmlElement(name = "images")
-    private List<String> imageFilenames;
+    private List<String> imageFilenames = new ArrayList<>();
 
     public LearnCaseXmlDto()
     {

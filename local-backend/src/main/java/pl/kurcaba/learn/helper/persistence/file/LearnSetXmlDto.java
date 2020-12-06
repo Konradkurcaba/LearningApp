@@ -25,6 +25,7 @@ class LearnSetXmlDto
         this.learnCases = learnCases;
     }
 
+    @XmlTransient
     public void setLearnSetName(String learnSetName)
     {
         this.learnSetName = learnSetName;
@@ -34,5 +35,15 @@ class LearnSetXmlDto
     public void setLearnCases(List<LearnCaseXmlDto> learnCases)
     {
         this.learnCases = learnCases;
+    }
+
+    public List<LearnCaseXmlDto> getLearnCases()
+    {
+        return learnCases;
+    }
+
+    public String getLearnSetName()
+    {
+        return learnSetName;
     }
 }

@@ -3,6 +3,7 @@ package pl.kurcaba.learn.helper.persistence.file;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.common.model.LearnCase;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
@@ -13,10 +14,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -78,23 +76,39 @@ public class LearnSetReader extends AbstractLearnSetIO
 
     private LearnSet loadV2File(LearnSetName aNameToLoad) throws IOException
     {
-        try
+        try(ZipFile zipFile = new ZipFile(getV2File(aNameToLoad)))
         {
-            Map<String, ZipEntry> nameToEntryMap = new HashMap<>();
-            ZipFile zipFile = new ZipFile(getV2File(aNameToLoad));
-
             ZipEntry xmlEntry = zipFile.getEntry(aNameToLoad.toString());
             InputStream stream = zipFile.getInputStream(xmlEntry);
 
             JAXBContext context = JAXBContext.newInstance(LearnSetXmlDto.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             LearnSetXmlDto readSet = (LearnSetXmlDto) unmarshaller.unmarshal(stream);
+            return createLearnSet(readSet,zipFile);
 
-        } catch (JAXBException e)
+        } catch (JAXBException | LearnSetNameFormatException e)
         {
             throw new IOException("Cannot load learn set for given name, file for given name does not exist");
         }
-        return null;
+    }
+
+    private LearnSet createLearnSet(LearnSetXmlDto readSet, ZipFile zipFile) throws IOException, LearnSetNameFormatException
+    {
+        List<LearnCase> learnCases = new ArrayList<>();
+        for(LearnCaseXmlDto learnXmlCase : readSet.getLearnCases())
+        {
+            LearnCase learnCase = new LearnCase(learnXmlCase.getName(),learnXmlCase.getDefinition()
+                    ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn());
+            List<byte[]> images = new ArrayList<>();
+            for(String imageFilename : learnXmlCase.getImageFilenames())
+            {
+                InputStream imageInputStream = zipFile.getInputStream(zipFile.getEntry(imageFilename));
+                images.add(imageInputStream.readAllBytes());
+            }
+            learnCase.setImages(images);
+            learnCases.add(learnCase);
+        }
+        return new LearnSet(new LearnSetName(readSet.getLearnSetName()),new LinkedHashSet<>(learnCases));
     }
 
     private LearnSet loadLegacyFile(LearnSetName aSetToLoad) throws IOException, ClassNotFoundException

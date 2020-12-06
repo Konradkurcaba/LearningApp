@@ -13,7 +13,6 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListResourceBundle;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -31,9 +30,9 @@ public class LearnSetWriter extends AbstractLearnSetIO
     public void writeLearnSetToFile(LearnSet aLearnSet) throws IOException
     {
         try(FileOutputStream fileOutputStream = new FileOutputStream(getV2File(aLearnSet.getLearnSetName()));
-            ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);)
+            ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream))
         {
-            LearnSetXmlDto xmlDto = createXmlDto(aLearnSet,zipOutputStream);
+            LearnSetXmlDto xmlDto = writeImagesToZip(aLearnSet,zipOutputStream);
 
             JAXBContext context = JAXBContext.newInstance(LearnSetXmlDto.class);
             Marshaller marshaller = context.createMarshaller();
@@ -43,7 +42,6 @@ public class LearnSetWriter extends AbstractLearnSetIO
             ZipEntry entry = new ZipEntry(aLearnSet.getLearnSetName().toString());
             zipOutputStream.putNextEntry(entry);
             zipOutputStream.write(arrayOutputStream.toByteArray());
-            zipOutputStream.closeEntry();
 
         } catch (JAXBException aEx)
         {
@@ -51,7 +49,7 @@ public class LearnSetWriter extends AbstractLearnSetIO
         }
     }
 
-    private LearnSetXmlDto createXmlDto(LearnSet aLearnSet, ZipOutputStream aZipFile) throws IOException
+    private LearnSetXmlDto writeImagesToZip(LearnSet aLearnSet, ZipOutputStream aZipFile) throws IOException
     {
         List<LearnCaseXmlDto> allCases = createAllCases(aLearnSet, aZipFile);
         return new LearnSetXmlDto(aLearnSet.getLearnSetName().toString(), allCases);
@@ -78,6 +76,7 @@ public class LearnSetWriter extends AbstractLearnSetIO
             }
             LearnCaseXmlDto learnCaseXmlDto = new LearnCaseXmlDto(learnCase);
             learnCaseXmlDto.setImageFilenames(imageFilenames);
+            learnCases.add(learnCaseXmlDto);
         }
         return learnCases;
     }

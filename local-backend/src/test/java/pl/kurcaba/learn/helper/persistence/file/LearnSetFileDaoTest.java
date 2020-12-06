@@ -180,7 +180,7 @@ class LearnSetFileDaoTest
         Paths.get(aTempPath.toString(), "exampleName.lap").toFile().createNewFile();
 
         //a real test
-        fileDao.createNewLearnSet(new LearnSetName("exampleName"));
+        fileDao.saveAs(new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>()));
 
         //Assert
         Assertions.assertFalse(Paths.get(aTempPath.toString(), "exampleName.lap").toFile().exists());
