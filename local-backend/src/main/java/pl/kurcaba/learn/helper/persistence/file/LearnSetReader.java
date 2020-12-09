@@ -21,7 +21,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 
-public class LearnSetReader extends AbstractLearnSetIO
+class LearnSetReader extends AbstractLearnSetIO
 {
 
     public LearnSetReader(Path aPathDataDirectory)
@@ -117,10 +117,5 @@ public class LearnSetReader extends AbstractLearnSetIO
         {
             return ((LearnSetDto) objectStream.readObject()).toLearnSet();
         }
-    }
-
-    public boolean exists(LearnSetName learnSetName)
-    {
-        return getLegacyFile(learnSetName).exists() || getV2File(learnSetName).exists();
     }
 }

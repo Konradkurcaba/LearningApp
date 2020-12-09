@@ -4,6 +4,7 @@ package pl.kurcaba.learn.helper.persistence.file;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "LearnSet")
@@ -13,7 +14,7 @@ class LearnSetXmlDto
     @XmlElement(name = "LearnSetName")
     private String learnSetName;
     @XmlElement(name = "LearnCases")
-    private List<LearnCaseXmlDto> learnCases;
+    private List<LearnCaseXmlDto> learnCases = new ArrayList<>();
 
     LearnSetXmlDto()
     {

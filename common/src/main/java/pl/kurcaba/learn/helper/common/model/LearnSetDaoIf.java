@@ -12,7 +12,7 @@ public interface LearnSetDaoIf
     List<LearnSetName> getAllNames() throws IOException;
     LearnSet getSetByName(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException;
     void saveChanges(LearnSet aSetToSave) throws IOException;
-    void saveAs(LearnSet aSetToSave) throws IOException;
-    void remove(LearnSetName learnSet);
+    void saveAs(LearnSet aSetToSave) throws IOException, NonUniqueException;
+    void remove(LearnSetName learnSet) throws IOException;
     LearnSet createNewLearnSet(LearnSetName aNewName) throws IOException, NonUniqueException;
 }

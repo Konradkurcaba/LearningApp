@@ -1,9 +1,7 @@
 package pl.kurcaba.learn.helper.gui.core;
 
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
-import pl.kurcaba.learn.helper.persistence.file.LearnSetWriter;
 import pl.kurcaba.learn.helper.persistence.file.LearnSetFileDao;
-import pl.kurcaba.learn.helper.persistence.file.LearnSetReader;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,8 +20,6 @@ public class GuiDataManager
             pathToDataDirectory.toFile().mkdirs();
         }
 
-        LearnSetWriter fileWriter = new LearnSetWriter(pathToDataDirectory);
-        LearnSetReader fileReader = new LearnSetReader(pathToDataDirectory);
-        return new LearnSetFileDao(fileReader,fileWriter);
+        return new LearnSetFileDao(pathToDataDirectory);
     }
 }

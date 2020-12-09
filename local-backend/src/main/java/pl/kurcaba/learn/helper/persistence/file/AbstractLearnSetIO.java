@@ -28,6 +28,16 @@ public class AbstractLearnSetIO
         return getFile(fileName);
     }
 
+    protected boolean existsLegacy(LearnSetName learnSetName)
+    {
+        return getLegacyFile(learnSetName).exists();
+    }
+
+    protected boolean existsV2(LearnSetName learnSetName)
+    {
+        return getV2File(learnSetName).exists();
+    }
+
     private File getFile(String filename)
     {
         Path pathToOriginFile = Path.of(pathToDataDirectory.toString(), filename);

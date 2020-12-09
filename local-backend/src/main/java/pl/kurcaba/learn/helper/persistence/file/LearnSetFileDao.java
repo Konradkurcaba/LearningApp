@@ -3,8 +3,11 @@ package pl.kurcaba.learn.helper.persistence.file;
 import pl.kurcaba.learn.helper.common.model.AbstractLearnSetDao;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
+import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 public class LearnSetFileDao extends AbstractLearnSetDao
@@ -12,10 +15,10 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     private final LearnSetReader fileReader;
     private final LearnSetWriter fileWriter;
 
-    public LearnSetFileDao(LearnSetReader aReader, LearnSetWriter aWriter)
+    public LearnSetFileDao(Path aPathToDataDir)
     {
-        fileReader = aReader;
-        fileWriter = aWriter;
+        fileReader = new LearnSetReader(aPathToDataDir);
+        fileWriter = new LearnSetWriter(aPathToDataDir);
     }
 
     @Override
@@ -33,30 +36,19 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     @Override
     public void saveChanges(LearnSet aSetToSave) throws IOException
     {
-        if (!fileReader.exists(aSetToSave.getLearnSetName()))
-        {
-            saveAs(aSetToSave);
-        }
-        else
-        {
-            fileWriter.writeLearnSetToFile(aSetToSave);
-        }
-        aSetToSave.setSaved();
-    }
-
-    @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException
-    {
-        if (fileReader.exists(aSetToSave.getLearnSetName()))
-        {
-            throw new IOException("The set cannot be saved, a set with similar filename already exists");
-        }
         fileWriter.writeLearnSetToFile(aSetToSave);
         aSetToSave.setSaved();
     }
 
     @Override
-    public void remove(LearnSetName learnSetName)
+    public void saveAs(LearnSet aSetToSave) throws IOException, NonUniqueException
+    {
+        fileWriter.writeNewSetToFile(aSetToSave);
+        aSetToSave.setSaved();
+    }
+
+    @Override
+    public void remove(LearnSetName learnSetName) throws IOException
     {
         fileWriter.removeLearnSet(learnSetName);
     }

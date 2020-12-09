@@ -203,6 +203,12 @@ public class GuiModelBroker
             currentLearnSet = null;
             updateProperties();
         }
-        LearnSetDao.remove(learnSet);
+        try
+        {
+            LearnSetDao.remove(learnSet);
+        } catch (IOException aEx)
+        {
+            logger.error("Cannot remove learnSet file, an exception has occur", aEx);
+        }
     }
 }
