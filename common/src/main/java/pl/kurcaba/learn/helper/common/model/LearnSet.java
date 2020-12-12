@@ -45,7 +45,7 @@ public class LearnSet extends BaseEntity
     public boolean removeCase(UUID aCaseId)
     {
         hasUnsavedChanges = true;
-        return learnCases.removeIf(learnCase -> aCaseId.equals(learnCase.getId()));
+        return learnCases.removeIf(learnCase -> aCaseId.toString().equals(learnCase.getUuid()));
     }
 
     public void addLearnCase(LearnCase aCase)
@@ -65,7 +65,7 @@ public class LearnSet extends BaseEntity
     public void editCase(UUID aId, String aName, String aDefinition, byte[] aImage)
     {
         LearnCase foundCase = learnCases.stream()
-                .filter(learnCase -> learnCase.getId().equals(aId))
+                .filter(learnCase -> learnCase.getUuid().equals(aId.toString()))
                 .findAny()
                 .orElseThrow(() -> {throw new IllegalArgumentException("werewr");});
 

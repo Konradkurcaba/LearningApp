@@ -10,7 +10,6 @@ import java.util.List;
 @XmlRootElement(name = "LearnSet")
 class LearnSetXmlDto
 {
-
     @XmlElement(name = "LearnSetName")
     private String learnSetName;
     @XmlElement(name = "LearnCases")

@@ -42,7 +42,7 @@ public class LearnSetFileDao extends AbstractLearnSetDao
     }
 
     @Override
-    public LearnSet saveAs(LearnSet aSetToSave) throws IOException
+    public LearnSet saveAs(LearnSet aSetToSave) throws IOException, NonUniqueException
     {
         fileWriter.writeNewSetToFile(aSetToSave);
         aSetToSave.setSaved();

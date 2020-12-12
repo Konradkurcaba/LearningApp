@@ -1,19 +1,13 @@
 package pl.kurcaba.learn.helper.gui.backend;
 
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
-import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.ejb.EjbRegistry;
-import pl.kurcaba.learn.helper.persistence.file.FileObjectWriter;
 import pl.kurcaba.learn.helper.persistence.file.LearnSetFileDao;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Hashtable;
-import java.util.List;
 import java.util.Optional;
 
 public class GuiDataManager

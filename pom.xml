@@ -19,6 +19,8 @@
         <module>common</module>
         <module>local-backend</module>
         <module>gui</module>
+        <module>remote-backend</module>
+        <module>remote-ear</module>
     </modules>
 
     <dependencyManagement>

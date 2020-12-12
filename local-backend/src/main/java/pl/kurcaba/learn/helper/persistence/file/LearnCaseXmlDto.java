@@ -5,6 +5,7 @@ import pl.kurcaba.learn.helper.common.model.LearnCase;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,8 @@ class LearnCaseXmlDto
     private String definition;
     @XmlElement
     private boolean isUsedToLearn;
+    @XmlElement
+    private Instant createTime;
 
     @XmlElement(name = "images")
     private List<String> imageFilenames = new ArrayList<>();
@@ -31,10 +34,11 @@ class LearnCaseXmlDto
 
     public LearnCaseXmlDto(LearnCase aLearnCase)
     {
-        this.id = aLearnCase.getId();
+        this.id = UUID.fromString(aLearnCase.getUuid());
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
         this.isUsedToLearn = aLearnCase.isUsedToLearn();
+        this.createTime = aLearnCase.getCreateDate();
     }
 
     @XmlTransient
@@ -68,4 +72,8 @@ class LearnCaseXmlDto
         return imageFilenames;
     }
 
+    public Instant getCreateTime()
+    {
+        return createTime;
+    }
 }

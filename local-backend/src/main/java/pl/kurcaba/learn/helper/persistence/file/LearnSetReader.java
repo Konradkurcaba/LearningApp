@@ -18,11 +18,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
 
 
 class LearnSetReader extends AbstractLearnSetIO
 {
+
+    private Logger log = LogManager.getLogger(LearnSetReader.class);
 
     public LearnSetReader(Path aPathDataDirectory)
     {
@@ -67,9 +68,9 @@ class LearnSetReader extends AbstractLearnSetIO
             {
                 return loadLegacyFile(aNameToLoad);
             }
-        } catch (IOException | ClassNotFoundException aEx)
+        } catch (ClassNotFoundException aEx)
         {
-            //do nothing, we will throw our exception bellow.
+            log.error("Problem with reading the legacy file:", aEx);
         }
         throw new IOException("Cannot load learn set for given name, file for given name does not exist");
     }
@@ -98,7 +99,7 @@ class LearnSetReader extends AbstractLearnSetIO
         for(LearnCaseXmlDto learnXmlCase : readSet.getLearnCases())
         {
             LearnCase learnCase = new LearnCase(learnXmlCase.getName(),learnXmlCase.getDefinition()
-                    ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn());
+                    ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn(), learnXmlCase.getCreateTime());
             List<byte[]> images = new ArrayList<>();
             for(String imageFilename : learnXmlCase.getImageFilenames())
             {
@@ -108,7 +109,7 @@ class LearnSetReader extends AbstractLearnSetIO
             learnCase.setImages(images);
             learnCases.add(learnCase);
         }
-        return new LearnSet(new LearnSetName(readSet.getLearnSetName()),new LinkedHashSet<>(learnCases));
+        return new LearnSet(new LearnSetName(readSet.getLearnSetName()),new TreeSet<>(learnCases));
     }
 
     private LearnSet loadLegacyFile(LearnSetName aSetToLoad) throws IOException, ClassNotFoundException

@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Instant;
 import java.util.*;
 import java.util.TreeSet;
 
@@ -33,7 +34,7 @@ class LearnSetFileDaoTest
 
     private LearnSet createExampleLearnSet() throws LearnSetNameFormatException
     {
-        LearnSet exampleSet = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        LearnSet exampleSet = new LearnSet(new LearnSetName("exampleName"), new TreeSet<>());
         LearnCase learnCase = new LearnCase("example", "case");
         byte[] exampleImage = new byte[2];
         exampleImage[0] = 1;
@@ -46,7 +47,7 @@ class LearnSetFileDaoTest
     private LearnCase createExampleLearnCase()
     {
         LearnCase learnCase = new LearnCase("name", "definition"
-                , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true);
+                , UUID.fromString("6681ce3f-607f-42ca-8f91-6294646dad92"),true , Instant.now());
         byte[] dummyImage = new byte[2];
         learnCase.setImages(Arrays.asList(dummyImage));
         return learnCase;
@@ -168,7 +169,7 @@ class LearnSetFileDaoTest
         Paths.get(aTempPath.toString(), "exampleName.lap").toFile().createNewFile();
 
         //a real test
-        fileDao.saveAs(new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>()));
+        fileDao.saveAs(new LearnSet(new LearnSetName("exampleName"), new TreeSet<>()));
 
         //Assert
         Assertions.assertFalse(Paths.get(aTempPath.toString(), "exampleName.lap").toFile().exists());
@@ -195,7 +196,7 @@ class LearnSetFileDaoTest
         //set up test
         Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
 
-        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new TreeSet<>());
         learnSetToWrite.addLearnCase(createExampleLearnCase());
 
         LearnSetDto dtoToWrite = new LearnSetDto(learnSetToWrite);
@@ -236,7 +237,7 @@ class LearnSetFileDaoTest
         //set up test
         Path fileToWrite = Paths.get(tempDir.toString(), "exampleFilename.lap");
 
-        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>());
+        LearnSet learnSetToWrite = new LearnSet(new LearnSetName("exampleName"), new TreeSet<>());
         learnSetToWrite.addLearnCase(createExampleLearnCase());
 
         LearnSetDto dtoToWrite = new LearnSetDto(learnSetToWrite);
@@ -272,7 +273,7 @@ class LearnSetFileDaoTest
         LearnSetFileDao dao = new LearnSetFileDao(tempDir);
 
         //a real test
-        dao.saveAs(new LearnSet(new LearnSetName("exampleName"), new LinkedHashSet<>()));
+        dao.saveAs(new LearnSet(new LearnSetName("exampleName"), new TreeSet<>()));
 
         //assertion
         Assertions.assertTrue(Path.of(tempDir.toString(), "exampleName.xdp").toFile().exists());

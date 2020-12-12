@@ -265,11 +265,13 @@ class GuiModelBrokerTest
     }
 
     @Test
-    public void editedCaseShouldBeInCorrectPlace() throws IOException, NonUniqueException
+    public void editedCaseShouldBeInCorrectPlace() throws IOException, NonUniqueException, InterruptedException
     {
         //set up a test
         testSet.addLearnCase(new LearnCase("testCase0", "definition0"));
+        Thread.sleep(2);
         testSet.addLearnCase(new LearnCase("testCase1", "definition1"));
+        Thread.sleep(2);
         testSet.addLearnCase(new LearnCase("testCase2", "definition2"));
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);

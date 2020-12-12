@@ -4,6 +4,7 @@ package pl.kurcaba.learn.helper.persistence.file;
 import pl.kurcaba.learn.helper.common.model.LearnCase;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class LearnCaseDto implements Serializable {
 
     public LearnCase toLearnCase()
     {
-        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
+        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn, Instant.now());
         restoredCase.setImages(Arrays.asList(image));
         return restoredCase;
     }

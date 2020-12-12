@@ -2,6 +2,7 @@ package pl.kurcaba.learn.helper.persistence.file;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.kurcaba.learn.helper.common.model.LearnCase;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetName;
 import pl.kurcaba.learn.helper.learnset.values.LearnSetNameFormatException;
@@ -43,13 +44,32 @@ public class LearnSetDto implements Serializable {
             pl.kurcaba.learn.helper.common.values.LearnSetName setName
                     = new pl.kurcaba.learn.helper.common.values.LearnSetName(learnSetName.toString());
             return new LearnSet(setName, learnCases.stream()
-                    .map(LearnCaseDto::toLearnCase)
-                    .collect(Collectors.toCollection(LinkedHashSet::new)));
+                    .map(this::toLearnCase)
+                    .collect(Collectors.toCollection(TreeSet::new)));
         } catch (pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException aEx)
         {
             LOG.error("Cannot convert dto to LearnSet, there is a problem with LearnSetName", aEx);
         }
         return null;
+    }
+
+    /**
+     * This method waits two seconds because DTO doesn't hold information about creation date, so creation time is assigned
+     * based on current time. Without sleeping each case would have the same creation time.
+     *
+     * @param aReadCase a dto to convert
+     * @return LearnCase
+     */
+    private LearnCase toLearnCase(LearnCaseDto aReadCase)
+    {
+        try
+        {
+            Thread.sleep(2);
+        } catch (InterruptedException e)
+        {
+            //won't happen
+        }
+        return aReadCase.toLearnCase();
     }
 
     @Override

@@ -80,7 +80,7 @@ class LearnSetWriter extends AbstractLearnSetIO
             List<String> imageFilenames = new ArrayList<>();
             for(byte[] image : learnCase.getImages())
             {
-                String imageFilename = learnCase.getId().toString() + "-" + imageCounter++;
+                String imageFilename = learnCase.getUuid() + "-" + imageCounter++;
                 imageFilenames.add(imageFilename);
                 ZipEntry entry = new ZipEntry(imageFilename);
                 aZipStream.putNextEntry(entry);

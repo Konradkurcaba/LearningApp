@@ -1,9 +1,6 @@
 package pl.kurcaba.learn.helper.common.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +18,8 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     @OneToOne
     LearnSet parentLearnSet;
 
+    @Lob
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<byte[]> images = new ArrayList<>();
 
     public LearnCase(String name, String definition)
@@ -94,8 +93,6 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
         images.add(0, aImages);
     }
 
-
-
     public boolean isUsedToLearn()
     {
         return isUsedToLearn;
@@ -104,6 +101,11 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     public void setUsedToLearn(boolean usedToLearn)
     {
         isUsedToLearn = usedToLearn;
+    }
+
+    public Instant getCreateDate()
+    {
+        return createDate;
     }
 
     @Override

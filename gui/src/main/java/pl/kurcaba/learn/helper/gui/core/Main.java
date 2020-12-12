@@ -1,10 +1,5 @@
 package pl.kurcaba.learn.helper.gui.core;
 
-import pl.kurcaba.learn.helper.gui.backend.GuiDataManager;
-
-import javax.naming.NamingException;
-import java.io.IOException;
-
 public class Main
 {
     public static void main(String... args)
