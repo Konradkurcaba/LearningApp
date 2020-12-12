@@ -23,7 +23,7 @@ import java.util.zip.ZipFile;
 class LearnSetReader extends AbstractLearnSetIO
 {
 
-    private Logger log = LogManager.getLogger(LearnSetReader.class);
+    private final Logger log = LogManager.getLogger(LearnSetReader.class);
 
     public LearnSetReader(Path aPathDataDirectory)
     {
@@ -95,21 +95,29 @@ class LearnSetReader extends AbstractLearnSetIO
 
     private LearnSet createLearnSet(LearnSetXmlDto readSet, ZipFile zipFile) throws IOException, LearnSetNameFormatException
     {
-        List<LearnCase> learnCases = new ArrayList<>();
+        TreeSet<LearnCase> learnCases = new TreeSet<>();
         for(LearnCaseXmlDto learnXmlCase : readSet.getLearnCases())
         {
+
             LearnCase learnCase = new LearnCase(learnXmlCase.getName(),learnXmlCase.getDefinition()
                     ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn(), learnXmlCase.getCreateTime());
-            List<byte[]> images = new ArrayList<>();
-            for(String imageFilename : learnXmlCase.getImageFilenames())
-            {
-                InputStream imageInputStream = zipFile.getInputStream(zipFile.getEntry(imageFilename));
-                images.add(imageInputStream.readAllBytes());
-            }
-            learnCase.setImages(images);
             learnCases.add(learnCase);
+
+            List<byte[]> images = readImages(zipFile, learnXmlCase);
+            learnCase.setImages(images);
         }
-        return new LearnSet(new LearnSetName(readSet.getLearnSetName()),new TreeSet<>(learnCases));
+        return new LearnSet(new LearnSetName(readSet.getLearnSetName()),learnCases);
+    }
+
+    private List<byte[]> readImages(ZipFile zipFile, LearnCaseXmlDto learnXmlCase) throws IOException
+    {
+        List<byte[]> images = new ArrayList<>();
+        for(String imageFilename : learnXmlCase.getImageFilenames())
+        {
+            InputStream imageInputStream = zipFile.getInputStream(zipFile.getEntry(imageFilename));
+            images.add(imageInputStream.readAllBytes());
+        }
+        return images;
     }
 
     private LearnSet loadLegacyFile(LearnSetName aSetToLoad) throws IOException, ClassNotFoundException

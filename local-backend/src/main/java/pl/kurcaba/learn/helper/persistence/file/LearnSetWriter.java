@@ -22,8 +22,6 @@ import java.util.zip.ZipOutputStream;
 class LearnSetWriter extends AbstractLearnSetIO
 {
 
-    private static final Logger log = LogManager.getLogger(LearnSetWriter.class);
-
     public LearnSetWriter(Path aPathToDataDirectory)
     {
         super(aPathToDataDirectory);
@@ -35,15 +33,8 @@ class LearnSetWriter extends AbstractLearnSetIO
             ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream))
         {
             LearnSetXmlDto xmlDto = writeImagesToZip(aLearnSet,zipOutputStream);
-
-            JAXBContext context = JAXBContext.newInstance(LearnSetXmlDto.class);
-            Marshaller marshaller = context.createMarshaller();
-            ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-            marshaller.marshal(xmlDto, arrayOutputStream );
-
-            ZipEntry entry = new ZipEntry(aLearnSet.getLearnSetName().toString());
-            zipOutputStream.putNextEntry(entry);
-            zipOutputStream.write(arrayOutputStream.toByteArray());
+            ByteArrayOutputStream arrayOutputStream = marshalSetToInMemoryStream(xmlDto);
+            writeBytesToZip(arrayOutputStream.toByteArray(), zipOutputStream, aLearnSet.getLearnSetName().toString());
 
             if(existsLegacy(aLearnSet.getLearnSetName()))
             {
@@ -54,6 +45,22 @@ class LearnSetWriter extends AbstractLearnSetIO
         {
             throw new IOException("Cannot write learn set to file, there is a problem with JAXB", aEx);
         }
+    }
+
+    private void writeBytesToZip(byte[] bytesToSave, ZipOutputStream zipStream, String aEntryName) throws IOException
+    {
+        ZipEntry entry = new ZipEntry(aEntryName);
+        zipStream.putNextEntry(entry);
+        zipStream.write(bytesToSave);
+    }
+
+    private ByteArrayOutputStream marshalSetToInMemoryStream(LearnSetXmlDto xmlDto) throws JAXBException
+    {
+        JAXBContext context = JAXBContext.newInstance(LearnSetXmlDto.class);
+        Marshaller marshaller = context.createMarshaller();
+        ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+        marshaller.marshal(xmlDto, arrayOutputStream );
+        return arrayOutputStream;
     }
 
     public void writeNewSetToFile(LearnSet aLearnSet) throws NonUniqueException, IOException
@@ -74,6 +81,7 @@ class LearnSetWriter extends AbstractLearnSetIO
     private List<LearnCaseXmlDto> createAllCases(LearnSet aLearnSet, ZipOutputStream aZipStream) throws IOException
     {
         List<LearnCaseXmlDto> learnCases = new ArrayList<>();
+
         for(LearnCase learnCase : aLearnSet.getLearnSetCases())
         {
             int imageCounter = 0;
@@ -82,15 +90,13 @@ class LearnSetWriter extends AbstractLearnSetIO
             {
                 String imageFilename = learnCase.getUuid() + "-" + imageCounter++;
                 imageFilenames.add(imageFilename);
-                ZipEntry entry = new ZipEntry(imageFilename);
-                aZipStream.putNextEntry(entry);
-                aZipStream.write(image);
-                aZipStream.closeEntry();
+                writeBytesToZip(image,aZipStream, imageFilename);
             }
             LearnCaseXmlDto learnCaseXmlDto = new LearnCaseXmlDto(learnCase);
             learnCaseXmlDto.setImageFilenames(imageFilenames);
             learnCases.add(learnCaseXmlDto);
         }
+
         return learnCases;
     }
 
@@ -110,12 +116,5 @@ class LearnSetWriter extends AbstractLearnSetIO
     private void removeLegacyLearnSet(LearnSetName aSetToRemove)
     {
         getLegacyFile(aSetToRemove).delete();
-    }
-
-    private File getFile(LearnSetName aLearnSetName)
-    {
-        String fileName = aLearnSetName.toString() + "." + LEGACY_FILE_EXTENSION;
-        Path pathToOriginFile = Path.of(pathToDataDirectory.toString(), fileName);
-        return pathToOriginFile.toFile();
     }
 }
