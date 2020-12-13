@@ -27,6 +27,7 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
         this.name = Objects.requireNonNullElse(name, "");
         this.definition = Objects.requireNonNullElse(definition, "");
         isUsedToLearn = true;
+        createDate = Instant.now();
     }
 
     public LearnCase()
