@@ -5,14 +5,14 @@ import java.io.IOException;
 
 public class Main
 {
-    //public static void main(String... args)
+    public static void main(String... args)
     {
         FXApplication.launch(FXApplication.class,null);
     }
 
-    public static void main(String... args) throws NamingException, IOException
-    {
-        GuiDataManager dataManager = new GuiDataManager();
-        dataManager.initializeRemoteDataManager();
-    }
+//    public static void main(String... args) throws NamingException, IOException
+//    {
+//        GuiDataManager dataManager = new GuiDataManager();
+//        dataManager.initializeRemoteDataManager();
+//    }
 }

@@ -1,42 +1,52 @@
 package pl.kurcaba.learn.helper.common.model;
 
-import java.io.Serializable;
+import javax.persistence.*;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class LearnCase implements Serializable
+@Entity
+public class LearnCase extends BaseEntity implements Comparable<LearnCase>
 {
-    private final UUID id;
     private String name;
     private String definition;
     private boolean isUsedToLearn;
+    private Instant createDate = Instant.now();
 
-    private byte[] image;
+    @OneToOne
+    LearnSet parentLearnSet;
+
+    @Lob
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<byte[]> images = new ArrayList<>();
 
     public LearnCase(String name, String definition)
     {
-        this.name = Objects.requireNonNullElse(name,"");
-        this.definition = Objects.requireNonNullElse(definition,"");
+        this.name = Objects.requireNonNullElse(name, "");
+        this.definition = Objects.requireNonNullElse(definition, "");
         isUsedToLearn = true;
-        id = UUID.randomUUID();
+    }
+
+    public LearnCase()
+    {
     }
 
     /**
      * This constructor should only be used when restoring from datasource.
+     *
      * @param name
      * @param definition
      * @param id
      */
-    public LearnCase(String name, String definition, UUID id, boolean isUsedToLearn)
+    public LearnCase(String name, String definition, UUID id, boolean isUsedToLearn, Instant aCreateDate)
     {
-        this.name = Objects.requireNonNullElse(name,"");
-        this.definition = Objects.requireNonNullElse(definition,"");
-        this.id = Objects.requireNonNull(id);
+        this.name = Objects.requireNonNullElse(name, "");
+        this.definition = Objects.requireNonNullElse(definition, "");
         this.isUsedToLearn = isUsedToLearn;
-    }
-
-    public UUID getId() {
-        return id;
+        setUuid(id.toString());
+        this.createDate = aCreateDate;
     }
 
     public String getName()
@@ -59,14 +69,28 @@ public class LearnCase implements Serializable
         this.definition = definition;
     }
 
-    public byte[] getImage()
+    public List<byte[]> getImages()
     {
-        return image;
+        return images;
     }
 
-    public void setImage(byte[] image)
+    public void setImages(List<byte[]> aImages)
     {
-        this.image = image;
+        this.images = aImages;
+    }
+
+    public byte[] getImage()
+    {
+        if(images.size() > 0)
+        {
+            return images.get(0);
+        }
+        return null;
+    }
+
+    public void setImage(byte[] aImages)
+    {
+        images.add(0, aImages);
     }
 
     public boolean isUsedToLearn()
@@ -79,16 +103,21 @@ public class LearnCase implements Serializable
         isUsedToLearn = usedToLearn;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LearnCase learnCase = (LearnCase) o;
-        return id.equals(learnCase.id);
+    public Instant getCreateDate()
+    {
+        return createDate;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public int compareTo(LearnCase learnCase)
+    {
+        if(learnCase != null)
+        {
+            return this.createDate.compareTo(learnCase.createDate);
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

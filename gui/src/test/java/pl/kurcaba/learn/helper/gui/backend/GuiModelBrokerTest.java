@@ -12,13 +12,14 @@ import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
+import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
-
 import java.io.IOException;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.TreeSet;
 
 class GuiModelBrokerTest
 {
@@ -38,7 +39,7 @@ class GuiModelBrokerTest
     {
         //create example data
         testLearnSetName = new LearnSetName("exampleLearnSet");
-        testSet = new LearnSet(testLearnSetName, new LinkedHashSet<>());
+        testSet = new LearnSet(testLearnSetName, new TreeSet<>());
 
         //create DAO mock
         mockedDao = Mockito.mock(LearnSetDaoIf.class);
@@ -50,7 +51,7 @@ class GuiModelBrokerTest
         //initialization of the second set, used when tests needs more than one set.
         secondSetName = new LearnSetName("secondSet");
         exampleCase = new LearnCase("secondCase", "secondDefinition");
-        secondLearnSet = new LearnSet(secondSetName, new LinkedHashSet<>());
+        secondLearnSet = new LearnSet(secondSetName, new TreeSet<>());
     }
 
 
@@ -90,8 +91,7 @@ class GuiModelBrokerTest
     {
 
         //a real test
-        Assertions.assertThrows(IllegalStateException.class,
-                () -> modelBroker.createNewCase("caseName", "caseDefinition"));
+        Assertions.assertThrows(IllegalStateException.class, () -> modelBroker.createNewCase("caseName", "caseDefinition"));
     }
 
     @Test
@@ -110,8 +110,7 @@ class GuiModelBrokerTest
         //Assertion
         WritableImage resultImage = caseView.getImage().get();
 
-        Assertions.assertEquals(testImage.getPixelReader().getColor(0, 0)
-                , resultImage.getPixelReader().getColor(0, 0));
+        Assertions.assertEquals(testImage.getPixelReader().getColor(0, 0), resultImage.getPixelReader().getColor(0, 0));
         Assertions.assertEquals(testImage.getHeight(), resultImage.getHeight());
         Assertions.assertEquals(testImage.getWidth(), resultImage.getWidth());
     }
@@ -189,8 +188,7 @@ class GuiModelBrokerTest
     }
 
     @Test
-    public void LearnCasesAreChangedWhenSetIsChanged() throws IOException, NonUniqueException
-            , LearnSetNameFormatException, ClassNotFoundException
+    public void LearnCasesAreChangedWhenSetIsChanged() throws IOException, NonUniqueException, LearnSetNameFormatException, ClassNotFoundException
     {
         //set up a test
         secondLearnSet.addLearnCase(exampleCase);
@@ -208,8 +206,7 @@ class GuiModelBrokerTest
     }
 
     @Test
-    public void hasUnsavedPropertyIsUpdatedAfterChangingCurrentLearnSet() throws IOException, NonUniqueException
-            , ClassNotFoundException
+    public void hasUnsavedPropertyIsUpdatedAfterChangingCurrentLearnSet() throws IOException, NonUniqueException, ClassNotFoundException
     {
         //set up a test
         secondLearnSet.addLearnCase(exampleCase);
@@ -245,6 +242,48 @@ class GuiModelBrokerTest
 
         //assertion
         Assertions.assertTrue(testSet.getLearnSetCases().get(0).isUsedToLearn());
+    }
+
+    @Test
+    public void editedCaseShouldBeAltered() throws IOException, NonUniqueException
+    {
+        //set up a test
+        testSet.addLearnCase(new LearnCase("testCase", "definition"));
+        modelBroker.createNewLearnSet(testLearnSetName);
+        LearnCaseView learnCaseView = modelBroker.getCaseViews().get(0);
+        NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
+                , Optional.empty(), ConfirmationStatus.CONFIRMED);
+        //a real test
+        modelBroker.editCase(learnCaseView.getId(), newCaseDto);
+
+        //assertions
+        LearnCaseView editedView = modelBroker.getCaseViews().get(0);
+
+        Assertions.assertEquals("editedName", editedView.getName());
+        Assertions.assertEquals("editedDefinition", editedView.getDefinition());
+        Assertions.assertTrue(editedView.getImage().isEmpty());
+    }
+
+    @Test
+    public void editedCaseShouldBeInCorrectPlace() throws IOException, NonUniqueException, InterruptedException
+    {
+        //set up a test
+        testSet.addLearnCase(new LearnCase("testCase0", "definition0"));
+        Thread.sleep(2);
+        testSet.addLearnCase(new LearnCase("testCase1", "definition1"));
+        Thread.sleep(2);
+        testSet.addLearnCase(new LearnCase("testCase2", "definition2"));
+        modelBroker.createNewLearnSet(testLearnSetName);
+        LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);
+        NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
+                , Optional.empty(), ConfirmationStatus.CONFIRMED);
+
+        //a real test
+        modelBroker.editCase(learnCaseView.getId(), newCaseDto);
+
+        //assertions
+        LearnCaseView editedView = modelBroker.getCaseViews().get(1);
+        Assertions.assertEquals("editedName", editedView.getName());
     }
 
 

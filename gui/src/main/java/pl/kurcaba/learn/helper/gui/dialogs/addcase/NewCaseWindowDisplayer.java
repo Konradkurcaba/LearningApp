@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class NewCaseWindowDisplayer extends AbstractWindowDisplayer<AddCaseWindowController> {
 
-    private static final String NEW_CASE_FXML = "fxml/add_new_case_panel.fxml";
+    public static final String NEW_CASE_FXML = "fxml/add_new_case_panel.fxml";
 
     public NewCaseWindowDisplayer() {
     }

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>learn.helper</artifactId>
         <groupId>pl.kurcaba</groupId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>ear</packaging>
@@ -23,20 +23,40 @@
                     <modules>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>remote-backend</artifactId>
-                            <bundleFileName>${backend.module.jar.name}.jar</bundleFileName>
+                            <artifactId>common</artifactId>
+                            <bundleFileName>${common.jar.name}.jar</bundleFileName>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>common</artifactId>
-                            <bundleFileName>common.jar</bundleFileName>
+                            <artifactId>remote-backend</artifactId>
+                            <bundleFileName>${backend.module.jar.name}.jar</bundleFileName>
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                     </modules>
                     <outputDirectory>${project.build.directory}/deployment</outputDirectory>
                     <finalName>${remote.module.ear.name}</finalName>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>2.0.2.Final</version>
+                <configuration>
+                    <hostname>127.0.0.1</hostname>
+                    <port>9990</port>
+                    <username>konrad</username>
+                    <password>konrad123</password>
+                    <filename>deployment/${remote.module.ear.name}.ear</filename>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

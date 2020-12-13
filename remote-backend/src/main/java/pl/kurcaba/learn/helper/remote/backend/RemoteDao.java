@@ -1,62 +1,78 @@
 package pl.kurcaba.learn.helper.remote.backend;
 
+import pl.kurcaba.learn.helper.common.model.AbstractLearnSetDao;
 import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
+import pl.kurcaba.learn.helper.common.model.ModelConstants;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
-import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class RemoteDao implements LearnSetDaoIf
+public class RemoteDao extends AbstractLearnSetDao implements LearnSetDaoIf
 {
+
+    @PersistenceContext(unitName = "learnPersistenceUnit")
+    private EntityManager entityManager;
+
+    @EJB
+    private LearnSetValidator validator;
+
     @Override
-    public List<LearnSetName> getAllNames() throws IOException
+    public List<LearnSetName> getAllNames()
     {
-        try
-        {
-            LearnSetName name = new LearnSetName("exampleName");
-            List<LearnSetName> names = new ArrayList<>();
-            names.add(name);
-            return names;
-        } catch (LearnSetNameFormatException e)
-        {
-            e.printStackTrace();
-            return null;
-        }
+        TypedQuery<LearnSetName> allNamesQuery = entityManager.createNamedQuery(ModelConstants.GET_ALL_SET_NAMES, LearnSetName.class);
+        return allNamesQuery.getResultList();
     }
 
     @Override
     public LearnSet getSetByName(LearnSetName aLearnSetName) throws IOException, ClassNotFoundException
     {
-        return null;
+        TypedQuery<LearnSet> learnSetByName = entityManager.createNamedQuery(ModelConstants.GET_LEARN_SET_BY_NAME, LearnSet.class);
+        learnSetByName.setParameter(1, aLearnSetName);
+        return learnSetByName.getSingleResult();
     }
 
     @Override
-    public void saveChanges(LearnSet aSetToSave) throws IOException
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public LearnSet saveChanges(LearnSet aSetToSave) throws IOException
     {
-
+        aSetToSave.setSaved();
+        LearnSet merged = entityManager.merge(aSetToSave);
+        return merged;
     }
 
+
     @Override
-    public void saveAs(LearnSet aSetToSave) throws IOException
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public LearnSet saveAs(LearnSet aSetToSave) throws IOException
     {
-
+        if (validator.checkIfSetIsCorrect(aSetToSave))
+        {
+            aSetToSave.setSaved();
+            entityManager.persist(aSetToSave);
+            return aSetToSave;
+        } else
+            throw new IllegalArgumentException("A given learn set has not been validated correctly");
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void remove(LearnSetName learnSet)
     {
-
+        Query query = entityManager.createQuery("DELETE FROM LearnSet l WHERE l.learnSetName = ?1");
+        query.setParameter(1, learnSet);
+        query.executeUpdate();
     }
 
-    @Override
-    public LearnSet createNewLearnSet(LearnSetName aNewName) throws IOException, NonUniqueException
-    {
-        return null;
-    }
 }

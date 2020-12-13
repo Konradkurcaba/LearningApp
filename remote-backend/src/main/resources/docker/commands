@@ -1,0 +1,7 @@
+//init db
+docker run -p 80:80 -e 'PGADMIN_DEFAULT_EMAIL=konradkurcaba@gmail.com' -e 'PGADMIN_DEFAULT_PASSWORD=konrad123' --name pgadmin -d dpage/pgadmin4
+docker run -d --name postgres -e POSTGRES_PASSWORD=postgres-e PGDATA=/var/lib/postgresql/data/pgdata-v /custom/mount:/var/lib/postgresql/data postgres
+
+//wildfly-datasurce
+module add --name=org.postgre --resources=c:\Users\Konrad\Downloads\postgresql-42.2.18.jar --dependencies=javax.api,javax.transaction.api
+/subsystem=datasources/jdbc-driver=postgre:add(driver-name="postgre",driver-module-name="org.postgre",driver-class-name=org.postgresql.Driver)

@@ -4,10 +4,15 @@ package pl.kurcaba.learn.helper.persistence.file;
 import pl.kurcaba.learn.helper.common.model.LearnCase;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * This class is used only for compliance with old saved files. Java serialization shouldn't be used to persistent data.
+ */
+@Deprecated
 public class LearnCaseDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,23 +24,28 @@ public class LearnCaseDto implements Serializable {
 
     private byte[] image;
 
-    public LearnCaseDto(LearnCase aLearnCase) {
-        this.id = aLearnCase.getId();
+    public LearnCaseDto(LearnCase aLearnCase)
+    {
+        this.id = UUID.fromString(aLearnCase.getUuid());
         this.name = aLearnCase.getName();
         this.definition = aLearnCase.getDefinition();
-        this.image = aLearnCase.getImage();
+        if(aLearnCase.getImages().size() > 0)
+        {
+            this.image = aLearnCase.getImages().get(0);
+        }
         this.isUsedToLearn = aLearnCase.isUsedToLearn();
     }
 
     public LearnCase toLearnCase()
     {
-        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn);
-        restoredCase.setImage(image);
+        LearnCase restoredCase = new LearnCase(name, definition, id, isUsedToLearn, Instant.now());
+        restoredCase.setImages(Arrays.asList(image));
         return restoredCase;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LearnCaseDto that = (LearnCaseDto) o;
@@ -47,7 +57,8 @@ public class LearnCaseDto implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int result = Objects.hash(id, name, definition, isUsedToLearn);
         result = 31 * result + Arrays.hashCode(image);
         return result;

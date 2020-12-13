@@ -23,22 +23,18 @@ public class RemoveSetCommand extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        if(!canBeExecuted())
+        if (!canBeExecuted())
         {
             throw new IllegalStateException("Cannot delete a learn set if any set is not selected");
         }
         ResourceBundle textBundle = ResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
         ConfirmationStatus status = windowController.displayConfirmDialog(textBundle.getString("removeSetConfirmationMessage"));
 
-        if(status.equals(ConfirmationStatus.CONFIRMED))
+        if (status.equals(ConfirmationStatus.CONFIRMED))
         {
-            try {
-                LearnSetName learnSet = windowController.getDisplayedLearnSet().get();
-                guiModelBroker.removeLearnSet(learnSet);
-                windowController.refreshMainListData();
-            } catch (IOException aException) {
-                logger.error("A problem has occurred:", aException);
-            }
+            LearnSetName learnSet = windowController.getDisplayedLearnSet().get();
+            guiModelBroker.removeLearnSet(learnSet);
+            windowController.refreshMainListData();
         }
     }
 

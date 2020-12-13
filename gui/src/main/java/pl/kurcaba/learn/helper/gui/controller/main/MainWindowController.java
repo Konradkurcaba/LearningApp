@@ -56,17 +56,18 @@ public class MainWindowController extends AbstractWindowController
     @FXML
     private LearnSetTable learnSetTable;
 
-    public void initController(GuiModelBroker aGuiModelBroker, Stage aMainStage) throws IOException {
+    public void initController(GuiModelBroker aGuiModelBroker, Stage aMainStage) throws IOException
+    {
 
         guiModelBroker = aGuiModelBroker;
         setStage(aMainStage);
 
         initButtons();
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
-                , new ShowImageCommand(guiModelBroker, this));
+                , new ShowImageCommand(guiModelBroker, this), new EditCaseCommand(aGuiModelBroker, this));
         learnSetTable.setEditable(true);
         learnSetListView.setFocusCommand(new LearnSetFocusedCmd(guiModelBroker, this));
-        learnSetListView.setDeleteSetCommand(new RemoveSetCommand(guiModelBroker,this));
+        learnSetListView.setDeleteSetCommand(new RemoveSetCommand(guiModelBroker, this));
         refreshMainListData();
     }
 
@@ -80,7 +81,7 @@ public class MainWindowController extends AbstractWindowController
         addNewCase.disableProperty().bind(guiModelBroker.isLearnSetChosenProperty().not());
         startButton.setCommand(new StartLearnCommand(guiModelBroker, this));
         startButton.updateState();
-        minimizeButton.setCommand(new MinimizeWindowCommand(guiModelBroker,this));
+        minimizeButton.setCommand(new MinimizeWindowCommand(guiModelBroker, this));
         minimizeImageView.setImage(getImage(GRAY_LINE_PNG));
     }
 
@@ -101,7 +102,8 @@ public class MainWindowController extends AbstractWindowController
         return new CloseMainWindowCommand(guiModelBroker, this);
     }
 
-    Optional<String> displayTextInputDialog(String aTextToDisplay) {
+    Optional<String> displayTextInputDialog(String aTextToDisplay)
+    {
         InputDialogDisplayer inputDialogDisplayer = new InputDialogDisplayer();
         return inputDialogDisplayer.showInputDialog(aTextToDisplay);
     }
@@ -112,23 +114,31 @@ public class MainWindowController extends AbstractWindowController
         return confirmDialogUtil.showConfirmWindow(aTextToDisplay);
     }
 
-    void refreshMainListData() throws IOException
+    void refreshMainListData()
     {
-        List<LearnSetName> learnSetsNames = guiModelBroker.getAllSetsNames();
-        learnSetListView.setItems(FXCollections.observableArrayList(learnSetsNames));
+        GetAllNamesAsyncCommand getAllNames = new GetAllNamesAsyncCommand(guiModelBroker, this);
+        getAllNames.start();
+    }
+
+    void changeLearnSetNames(List<LearnSetName> names)
+    {
+        learnSetListView.setItems(FXCollections.observableArrayList(names));
         learnSetListView.getSelectionModel().clearSelection();
         refreshSetData();
     }
 
-    void removeViewFromTable(LearnCaseView aView) {
+    void removeViewFromTable(LearnCaseView aView)
+    {
         learnSetTable.getItems().remove(aView);
     }
 
-    Optional<LearnCaseView> getSelectedCaseView() {
+    Optional<LearnCaseView> getSelectedCaseView()
+    {
         return Optional.ofNullable(learnSetTable.getSelectionModel().getSelectedItem());
     }
 
-    Optional<LearnSetName> getFocusedLearnSet() {
+    Optional<LearnSetName> getFocusedLearnSet()
+    {
         return Optional.ofNullable(learnSetListView.getSelectionModel().getSelectedItem());
     }
 
@@ -137,7 +147,8 @@ public class MainWindowController extends AbstractWindowController
         return Optional.ofNullable(currentLearnSetName);
     }
 
-    public void setDisplayedLearnSet(LearnSetName aLearnSetName) {
+    public void setDisplayedLearnSet(LearnSetName aLearnSetName)
+    {
         this.currentLearnSetName = aLearnSetName;
     }
 
@@ -146,7 +157,8 @@ public class MainWindowController extends AbstractWindowController
         learnSetListView.getSelectionModel().select(aLearnSetName);
     }
 
-    NewCaseDto showNewCaseWindow() {
+    NewCaseDto showNewCaseWindow()
+    {
         NewCaseWindowDisplayer windowDisplayer = new NewCaseWindowDisplayer();
         return windowDisplayer.showNewCaseWindow();
     }
@@ -172,4 +184,6 @@ public class MainWindowController extends AbstractWindowController
     {
         killThisWindow();
     }
+
+
 }

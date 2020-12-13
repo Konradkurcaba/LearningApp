@@ -10,6 +10,7 @@ import pl.kurcaba.learn.helper.common.model.LearnSet;
 import pl.kurcaba.learn.helper.common.model.LearnSetDaoIf;
 import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
+import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.screen.ImageConverter;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
@@ -18,16 +19,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class GuiModelBroker {
+public class GuiModelBroker
+{
 
     private static final Logger logger = LogManager.getLogger(GuiModelBroker.class);
 
     private final LearnSetDaoIf LearnSetDao;
     private LearnSet currentLearnSet;
     private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
-    private final BooleanProperty isLearnSetChosen  = new SimpleBooleanProperty(false);
+    private final BooleanProperty isLearnSetChosen = new SimpleBooleanProperty(false);
 
 
     public GuiModelBroker(LearnSetDaoIf aLearnSetDao)
@@ -41,21 +44,22 @@ public class GuiModelBroker {
         updateProperties();
     }
 
-    public void createNewCase(String newCaseName, String newDefinition, WritableImage aImage) {
-        if(currentLearnSet != null)
+    public void createNewCase(String newCaseName, String newDefinition, WritableImage aImage)
+    {
+        if (currentLearnSet != null)
         {
             LearnCase learnCase = currentLearnSet.createNewCase(newCaseName, newDefinition);
-            if(aImage != null)
+            if (aImage != null)
             {
                 try
                 {
                     learnCase.setImage(ImageConverter.convertToByte(aImage));
-                } catch (IOException e) {
+                } catch (IOException e)
+                {
                     logger.error("A problem has occurred:", e);
                 }
             }
-        }
-        else
+        } else
         {
             logger.warn("Cannot create new case because set manager is not set");
             throw new IllegalStateException("Set is not chosen by user");
@@ -63,7 +67,25 @@ public class GuiModelBroker {
         updateProperties();
     }
 
-    public void createNewCase(String newCaseName, String newDefinition) {
+    public void editCase(UUID aCaseId, NewCaseDto editedDto)
+    {
+        byte[] convertedImage = null;
+        if(editedDto.getNewCaseImage().isPresent())
+        {
+            try
+            {
+                convertedImage = ImageConverter.convertToByte(editedDto.getNewCaseImage().get());
+            } catch (IOException e)
+            {
+                logger.error("A problem has occurred:", e);
+            }
+        }
+        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition(), convertedImage);
+        updateProperties();
+    }
+
+    public void createNewCase(String newCaseName, String newDefinition)
+    {
         createNewCase(newCaseName, newDefinition, null);
         updateProperties();
     }
@@ -76,24 +98,28 @@ public class GuiModelBroker {
         return removeStatus;
     }
 
-    public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException {
+    public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException
+    {
         currentLearnSet = LearnSetDao.getSetByName(aSetName);
         updateProperties();
     }
 
-    public void saveChanges() throws IOException {
-        LearnSetDao.saveChanges(currentLearnSet);
+    public void saveChanges() throws IOException
+    {
+        currentLearnSet = LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }
 
-    public List<LearnSetName> getAllSetsNames() throws IOException {
+    public List<LearnSetName> getAllSetsNames() throws IOException
+    {
         return LearnSetDao.getAllNames();
     }
 
-    public List<LearnCaseView> getCaseViews() {
+    public List<LearnCaseView> getCaseViews()
+    {
         List<LearnCaseView> caseViews = buildViewsForCurrentSet();
 
-        for(LearnCaseView caseView: caseViews)
+        for (LearnCaseView caseView : caseViews)
         {
             caseView.isUsedToLearnProperty().addListener(valueChanged -> isUsedToLearnPropertyChanged(caseView));
         }
@@ -104,7 +130,7 @@ public class GuiModelBroker {
     {
         boolean newValue = caseView.isUsedToLearnProperty().get();
         Optional<LearnCase> learnCase = currentLearnSet.getLearnSetCases().stream()
-                .filter(s -> s.getId().equals(caseView.getId()))
+                .filter(s -> s.getUuid().equals(caseView.getId().toString()))
                 .findAny();
         learnCase.ifPresent(foundCase ->
         {
@@ -115,11 +141,11 @@ public class GuiModelBroker {
 
     private List<LearnCaseView> buildViewsForCurrentSet()
     {
-        if(currentLearnSet == null)
+        if (currentLearnSet == null)
         {
             return new ArrayList<>();
         }
-        return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(learnCase.getId())
+        return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(UUID.fromString(learnCase.getUuid()))
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
                 .setImage(convertImage(learnCase.getImage()))
@@ -140,10 +166,11 @@ public class GuiModelBroker {
 
     private void updateUnsavedChangesProperty()
     {
-        if(currentLearnSet != null)
+        if (currentLearnSet != null)
         {
             hasUnsavedChanges.setValue(currentLearnSet.hasUnsavedChanges());
-        }else
+        }
+        else
         {
             hasUnsavedChanges.setValue(false);
         }
@@ -160,14 +187,20 @@ public class GuiModelBroker {
         updateIsLearnSetChosenProperty();
     }
 
-    private WritableImage convertImage(byte[] aImage) {
-        try {
-            if (aImage != null) {
+    private WritableImage convertImage(byte[] aImage)
+    {
+        try
+        {
+            if (aImage != null)
+            {
                 return ImageConverter.convertToImage(aImage);
-            } else {
+            }
+            else
+            {
                 return null;
             }
-        } catch (IOException aEx) {
+        } catch (IOException aEx)
+        {
             logger.error("A problem has occurred:", aEx);
             return null;
         }
@@ -176,11 +209,17 @@ public class GuiModelBroker {
     public void removeLearnSet(LearnSetName learnSet)
     {
         boolean isCurrentSetToRemove = learnSet.equals(currentLearnSet.getLearnSetName());
-        if(isLearnSetChosenProperty().get() && isCurrentSetToRemove)
+        if (isLearnSetChosenProperty().get() && isCurrentSetToRemove)
         {
             currentLearnSet = null;
             updateProperties();
         }
-        LearnSetDao.remove(learnSet);
+        try
+        {
+            LearnSetDao.remove(learnSet);
+        } catch (IOException aEx)
+        {
+            logger.error("Cannot remove learnSet file, an exception has occur", aEx);
+        }
     }
 }
