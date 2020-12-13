@@ -7,6 +7,7 @@ import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
+import java.util.List;
 import java.util.Optional;
 
 public class AddCaseCommand extends MainWindowCommand
@@ -27,10 +28,9 @@ public class AddCaseCommand extends MainWindowCommand
         {
             String newCaseName = newCaseDto.getNewCaseName();
             String newDefinition = newCaseDto.getNewCaseDefinition();
-            Optional<WritableImage> newScreenShot = newCaseDto.getNewCaseImage();
+            List<WritableImage> images = newCaseDto.getNewCaseImages();
 
-            newScreenShot.ifPresentOrElse(writableImage -> guiModelBroker.createNewCase(newCaseName, newDefinition, writableImage)
-                    , () -> guiModelBroker.createNewCase(newCaseName, newDefinition));
+            guiModelBroker.createNewCase(newCaseName, newDefinition, images);
 
             windowController.refreshSetData();
         }

@@ -4,9 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.image.WritableImage;
 
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class LearnCaseView
 {
@@ -21,7 +19,7 @@ public class LearnCaseView
     private final UUID id;
     private String name;
     private String definition;
-    private WritableImage image;
+    private List<WritableImage> images;
     private BooleanProperty isUsedToLearn;
 
 
@@ -45,19 +43,14 @@ public class LearnCaseView
         this.definition = definition;
     }
 
-    public Optional<WritableImage> getImage()
+    public List<WritableImage> getImages()
     {
-        return Optional.ofNullable(image);
+        return images;
     }
 
-    public void setImage(WritableImage image)
+    public void setImages(List<WritableImage> aImages)
     {
-        this.image = image;
-    }
-
-    public boolean isImageLoaded()
-    {
-        return image != null;
+        this.images = aImages;
     }
 
     public UUID getId() {
@@ -97,7 +90,7 @@ public class LearnCaseView
         private UUID id;
         private String name;
         private String definition;
-        private WritableImage image;
+        private List<WritableImage> image = new ArrayList<>();
         private boolean isUsedToLearn;
 
         private Builder(UUID aId)
@@ -117,7 +110,7 @@ public class LearnCaseView
             return this;
         }
 
-        public Builder setImage(WritableImage image)
+        public Builder setImages(List<WritableImage> image)
         {
             this.image = image;
             return this;
@@ -134,7 +127,7 @@ public class LearnCaseView
             LearnCaseView learnCaseView = new LearnCaseView(id);
             learnCaseView.setName(Objects.requireNonNullElse(this.name, ""));
             learnCaseView.setDefinition(Objects.requireNonNullElse(this.definition, ""));
-            learnCaseView.setImage(this.image);
+            learnCaseView.setImages(this.image);
             learnCaseView.setIsUsedToLearn(isUsedToLearn);
             return learnCaseView;
         }

@@ -44,22 +44,14 @@ public class GuiModelBroker
         updateProperties();
     }
 
-    public void createNewCase(String newCaseName, String newDefinition, WritableImage aImage)
+    public void createNewCase(String newCaseName, String newDefinition, List<WritableImage> aImages)
     {
         if (currentLearnSet != null)
         {
             LearnCase learnCase = currentLearnSet.createNewCase(newCaseName, newDefinition);
-            if (aImage != null)
-            {
-                try
-                {
-                    learnCase.setImage(ImageConverter.convertToByte(aImage));
-                } catch (IOException e)
-                {
-                    logger.error("A problem has occurred:", e);
-                }
-            }
-        } else
+            learnCase.setImages(convertImagesToBytes(aImages));
+        }
+        else
         {
             logger.warn("Cannot create new case because set manager is not set");
             throw new IllegalStateException("Set is not chosen by user");
@@ -69,24 +61,13 @@ public class GuiModelBroker
 
     public void editCase(UUID aCaseId, NewCaseDto editedDto)
     {
-        byte[] convertedImage = null;
-        if(editedDto.getNewCaseImage().isPresent())
-        {
-            try
-            {
-                convertedImage = ImageConverter.convertToByte(editedDto.getNewCaseImage().get());
-            } catch (IOException e)
-            {
-                logger.error("A problem has occurred:", e);
-            }
-        }
-        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition(), convertedImage);
-        updateProperties();
+        List<byte[]> convertedImages = convertImagesToBytes(editedDto.getNewCaseImages());
+        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition(),convertedImages);
     }
 
     public void createNewCase(String newCaseName, String newDefinition)
     {
-        createNewCase(newCaseName, newDefinition, null);
+        createNewCase(newCaseName, newDefinition, new ArrayList<>());
         updateProperties();
     }
 
@@ -148,7 +129,7 @@ public class GuiModelBroker
         return currentLearnSet.getLearnSetCases().stream().map(learnCase -> LearnCaseView.builder(UUID.fromString(learnCase.getUuid()))
                 .setName(learnCase.getName())
                 .setDefinition(learnCase.getDefinition())
-                .setImage(convertImage(learnCase.getImage()))
+                .setImages(convertImages(learnCase.getImages()))
                 .setUsedToLearn(learnCase.isUsedToLearn())
                 .build())
                 .collect(Collectors.toList());
@@ -187,24 +168,20 @@ public class GuiModelBroker
         updateIsLearnSetChosenProperty();
     }
 
-    private WritableImage convertImage(byte[] aImage)
+    private List<WritableImage> convertImages(List<byte[]> aImages)
     {
-        try
-        {
-            if (aImage != null)
-            {
-                return ImageConverter.convertToImage(aImage);
-            }
-            else
-            {
-                return null;
-            }
-        } catch (IOException aEx)
-        {
-            logger.error("A problem has occurred:", aEx);
-            return null;
-        }
+            return aImages.stream()
+                    .map(ImageConverter::convertToImage)
+                    .collect(Collectors.toList());
     }
+
+    private List<byte[]> convertImagesToBytes(List<WritableImage> aImages)
+    {
+        return aImages.stream()
+                .map(ImageConverter::convertToByte)
+                .collect(Collectors.toList());
+    }
+
 
     public void removeLearnSet(LearnSetName learnSet)
     {

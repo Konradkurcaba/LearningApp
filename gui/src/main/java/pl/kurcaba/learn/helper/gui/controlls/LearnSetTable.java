@@ -81,7 +81,8 @@ public class LearnSetTable extends TableView<LearnCaseView> {
 
         imageColumn.setCellValueFactory(tc -> {
             String textInCell;
-            if(tc.getValue().getImage().isPresent())
+            boolean hasAnyImage = !tc.getValue().getImages().isEmpty();
+            if(hasAnyImage)
             {
                 textInCell = "Tak";
             }

@@ -123,10 +123,8 @@ public class LearnPanelController extends AbstractWindowController
 
         for(LearnCaseView learnCase : learnCases)
         {
-            Optional<WritableImage> OptImage = learnCase.getImage();
-            if(OptImage.isPresent())
+            for(WritableImage image : learnCase.getImages())
             {
-                WritableImage image = OptImage.get();
                 if(image.getHeight() > maxHeight)
                 {
                     maxHeight = image.getHeight();
@@ -166,9 +164,10 @@ public class LearnPanelController extends AbstractWindowController
         imageView.setImage(null);
         if(learnOptions.isImageShown())
         {
-            aCaseView.getImage().ifPresent(image -> {
-                imageView.setImage(image);
-           });
+            if(!aCaseView.getImages().isEmpty())
+            {
+                imageView.setImage(aCaseView.getImages().get(0));
+            }
         }
         correctName.setVisible(false);
         correctDefinition.setVisible(false);
@@ -232,8 +231,9 @@ public class LearnPanelController extends AbstractWindowController
 
     void showImage()
     {
-        getCurrentCaseView().getImage().ifPresent(image -> {
-            imageView.setImage(image);
-        });
+        if(!getCurrentCaseView().getImages().isEmpty())
+        {
+            imageView.setImage(getCurrentCaseView().getImages().get(0));
+        }
     }
 }

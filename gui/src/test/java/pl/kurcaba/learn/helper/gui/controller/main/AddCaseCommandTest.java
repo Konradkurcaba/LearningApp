@@ -8,6 +8,9 @@ import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 class AddCaseCommandTest
@@ -22,7 +25,7 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", Optional.empty(), ConfirmationStatus.CONFIRMED);
+                , "exampleDefinition", new ArrayList<>(), ConfirmationStatus.CONFIRMED);
         Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
@@ -39,7 +42,7 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", Optional.empty(), ConfirmationStatus.REJECTED);
+                , "exampleDefinition", new ArrayList<>(), ConfirmationStatus.REJECTED);
         Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
@@ -56,7 +59,7 @@ class AddCaseCommandTest
         //set up a test
         WritableImage image = new WritableImage(10, 10);
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", Optional.of(image), ConfirmationStatus.CONFIRMED);
+                , "exampleDefinition", Collections.singletonList(image), ConfirmationStatus.CONFIRMED);
         Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
@@ -65,7 +68,7 @@ class AddCaseCommandTest
 
         //Assertion
         Mockito.verify(mockedBroker).createNewCase("exampleName"
-                , "exampleDefinition", image);
+                , "exampleDefinition", Collections.singletonList(image));
     }
 
     @Test
@@ -73,7 +76,7 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                ,  "exampleDefinition", Optional.empty(), ConfirmationStatus.CONFIRMED);
+                ,  "exampleDefinition", new ArrayList<>(), ConfirmationStatus.CONFIRMED);
         Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 

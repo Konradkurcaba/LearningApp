@@ -17,9 +17,7 @@ import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-import java.util.TreeSet;
+import java.util.*;
 
 class GuiModelBrokerTest
 {
@@ -104,11 +102,11 @@ class GuiModelBrokerTest
         testImage.getPixelWriter().setColor(0, 0, Color.ANTIQUEWHITE);
 
         //a real test
-        modelBroker.createNewCase("caseName", "caseDefinition", testImage);
+        modelBroker.createNewCase("caseName", "caseDefinition", Arrays.asList(testImage));
         LearnCaseView caseView = modelBroker.getCaseViews().get(0);
 
         //Assertion
-        WritableImage resultImage = caseView.getImage().get();
+        WritableImage resultImage = caseView.getImages().get(0);
 
         Assertions.assertEquals(testImage.getPixelReader().getColor(0, 0), resultImage.getPixelReader().getColor(0, 0));
         Assertions.assertEquals(testImage.getHeight(), resultImage.getHeight());
@@ -252,7 +250,7 @@ class GuiModelBrokerTest
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(0);
         NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
-                , Optional.empty(), ConfirmationStatus.CONFIRMED);
+                , new ArrayList<>(), ConfirmationStatus.CONFIRMED);
         //a real test
         modelBroker.editCase(learnCaseView.getId(), newCaseDto);
 
@@ -261,7 +259,7 @@ class GuiModelBrokerTest
 
         Assertions.assertEquals("editedName", editedView.getName());
         Assertions.assertEquals("editedDefinition", editedView.getDefinition());
-        Assertions.assertTrue(editedView.getImage().isEmpty());
+        Assertions.assertTrue(editedView.getImages().isEmpty());
     }
 
     @Test
@@ -276,7 +274,7 @@ class GuiModelBrokerTest
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);
         NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
-                , Optional.empty(), ConfirmationStatus.CONFIRMED);
+                , new ArrayList<>(), ConfirmationStatus.CONFIRMED);
 
         //a real test
         modelBroker.editCase(learnCaseView.getId(), newCaseDto);

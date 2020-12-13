@@ -39,7 +39,7 @@ class LearnSetFileDaoTest
         byte[] exampleImage = new byte[2];
         exampleImage[0] = 1;
         exampleImage[1] = 1;
-        learnCase.setImage(exampleImage);
+        learnCase.setImages(Arrays.asList(exampleImage));
         exampleSet.addLearnCase(learnCase);
         return exampleSet;
     }

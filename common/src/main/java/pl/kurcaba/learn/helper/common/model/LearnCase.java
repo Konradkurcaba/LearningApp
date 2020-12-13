@@ -80,20 +80,6 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
         this.images = aImages;
     }
 
-    public byte[] getImage()
-    {
-        if(images.size() > 0)
-        {
-            return images.get(0);
-        }
-        return null;
-    }
-
-    public void setImage(byte[] aImages)
-    {
-        images.add(0, aImages);
-    }
-
     public boolean isUsedToLearn()
     {
         return isUsedToLearn;

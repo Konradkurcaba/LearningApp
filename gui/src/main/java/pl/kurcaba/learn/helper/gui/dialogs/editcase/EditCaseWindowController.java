@@ -9,9 +9,10 @@ public class EditCaseWindowController extends AddCaseWindowController
     {
         nameTf.setText(aCaseView.getName());
         definitionTf.setText(aCaseView.getDefinition());
-        aCaseView.getImage().ifPresent(image -> {
-            this.screen = image;
+        if(!aCaseView.getImages().isEmpty())
+        {
+            this.screen = aCaseView.getImages().get(0);
             choseCheckBox.setSelected(true);
-        });
+        }
     }
 }

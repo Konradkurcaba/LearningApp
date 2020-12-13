@@ -62,7 +62,7 @@ public class LearnSet extends BaseEntity
         return newCase;
     }
 
-    public void editCase(UUID aId, String aName, String aDefinition, byte[] aImage)
+    public void editCase(UUID aId, String aName, String aDefinition, List<byte[]> aImages)
     {
         LearnCase foundCase = learnCases.stream()
                 .filter(learnCase -> learnCase.getUuid().equals(aId.toString()))
@@ -71,9 +71,7 @@ public class LearnSet extends BaseEntity
 
         foundCase.setName(aName);
         foundCase.setDefinition(aDefinition);
-        List<byte[]> tempImageList = new ArrayList<>();
-        tempImageList.add(aImage);
-        foundCase.setImages(tempImageList);
+        foundCase.setImages(aImages);
         hasUnsavedChanges = true;
     }
 
