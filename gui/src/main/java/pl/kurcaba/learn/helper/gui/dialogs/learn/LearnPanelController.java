@@ -52,11 +52,18 @@ public class LearnPanelController extends AbstractWindowController
     @FXML
     private CommandButton nextButton;
 
+    @FXML
+    private CommandButton nextImage;
+
+    @FXML
+    private CommandButton prevImage;
+
 
     private final LearnOptions learnOptions;
 
     final List<LearnCaseView> learnCases;
     private int currentCaseIndex;
+    private int currentImageIndex;
 
     public LearnPanelController(LearnOptions learnOptions, List<LearnCaseView> learnCases)
     {
@@ -100,6 +107,15 @@ public class LearnPanelController extends AbstractWindowController
         nextButton.updateState();
         checkButton.setCommand(new CheckCommand(this));
         showAnswer.setCommand(new ShowCorrectAnswersCmd(this));
+
+        PrevImageCmd prevImageCmd = new PrevImageCmd(this);
+        prevImage.setCommand(prevImageCmd);
+        prevImage.disableProperty().bind(prevImageCmd.canBePerformedProperty().not());
+
+        NextImageCmd nextImageCmd = new NextImageCmd(this);
+        nextImage.setCommand(nextImageCmd);
+        nextImage.disableProperty().bind(nextImageCmd.canBePerformedProperty().not());
+
     }
 
     private void initImageView()
@@ -135,7 +151,7 @@ public class LearnPanelController extends AbstractWindowController
                 }
             }
         }
-        return new BoundingBox(0, 0, maxWidth, maxHeight);
+        return new BoundingBox(0, 0, maxWidth + 100, maxHeight);
     }
 
     int getCurrentCaseIndex() {
@@ -144,6 +160,26 @@ public class LearnPanelController extends AbstractWindowController
 
     void setCurrentCaseIndex(int currentCaseIndex) {
         this.currentCaseIndex = currentCaseIndex;
+    }
+
+    void displayNextImage()
+    {
+        showImage(currentImageIndex++);
+    }
+
+    void displayPrevImage()
+    {
+        showImage(currentImageIndex++);
+    }
+
+    boolean canShowNextImage()
+    {
+        return currentImageIndex + 1 < getCurrentCaseView().getImages().size();
+    }
+
+    boolean canShowPrevImage()
+    {
+        return currentImageIndex > 0;
     }
 
     void displayCase(LearnCaseView aCaseView)
@@ -229,11 +265,8 @@ public class LearnPanelController extends AbstractWindowController
         correctDefinition.setVisible(true);
     }
 
-    void showImage()
+    void showImage(int aIndex)
     {
-        if(!getCurrentCaseView().getImages().isEmpty())
-        {
-            imageView.setImage(getCurrentCaseView().getImages().get(0));
-        }
+        imageView.setImage(getCurrentCaseView().getImages().get(aIndex));
     }
 }

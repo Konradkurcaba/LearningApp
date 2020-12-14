@@ -98,7 +98,7 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     @Override
     public int compareTo(LearnCase learnCase)
     {
-        if(learnCase != null)
+        if(learnCase != null &&createDate != null)
         {
             return this.createDate.compareTo(learnCase.createDate);
         }

@@ -21,9 +21,10 @@ public class ShowCorrectAnswersCmd extends AbstractLearnCmd
         {
             controller.showCorrectDefinition();
         }
-        if(!options.isImageShown())
+        boolean hasAnyImages = !controller.getCurrentCaseView().getImages().isEmpty();
+        if(!options.isImageShown() && hasAnyImages)
         {
-            controller.showImage();
+            controller.showImage(0);
         }
     }
 
