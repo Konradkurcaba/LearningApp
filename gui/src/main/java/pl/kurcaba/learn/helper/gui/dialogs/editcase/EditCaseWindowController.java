@@ -9,10 +9,6 @@ public class EditCaseWindowController extends AddCaseWindowController
     {
         nameTf.setText(aCaseView.getName());
         definitionTf.setText(aCaseView.getDefinition());
-        if(!aCaseView.getImages().isEmpty())
-        {
-            this.screen = aCaseView.getImages().get(0);
-//            ch.setSelected(true);
-        }
+        addScreenshots(aCaseView.getImages());
     }
 }

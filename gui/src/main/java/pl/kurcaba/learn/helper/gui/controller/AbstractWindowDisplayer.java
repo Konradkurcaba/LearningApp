@@ -47,6 +47,8 @@ public abstract class AbstractWindowDisplayer<T extends AbstractWindowController
         stage.setScene(newScene);
         stage.getIcons().add(new Image("images/icon.png"));
 
+        controller.invokeAfterCreateGui();
+
         return stage;
     }
 

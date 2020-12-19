@@ -11,15 +11,12 @@ public class NewCaseDto {
     private final String newCaseName;
     private final String newCaseDefinition;
     private final List<WritableImage> newCaseImages;
-    private final ConfirmationStatus confirmationStatus;
 
-    public NewCaseDto(String newCaseName, String newCaseDefinition, List<WritableImage> images
-            , ConfirmationStatus aStatus)
+    public NewCaseDto(String newCaseName, String newCaseDefinition, List<WritableImage> images)
     {
         this.newCaseName = newCaseName;
         this.newCaseDefinition = newCaseDefinition;
         this.newCaseImages = images;
-        this.confirmationStatus = aStatus;
     }
 
     public String getNewCaseName() {
@@ -34,7 +31,4 @@ public class NewCaseDto {
         return newCaseImages;
     }
 
-    public ConfirmationStatus getConfirmationStatus() {
-        return confirmationStatus;
-    }
 }

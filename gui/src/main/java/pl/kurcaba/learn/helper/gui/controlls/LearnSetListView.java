@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 public class LearnSetListView extends ListView<LearnSetName>
 {
 
-
     private void initContextMenu(MainWindowCommand aDeleteCmd)
     {
         ContextMenu menu = new ContextMenu();

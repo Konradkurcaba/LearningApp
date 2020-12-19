@@ -1,12 +1,8 @@
 package pl.kurcaba.learn.helper.gui.dialogs.addcase;
 
-import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer;
-import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class NewCaseWindowDisplayer extends AbstractWindowDisplayer<AddCaseWindowController> {
@@ -21,18 +17,10 @@ public class NewCaseWindowDisplayer extends AbstractWindowDisplayer<AddCaseWindo
         return new AddCaseWindowController();
     }
 
-    public NewCaseDto showNewCaseWindow() {
+    public Optional<NewCaseDto> showNewCaseWindow() {
 
         Stage stage = prepareStage(NEW_CASE_FXML);
         stage.showAndWait();
-
-        String name = getController().getNewCaseName();
-        String definition = getController().getNewCaseDefinition();
-        Optional<WritableImage> image = getController().getNewCasePicture();
-        List<WritableImage> images = new ArrayList<>();
-        image.ifPresent(images::add);
-        ConfirmationStatus status = getController().getUserAction();
-
-        return new NewCaseDto(name, definition, images, status);
+        return getController().getCreatedCase();
     }
 }

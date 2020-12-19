@@ -65,7 +65,7 @@ public class MainWindowController extends AbstractWindowController
 
         initButtons();
         learnSetTable.initTable(new DeleteCaseCommand(guiModelBroker, this)
-                , new ShowImageCommand(guiModelBroker, this), new EditCaseCommand(aGuiModelBroker, this));
+                , new EditCaseCommand(aGuiModelBroker, this));
         learnSetTable.setEditable(true);
         learnSetListView.setFocusCommand(new LearnSetFocusedCmd(guiModelBroker, this));
         learnSetListView.setDeleteSetCommand(new RemoveSetCommand(guiModelBroker, this));
@@ -98,7 +98,7 @@ public class MainWindowController extends AbstractWindowController
     }
 
     @Override
-    protected CommandIf createExitCommand(Stage aStage)
+    protected CommandIf createExitCommand()
     {
         return new CloseMainWindowCommand(guiModelBroker, this);
     }
@@ -158,7 +158,7 @@ public class MainWindowController extends AbstractWindowController
         learnSetListView.getSelectionModel().select(aLearnSetName);
     }
 
-    NewCaseDto showNewCaseWindow()
+    Optional<NewCaseDto> showNewCaseWindow()
     {
         NewCaseWindowDisplayer windowDisplayer = new NewCaseWindowDisplayer();
         return windowDisplayer.showNewCaseWindow();

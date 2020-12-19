@@ -36,8 +36,8 @@ public class EditCaseCommand extends MainWindowCommand
     private void editCase(LearnCaseView aCaseToEdit)
     {
         EditCaseWindowDisplayer editDisplayer = new EditCaseWindowDisplayer();
-        NewCaseDto editedDto = editDisplayer.showEditCaseWindow(aCaseToEdit);
-        guiModelBroker.editCase(aCaseToEdit.getId(), editedDto);
+        Optional<NewCaseDto> editedDto = editDisplayer.showEditCaseWindow(aCaseToEdit);
+        editedDto.ifPresent(resultDto -> guiModelBroker.editCase(aCaseToEdit.getId(), resultDto));
         getWindowController().refreshSetData();
     }
 }

@@ -20,6 +20,7 @@ public class NextCaseCmd extends AbstractLearnPanelCmd
         getWindowController().setCurrentCaseIndex(getWindowController().getCurrentCaseIndex() + 1);
         getWindowController().updateState();
         removePseudoStyleFromTf();
+        getWindowController().updateState();
     }
 
     @Override

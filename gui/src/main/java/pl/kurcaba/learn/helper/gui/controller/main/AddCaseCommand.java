@@ -23,17 +23,19 @@ public class AddCaseCommand extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        NewCaseDto newCaseDto = getWindowController().showNewCaseWindow();
-        if (newCaseDto.getConfirmationStatus().equals(ConfirmationStatus.CONFIRMED))
-        {
-            String newCaseName = newCaseDto.getNewCaseName();
-            String newDefinition = newCaseDto.getNewCaseDefinition();
-            List<WritableImage> images = newCaseDto.getNewCaseImages();
+        Optional<NewCaseDto> newCaseDto = getWindowController().showNewCaseWindow();
+        newCaseDto.ifPresent(this::createNewCase);
+    }
 
-            guiModelBroker.createNewCase(newCaseName, newDefinition, images);
+    private void createNewCase(NewCaseDto aNewCaseDto)
+    {
+        String newCaseName = aNewCaseDto.getNewCaseName();
+        String newDefinition = aNewCaseDto.getNewCaseDefinition();
+        List<WritableImage> images = aNewCaseDto.getNewCaseImages();
 
-            getWindowController().refreshSetData();
-        }
+        guiModelBroker.createNewCase(newCaseName, newDefinition, images);
+
+        getWindowController().refreshSetData();
     }
 
     @Override

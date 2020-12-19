@@ -11,6 +11,7 @@ public class PrevImageCmd extends AbstractLearnPanelCmd
     public void executeCommand()
     {
         getWindowController().displayPrevImage();
+        getWindowController().updateState();
     }
 
     @Override

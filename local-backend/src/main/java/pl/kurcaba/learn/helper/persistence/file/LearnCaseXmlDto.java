@@ -5,6 +5,7 @@ import pl.kurcaba.learn.helper.common.model.LearnCase;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,9 @@ class LearnCaseXmlDto
     private String definition;
     @XmlElement
     private boolean isUsedToLearn;
+
     @XmlElement
+    @XmlJavaTypeAdapter(InstantXmlAdapter.class)
     private Instant createTime;
 
     @XmlElement(name = "images")

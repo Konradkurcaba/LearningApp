@@ -58,7 +58,6 @@ class LearnSetFileDaoTest
     {
         //set up a test
         LearnSetReader reader = new LearnSetReader(tempDir);
-        LearnSetWriter writer = new LearnSetWriter(tempDir);
         LearnSetFileDao fileDao = new LearnSetFileDao(tempDir);
         LearnSet learnSetToWrite = createExampleLearnSet();
 
@@ -212,7 +211,7 @@ class LearnSetFileDaoTest
         LearnSet readSet = learnSetFileDao.getSetByName(new LearnSetName("exampleFilename"));
 
         //assertions
-        Assertions.assertEquals(learnSetToWrite, readSet);
+        Assertions.assertEquals(learnSetToWrite.getLearnSetName(), readSet.getLearnSetName());
     }
 
     @Test

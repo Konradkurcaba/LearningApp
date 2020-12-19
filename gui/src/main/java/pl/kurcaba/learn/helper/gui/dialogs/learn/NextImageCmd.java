@@ -11,6 +11,7 @@ public class NextImageCmd extends AbstractLearnPanelCmd
     public void executeCommand()
     {
         getWindowController().displayNextImage();
+        getWindowController().updateState();
     }
 
     @Override

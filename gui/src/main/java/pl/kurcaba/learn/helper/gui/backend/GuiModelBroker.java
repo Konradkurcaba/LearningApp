@@ -62,7 +62,8 @@ public class GuiModelBroker
     public void editCase(UUID aCaseId, NewCaseDto editedDto)
     {
         List<byte[]> convertedImages = convertImagesToBytes(editedDto.getNewCaseImages());
-        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition(),convertedImages);
+        currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition()
+                ,convertedImages);
     }
 
     public void createNewCase(String newCaseName, String newDefinition)

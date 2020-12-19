@@ -22,8 +22,4 @@ public abstract class AbstractLearnPanelCmd extends AbstractCommand<LearnPanelCo
         getWindowController().removePseudoClassFromNameTf(LearnPanelController.INCORRECT_CSS_CLASS);
     }
 
-    public SimpleBooleanProperty canBePerformedProperty()
-    {
-        return canBePerformed;
-    }
 }

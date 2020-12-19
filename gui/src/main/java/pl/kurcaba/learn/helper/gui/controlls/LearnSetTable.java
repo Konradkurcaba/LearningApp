@@ -7,10 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.input.ContextMenuEvent;
 import pl.kurcaba.learn.helper.gui.controller.main.DeleteCaseCommand;
 import pl.kurcaba.learn.helper.gui.controller.main.EditCaseCommand;
-import pl.kurcaba.learn.helper.gui.controller.main.ShowImageCommand;
 import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
@@ -20,18 +18,17 @@ import java.util.ResourceBundle;
 public class LearnSetTable extends TableView<LearnCaseView> {
 
 
-    public void initTable(DeleteCaseCommand aDeleteCmd, ShowImageCommand aShowImageCmd, EditCaseCommand aEditCmd)
+    public void initTable(DeleteCaseCommand aDeleteCmd, EditCaseCommand aEditCmd)
     {
         initColumns();
-        initContextMenu(aEditCmd,aDeleteCmd, aShowImageCmd);
+        initContextMenu(aEditCmd,aDeleteCmd);
 
         ResourceBundle textBundle = ListResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
         Label emptyTable = new Label(textBundle.getString("noDataToDisplay"));
         setPlaceholder(emptyTable);
     }
 
-    private void initContextMenu(EditCaseCommand editCaseCommand, DeleteCaseCommand aDeleteCmd
-            , ShowImageCommand aShowImageCmd)
+    private void initContextMenu(EditCaseCommand editCaseCommand, DeleteCaseCommand aDeleteCmd)
     {
         ContextMenu tableMenu = new ContextMenu();
 
@@ -40,18 +37,11 @@ public class LearnSetTable extends TableView<LearnCaseView> {
         deleteItem.setCommand(aDeleteCmd);
         tableMenu.getItems().add(deleteItem);
 
-        MenuItemCommand showImageItem = new MenuItemCommand(textBundle.getString("showImageAction"));
-        showImageItem.setCommand(aShowImageCmd);
-        tableMenu.getItems().add(showImageItem);
-
         MenuItemCommand editItemCommand = new MenuItemCommand(textBundle.getString("editCaseAction"));
         editItemCommand.setCommand(editCaseCommand);
         tableMenu.getItems().add(editItemCommand);
 
         contextMenuProperty().setValue(tableMenu);
-
-        addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, event ->
-                showImageItem.setDisable(!aShowImageCmd.canBeExecuted()));
     }
 
 

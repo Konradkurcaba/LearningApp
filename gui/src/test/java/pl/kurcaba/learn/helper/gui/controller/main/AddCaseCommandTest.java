@@ -25,8 +25,8 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", new ArrayList<>(), ConfirmationStatus.CONFIRMED);
-        Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
+                , "exampleDefinition", new ArrayList<>());
+        Mockito.when(mainController.showNewCaseWindow()).thenReturn(Optional.of(exampleDto));
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
         //a real test
@@ -42,8 +42,8 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", new ArrayList<>(), ConfirmationStatus.REJECTED);
-        Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
+                , "exampleDefinition", new ArrayList<>());
+        Mockito.when(mainController.showNewCaseWindow()).thenReturn(Optional.of(exampleDto));
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
         //a real test
@@ -59,8 +59,8 @@ class AddCaseCommandTest
         //set up a test
         WritableImage image = new WritableImage(10, 10);
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                , "exampleDefinition", Collections.singletonList(image), ConfirmationStatus.CONFIRMED);
-        Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
+                , "exampleDefinition", Collections.singletonList(image));
+        Mockito.when(mainController.showNewCaseWindow()).thenReturn(Optional.of(exampleDto));
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
         //a real test
@@ -76,8 +76,8 @@ class AddCaseCommandTest
     {
         //set up a test
         NewCaseDto exampleDto = new NewCaseDto("exampleName"
-                ,  "exampleDefinition", new ArrayList<>(), ConfirmationStatus.CONFIRMED);
-        Mockito.when(mainController.showNewCaseWindow()).thenReturn(exampleDto);
+                ,  "exampleDefinition", new ArrayList<>());
+        Mockito.when(mainController.showNewCaseWindow()).thenReturn(Optional.of(exampleDto));
         AddCaseCommand addCaseCommand = new AddCaseCommand(mockedBroker, mainController);
 
         //a real test

@@ -18,3 +18,112 @@ Caused by: java.lang.RuntimeException: Exception in Application start method
 	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:900)
 	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
 	at java.base/java.lang.Thread.run(Thread.java:834) 
+13:55:10.353 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+13:55:14.276 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+13:55:47.316 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+17:36:44.853 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+17:41:20.794 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+17:42:53.697 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: Root value already specified.
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_options_dialog.fxml
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_options_dialog.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2621)
+	at javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2770)
+	at javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2719)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2552)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptionsDisplayer.displayPanel(LearnOptionsDisplayer.java:18)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnOptionsPanel(MainWindowController.java:176) 
+17:43:36.382 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+17:44:53.885 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 
+17:46:00.397 [JavaFX Application Thread] ERROR pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer - A problem has occurred: javafx.fxml.LoadException: 
+/C:/Users/Konrad/IdeaProjects/allegro/learnhelper/gui/target/classes/fxml/learn_panel.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2625)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2595)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2466)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2435)
+	at pl.kurcaba.learn.helper.gui.controller.AbstractWindowDisplayer.prepareStage(AbstractWindowDisplayer.java:38)
+	at pl.kurcaba.learn.helper.gui.dialogs.learn.LearnPanelDisplayer.displayWindow(LearnPanelDisplayer.java:23)
+	at pl.kurcaba.learn.helper.gui.controller.main.MainWindowController.showLearnPanel(MainWindowController.java:170)
+	at pl.kurcaba.learn.helper.gui.controller.main.StartLearnCommand.lambda$executeCommand$0(StartLearnCommand.java:29)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183) 

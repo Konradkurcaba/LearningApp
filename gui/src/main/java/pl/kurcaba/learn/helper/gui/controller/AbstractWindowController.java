@@ -28,6 +28,8 @@ public abstract class AbstractWindowController
     @FXML
     private Region topRegion;
 
+    private Stage stage;
+
     @FXML
     public void initialize()
     {
@@ -42,7 +44,8 @@ public abstract class AbstractWindowController
         }
     }
 
-    private Stage stage;
+    public void invokeAfterCreateGui()
+    { }
 
     private void initExitButton()
     {
@@ -79,12 +82,13 @@ public abstract class AbstractWindowController
     public void setStage(Stage aStage)
     {
         stage = aStage;
-        exitButton.setCommand(createExitCommand(aStage));
+        //this is a nice place to create exit command, because we are sure that the controller is initialized
+        exitButton.setCommand(createExitCommand());
     }
 
-    protected CommandIf createExitCommand(Stage aStage)
+    protected CommandIf createExitCommand()
     {
-        return new CloseWindowCommand(aStage);
+        return new CloseWindowCommand(this);
     }
 
     protected Stage getStage()
@@ -95,5 +99,10 @@ public abstract class AbstractWindowController
     protected void killThisWindow() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void setIconified(boolean aValue)
+    {
+        getStage().setIconified(aValue);
     }
 }

@@ -1,21 +1,18 @@
 package pl.kurcaba.learn.helper.gui.controller;
 
-import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.gui.backend.CommandIf;
+import pl.kurcaba.learn.helper.gui.backend.AbstractCommand;
 
-public class CloseWindowCommand implements CommandIf
+public class CloseWindowCommand extends AbstractCommand<AbstractWindowController>
 {
-    private final Stage stage;
-
-    public CloseWindowCommand(Stage aStage)
+    public CloseWindowCommand(AbstractWindowController windowController)
     {
-        stage = aStage;
+        super(windowController);
     }
 
     @Override
     public void executeCommand()
     {
-        stage.close();
+        getWindowController().killThisWindow();
     }
 
     @Override

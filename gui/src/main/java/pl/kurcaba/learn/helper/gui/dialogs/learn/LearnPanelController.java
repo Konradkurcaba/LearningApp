@@ -71,12 +71,20 @@ public class LearnPanelController extends AbstractWindowController
     }
 
     @Override
-    public void initialize() {
+    public void initialize()
+    {
         super.initialize();
         initButtons();
         initTextField();
         initLabels();
         displayFirstCase();
+    }
+
+    @Override
+    public void invokeAfterCreateGui()
+    {
+        super.invokeAfterCreateGui();
+        updateState();
     }
 
     private void initLabels()
@@ -111,11 +119,9 @@ public class LearnPanelController extends AbstractWindowController
 
         PrevImageCmd prevImageCmd = new PrevImageCmd(this);
         prevImage.setCommand(prevImageCmd);
-        prevImage.disableProperty().bind(prevImageCmd.canBePerformedProperty().not());
 
         NextImageCmd nextImageCmd = new NextImageCmd(this);
         nextImage.setCommand(nextImageCmd);
-        nextImage.disableProperty().bind(nextImageCmd.canBePerformedProperty().not());
     }
 
     private void initImageView()
@@ -131,6 +137,8 @@ public class LearnPanelController extends AbstractWindowController
     {
         nextButton.updateState();
         prevButton.updateState();
+        prevImage.updateState();
+        nextImage.updateState();
     }
 
     private Bounds searchMaxImageSize() {
@@ -164,12 +172,12 @@ public class LearnPanelController extends AbstractWindowController
 
     void displayNextImage()
     {
-        showImage(currentImageIndex++);
+        showImage(++currentImageIndex);
     }
 
     void displayPrevImage()
     {
-        showImage(currentImageIndex++);
+        showImage(--currentImageIndex);
     }
 
     boolean canShowNextImage()

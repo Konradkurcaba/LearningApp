@@ -250,7 +250,7 @@ class GuiModelBrokerTest
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(0);
         NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
-                , new ArrayList<>(), ConfirmationStatus.CONFIRMED);
+                , new ArrayList<>());
         //a real test
         modelBroker.editCase(learnCaseView.getId(), newCaseDto);
 
@@ -274,7 +274,7 @@ class GuiModelBrokerTest
         modelBroker.createNewLearnSet(testLearnSetName);
         LearnCaseView learnCaseView = modelBroker.getCaseViews().get(1);
         NewCaseDto newCaseDto = new NewCaseDto("editedName", "editedDefinition"
-                , new ArrayList<>(), ConfirmationStatus.CONFIRMED);
+                , new ArrayList<>());
 
         //a real test
         modelBroker.editCase(learnCaseView.getId(), newCaseDto);
