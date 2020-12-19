@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.gui.dialogs.learn;
 
-public class ClearTfPseudoClasses extends AbstractLearnCmd
+public class ClearTfPseudoClasses extends AbstractLearnPanelCmd
 {
 
     public ClearTfPseudoClasses(LearnPanelController controller) {

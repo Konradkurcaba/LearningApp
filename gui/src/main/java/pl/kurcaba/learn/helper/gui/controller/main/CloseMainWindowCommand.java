@@ -13,7 +13,7 @@ public class CloseMainWindowCommand extends MainWindowCommand {
     public void executeCommand() {
         if(canBeExecuted())
         {
-            windowController.closeApplication();
+            getWindowController().closeApplication();
         }
     }
 

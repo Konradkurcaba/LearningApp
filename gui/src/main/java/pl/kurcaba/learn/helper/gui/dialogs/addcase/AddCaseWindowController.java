@@ -3,11 +3,13 @@ package pl.kurcaba.learn.helper.gui.dialogs.addcase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
 import pl.kurcaba.learn.helper.gui.controller.screenshot.ConfirmImageDialog;
 import pl.kurcaba.learn.helper.gui.controller.screenshot.ScreenCaptureController;
+import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 
 import java.util.Optional;
@@ -22,7 +24,11 @@ public class AddCaseWindowController extends AbstractWindowController
     protected TextField definitionTf;
 
     @FXML
-    private Button makeScreenButton;
+    private CommandButton makeScreenButton;
+
+    @FXML
+    private CommandButton removeScreenButton;
+
     protected WritableImage screen;
 
     @FXML
@@ -32,14 +38,15 @@ public class AddCaseWindowController extends AbstractWindowController
     private Button cancelButton;
 
     @FXML
-    protected CheckBox choseCheckBox;
+    private ListView imageListView;
+
 
     private ConfirmationStatus userAction = ConfirmationStatus.REJECTED;
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         super.initialize();
-        initCheckBox();
         initButtons();
     }
 
@@ -52,11 +59,6 @@ public class AddCaseWindowController extends AbstractWindowController
         makeScreenButton.setOnMouseClicked(event -> makeScreen());
     }
 
-    private void initCheckBox() {
-        choseCheckBox.setAllowIndeterminate(false);
-        choseCheckBox.setDisable(true);
-        choseCheckBox.setStyle("-fx-opacity: 1");
-    }
 
     private void makeScreen() {
         getStage().setIconified(true);
@@ -70,7 +72,6 @@ public class AddCaseWindowController extends AbstractWindowController
             if(status.equals(ConfirmationStatus.CONFIRMED))
             {
                 this.screen = screen;
-                choseCheckBox.setSelected(true);
             }
         });
 

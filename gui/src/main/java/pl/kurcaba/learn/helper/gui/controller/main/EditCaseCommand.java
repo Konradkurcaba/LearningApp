@@ -22,7 +22,7 @@ public class EditCaseCommand extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        Optional<LearnCaseView> view = windowController.getSelectedCaseView();
+        Optional<LearnCaseView> view = getWindowController().getSelectedCaseView();
         view.ifPresentOrElse(this::editCase
                 ,() -> logger.error("Cannot edit a learn case, any case isn't selected"));
     }
@@ -30,7 +30,7 @@ public class EditCaseCommand extends MainWindowCommand
     @Override
     public boolean canBeExecuted()
     {
-        return windowController.getSelectedCaseView().isPresent();
+        return getWindowController().getSelectedCaseView().isPresent();
     }
 
     private void editCase(LearnCaseView aCaseToEdit)
@@ -38,6 +38,6 @@ public class EditCaseCommand extends MainWindowCommand
         EditCaseWindowDisplayer editDisplayer = new EditCaseWindowDisplayer();
         NewCaseDto editedDto = editDisplayer.showEditCaseWindow(aCaseToEdit);
         guiModelBroker.editCase(aCaseToEdit.getId(), editedDto);
-        windowController.refreshSetData();
+        getWindowController().refreshSetData();
     }
 }

@@ -25,22 +25,22 @@ public class CreateSetCommand extends MainWindowCommand
     @Override
     public void executeCommand() {
         ResourceBundle textBundle = ResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
-        Optional<String> newSetName = windowController
+        Optional<String> newSetName = getWindowController()
                 .displayTextInputDialog(textBundle.getString("newSetName"));
         if(newSetName.isPresent())
         {
             try
             {
                 guiModelBroker.createNewLearnSet(new LearnSetName(newSetName.get()));
-                windowController.refreshMainListData();
+                getWindowController().refreshMainListData();
             }
             catch (NonUniqueException aEx)
             {
-                windowController.displayConfirmDialog(textBundle.getString("SetIsNotUnique"));
+                getWindowController().displayConfirmDialog(textBundle.getString("SetIsNotUnique"));
             }
             catch (LearnSetNameFormatException aEx)
             {
-                windowController.displayConfirmDialog(textBundle.getString("wrongLearnSetNameFormat"));
+                getWindowController().displayConfirmDialog(textBundle.getString("wrongLearnSetNameFormat"));
             }
             catch (IOException aEx)
             {

@@ -2,7 +2,7 @@ package pl.kurcaba.learn.helper.gui.dialogs.learn;
 
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 
-public class ShowCorrectAnswersCmd extends AbstractLearnCmd
+public class ShowCorrectAnswersCmd extends AbstractLearnPanelCmd
 {
     public ShowCorrectAnswersCmd(LearnPanelController controller)
     {
@@ -12,19 +12,19 @@ public class ShowCorrectAnswersCmd extends AbstractLearnCmd
     @Override
     public void executeCommand()
     {
-        LearnOptions options = controller.getLearnOptions();
+        LearnOptions options = getWindowController().getLearnOptions();
         if(!options.isNameShown())
         {
-            controller.showCorrectName();
+            getWindowController().showCorrectName();
         }
         if(!options.isDefinitionShown())
         {
-            controller.showCorrectDefinition();
+            getWindowController().showCorrectDefinition();
         }
-        boolean hasAnyImages = !controller.getCurrentCaseView().getImages().isEmpty();
+        boolean hasAnyImages = !getWindowController().getCurrentCaseView().getImages().isEmpty();
         if(!options.isImageShown() && hasAnyImages)
         {
-            controller.showImage(0);
+            getWindowController().showImage(0);
         }
     }
 

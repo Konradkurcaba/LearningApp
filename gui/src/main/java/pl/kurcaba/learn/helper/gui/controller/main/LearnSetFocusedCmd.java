@@ -21,7 +21,7 @@ public class LearnSetFocusedCmd extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        Optional<LearnSetName> focusedName = windowController.getFocusedLearnSet();
+        Optional<LearnSetName> focusedName = getWindowController().getFocusedLearnSet();
         if (focusedName.isPresent())
         {
             try
@@ -55,9 +55,9 @@ public class LearnSetFocusedCmd extends MainWindowCommand
     private boolean isNewLearnSetFocused(Optional<LearnSetName> focusedName)
     {
         boolean isNewNameFocused;
-        if (windowController.getDisplayedLearnSet().isPresent())
+        if (getWindowController().getDisplayedLearnSet().isPresent())
         {
-            isNewNameFocused = !focusedName.get().equals(windowController.getDisplayedLearnSet()
+            isNewNameFocused = !focusedName.get().equals(getWindowController().getDisplayedLearnSet()
                     .get());
         }
         else
@@ -70,8 +70,8 @@ public class LearnSetFocusedCmd extends MainWindowCommand
     private void changeCurrentLearnSet(LearnSetName focusedName) throws IOException, ClassNotFoundException
     {
         guiModelBroker.changeCurrentSet(focusedName);
-        windowController.setDisplayedLearnSet(focusedName);
-        windowController.refreshSetData();
+        getWindowController().setDisplayedLearnSet(focusedName);
+        getWindowController().refreshSetData();
     }
 
 }

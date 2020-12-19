@@ -12,7 +12,7 @@ public class EditCaseWindowController extends AddCaseWindowController
         if(!aCaseView.getImages().isEmpty())
         {
             this.screen = aCaseView.getImages().get(0);
-            choseCheckBox.setSelected(true);
+//            ch.setSelected(true);
         }
     }
 }

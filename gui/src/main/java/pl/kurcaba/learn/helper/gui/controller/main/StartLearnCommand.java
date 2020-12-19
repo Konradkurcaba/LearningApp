@@ -20,13 +20,13 @@ public class StartLearnCommand extends MainWindowCommand {
         if (!canBeExecuted()) {
             throw new IllegalStateException("Command cannot be executed, any set is not selected");
         }
-        Optional<LearnOptions> learnOptions = windowController.showLearnOptionsPanel();
+        Optional<LearnOptions> learnOptions = getWindowController().showLearnOptionsPanel();
         learnOptions.ifPresent(options -> {
             List<LearnCaseView> learnCases = guiModelBroker.getCaseViews().stream()
                     .filter(LearnCaseView::isUsedToLearn)
                     .collect(Collectors.toCollection(ArrayList::new));
 
-            windowController.showLearnPanel(options, learnCases);
+            getWindowController().showLearnPanel(options, learnCases);
         });
     }
 

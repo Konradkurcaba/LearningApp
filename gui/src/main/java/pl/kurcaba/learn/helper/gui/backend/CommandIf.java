@@ -1,4 +1,4 @@
-package pl.kurcaba.learn.helper.gui.controller.main;
+package pl.kurcaba.learn.helper.gui.backend;
 
 public interface CommandIf
 {

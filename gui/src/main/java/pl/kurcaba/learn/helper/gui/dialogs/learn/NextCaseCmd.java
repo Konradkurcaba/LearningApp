@@ -1,28 +1,31 @@
 package pl.kurcaba.learn.helper.gui.dialogs.learn;
 
-public class NextCaseCmd extends AbstractLearnCmd {
+public class NextCaseCmd extends AbstractLearnPanelCmd
+{
 
-    public NextCaseCmd(LearnPanelController controller) {
+    public NextCaseCmd(LearnPanelController controller)
+    {
         super(controller);
     }
 
     @Override
     public void executeCommand()
     {
-        if(!canBeExecuted())
+        if (!canBeExecuted())
         {
             throw new IllegalStateException("Cannot display next case, there is no next case");
         }
 
-        controller.displayCase(controller.learnCases.get(controller.getCurrentCaseIndex() + 1));
-        controller.setCurrentCaseIndex(controller.getCurrentCaseIndex() + 1);
-        controller.updateState();
+        getWindowController().displayCase(getWindowController().learnCases.get(getWindowController().getCurrentCaseIndex() + 1));
+        getWindowController().setCurrentCaseIndex(getWindowController().getCurrentCaseIndex() + 1);
+        getWindowController().updateState();
         removePseudoStyleFromTf();
     }
 
     @Override
-    public boolean canBeExecuted() {
-        return controller.getCurrentCaseIndex() + 1 < controller.learnCases.size();
+    public boolean canBeExecuted()
+    {
+        return getWindowController().getCurrentCaseIndex() + 1 < getWindowController().learnCases.size();
     }
 
 }

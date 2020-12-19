@@ -2,7 +2,7 @@ package pl.kurcaba.learn.helper.gui.controlls;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
+import pl.kurcaba.learn.helper.gui.backend.CommandIf;
 
 public class CommandButton extends Button {
 

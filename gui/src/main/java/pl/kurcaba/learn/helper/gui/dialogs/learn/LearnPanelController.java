@@ -11,13 +11,12 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.kurcaba.learn.helper.gui.controller.AbstractWindowController;
-import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
+import pl.kurcaba.learn.helper.gui.backend.CommandIf;
 import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public class LearnPanelController extends AbstractWindowController
@@ -101,10 +100,12 @@ public class LearnPanelController extends AbstractWindowController
 
     private void initButtons()
     {
-        nextButton.setCommand(new NextCaseCmd(this));
         prevButton.setCommand(new PrevCaseCmd(this));
         prevButton.updateState();
+
+        nextButton.setCommand(new NextCaseCmd(this));
         nextButton.updateState();
+
         checkButton.setCommand(new CheckCommand(this));
         showAnswer.setCommand(new ShowCorrectAnswersCmd(this));
 
@@ -115,7 +116,6 @@ public class LearnPanelController extends AbstractWindowController
         NextImageCmd nextImageCmd = new NextImageCmd(this);
         nextImage.setCommand(nextImageCmd);
         nextImage.disableProperty().bind(nextImageCmd.canBePerformedProperty().not());
-
     }
 
     private void initImageView()

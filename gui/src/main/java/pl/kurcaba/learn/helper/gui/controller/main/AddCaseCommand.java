@@ -23,7 +23,7 @@ public class AddCaseCommand extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        NewCaseDto newCaseDto = windowController.showNewCaseWindow();
+        NewCaseDto newCaseDto = getWindowController().showNewCaseWindow();
         if (newCaseDto.getConfirmationStatus().equals(ConfirmationStatus.CONFIRMED))
         {
             String newCaseName = newCaseDto.getNewCaseName();
@@ -32,7 +32,7 @@ public class AddCaseCommand extends MainWindowCommand
 
             guiModelBroker.createNewCase(newCaseName, newDefinition, images);
 
-            windowController.refreshSetData();
+            getWindowController().refreshSetData();
         }
     }
 

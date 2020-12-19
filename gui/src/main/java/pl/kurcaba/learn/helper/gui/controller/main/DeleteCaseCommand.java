@@ -19,11 +19,11 @@ public class DeleteCaseCommand extends MainWindowCommand
 
     @Override
     public void executeCommand() {
-        Optional<LearnCaseView> view = windowController.getSelectedCaseView();
+        Optional<LearnCaseView> view = getWindowController().getSelectedCaseView();
         if (view.isPresent()) {
             boolean status = guiModelBroker.deleteCase(view.get());
             if (status) {
-                windowController.removeViewFromTable(view.get());
+                getWindowController().removeViewFromTable(view.get());
             }
         } else {
             logger.error("Cannot delete set, any set isn't selected");
@@ -32,6 +32,6 @@ public class DeleteCaseCommand extends MainWindowCommand
 
     @Override
     public boolean canBeExecuted() {
-        return windowController.getSelectedCaseView().isPresent();
+        return getWindowController().getSelectedCaseView().isPresent();
     }
 }

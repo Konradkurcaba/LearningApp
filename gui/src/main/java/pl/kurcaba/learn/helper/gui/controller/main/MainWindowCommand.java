@@ -1,5 +1,7 @@
 package pl.kurcaba.learn.helper.gui.controller.main;
 
+import pl.kurcaba.learn.helper.gui.backend.AbstractCommand;
+import pl.kurcaba.learn.helper.gui.backend.CommandIf;
 import pl.kurcaba.learn.helper.gui.backend.GuiModelBroker;
 import pl.kurcaba.learn.helper.gui.core.ApplicationConstants;
 import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
@@ -7,18 +9,19 @@ import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import java.util.ListResourceBundle;
 import java.util.ResourceBundle;
 
-public abstract class MainWindowCommand implements CommandIf{
+public abstract class MainWindowCommand extends AbstractCommand<MainWindowController>
+{
 
-    protected MainWindowController windowController;
     protected GuiModelBroker guiModelBroker;
 
-    public MainWindowCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController) {
+    public MainWindowCommand(GuiModelBroker aGuiModelBroker, MainWindowController aWindowController)
+    {
+        super(aWindowController);
         this.guiModelBroker = aGuiModelBroker;
-        this.windowController = aWindowController;
     }
 
     protected void revertFocus() {
-        windowController.getDisplayedLearnSet().ifPresent(windowController::changeFocus);
+        getWindowController().getDisplayedLearnSet().ifPresent(getWindowController()::changeFocus);
     }
 
     protected boolean canChangeLearnSet()
@@ -35,7 +38,7 @@ public abstract class MainWindowCommand implements CommandIf{
     private ConfirmationStatus displayWarningWindow()
     {
         ResourceBundle textBundle = ListResourceBundle.getBundle(ApplicationConstants.DEFAULT_BUNDLE_NAME);
-        return windowController.displayConfirmDialog(textBundle.getString("unsavedChangesWarning"));
+        return getWindowController().displayConfirmDialog(textBundle.getString("unsavedChangesWarning"));
     }
 
 }

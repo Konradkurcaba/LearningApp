@@ -1,7 +1,7 @@
 package pl.kurcaba.learn.helper.gui.controller;
 
 import javafx.stage.Stage;
-import pl.kurcaba.learn.helper.gui.controller.main.CommandIf;
+import pl.kurcaba.learn.helper.gui.backend.CommandIf;
 
 public class CloseWindowCommand implements CommandIf
 {

@@ -12,7 +12,7 @@ public class MinimizeWindowCommand extends MainWindowCommand
     @Override
     public void executeCommand()
     {
-        windowController.setWindowIconified(true);
+        getWindowController().setWindowIconified(true);
     }
 
     @Override

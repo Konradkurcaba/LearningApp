@@ -1,6 +1,6 @@
 package pl.kurcaba.learn.helper.gui.dialogs.learn;
 
-public class PrevImageCmd extends AbstractLearnCmd
+public class PrevImageCmd extends AbstractLearnPanelCmd
 {
     public PrevImageCmd(LearnPanelController controller)
     {
@@ -10,12 +10,12 @@ public class PrevImageCmd extends AbstractLearnCmd
     @Override
     public void executeCommand()
     {
-        controller.displayPrevImage();
+        getWindowController().displayPrevImage();
     }
 
     @Override
     public boolean canBeExecuted()
     {
-        return controller.canShowPrevImage();
+        return getWindowController().canShowPrevImage();
     }
 }

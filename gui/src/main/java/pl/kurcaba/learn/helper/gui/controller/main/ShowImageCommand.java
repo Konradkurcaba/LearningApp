@@ -15,7 +15,7 @@ public class ShowImageCommand extends MainWindowCommand {
     @Override
     public void executeCommand()
     {
-        Optional<LearnCaseView> viewCase = windowController.getSelectedCaseView();
+        Optional<LearnCaseView> viewCase = getWindowController().getSelectedCaseView();
         if (viewCase.isPresent()) {
             Optional<WritableImage> aImageToShow = Optional.ofNullable(viewCase.get().getImages().get(0));
             ConfirmImageDialog imageDialog = new ConfirmImageDialog();
@@ -25,7 +25,7 @@ public class ShowImageCommand extends MainWindowCommand {
 
     @Override
     public boolean canBeExecuted() {
-        return windowController.getSelectedCaseView().isPresent()
-                && !windowController.getSelectedCaseView().get().getImages().isEmpty();
+        return getWindowController().getSelectedCaseView().isPresent()
+                && !getWindowController().getSelectedCaseView().get().getImages().isEmpty();
     }
 }
