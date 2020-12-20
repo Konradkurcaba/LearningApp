@@ -14,6 +14,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -99,14 +100,40 @@ class LearnSetReader extends AbstractLearnSetIO
         for(LearnCaseXmlDto learnXmlCase : readSet.getLearnCases())
         {
 
+            Instant createTime = getCreateTime(learnXmlCase);
+
             LearnCase learnCase = new LearnCase(learnXmlCase.getName(),learnXmlCase.getDefinition()
-                    ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn(), learnXmlCase.getCreateTime());
+                    ,learnXmlCase.getId(), learnXmlCase.isUsedToLearn(), createTime);
             learnCases.add(learnCase);
 
             List<byte[]> images = readImages(zipFile, learnXmlCase);
             learnCase.setImages(images);
         }
         return new LearnSet(new LearnSetName(readSet.getLearnSetName()),learnCases);
+    }
+
+    /**
+     * Gets create time from xml case. If create time is nullable, uses current time.
+     * After assigning current time, method waits two ms. Thanks to it, each learn case has different create time.
+     */
+    private Instant getCreateTime(LearnCaseXmlDto learnXmlCase)
+    {
+        Instant createTime;
+        if(learnXmlCase.getCreateTime() != null)
+        {
+            createTime = learnXmlCase.getCreateTime();
+        }else
+        {
+            createTime = Instant.now();
+            try
+            {
+                Thread.sleep(2);
+            } catch (InterruptedException e)
+            {
+                //won't happen
+            }
+        }
+        return createTime;
     }
 
     private List<byte[]> readImages(ZipFile zipFile, LearnCaseXmlDto learnXmlCase) throws IOException

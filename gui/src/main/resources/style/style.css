@@ -3,6 +3,7 @@
     -fx-accent: -fx-app-focus-color;
     -main-theme-color: #424242;
     -light-main-theme-color: #696969;
+    -widget-background-color: #bababa;
     -text-color: #e6e6e6;
     -fx-focus-color: -fx-app-focus-color;
     -fx-background-color: -main-theme-color;
@@ -62,7 +63,7 @@
 .text-field{
     -fx-background-radius: 20;
     -fx-border-radius: 20;
-    -fx-background-color: #bababa;
+    -fx-background-color: -widget-background-color;
 }
 
 .text-field:correct
@@ -141,6 +142,8 @@
     -fx-border-color: black;
     -fx-border-width: 0.5px;
 }
+
+
 
 .column,
 .column-header{

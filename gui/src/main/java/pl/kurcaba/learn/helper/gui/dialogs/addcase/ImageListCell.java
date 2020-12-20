@@ -10,6 +10,7 @@ public class ImageListCell extends ListCell<ImageWithCounterWrapper>
 
     public ImageListCell(ShowImageCommand showImageCommand)
     {
+        super();
         initContextMenu(showImageCommand);
     }
 

@@ -60,28 +60,17 @@ public class LearnSetTable extends TableView<LearnCaseView> {
         getColumns().addAll(nameColumn, definitionColumn, imageColumn, isUsedToLearn);
     }
 
-    private TableColumn<LearnCaseView, String> createImageColumn() {
+    private TableColumn<LearnCaseView, String> createImageColumn()
+    {
         TableColumn<LearnCaseView, String> imageColumn = new TableColumn<>("Obraz");
 
         imageColumn.setCellFactory(column -> {
-            StringTableCell cell =  new StringTableCell<>();
+            StringTableCell cell = new StringTableCell<>();
             cell.setAlignment(Pos.CENTER);
             return cell;
         });
 
-        imageColumn.setCellValueFactory(tc -> {
-            String textInCell;
-            boolean hasAnyImage = !tc.getValue().getImages().isEmpty();
-            if(hasAnyImage)
-            {
-                textInCell = "Tak";
-            }
-            else
-            {
-                textInCell = "Nie";
-            }
-            return new SimpleStringProperty(textInCell);
-        });
+        imageColumn.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getImages().size())));
         imageColumn.setPrefWidth(200);
         return imageColumn;
     }
