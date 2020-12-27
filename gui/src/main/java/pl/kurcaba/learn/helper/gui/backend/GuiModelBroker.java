@@ -16,10 +16,7 @@ import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GuiModelBroker
@@ -31,6 +28,8 @@ public class GuiModelBroker
     private LearnSet currentLearnSet;
     private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
     private final BooleanProperty isLearnSetChosen = new SimpleBooleanProperty(false);
+
+    private final HashMap<LearnSetName, LearnSet> cache = new HashMap<>();
 
 
     public GuiModelBroker(LearnSetDaoIf aLearnSetDao)
@@ -82,12 +81,21 @@ public class GuiModelBroker
 
     public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
-        currentLearnSet = LearnSetDao.getSetByName(aSetName);
+        if(cache.containsKey(aSetName))
+        {
+            currentLearnSet = cache.get(aSetName);
+        }
+        else
+        {
+            currentLearnSet = LearnSetDao.getSetByName(aSetName);
+            cache.put(aSetName, currentLearnSet);
+        }
         updateProperties();
     }
 
     public void saveChanges() throws IOException
     {
+        cache.put(currentLearnSet.getLearnSetName(), currentLearnSet);
         currentLearnSet = LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }

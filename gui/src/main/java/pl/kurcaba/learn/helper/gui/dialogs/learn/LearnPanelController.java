@@ -16,6 +16,7 @@ import pl.kurcaba.learn.helper.gui.controlls.CommandButton;
 import pl.kurcaba.learn.helper.gui.dialogs.options.LearnOptions;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -77,13 +78,17 @@ public class LearnPanelController extends AbstractWindowController
         initButtons();
         initTextField();
         initLabels();
-        displayFirstCase();
     }
 
     @Override
     public void invokeAfterCreateGui()
     {
         super.invokeAfterCreateGui();
+        if(learnOptions.isRandomOrder())
+        {
+            Collections.shuffle(learnCases);
+        }
+        displayFirstCase();
         updateState();
     }
 

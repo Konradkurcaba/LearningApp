@@ -16,7 +16,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label minWidth="100.0" text="Pokaż obrazek" />
+                  <Label minWidth="110.0" text="Pokaż obrazek" />
                   <CheckBox fx:id="imageBox" mnemonicParsing="false">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -32,7 +32,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
                <children>
-                  <Label minWidth="100.0" text="Pokaż nazwę" HBox.hgrow="ALWAYS">
+                  <Label minWidth="110.0" text="Pokaż nazwę" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
@@ -45,12 +45,25 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label minWidth="100.0" text="Pokaż definicję">
+                  <Label minWidth="110.0" text="Pokaż definicję">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Label>
                   <CheckBox fx:id="definitionBox" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label minWidth="110.0" text="Kolejność losowa" />
+                  <CheckBox fx:id="randomBox" mnemonicParsing="false">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

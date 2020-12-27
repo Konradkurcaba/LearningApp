@@ -17,6 +17,8 @@ public class LearnOptionsController extends AbstractWindowController
     @FXML
     private CheckBox imageBox;
     @FXML
+    private CheckBox randomBox;
+    @FXML
     private Button okButton;
     @FXML
     private Button cancelButton;
@@ -36,6 +38,7 @@ public class LearnOptionsController extends AbstractWindowController
     {
         imageBox.setSelected(true);
         nameBox.setSelected(true);
+        randomBox.setSelected(true);
     }
 
     private void initButtons() {
@@ -64,7 +67,8 @@ public class LearnOptionsController extends AbstractWindowController
             boolean showName = nameBox.isSelected();
             boolean showDefinition = definitionBox.isSelected();
             boolean showImage = imageBox.isSelected();
-            return Optional.of(new LearnOptions(showName, showDefinition, showImage));
+            boolean randomOrder = randomBox.isSelected();
+            return Optional.of(new LearnOptions(showName, showDefinition, showImage, randomOrder));
         }
     }
 }

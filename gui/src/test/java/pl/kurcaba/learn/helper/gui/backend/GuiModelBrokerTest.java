@@ -13,7 +13,6 @@ import pl.kurcaba.learn.helper.common.values.LearnSetName;
 import pl.kurcaba.learn.helper.common.values.LearnSetNameFormatException;
 import pl.kurcaba.learn.helper.common.values.NonUniqueException;
 import pl.kurcaba.learn.helper.gui.dialogs.addcase.NewCaseDto;
-import pl.kurcaba.learn.helper.gui.dialogs.confirm.ConfirmationStatus;
 import pl.kurcaba.learn.helper.gui.view.LearnCaseView;
 
 import java.io.IOException;
@@ -33,7 +32,7 @@ class GuiModelBrokerTest
     LearnSet secondLearnSet;
 
     @BeforeEach
-    public void init() throws LearnSetNameFormatException, IOException, NonUniqueException
+    public void init() throws LearnSetNameFormatException, IOException, NonUniqueException, ClassNotFoundException
     {
         //create example data
         testLearnSetName = new LearnSetName("exampleLearnSet");
@@ -42,6 +41,7 @@ class GuiModelBrokerTest
         //create DAO mock
         mockedDao = Mockito.mock(LearnSetDaoIf.class);
         Mockito.when(mockedDao.createNewLearnSet(testLearnSetName)).thenReturn(testSet);
+        Mockito.when(mockedDao.getSetByName(testLearnSetName)).thenReturn(testSet);
 
         //create GuiModelBroker with mocked Dao
         modelBroker = new GuiModelBroker(mockedDao);
@@ -50,6 +50,7 @@ class GuiModelBrokerTest
         secondSetName = new LearnSetName("secondSet");
         exampleCase = new LearnCase("secondCase", "secondDefinition");
         secondLearnSet = new LearnSet(secondSetName, new TreeSet<>());
+        Mockito.when(mockedDao.getSetByName(secondSetName)).thenReturn(secondLearnSet);
     }
 
 
@@ -283,6 +284,73 @@ class GuiModelBrokerTest
         LearnCaseView editedView = modelBroker.getCaseViews().get(1);
         Assertions.assertEquals("editedName", editedView.getName());
     }
+
+    @Test
+    public void loadedSetIsPutIntoCache() throws IOException, ClassNotFoundException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        secondLearnSet.addLearnCase(exampleCase);
+        LearnCase additionalCase = new LearnCase("nammme", "def");
+        secondLearnSet.addLearnCase(additionalCase);
+
+        //a real test
+        modelBroker.changeCurrentSet(secondSetName);
+        modelBroker.changeCurrentSet(testLearnSetName);
+        //set should be load from cache, so null returned by mocked dto shouldn't be a problem.
+        Mockito.when(mockedDao.getSetByName(secondSetName)).thenReturn(null);
+        modelBroker.changeCurrentSet(secondSetName);
+
+        //Assertion - learn set should be loaded from cache
+        Assertions.assertEquals(2, modelBroker.getCaseViews().size());
+    }
+
+
+    @Test
+    public void changesAreSavedToCache() throws IOException, ClassNotFoundException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        secondLearnSet.addLearnCase(exampleCase);
+        LearnCase additionalCase = new LearnCase("nammme", "def");
+        secondLearnSet.addLearnCase(additionalCase);
+
+        //a real test
+        modelBroker.changeCurrentSet(secondSetName);
+        modelBroker.createNewCase("additionalCase", "casseeeee");
+
+        modelBroker.saveChanges();
+
+        modelBroker.changeCurrentSet(testLearnSetName);
+        //set should be load from cache, so null returned by mocked dto shouldn't be a problem.
+        Mockito.when(mockedDao.getSetByName(secondSetName)).thenReturn(null);
+        modelBroker.changeCurrentSet(secondSetName);
+
+        //Assertion - learn set should be loaded from cache, added case should be available.
+        Assertions.assertEquals(3, modelBroker.getCaseViews().size());
+    }
+
+    @Test
+    public void ObjectPutIntoCacheShouldBeClonedDeeply() throws IOException, ClassNotFoundException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        secondLearnSet.addLearnCase(exampleCase);
+        LearnCase additionalCase = new LearnCase("nammme", "def");
+        secondLearnSet.addLearnCase(additionalCase);
+
+        //a real test
+        modelBroker.changeCurrentSet(secondSetName);
+        modelBroker.changeCurrentSet(testLearnSetName);
+        //set should be load from cache, so null returned by mocked dto shouldn't be a problem.
+        Mockito.when(mockedDao.getSetByName(secondSetName)).thenReturn(null);
+        modelBroker.changeCurrentSet(secondSetName);
+
+        //Assertion - learn set should be loaded from cache
+        Assertions.assertEquals(2, modelBroker.getCaseViews().size());
+
+        secondLearnSet.removeCase(UUID.fromString(exampleCase.getUuid()));
+        //deleting case from example set shouldn't touch the learn set from cache.
+        Assertions.assertEquals(2, modelBroker.getCaseViews().size());
+    }
+
 
 
 }
