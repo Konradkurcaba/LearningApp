@@ -1,13 +1,14 @@
 package pl.kurcaba.learn.helper.common.values;
 
-import pl.kurcaba.learn.helper.common.model.BaseEntity;
-
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Value object, express a name of LearnSet.
+ * It validates the given string and is able to check if other name is equals to it.
+ * Instances of this class are immutable.
+ */
 @Embeddable
 public class LearnSetName implements Serializable
 {

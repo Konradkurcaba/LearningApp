@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 public class LearnCase extends BaseEntity implements Comparable<LearnCase>
@@ -14,9 +15,6 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
     private String definition;
     private boolean isUsedToLearn;
     private Instant createDate = Instant.now();
-
-    @OneToOne
-    LearnSet parentLearnSet;
 
     @Lob
     @ElementCollection(fetch = FetchType.EAGER)
@@ -28,6 +26,20 @@ public class LearnCase extends BaseEntity implements Comparable<LearnCase>
         this.definition = Objects.requireNonNullElse(definition, "");
         isUsedToLearn = true;
         createDate = Instant.now();
+    }
+
+    /**
+     * Creates a deep clone of given LearnCase.
+     */
+    public LearnCase(LearnCase aLearnCase)
+    {
+        name = aLearnCase.name;
+        definition = aLearnCase.definition;
+        isUsedToLearn = aLearnCase.isUsedToLearn;
+        createDate = Instant.from(aLearnCase.createDate);
+        images = aLearnCase.images.stream()
+                .map(byte[]::clone)
+                .collect(Collectors.toList());
     }
 
     public LearnCase()

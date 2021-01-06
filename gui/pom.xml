@@ -5,7 +5,7 @@
     <parent>
         <artifactId>learn.helper</artifactId>
         <groupId>pl.kurcaba</groupId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -79,13 +79,13 @@
         <dependency>
             <groupId>pl.kurcaba</groupId>
             <artifactId>common</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>1.0.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>pl.kurcaba</groupId>
             <artifactId>backend</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>1.0.3</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

@@ -339,8 +339,6 @@ class GuiModelBrokerTest
         //a real test
         modelBroker.changeCurrentSet(secondSetName);
         modelBroker.changeCurrentSet(testLearnSetName);
-        //set should be load from cache, so null returned by mocked dto shouldn't be a problem.
-        Mockito.when(mockedDao.getSetByName(secondSetName)).thenReturn(null);
         modelBroker.changeCurrentSet(secondSetName);
 
         //Assertion - learn set should be loaded from cache
@@ -349,6 +347,35 @@ class GuiModelBrokerTest
         secondLearnSet.removeCase(UUID.fromString(exampleCase.getUuid()));
         //deleting case from example set shouldn't touch the learn set from cache.
         Assertions.assertEquals(2, modelBroker.getCaseViews().size());
+    }
+
+    @Test
+    public void imagesShouldBeClonedDeeply() throws IOException, ClassNotFoundException, LearnSetNameFormatException, NonUniqueException
+    {
+        //set up a test
+        secondLearnSet.addLearnCase(exampleCase);
+
+        //second set should be loaded from cache
+        modelBroker.changeCurrentSet(secondSetName);
+        modelBroker.changeCurrentSet(testLearnSetName);
+        modelBroker.changeCurrentSet(secondSetName);
+
+        //Assertion - learn set should be loaded from cache
+        Assertions.assertEquals(1, modelBroker.getCaseViews().size());
+
+        modelBroker.createNewCase("new", "newCase");
+
+        //Assertion - learn set should be loaded from cache
+        Assertions.assertEquals(2, modelBroker.getCaseViews().size());
+
+        //second set should be loaded from cache
+        modelBroker.changeCurrentSet(secondSetName);
+        modelBroker.changeCurrentSet(testLearnSetName);
+        modelBroker.changeCurrentSet(secondSetName);
+
+        //set wasn't saved, so version from cache should contain only one case.
+        Assertions.assertEquals(1, modelBroker.getCaseViews().size());
+
     }
 
 

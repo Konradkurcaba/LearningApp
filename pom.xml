@@ -7,7 +7,7 @@
     <groupId>pl.kurcaba</groupId>
     <artifactId>learn.helper</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <properties>
         <version.server.bom>20.0.1.Final</version.server.bom>

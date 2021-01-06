@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.UUID;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @NamedQueries(
         {
@@ -30,6 +31,18 @@ public class LearnSet extends BaseEntity
     {
         this.learnSetName = learnSetName;
         this.learnCases = learnSetParts;
+    }
+
+    /**
+     * Copying constructor, creates a deep clone of given Learn set.
+     */
+    public LearnSet(LearnSet aLearnSet)
+    {
+        learnSetName = aLearnSet.learnSetName;
+        hasUnsavedChanges = aLearnSet.hasUnsavedChanges;
+        learnCases = aLearnSet.learnCases.stream()
+                .map(LearnCase::new)
+                .collect(Collectors.toCollection(TreeSet::new));
     }
 
     public LearnSet()

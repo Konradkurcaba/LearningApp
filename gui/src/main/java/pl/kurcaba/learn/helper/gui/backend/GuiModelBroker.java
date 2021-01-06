@@ -29,8 +29,7 @@ public class GuiModelBroker
     private final BooleanProperty hasUnsavedChanges = new SimpleBooleanProperty(false);
     private final BooleanProperty isLearnSetChosen = new SimpleBooleanProperty(false);
 
-    private final HashMap<LearnSetName, LearnSet> cache = new HashMap<>();
-
+    private final LearnSetCache cache = new LearnSetCache();
 
     public GuiModelBroker(LearnSetDaoIf aLearnSetDao)
     {
@@ -63,6 +62,7 @@ public class GuiModelBroker
         List<byte[]> convertedImages = convertImagesToBytes(editedDto.getNewCaseImages());
         currentLearnSet.editCase(aCaseId, editedDto.getNewCaseName(), editedDto.getNewCaseDefinition()
                 ,convertedImages);
+        updateProperties();
     }
 
     public void createNewCase(String newCaseName, String newDefinition)
@@ -81,21 +81,21 @@ public class GuiModelBroker
 
     public void changeCurrentSet(LearnSetName aSetName) throws IOException, ClassNotFoundException
     {
-        if(cache.containsKey(aSetName))
+        if(cache.isCached(aSetName))
         {
-            currentLearnSet = cache.get(aSetName);
+            cache.get(aSetName).ifPresent(learnSet -> currentLearnSet = learnSet);
         }
         else
         {
             currentLearnSet = LearnSetDao.getSetByName(aSetName);
-            cache.put(aSetName, currentLearnSet);
+            cache.put(currentLearnSet);
         }
         updateProperties();
     }
 
     public void saveChanges() throws IOException
     {
-        cache.put(currentLearnSet.getLearnSetName(), currentLearnSet);
+        cache.put(currentLearnSet);
         currentLearnSet = LearnSetDao.saveChanges(currentLearnSet);
         updateProperties();
     }
