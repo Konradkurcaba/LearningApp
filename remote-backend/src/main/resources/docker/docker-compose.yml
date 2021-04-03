@@ -11,3 +11,5 @@ services:
       - postgre_volume:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
+  wildfly:
+    image: "jboss/wildfly"
