@@ -1,0 +1,13 @@
+version: "3"
+
+volumes:
+  postgre_volume :
+    external: false
+
+services:
+  database:
+    image: "postgres"
+    volumes: 
+      - postgre_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
