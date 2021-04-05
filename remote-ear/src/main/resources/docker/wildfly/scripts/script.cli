@@ -1,4 +1,5 @@
 batch
 module add --name=org.postgre --resources=/opt/jboss/wildfly/files/postgresql-42.2.19.jar --dependencies=javax.api,javax.transaction.api
 /subsystem=datasources/jdbc-driver=postgre:add(driver-name="postgre",driver-module-name="org.postgre",driver-class-name=org.postgresql.Driver)
+/subsystem=datasources/data-source="java:jboss/datasources/PostgreDS":add(jndi-name="java:jboss/datasources/PostgreDS",driver-name="postgre",connection-url="jdbc:postgresql://database:5432/postgres",user-name="postgres",password="postgres")
 run-batch

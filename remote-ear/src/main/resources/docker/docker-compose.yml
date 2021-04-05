@@ -12,4 +12,4 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
   wildfly:
-    image: "jboss/wildfly"
+    build: wildfly/.
